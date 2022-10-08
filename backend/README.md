@@ -1,0 +1,1 @@
+# Negovatelji Django app
