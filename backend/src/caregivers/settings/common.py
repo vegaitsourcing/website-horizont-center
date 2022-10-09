@@ -1,4 +1,5 @@
 # Python imports
+from os import getenv
 from os.path import abspath, basename, dirname, join, normpath
 import sys
 
@@ -43,6 +44,9 @@ DEFAULT_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    # local apps:
+    'apps.users',
 ]
 
 # Middlewares
@@ -122,3 +126,16 @@ except IOError:
             f.write(SECRET_KEY)
     except IOError:
         raise Exception('Could not open %s for writing!' % SECRET_FILE)
+
+AUTH_USER_MODEL = 'users.User'
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': getenv('DB_NAME'),
+        'USER': getenv('DB_USERNAME'),
+        'PASSWORD': getenv('DB_PASSWORD'),
+        'HOST': getenv('DB_HOSTNAME'),
+        'PORT': 5432,
+    }
+}
