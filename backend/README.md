@@ -23,9 +23,10 @@
 
 [pgAdmin](https://www.pgadmin.org/) is an administration and development platform for PostgreSQL
 database. If you followed through the [Setup steps](#setup-steps), there should be
-`cargivers-pgadmin` container running and pgAdmin should be available at http://0.0.0.0:8080/.
-To login, use the credentials specified in `.env` (`PGADMIN_EMAIL` and `PGADMIN_PASSWORD`). Once
-you successfully log in, follow these steps to connect to the database:
+`cargivers-pgadmin` container running and pgAdmin should be available at http://0.0.0.0:8080/ 
+(the port is the one set for `PGADMIN_PORT` variable in `.evn`). To log in, use the credentials 
+specified in `.env` (`PGADMIN_EMAIL` and `PGADMIN_PASSWORD`). Once you successfully log in, 
+follow these steps to connect to the database:
 
 1. Click on the "Add New Servers" button that should be under "Quick Links". This should open
    "Register - Server" popup window.
@@ -43,6 +44,4 @@ you successfully log in, follow these steps to connect to the database:
 
 Production setup requirements and steps are the same as for [Development setup](#development-setup),
 and the only thing that differs is that you have to put `production` instead of `development` as the
-value for `APP_ENV` in `.env` file. None of the [Initial data](#initial-data) will be loaded
-in this case.
-
+value for `APP_ENV` in `.env` file.
