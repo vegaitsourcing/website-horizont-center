@@ -18,3 +18,7 @@ coverage_html
 
 # Virutal environment
 venv
+
+# Environment files
+*.env
+!example.env
