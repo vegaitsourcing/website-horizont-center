@@ -19,6 +19,26 @@
 
    (for older versions of Docker Compose use: `docker-compose up`)
 
+### pgAdmin (optional)
+
+[pgAdmin](https://www.pgadmin.org/) is an administration and development platform for PostgreSQL
+database. If you followed through the [Setup steps](#setup-steps), there should be
+`cargivers-pgadmin` container running and pgAdmin should be available at http://0.0.0.0:8080/.
+To login, use the credentials specified in `.env` (`PGADMIN_EMAIL` and `PGADMIN_PASSWORD`). Once
+you successfully log in, follow these steps to connect to the database:
+
+1. Click on the "Add New Servers" button that should be under "Quick Links". This should open
+   "Register - Server" popup window.
+2. Enter any name in the "Name" field (under the first tab called "General").
+3. Go to the second tab called "Connection" and enter values for these fields:
+    - host name/address: the name of the database service in the `docker-compose.yml` file (it
+      should be `postgres` if it was not changed)
+    - port: should be prefilled with `5432` which is the correct port
+    - username: value set for `DB_USERNAME` variable in `.env`
+    - password: value set for `DB_PASSWORD` variable in `.env`
+4. Click on the "Save" button and a connection with the database should be created and visible
+   under the "Servers" menu item located in the left vertical navigation of the pgAdmin page.
+
 ## Production setup
 
 Production setup requirements and steps are the same as for [Development setup](#development-setup),
