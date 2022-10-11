@@ -19,6 +19,9 @@
 
    (for older versions of Docker Compose use: `docker-compose up`)
 
+Now, go to http://0.0.0.0:8000/ in your browser to view the running Django app
+(the port is the one set for `DJANGO_PORT` variable in `.evn`).  
+
 ### Superuser (optional)
 
 You can user a superuser to log in to Django Admin. If you followed through the
