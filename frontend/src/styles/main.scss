@@ -1,0 +1,58 @@
+// Utf-8
+@charset "utf-8";
+
+/* Fonts */
+@import url('https://fonts.googleapis.com/css?family=Nothing+You+Could+Do%7CRaleway:100,200,300,400,600,700,800,900%7CMontserrat:100,200,300,400,500,600,700,800,900');
+
+@import "./variables";
+
+@mixin title {
+    font-family: $font-family-title;
+    font-style: normal;
+    font-weight: 600;
+    color: $title-color;
+}
+
+@mixin text {
+    font-family: $font-family-text;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 150%;
+    color: $subtext-color;
+}
+
+//Typography
+.h1 {
+    @include title;
+    font-size: 64px;
+    line-height: 81px;
+}
+
+.h2 {
+    @include title;
+    font-size: 48px;
+    line-height: 60px;
+}
+
+.h3 {
+    @include title;
+    font-size: 36px;
+    line-height: 45px;
+}
+
+.h4 {
+    @include title;
+    font-size: 24px;
+    line-height: 30px;
+}
+
+.p1 {
+    @include text;
+    font-size: 18px;
+}
+
+.p2 {
+    @include text;
+    font-size: 16px;
+}
+
