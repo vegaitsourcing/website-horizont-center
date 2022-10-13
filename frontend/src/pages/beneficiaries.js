@@ -4,26 +4,12 @@ import { NextSeo } from "next-seo";
 
 import ENV from "config/env";
 
-const {
-  BASE_URL = '',
-  BASE_API_URL = '',
-  BASE_SEO = '',
-  STATIC_DIR = '',
-  AUTHOR,
-} = ENV;
+const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
 function GettingStarted(props) {
   const {
     pathname,
-    data: {
-      title,
-      metaTitle,
-      description,
-      metaDescription,
-      slug,
-      services,
-      block_top = {},
-    },
+    data: { title, metaTitle, description, metaDescription, slug, services, block_top = {} },
   } = props;
 
   const SEOS = {
@@ -43,9 +29,7 @@ function GettingStarted(props) {
   return (
     <>
       <NextSeo {...SEOS} />
-      <LayoutDefault>
-        Stranica negovani...
-      </LayoutDefault>
+      <LayoutDefault>Stranica negovani...</LayoutDefault>
     </>
   );
 }

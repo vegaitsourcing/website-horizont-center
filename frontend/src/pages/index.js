@@ -6,26 +6,12 @@ import { NextSeo } from "next-seo";
 
 import ENV from "config/env";
 
-const {
-  BASE_URL = '',
-  BASE_API_URL = '',
-  BASE_SEO = '',
-  STATIC_DIR = '',
-  AUTHOR,
-} = ENV;
+const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
 export const Home = (props) => {
   const {
     pathname,
-    data: {
-      title,
-      metaTitle,
-      description,
-      metaDescription,
-      packages = [],
-      services = [],
-      block_top = {},
-    },
+    data: { title, metaTitle, description, metaDescription, packages = [], services = [], block_top = {} },
   } = props;
 
   const [visible, setVisible] = useState(true);
@@ -49,12 +35,10 @@ export const Home = (props) => {
   return (
     <>
       <NextSeo {...SEOS} />
-      <LayoutDefault pathname={pathname}>
-        Stranica o nama...
-      </LayoutDefault>
+      <LayoutDefault pathname={pathname}>Stranica o nama...</LayoutDefault>
     </>
   );
-}
+};
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;

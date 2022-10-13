@@ -4,26 +4,17 @@ import { NextSeo } from "next-seo";
 
 import ENV from "config/env";
 
-const { BASE_URL = '', BASE_API_URL = '', STATIC_DIR = '', AUTHOR } = ENV;
+const { BASE_URL = "", BASE_API_URL = "", STATIC_DIR = "", AUTHOR } = ENV;
 
 function Documentation(props) {
   const {
     pathname,
-    data: {
-      title,
-      metaTitle,
-      description,
-      metaDescription,
-      header,
-      slug,
-      block_top = {},
-    },
+    data: { title, metaTitle, description, metaDescription, header, slug, block_top = {} },
   } = props;
-
 
   const SEOS = {
     title,
-    description: description.replace(/(<([^>]+)>)/gi, ''),
+    description: description.replace(/(<([^>]+)>)/gi, ""),
     canonical: `${BASE_URL}${pathname}`,
     openGraph: [
       {
@@ -37,9 +28,7 @@ function Documentation(props) {
   return (
     <>
       <NextSeo {...SEOS} />
-      <LayoutDefault>
-        Stranica kontakt...
-      </LayoutDefault>
+      <LayoutDefault>Stranica kontakt...</LayoutDefault>
     </>
   );
 }
