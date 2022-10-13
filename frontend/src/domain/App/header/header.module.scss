@@ -1,0 +1,61 @@
+@import "styles/main.scss";
+
+.header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 36px 128px;
+    
+    position: absolute;
+    width: 1920px;
+    height: 115px;
+    left: 0px;
+    top: 0px;
+    background: $light-blue-color;
+
+    .imageWrapper {
+        display: inline-block;
+        width: 20%;
+    
+        .image {
+            vertical-align: middle;
+        }
+    }
+    
+    .navbar {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 80%;
+        @include respond-to(mobile) {
+            background: white;
+            display: none;
+        }
+
+        .tabItem {
+            padding: 0px;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 23px;
+            width: 65px;
+            height: 23px;
+            margin-left: 64px;
+            text-align: center;
+        }
+
+        .tabName {
+            cursor: pointer;
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 25px;
+            color: $blue-color;
+        }
+    }
+
+    .buttons {
+        width: 20%;
+    }
+}
+
