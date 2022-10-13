@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 
 /** reactstrap */
-import { Container, Col, Row } from 'reactstrap';
+import { Container, Col, Row } from "reactstrap";
 
 export const BlockMainBottom = ({ props }) => {
-  const block_bottom = { title: 'Bottom', body: 'Body' };
+  const block_bottom = { title: "Bottom", body: "Body" };
   return (
     <section className="subscriber">
       <Container>
@@ -23,12 +23,7 @@ export const BlockMainBottom = ({ props }) => {
                     placeholder="your@email.com"
                     className="form-control"
                   />
-                  <button
-                    type="submit"
-                    name="submit"
-                    placeholder="youremail"
-                    className="btn btn-dark"
-                  >
+                  <button type="submit" name="submit" placeholder="youremail" className="btn btn-dark">
                     Subscribe
                   </button>
                 </Col>
@@ -39,4 +34,4 @@ export const BlockMainBottom = ({ props }) => {
       </Container>
     </section>
   );
-}
+};

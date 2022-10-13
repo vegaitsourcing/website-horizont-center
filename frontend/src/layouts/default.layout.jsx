@@ -11,4 +11,4 @@ export const LayoutDefault = ({ pathname, children }) => {
       <Footer />
     </>
   );
-}
+};

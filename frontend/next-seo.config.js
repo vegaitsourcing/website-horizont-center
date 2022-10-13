@@ -1,5 +1,5 @@
 /* env */
-import ENV from './src/config/env';
+import ENV from "./src/config/env";
 
 /* env vars */
 const {
@@ -43,29 +43,29 @@ export default {
       ],
     },
     twitter: {
-      handle: '@handle',
+      handle: "@handle",
       site: AUTHOR,
-      cardType: 'summary_large_image',
+      cardType: "summary_large_image",
     },
     additionalMetaTags: [
       {
-        httpEquiv: 'x-ua-compatible',
-        content: 'IE=edge; chrome=1',
+        httpEquiv: "x-ua-compatible",
+        content: "IE=edge; chrome=1",
       },
       {
-        name: 'theme-color',
-        content: '#ffc107',
+        name: "theme-color",
+        content: "#ffc107",
       },
       {
-        name: 'google-site-verification',
-        content: 'vjLLPOfUtWqkaiBhrojLlAAjsQgFYR14MJwj8baLCXo',
+        name: "google-site-verification",
+        content: "vjLLPOfUtWqkaiBhrojLlAAjsQgFYR14MJwj8baLCXo",
       },
     ],
   },
   // Default json-ld microdata
   microdatas: {
     LocalBusinessJsonLd: {
-      type: 'Organization',
+      type: "Organization",
       id: `${BASE_URL}/#organization`,
       name: NAME,
       description: DESCRIPTION,
@@ -77,11 +77,11 @@ export default {
           addressLocality: COUNTRY,
           addressRegion: REGION,
           postalCode: POSTAL_CODE,
-          addressCountry: LOCALE.replace('en-', ''),
+          addressCountry: LOCALE.replace("en-", ""),
         },
       ],
       logo: {
-        type: 'ImageObject',
+        type: "ImageObject",
         id: `${BASE_URL}/#logo`,
         inLanguage: LOCALE,
         url: `${BASE_URL}${IMAGE}`,
@@ -94,7 +94,7 @@ export default {
       },
       sameAs: [FACEBOOK_URL, TWITTER_URL, INSTAGRAM_URL, LINKEDIN_URL],
       address: {
-        type: 'PostalAddress',
+        type: "PostalAddress",
         streetAddress: ADDRESS,
         addressLocality: COUNTRY,
         postalCode: POSTAL_CODE,

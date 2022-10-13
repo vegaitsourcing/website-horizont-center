@@ -1,9 +1,9 @@
 module.exports = {
   serverRuntimeConfig: {
     // Will only be available on the server side
-    mySecret: 'secret',
-    secretKey: 'secretKey',
-    jwtToken: 'JwtToken',
+    mySecret: "secret",
+    secretKey: "secretKey",
+    jwtToken: "JwtToken",
   },
   publicRuntimeConfig: {
     // Will be available on both server and client
@@ -15,7 +15,7 @@ module.exports = {
     baseSeo: {
       robotsProps: {
         maxSnippet: -1,
-        maxImagePreview: 'none',
+        maxImagePreview: "none",
         maxVideoPreview: -1,
       },
     },
@@ -37,4 +37,4 @@ module.exports = {
     postalCode: process.env.POSTAL_CODE,
     locale: process.env.LOCALE,
   },
-}
+};

@@ -1,32 +1,32 @@
 export const tabItems = [
-    {
-      name: "O nama",
-      pathname: "/",
-      active: true,
-    },
-    {
-      name: "Blog",
-      pathname: "/blog",
-      active: false,
-    },
-    {
-      name: "Donacije",
-      pathname: "/donacije",
-      active: false,
-    },
-    {
-      name: "Negovatelji",
-      pathname: "/negovatelji",
-      active: false,
-    },
-    {
-      name: "Negovani",
-      pathname: "/negovani",
-      active: false,
-    },
-    {
-      name: "Kontakt",
-      pathname: "/kontakt",
-      active: false,
-    },
-  ]
+	{
+		name: 'O nama',
+		pathname: '/',
+		active: true,
+	},
+	{
+		name: 'Blog',
+		pathname: '/blog',
+		active: false,
+	},
+	{
+		name: 'Donacije',
+		pathname: '/donations',
+		active: false,
+	},
+	{
+		name: 'Negovatelji',
+		pathname: '/caregivers',
+		active: false,
+	},
+	{
+		name: 'Negovani',
+		pathname: '/caretakers',
+		active: false,
+	},
+	{
+		name: 'Kontakt',
+		pathname: '/contact',
+		active: false,
+	},
+];

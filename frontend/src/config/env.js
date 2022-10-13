@@ -1,5 +1,5 @@
 // next config
-import getConfig from 'next/config';
+import getConfig from "next/config";
 
 // Only holds serverRuntimeConfig and publicRuntimeConfig
 const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
