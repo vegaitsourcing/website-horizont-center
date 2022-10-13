@@ -1,7 +1,9 @@
 # Python imports
+import sys
 from os import getenv
 from os.path import abspath, basename, dirname, join, normpath
-import sys
+
+from django.utils.translation import gettext_lazy as _
 
 # ##### PATH CONFIGURATION ################################
 
@@ -53,6 +55,7 @@ DEFAULT_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -80,9 +83,6 @@ TEMPLATES = [
         },
     },
 ]
-
-# Internationalization
-USE_I18N = False
 
 # ##### SECURITY CONFIGURATION ############################
 
@@ -139,3 +139,23 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+
+# ######## Internationalization and localization ################
+
+LOCALE_PATHS = (
+    join(PROJECT_ROOT, 'run', 'locale'),
+)
+
+LANGUAGE_CODE = 'sr-latn'
+
+LANGUAGES = [
+    ('sr-latn', _('Serbian (latin)')),
+]
+
+TIME_ZONE = 'Europe/Belgrade'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True

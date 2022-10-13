@@ -1,19 +1,4 @@
-# specific .gitignore for this directory
-
-# ignore everything
-*
-
-# except the explaining README
-!README
-# and this .gitignore
-!.gitignore
-
-# do NOT ignore the static directory
-!static
-# but everything inside it
-static/*
-# except the README
-!static/README
+SECRET.key
 
 # do NOT ignore the media directory
 !media
@@ -21,3 +6,10 @@ static/*
 media/*
 # except the README
 !media/README
+
+# do NOT ignore the static directory
+!static
+# but everything inside it
+static/*
+# except the README
+!static/README
