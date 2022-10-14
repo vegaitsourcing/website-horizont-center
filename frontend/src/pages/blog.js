@@ -4,7 +4,7 @@ import { NextSeo } from "next-seo";
 
 import ENV from "config/env";
 
-import { BorderButton } from "shared-components";
+import { BorderButton, Input } from "shared-components";
 
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
@@ -33,6 +33,7 @@ function Service(props) {
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
         <BorderButton value="SAZNAJ VIŠE" type="border" />
+        <Input type="text" id="vaseIme" name="vaseIme" placeholder="Unesite Vaše ime*" hasError={true} />
       </LayoutDefault>
     </>
   );
