@@ -27,6 +27,15 @@ class User(AbstractUser):
         unique=True
     )
     username = None
+    first_name=models.CharField()  
+    last_name= models.CharField() 
+    phone_number=models.IntegerField()
+ #   email=models.CharField() da li je potrebno ? 
+    is_staff=models.BooleanField()
+    is_active=models.BooleanField()
+    password=models.CharField() 
+    second_phone_number=models.IntegerFiled()
+    created= models.BooleanField() 
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
