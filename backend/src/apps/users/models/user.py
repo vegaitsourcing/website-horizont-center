@@ -2,6 +2,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import AbstractUser, UserManager as BaseUserManager
 from django.contrib.postgres.fields import CIEmailField
 from django.utils.translation import gettext_lazy as _
+from django.db import models
 
 
 class UserManager(BaseUserManager):
@@ -18,7 +19,7 @@ class User(AbstractUser):
     class Meta:
         verbose_name = _('User')
         verbose_name_plural = _('Users')
-        
+
     objects = UserManager()
 
     email = CIEmailField(
@@ -27,15 +28,14 @@ class User(AbstractUser):
         unique=True
     )
     username = None
-    first_name=models.CharField()  
-    last_name= models.CharField() 
-    phone_number=models.IntegerField()
- #   email=models.CharField() da li je potrebno ? 
-    is_staff=models.BooleanField()
-    is_active=models.BooleanField()
-    password=models.CharField() 
-    second_phone_number=models.IntegerFiled()
-    created= models.BooleanField() 
+    first_name = models.CharField(null=False, blank=False)
+    last_name = models.CharField(null=False, blank=False)
+    phone_number = models.CharField(null=False, blank=False)
+    is_staff = models.BooleanField()
+    is_active = models.BooleanField(default=False)
+    password = models.CharField()
+    second_phone_number = models.IntegerFiled(null=True, blank=True)
+    created = models.BooleanField()
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = []
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone_number', 'password']
