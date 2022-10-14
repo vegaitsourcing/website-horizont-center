@@ -2,7 +2,7 @@
 // value -> string
 // type -> string, koji moze biti "border" ili "filled"
 // onclick -> callback function
-
+// style -> inline stilovi koji ce biti dodati na dugme
 import React from "react";
 
 import styles from "./long.button.module.scss";
