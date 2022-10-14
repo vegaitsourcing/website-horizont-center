@@ -4,7 +4,7 @@
     margin: 0;
 }
 
-.h2 {
+.h2, .h4 {
     margin-top: 0;
 }
 
@@ -34,18 +34,58 @@
 .contact-section-3 {
     background-color: $light-blue-color;
 
-    .centered-text {
-        text-align: center;
-        padding-block: 0 46px;
-        margin-inline: auto;
-    }
-
     padding-block: 236px;
 
 }
 
-.contact-section-2 strong, .contact-section-3 strong {
+.centered-text {
+        text-align: center;
+        padding-block: 0 46px;
+        margin-inline: auto;
+
+        button {
+            margin-inline: auto;
+            margin-top: 81px;
+            width: 254px;
+        }
+}
+
+.contact-section-2 strong, .contact-section-3 strong, .contact-section-4 strong {
     text-transform: uppercase;
     font-weight: bold;
     color: $blue-color;
+}
+
+.contact-list {
+    list-style-type: none;
+    display: flex;
+    gap: 144px;
+}
+
+.contact-section-4 {
+    padding-block: 128px;
+
+    .p1 {
+        width: 60%;
+        margin-inline: auto;
+    }
+}
+
+.contact-section-5 {
+    @extend .contact-section-2;
+    padding-block: 164px;
+}
+
+.lists {
+    display: flex;
+    gap: 70px;
+
+    ul{
+    list-style-type: none;
+    padding-left: 0;
+
+    li + li {
+        margin-top: 5px;
+    }
+}
 }

@@ -33,7 +33,7 @@ function Service(props) {
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
         <BorderButton value="SAZNAJ VIŠE" type="border" />
-        <Input type="text" id="vaseIme" name="vaseIme" placeholder="Unesite Vaše ime*" hasError={true} />
+        <Input type="text" id="vaseIme" name="vaseIme" placeholder="Unesite Vaše ime*" hasError={false} />
       </LayoutDefault>
     </>
   );
