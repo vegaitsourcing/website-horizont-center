@@ -1,0 +1,51 @@
+@import "../../styles/main.scss";
+
+.h1 {
+    margin: 0;
+}
+
+.h2 {
+    margin-top: 0;
+}
+
+.contact-section-1 {
+    background-color: $light-blue-color;
+    width: 100vw;
+    padding-block: 88px 108px;
+
+    .p1 {
+        max-width: 570px;
+    }
+}
+
+.contact-section-2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    padding-block: 193px;
+
+    & > * {
+        width: 100%;
+    }
+}
+
+.contact-section-3 {
+    background-color: $light-blue-color;
+
+    .centered-text {
+        text-align: center;
+        padding-block: 0 46px;
+        margin-inline: auto;
+    }
+
+    padding-block: 236px;
+
+}
+
+.contact-section-2 strong, .contact-section-3 strong {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $blue-color;
+}
