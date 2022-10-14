@@ -37,7 +37,7 @@ function Service(props) {
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
-        <Input type="text" id="vaseIme" name="vaseIme" placeholder="Unesite Vaše ime*" hasError={true} />
+        <Input type="text" id="vaseIme" name="vaseIme" placeholder="Unesite Vaše ime*" hasError={false} />
         <LongButton value="SAZNAJ VIŠE" type="border" />
         <LongButton value="SAZNAJ VIŠE" type="filled" />
         <ShortButton onclick={alert} type="next" />
