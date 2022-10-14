@@ -36,7 +36,15 @@ export const Home = (props) => {
   return (
     <>
       <NextSeo {...SEOS} />
-      <LayoutDefault pathname={pathname}><Card /></LayoutDefault>
+      <LayoutDefault pathname={pathname}>
+        <Card
+          category="Tempor"
+          description="Felis lectus tortor massa a eget viverra integer faucibus adipiscing. Faucibus nunc, auctor arcu magna cursu"
+          smallDescription="Morbi sem pharetra varius porttitor amet, nulla arcu massa tempor ridiculus."
+          date="20.09.2022"
+          onClick={() => {}}
+        />
+      </LayoutDefault>
     </>
   );
 };
