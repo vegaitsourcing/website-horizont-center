@@ -76,7 +76,16 @@ export const Contact = () => {
         </div>
       </section>
       <section className={styles["contact-section-5"]}>
-        <div className={styles["grid-container"]}></div>
+        <div className={styles["images-box"]}>
+          <div className={styles["flex-img-container"]}>
+            <Image src="/images/imageContact2.png" width="484px" height="296.5px" />
+            <Image src="/images/imageContact3.png" width="139px" height="190px" />
+          </div>
+          <div className={styles["flex-img-container"]}>
+            <Image src="/images/imageContact4.png" width="139px" height="190px" />
+            <Image src="/images/imageContact5.png" width="484px" height="296.5px" />
+          </div>
+        </div>
         <div>
           <strong>scelerisque</strong>
           <h2 className={styles.h2}>Lorem, ipsum dolor.</h2>

@@ -74,6 +74,12 @@
 .contact-section-5 {
     @extend .contact-section-2;
     padding-block: 164px;
+
+    .flex-img-container {
+        display: flex;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
 }
 
 .lists {
@@ -88,4 +94,9 @@
         margin-top: 5px;
     }
 }
+}
+
+.images-box {
+    display: flex;
+    flex-direction: column;
 }
