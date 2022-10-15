@@ -42,7 +42,7 @@ function About(props) {
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
-        <center>
+        <div style={{ display: "grid", justifyContent: "center" }}>
           {results.map(({ id, work_application, image, created, city, description, first_name, last_name }) => (
             <ProfileListItem
               body={description}
@@ -56,7 +56,7 @@ function About(props) {
               url={`${pathname}/${id}`}
             ></ProfileListItem>
           ))}
-        </center>
+        </div>
       </LayoutDefault>
     </>
   );
