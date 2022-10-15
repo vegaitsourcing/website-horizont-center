@@ -15,8 +15,8 @@ export const CreateAccount = ({stepNumber}) => {
                 <hr className={styles.dottedLine} />
                 <span className={styles.p1}>3</span>
             </div>
-            <p className={styles.p1}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas animi distinctio est sunt. Saepe earum id corporis vero voluptatum.</p>
-        <Input id='tipProfila' name='tipProfila' type='text' placeholder='Tip profila*' hasError={false}  />
+            {/* <p className={styles.p1}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas animi distinctio est sunt. Saepe earum id corporis vero voluptatum.</p>
+        <Input id='tipProfila' name='tipProfila' type='text' placeholder='Tip profila*' hasError={false}  /> */}
         </div>
         <div className={styles.createAccountFooter}>
             <LongButton value='Sledeći korak' type='button' />
