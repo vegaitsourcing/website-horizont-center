@@ -8,6 +8,7 @@ from caregivers.views import index_api_view
 api_urlpatterns = [
     path('', index_api_view, name='index'),
     *user_api_url_patterns,
+    path('blogs/', include("apps.blogs.urls"))
 ]
 
 urlpatterns = [
