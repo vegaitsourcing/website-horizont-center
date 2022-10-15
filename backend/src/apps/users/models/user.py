@@ -17,7 +17,7 @@ class UserManager(BaseUserManager):
 
     def create_user(self, email: str = None, password: str = None, **kwargs) -> 'User':
         email = self.normalize_email(email)
-        user = self.model(email=email, is_staff=False, is_superuser=False, **kwargs)
+        user = self.model(email=email, is_active=False, is_staff=False, is_superuser=False, **kwargs)
         user.password = make_password(password)
         user.save()
         return user
