@@ -45,4 +45,4 @@ jobs:
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
           port: ${{ secrets.PORT }}
-          script: docker-compose -f ./Projects/website-horizont-center/docker-compose.website-horizont-center.yaml up -d
+          script: cd ./Projects/website-horizont-center/ && docker-compose -f docker-compose.website-horizont-center.yaml up -d
