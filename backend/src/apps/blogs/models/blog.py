@@ -18,6 +18,11 @@ class Blog(BaseModel):
         null=True,
         blank=True,
     )
+    categories = models.ManyToManyField(
+        to='blogs.BlogCategory',
+        verbose_name=_('categories'),
+        related_name='blogs'
+    )
 
     def __str__(self):
         return self.title
