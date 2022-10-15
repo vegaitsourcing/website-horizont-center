@@ -30,8 +30,6 @@ class UserAdmin(BaseUserAdmin):
     search_fields = ('first_name',
                      'last_name',
                      'email',
-                     'ime',
-                     'prezime'
                      )
     ordering = ('email',)
 
