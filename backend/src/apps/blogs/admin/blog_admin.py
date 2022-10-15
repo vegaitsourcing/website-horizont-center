@@ -18,7 +18,11 @@ class BlogAdmin(admin.ModelAdmin):
     search_fields = (
         'title',
     )
-    fields = ('title', 'image', 'categories')
+    fields = (
+        'title',
+        'image',
+        'categories'
+    )
     ordering = ('title',)
     filter_horizontal = (
         'categories',
