@@ -27,10 +27,11 @@ class UserAdmin(BaseUserAdmin):
         'second_phone_number'
     )
 
-    search_fields = ('first_name',
-                     'last_name',
-                     'email',
-                     )
+    search_fields = (
+        'first_name',
+        'last_name',
+        'email',
+    )
     ordering = ('email',)
 
     add_form = CreateUserForm
@@ -48,4 +49,8 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('email', 'password1', 'password2'),
         }),
     )
-    readonly_fields = ('id', 'last_login', 'date_joined',)
+    readonly_fields = (
+        'id',
+        'last_login',
+        'date_joined',
+    )
