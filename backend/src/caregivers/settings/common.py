@@ -49,6 +49,7 @@ DEFAULT_APPS = [
 
     # local apps:
     'apps.users',
+    'apps.donations',
 ]
 
 # Middlewares
