@@ -55,7 +55,8 @@
     }
 
     .buttons {
-        width: 20%;
+        display: flex;
+        gap: 24px;
     }
 }
 
