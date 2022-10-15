@@ -1,14 +1,13 @@
-from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from .donation import Donation
+from caregivers.models import BaseModel
 
 
-class FinancialDonation(Donation):
+class FinancialInfo(BaseModel):
     class Meta:
-        verbose_name = _('Financial donation')
-        verbose_name_plural = _('Financial donations')
+        verbose_name = _('Financial info')
+        verbose_name_plural = _('Financial info')
 
     payment_purpose = models.CharField(
         verbose_name=_('payment purpose'),
@@ -28,9 +27,18 @@ class FinancialDonation(Donation):
 
     payment_model = models.IntegerField(
         verbose_name=_('payment model'),
+        blank=True,
+        null=True
     )
     payment_reference_number = models.CharField(
         verbose_name=_('payment reference number'),
-        max_length=20
+        max_length=20,
+        blank=True,
+        null=True
     )
-
+    donation = models.OneToOneField(
+        to='donations.Donation',
+        verbose_name=_('donation'),
+        on_delete=models.CASCADE,
+        related_name='financial_info'
+    )
