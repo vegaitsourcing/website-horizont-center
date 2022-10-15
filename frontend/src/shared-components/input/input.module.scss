@@ -12,6 +12,11 @@
 
     &--error {
         border-color: $error-color;
+
+        svg path {
+            fill: $error-color;
+            transition: fill 100ms ease;
+        }
     }
 
     &:focus-within {

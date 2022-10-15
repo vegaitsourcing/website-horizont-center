@@ -34,9 +34,8 @@ class AbstractProfile(BaseModel):
         verbose_name=_('description'),
     )
 
-    user = models.ForeignKey(
+    user = models.OneToOneField(
         to='users.User',
         verbose_name=_('user'),
         on_delete=models.CASCADE,
-        unique=True
     )

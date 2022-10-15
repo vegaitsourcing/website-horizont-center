@@ -11,35 +11,29 @@ class CaregiverProfile(AbstractProfile):
     birthdate = models.DateField(
         verbose_name=_('birthdate')
     )
-
     work_application = models.CharField(
         verbose_name=_('work application'),
         max_length=250
     )
-
     experience = models.CharField(
         verbose_name=_('experience'),
         max_length=250,
         null=True,
         blank=True,
     )
-
     weekly_days = models.IntegerField(
         verbose_name=_('weekly days')
     )
-
     daily_hours = models.FloatField(
         verbose_name=_('daily hours'),
         null=True,
         blank=True,
     )
-
     instagram_url = models.URLField(
         verbose_name=_('instagram url'),
         null=True,
         blank=True,
     )
-
     facebook_url = models.URLField(
         verbose_name=_('facebook url'),
         null=True,

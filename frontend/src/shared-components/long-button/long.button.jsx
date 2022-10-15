@@ -8,16 +8,20 @@ import React from "react";
 import styles from "./long.button.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
-export const LongButton = ({ value, type, onclick, style }) => {
+export const LongButton = React.forwardRef(({ value, type, onClick, style, direction, href }, ref) => {
   return (
     <button
-      onClick={onclick}
+      onClick={onClick}
       className={styles.button + " " + (type == "border" ? styles.border : styles.filled)}
       style={style}
+      href={href}
+      ref={ref}
     >
+      {direction === "left" ? <FontAwesomeIcon icon={faChevronLeft} className={styles.icon} /> : ""}
       {value}
-      <FontAwesomeIcon icon={faChevronRight} className={styles.icon} />
+      {direction === "right" ? <FontAwesomeIcon icon={faChevronRight} className={styles.icon} /> : ""}
     </button>
   );
-};
+});
