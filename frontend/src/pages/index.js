@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { LayoutDefault } from "layouts";
 
+import { About } from "components/about/about";
 import { NextSeo } from "next-seo";
 
 import ENV from "config/env";
@@ -37,14 +38,10 @@ export const Home = (props) => {
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
-        <Card
-          category="Tempor"
-          description="Felis lectus tortor massa a eget viverra integer faucibus adipiscing. Faucibus nunc, auctor arcu magna cursu"
-          smallDescription="Morbi sem pharetra varius porttitor amet, nulla arcu massa tempor ridiculus."
-          date="20.09.2022"
-          onClick={() => {}}
-        />
-      </LayoutDefault>
+        <About>
+          
+        </About>
+        </LayoutDefault>
     </>
   );
 };

@@ -2,7 +2,7 @@ import React from "react";
 
 import Image from "next/image";
 import { LongButton } from "shared-components";
-import styles from "./Contact.module.scss";
+import styles from "./contact.module.scss";
 
 // !!!!!!!!!!!!! SAMO GLEDAM IZGLED KOMPONENTE CREATE ACCOUNT
 import { CreateAccount } from "shared-components";

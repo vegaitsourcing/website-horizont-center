@@ -47,6 +47,14 @@
     color: $subtext-color;
 }
 
+#__next {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
 //Typography
 .h1 {
     @include title;
@@ -83,4 +91,3 @@
     @include text;
     font-size: 16px;
 }
-

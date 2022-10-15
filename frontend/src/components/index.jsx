@@ -1,1 +1,6 @@
-export * from "./contact/Contact";
+export * from './contact/contact';
+export * from './header/header';
+export * from "./footer/footer";
+export * from "./about/about";
+
+
