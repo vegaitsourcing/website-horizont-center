@@ -9,8 +9,8 @@ class AbstractProfileSerializer(serializers.ModelSerializer):
         fields = (
             'id',
             'profile_image',
-            # 'gender', # TODO
-            # 'postal_code', # TODO
+            'gender',
+            'postal_code',
             'city',
             'description',
         )
