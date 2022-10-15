@@ -1,2 +1,2 @@
-from list_response_serializer import ListResponseSerializer
-from simple_serializers import SimpleSerializer
+from caregivers.serializers.list_response_serializer import ListResponseSerializer
+from caregivers.serializers.simple_serializers import SimpleSerializer
