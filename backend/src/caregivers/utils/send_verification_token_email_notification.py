@@ -19,5 +19,5 @@ class SendVerificationTokenEmailNotification(EmailNotification):
         # plain_message = strip_tags(html_template)
 
         super().__init__('Verify your email',
-                         f'Please click on this link to verify your email: {os.getenv("CORS_ALLOWED_ORIGIN")}/api/v1/{token}'
+                         f'Please click on this link to verify your email: {os.getenv("CORS_ALLOWED_ORIGIN")}/api/v1/register/{token}'
                          , EMAIL_HOST_USER, [email])
