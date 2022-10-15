@@ -3,7 +3,7 @@
 .input {
     box-sizing: border-box;
     display: inline-flex;
-    justify-content: center;
+    justify-content:space-between;
     align-items: flex-start;
     padding: 12px 24px;
     background: $white-color;
@@ -29,8 +29,11 @@
     }
 
     input {
+        //display: flex;
+        width: 100%;
         border: 0;
         outline: none;
+        justify-self: stretch;
     }
 }
 

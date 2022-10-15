@@ -2,7 +2,7 @@ import { LayoutDefault } from "layouts";
 
 import { NextSeo } from "next-seo";
 
-import { RegistrationForm } from "components";
+import { LoginForm } from "components";
 
 import ENV from "config/env";
 
@@ -30,7 +30,9 @@ function Login(props) {
   return (
     <>
       <NextSeo {...SEOS} />
-      <div>Stranica za login...</div>
+      <LayoutDefault>
+        <LoginForm />
+      </LayoutDefault>
     </>
   );
 }
