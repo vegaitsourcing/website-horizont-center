@@ -9,7 +9,7 @@ export const Input = ({ id, name, type, placeholder, hasError, options, required
     return (
       <div className={styles.inputWrapper}>
         <select
-          onChange={(e) => valueChangedHandler(e.currentTarget.value)}
+          onChange={(e) => valueChangedHandler && valueChangedHandler(e.currentTarget.value)}
           name={name}
           id={id}
           className={styles.input + " " + styles.dropdown + " " + (hasError ? styles.hasError : null)}
@@ -26,7 +26,7 @@ export const Input = ({ id, name, type, placeholder, hasError, options, required
     return (
       <div className={styles.inputWrapper}>
         <input
-          onChange={(e) => valueChangedHandler(e.currentTarget.value)}
+          onChange={(e) => valueChangedHandler && valueChangedHandler(e.currentTarget.value)}
           type={type}
           name={name}
           id={id}
@@ -42,7 +42,7 @@ export const Input = ({ id, name, type, placeholder, hasError, options, required
         type={type}
         name={name}
         id={id}
-        onChange={(e) => valueChangedHandler(e.currentTarget.value)}
+        onChange={(e) => valueChangedHandler && valueChangedHandler(e.currentTarget.value)}
         placeholder={placeholder}
         className={styles.input + " " + (hasError ? styles.hasError : null)}
       />
