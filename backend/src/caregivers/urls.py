@@ -3,13 +3,13 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 from apps.users.urls import api_url_patterns as user_api_url_patterns
-
+from apps.donations.urls import api_urlpatterns as donation_api_url_patterns
 from caregivers.views import index_api_view
 
 api_urlpatterns = [
     path('', index_api_view, name='index'),
     *user_api_url_patterns,
-    path('donations/', include("apps.donations.urls"))
+    *donation_api_url_patterns
 ]
 
 urlpatterns = [

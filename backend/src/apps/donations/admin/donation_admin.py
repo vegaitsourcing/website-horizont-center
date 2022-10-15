@@ -1,7 +1,7 @@
 from django.contrib import admin
 
-from apps.donations.admin.donation_company_admin_inline import DonationCompanyInline
-from apps.donations.admin.financial_info_admin_inline import FinancialInfoInline
+from apps.donations.admin.donation_company_admin_inline import DonationCompanyAdminInline
+from apps.donations.admin.financial_info_admin_inline import FinancialInfoAdminInline
 from apps.donations.models.donation import Donation
 
 
@@ -15,8 +15,8 @@ class DonationAdmin(admin.ModelAdmin):
         'is_active',
     )
     inlines = [
-        DonationCompanyInline,
-        FinancialInfoInline
+        DonationCompanyAdminInline,
+        FinancialInfoAdminInline
     ]
     search_fields = ['title']
     ordering = (

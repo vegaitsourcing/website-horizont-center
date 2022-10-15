@@ -3,7 +3,7 @@ from django.contrib import admin
 from apps.donations.models import DonationCompany
 
 
-class DonationCompanyInline(admin.StackedInline):
+class DonationCompanyAdminInline(admin.StackedInline):
     model = DonationCompany
     extra = 0
     min_num = 1
