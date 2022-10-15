@@ -7,8 +7,8 @@ from caregivers.models import BaseModel
 
 class DonationCompany(BaseModel):
     class Meta:
-        verbose_name = _('Donation company')
-        verbose_name_plural = _('Donation companies')
+        verbose_name = _('Company')
+        verbose_name_plural = _('Companies')
 
     name = models.CharField(
         verbose_name=_('name'),
@@ -32,7 +32,7 @@ class DonationCompany(BaseModel):
     instagram_url = models.URLField(
         verbose_name=_('instagram'),
     )
-    donation = models.ForeignKey(
+    donation = models.OneToOneField(
         to='donations.Donation',
         verbose_name=_('donation'),
         on_delete=models.CASCADE,
