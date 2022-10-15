@@ -1,9 +1,10 @@
 from django.contrib import admin
 from apps.users.models.caregiver_profile import CaregiverProfile
+from caregivers.admin import ModelAdmin
 
 
 @admin.register(CaregiverProfile)
-class CaregiverProfileAdmin(admin.ModelAdmin):
+class CaregiverProfileAdmin(ModelAdmin):
     list_display = (
         # Add first name and last name
         'birthdate',

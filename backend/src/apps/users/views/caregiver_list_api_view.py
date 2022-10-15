@@ -4,10 +4,11 @@ from apps.users.models import CaregiverProfile
 from apps.users.serializers import CaregiverProfileSerializer
 
 
-class CaregiverAPIView(APIView):
+class CaregiverListAPIView(APIView):
 
     @staticmethod
-    def get(request) -> JsonResponse:
+    def get(request,  **kwargs) -> JsonResponse:
         caregiver_profiles = CaregiverProfile.objects.all()
         serializer = CaregiverProfileSerializer(caregiver_profiles, many=True)
         return JsonResponse(data=serializer.data, safe=False)
+

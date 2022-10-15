@@ -1,6 +1,6 @@
-from apps.users.models.abstract_profile import AbstractProfile
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from apps.users.models.abstract_profile import AbstractProfile
 
 
 class BeneficiaryProfile(AbstractProfile):

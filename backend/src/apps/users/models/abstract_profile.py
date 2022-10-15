@@ -38,3 +38,7 @@ class AbstractProfile(BaseModel):
         verbose_name=_('user'),
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        conjunction = _('for')
+        return self._meta.verbose_name.title() + f' {conjunction} "{self.user.email}"'

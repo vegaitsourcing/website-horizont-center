@@ -4,7 +4,7 @@ from apps.users.models import BeneficiaryProfile
 from apps.users.serializers import BeneficiaryProfileSerializer
 
 
-class BeneficiaryAPIView(APIView):
+class BeneficiaryListAPIView(APIView):
 
     @staticmethod
     def get(request) -> JsonResponse:

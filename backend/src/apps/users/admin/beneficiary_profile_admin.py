@@ -1,10 +1,10 @@
 from django.contrib import admin
-
 from apps.users.models import BeneficiaryProfile
+from caregivers.admin import ModelAdmin
 
 
 @admin.register(BeneficiaryProfile)
-class BeneficiaryProfileAdmin(admin.ModelAdmin):
+class BeneficiaryProfileAdmin(ModelAdmin):
     list_display = (
         'beneficiary_person',
         'helping_period',
@@ -12,10 +12,8 @@ class BeneficiaryProfileAdmin(admin.ModelAdmin):
         'daily_hours',
         'care_type',
     )
-
     search_fields = (
         'beneficiary_person',
         'care_type',
     )
-
     ordering = ('care_type',)
