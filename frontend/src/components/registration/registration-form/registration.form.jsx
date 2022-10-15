@@ -31,7 +31,7 @@ export const RegistrationForm = ({}) => {
       return <RegistrationStepOne />;
     }
     if (stepNumber === 2) {
-      return <RegistrationStepTwo />;
+      return <RegistrationStepTwo userType={"caregiver"} />;
     }
     return <ImageUpload />;
   };
