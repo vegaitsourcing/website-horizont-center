@@ -16,8 +16,23 @@ class CreateUserForm(UserCreationForm):
 
 @admin.register(User)
 class UserAdmin(BaseUserAdmin):
-    list_display = ('email', 'is_active', 'is_staff', 'is_superuser',)
-    search_fields = ('first_name', 'last_name', 'email')
+    list_display = (
+        'email',
+        'is_active',
+        'is_staff',
+        'is_superuser',
+        'first_name',
+        'last_name',
+        'phone_number',
+        'second_phone_number'
+    )
+
+    search_fields = ('first_name',
+                     'last_name',
+                     'email',
+                     'ime',
+                     'prezime'
+                     )
     ordering = ('email',)
 
     add_form = CreateUserForm
