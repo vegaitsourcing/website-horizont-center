@@ -1,15 +1,28 @@
 import { NextSeo } from "next-seo";
-
+import caregiversService from "./api/caregiversService";
 import { LayoutDefault } from "layouts";
 
 import env from "config/env";
+import CaregiversList from "components/caregivers/caregiversList";
+import { useState } from "react";
 
 function About(props) {
   const {
     pathname,
-    data: { title, metaTitle, description, metaDescription, header, slug, block_top },
+    data: {
+      title,
+      results,
+      pageNumber,
+      pageSize,
+      total,
+      metaTitle,
+      description,
+      metaDescription,
+      header,
+      slug,
+      block_top,
+    },
   } = props;
-
   const disc = 4;
   const SEOS = {
     title,
@@ -24,21 +37,29 @@ function About(props) {
     ],
     ...env.BASE_SEO,
   };
-
+  const [activepageNumber, setactivepageNumber] = useState(1);
+  const [numberOfPages, setNumberOfPages] = useState(Math.ceil(total / pageSize));
+  function changeNumberOfPages(totalRecords, pageSize) {
+    setNumberOfPages(Math.ceil(totalRecords / pageSize));
+  }
   return (
     <>
       <NextSeo {...SEOS} />
-      <LayoutDefault pathname={pathname}>Stranica negovatelji...</LayoutDefault>
+      <LayoutDefault pathname={pathname}>
+        <CaregiversList
+          intialCaregivers={results}
+          pathname={pathname}
+          activepageNumber={activepageNumber}
+        ></CaregiversList>
+      </LayoutDefault>
     </>
   );
 }
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
-  const res = await fetch(`${env.BASE_API_URL}/api/about`);
-  const json = await res.json();
-
-  return { props: { data: json, pathname: resolvedUrl } };
+  var responseData = await caregiversService.getAllCaregivers(process.env.PROFILE_PAGE_SIZE, 1);
+  return { props: { data: responseData, pathname: resolvedUrl } };
 }
 
 export default About;

@@ -1,15 +1,29 @@
 import { LayoutDefault } from "layouts";
 
 import { NextSeo } from "next-seo";
-
 import ENV from "config/env";
+import beneficiariesService from "./api/beneficiariesService";
+import BeneficiariesList from "components/beneficiaries/beneficiariesList";
+import { useState } from "react";
 
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
 function GettingStarted(props) {
   const {
     pathname,
-    data: { title, metaTitle, description, metaDescription, slug, services, block_top = {} },
+    data: {
+      title,
+      results,
+      pageNumber,
+      pageSize,
+      total,
+      metaTitle,
+      description,
+      metaDescription,
+      slug,
+      services,
+      block_top = {},
+    },
   } = props;
 
   const SEOS = {
@@ -25,20 +39,29 @@ function GettingStarted(props) {
     ],
     ...BASE_SEO,
   };
-
+  const [activepageNumber, setactivepageNumber] = useState(1);
+  const [numberOfPages, setNumberOfPages] = useState(Math.ceil(total / pageSize));
+  function changeNumberOfPages(totalRecords, pageSize) {
+    setNumberOfPages(Math.ceil(totalRecords / pageSize));
+  }
   return (
     <>
       <NextSeo {...SEOS} />
-      <LayoutDefault>Stranica negovani...</LayoutDefault>
+      <LayoutDefault>
+        <BeneficiariesList
+          intialBeneficiaries={results}
+          pathname={pathname}
+          activePageNumber={activepageNumber}
+        ></BeneficiariesList>
+      </LayoutDefault>
     </>
   );
 }
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
-  const res = await fetch(`${BASE_API_URL}/api/global`);
-  const json = await res.json();
-  return { props: { data: json, pathname: resolvedUrl } };
+  const responseData = await beneficiariesService.getAllBeneficiaries(process.env.PROFILE_PAGE_SIZE, 1);
+  return { props: { data: responseData, pathname: resolvedUrl } };
 }
 
 export default GettingStarted;

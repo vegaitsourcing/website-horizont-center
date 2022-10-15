@@ -7,8 +7,8 @@ from .donation import Donation
 
 class FinancialDonation(Donation):
     class Meta:
-        verbose_name = _('Donation company')
-        verbose_name_plural = _('Donation companies')
+        verbose_name = _('Financial donation')
+        verbose_name_plural = _('Financial donations')
 
     payment_purpose = models.CharField(
         verbose_name=_('payment purpose'),
@@ -21,13 +21,16 @@ class FinancialDonation(Donation):
     payment_code = models.IntegerField(
         verbose_name=_('payment code'),
     )
-    payment_bank_account = models.IntegerField(
-        verbose_name=_('payment bank_account'),
+    payment_bank_account = models.CharField(
+        verbose_name=_('payment bank account'),
+        max_length=20
     )
+
     payment_model = models.IntegerField(
         verbose_name=_('payment model'),
     )
-    payment_reference_model = models.IntegerField(
-        verbose_name=_('payment reference model'),
+    payment_reference_number = models.CharField(
+        verbose_name=_('payment reference number'),
+        max_length=20
     )
 

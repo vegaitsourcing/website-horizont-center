@@ -8,9 +8,16 @@ from caregivers.models import BaseModel
 
 class UserManager(BaseUserManager):
 
-    def create_superuser(self, email: str = None, password: str = None, **kwargs):
+    def create_superuser(self, email: str = None, password: str = None, **kwargs) -> 'User':
         email = self.normalize_email(email)
         user = self.model(email=email, is_staff=True, is_superuser=True, **kwargs)
+        user.password = make_password(password)
+        user.save()
+        return user
+
+    def create_user(self, email: str = None, password: str = None, **kwargs) -> 'User':
+        email = self.normalize_email(email)
+        user = self.model(email=email, is_staff=False, is_superuser=False, **kwargs)
         user.password = make_password(password)
         user.save()
         return user

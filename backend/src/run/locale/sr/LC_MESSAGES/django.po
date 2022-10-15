@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-15 13:50+0200\n"
+"POT-Creation-Date: 2022-10-15 16:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,6 +12,96 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#: apps/donations/apps.py:8 apps/donations/models/donation.py:11
+msgid "Donations"
+msgstr "Donacije"
+
+#: apps/donations/models/donation.py:10
+msgid "Donation"
+msgstr "Donacija"
+
+#: apps/donations/models/donation.py:14
+msgid "title"
+msgstr "Naslov"
+
+#: apps/donations/models/donation.py:18
+msgid "subtitle"
+msgstr "Podnaslov"
+
+#: apps/donations/models/donation.py:25
+msgid "cover image"
+msgstr "Slika"
+
+#: apps/donations/models/donation.py:31
+#: apps/donations/models/donation_company.py:27
+#: apps/users/models/abstract_profile.py:34
+msgid "description"
+msgstr "Opis"
+
+#: apps/donations/models/donation.py:34
+msgid "is active"
+msgstr "Aktivna"
+
+#: apps/donations/models/donation_company.py:10
+msgid "Company"
+msgstr "Kompanija"
+
+#: apps/donations/models/donation_company.py:11
+msgid "Companies"
+msgstr "Kompanije"
+
+#: apps/donations/models/donation_company.py:14
+msgid "name"
+msgstr "Ime kompanije"
+
+#: apps/donations/models/donation_company.py:21
+msgid "company image"
+msgstr "Slika kompanije"
+
+#: apps/donations/models/donation_company.py:30
+msgid "facebook"
+msgstr "link do facebook naloga"
+
+#: apps/donations/models/donation_company.py:33
+msgid "instagram"
+msgstr "link do instagram naloga"
+
+#: apps/donations/models/donation_company.py:37
+msgid "donation"
+msgstr "donacija"
+
+#: apps/donations/models/financial_donation.py:10
+msgid "Financial donation"
+msgstr "Donacija u novcu"
+
+#: apps/donations/models/financial_donation.py:11
+msgid "Financial donations"
+msgstr "Finansijske donacije"
+
+#: apps/donations/models/financial_donation.py:14
+msgid "payment purpose"
+msgstr "Svrha uplate"
+
+#: apps/donations/models/financial_donation.py:18
+msgid "payment receiver"
+msgstr "Primalac"
+
+#: apps/donations/models/financial_donation.py:22
+msgid "payment code"
+msgstr "šifra plaćanja"
+
+#: apps/donations/models/financial_donation.py:25
+msgid "payment bank account"
+msgstr "račun primaoca"
+
+#: apps/donations/models/financial_donation.py:30
+msgid "payment model"
+msgstr "Model"
+
+#: apps/donations/models/financial_donation.py:33
+msgid "payment reference number"
+msgstr "poziv na broj"
 
 #: apps/users/admin/user_admin.py:40
 msgid "Personal info"
@@ -52,10 +142,6 @@ msgstr "poštanski broj"
 #: apps/users/models/abstract_profile.py:28
 msgid "city"
 msgstr "grad"
-
-#: apps/users/models/abstract_profile.py:34
-msgid "description"
-msgstr "opis"
 
 #: apps/users/models/abstract_profile.py:39
 msgid "user"
@@ -143,6 +229,6 @@ msgstr "broj telefona"
 msgid "second phone number"
 msgstr "broj telefona 2"
 
-#: caregivers/settings/common.py:152
+#: caregivers/settings/common.py:156
 msgid "Serbian (latin)"
 msgstr "Srpski (latinica)"
