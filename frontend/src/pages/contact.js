@@ -2,6 +2,8 @@ import { LayoutDefault } from "layouts";
 
 import { NextSeo } from "next-seo";
 
+import { Contact } from "components";
+
 import ENV from "config/env";
 
 const { BASE_URL = "", BASE_API_URL = "", STATIC_DIR = "", AUTHOR } = ENV;
@@ -28,7 +30,9 @@ function Documentation(props) {
   return (
     <>
       <NextSeo {...SEOS} />
-      <LayoutDefault>Stranica kontakt...</LayoutDefault>
+      <LayoutDefault>
+        <Contact />
+      </LayoutDefault>
     </>
   );
 }
