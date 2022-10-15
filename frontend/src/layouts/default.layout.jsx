@@ -7,7 +7,7 @@ export const LayoutDefault = ({ pathname, children }) => {
     <>
       <Header pathname={pathname} />
       <main className={styles.main}>{children}</main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
