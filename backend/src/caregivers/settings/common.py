@@ -56,7 +56,11 @@ DEFAULT_APPS = [
 
     # third party apps:
     'rest_framework',
+    << << << < HEAD
     'rest_framework.authtoken',
+    == == == =
+    'django_filters',
+    >>>>>> > f007b39(feat: donations pagination)
 
     # local apps:
     'apps.users',
@@ -173,9 +177,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+
 # ###### DJANGO REST FRAMEWORK ###########################
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'apps.users.authentication.TokenAuthentication',
-    ]
+    ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
