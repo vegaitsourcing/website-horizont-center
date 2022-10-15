@@ -38,4 +38,5 @@ class AbstractProfile(BaseModel):
         to='users.User',
         verbose_name=_('user'),
         on_delete=models.CASCADE,
+        unique=True
     )
