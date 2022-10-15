@@ -6,7 +6,7 @@ from rest_framework.generics import get_object_or_404
 from caregivers.utils.verification_token import VerificationToken
 
 
-class RegisterAPIView(APIView):
+class CompleteRegistrationAPIView(APIView):
 
     def get(self, request, url_hash: str) -> JsonResponse:
         email = VerificationToken.get_email_from_hash(url_hash)
