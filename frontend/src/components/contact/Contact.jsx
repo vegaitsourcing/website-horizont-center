@@ -91,18 +91,18 @@ export const Contact = () => {
           <h2 className={styles.h2}>Lorem, ipsum dolor.</h2>
           <div className={styles.lists}>
             <ul>
-              <li>Lorem, ipsum dolor.</li>
-              <li>Lorem, ipsum dolor.</li>
-              <li>Lorem, ipsum dolor.</li>
-              <li>Lorem, ipsum dolor.</li>
-              <li>Lorem, ipsum dolor.</li>
+              <li className={styles.p1}>Lorem, ipsum dolor.</li>
+              <li className={styles.p1}>Lorem, ipsum dolor.</li>
+              <li className={styles.p1}>Lorem, ipsum dolor.</li>
+              <li className={styles.p1}>Lorem, ipsum dolor.</li>
+              <li className={styles.p1}>Lorem, ipsum dolor.</li>
             </ul>
             <ul>
-              <li>Lorem, ipsum dolor.</li>
-              <li>Lorem, ipsum dolor.</li>
-              <li>Lorem, ipsum dolor.</li>
-              <li>Lorem, ipsum dolor.</li>
-              <li>Lorem, ipsum dolor.</li>
+              <li className={styles.p1}>Lorem, ipsum dolor.</li>
+              <li className={styles.p1}>Lorem, ipsum dolor.</li>
+              <li className={styles.p1}>Lorem, ipsum dolor.</li>
+              <li className={styles.p1}>Lorem, ipsum dolor.</li>
+              <li className={styles.p1}>Lorem, ipsum dolor.</li>
             </ul>
           </div>
         </div>
