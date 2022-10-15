@@ -10,8 +10,10 @@ jobs:
     steps:
       - name: Checkout main
         uses: actions/checkout@main
-      - name: Building docker image
-        run: docker build ./backend/django.Dockerfile -t codeforacause/website-horizont-center:${{ github.run_number }} && docker build ./frontend/next.Dockerfile -t codeforacause/website-horizont-center:${{ github.run_number }}
+      - name: Building backend docker image
+        run: docker build ./backend/django.Dockerfile -t codeforacause/website-horizont-center:${{ github.run_number }}
+      - name: Building frontend docker image
+        run: docker build ./frontend/next.Dockerfile -t codeforacause/website-horizont-center:${{ github.run_number }}
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
