@@ -6,6 +6,7 @@ import { About } from "components/about/about";
 import { NextSeo } from "next-seo";
 
 import ENV from "config/env";
+import { Card } from "../shared-components/card/card";
 
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
@@ -37,8 +38,10 @@ export const Home = (props) => {
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
-        <About />
-      </LayoutDefault>
+        <About>
+          
+        </About>
+        </LayoutDefault>
     </>
   );
 };

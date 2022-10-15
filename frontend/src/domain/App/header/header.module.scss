@@ -1,11 +1,11 @@
-@import "styles/main.scss";
+@import "src/styles/main";
 
 .header {
     display: flex;
     flex-direction: row;
     align-items: center;
     padding: 36px 128px;
-    
+
     position: absolute;
     width: 100%;
     //height: 115px;
@@ -16,12 +16,12 @@
     .imageWrapper {
         display: inline-block;
         width: 20%;
-    
+
         .image {
             vertical-align: middle;
         }
     }
-    
+
     .navbar {
         display: flex;
         flex-direction: row;

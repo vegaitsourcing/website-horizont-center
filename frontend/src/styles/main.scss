@@ -33,16 +33,16 @@
 }
 
 @mixin title {
-    font-family: $font-family-title;
+    font-family: $font-family-text;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 700;
     color: $title-color;
 }
 
 @mixin text {
     font-family: $font-family-text;
     font-style: normal;
-    font-weight: 300;
+    font-weight: 500;
     line-height: 150%;
     color: $subtext-color;
 }
@@ -64,12 +64,14 @@
     @include title;
     font-size: 36px;
     line-height: 45px;
+	margin: 0px;
 }
 
 .h4 {
     @include title;
     font-size: 24px;
     line-height: 30px;
+	margin: 0px;
 }
 
 .p1 {
