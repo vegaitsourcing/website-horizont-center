@@ -8,7 +8,7 @@ import ENV from "config/env";
 
 const { BASE_URL = "", BASE_API_URL = "", STATIC_DIR = "", AUTHOR } = ENV;
 
-function Registration(props) {
+function Login(props) {
   const {
     pathname,
     data: { title, metaTitle, description, metaDescription, header, slug, block_top = {} },
@@ -30,9 +30,7 @@ function Registration(props) {
   return (
     <>
       <NextSeo {...SEOS} />
-      <LayoutDefault>
-        <RegistrationForm />
-      </LayoutDefault>
+      <div>Stranica za login...</div>
     </>
   );
 }
@@ -44,4 +42,4 @@ export async function getServerSideProps(ctx) {
   return { props: { data: json, pathname: resolvedUrl } };
 }
 
-export default Registration;
+export default Login;

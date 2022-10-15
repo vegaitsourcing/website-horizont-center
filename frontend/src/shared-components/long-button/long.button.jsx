@@ -9,15 +9,17 @@ import styles from "./long.button.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
-export const LongButton = ({ value, type, onclick, style }) => {
+export const LongButton = React.forwardRef(({ value, type, onClick, style, href }, ref) => {
   return (
     <button
-      onClick={onclick}
+      onClick={onClick}
       className={styles.button + " " + (type == "border" ? styles.border : styles.filled)}
       style={style}
+      href={href}
+      ref={ref}
     >
       {value}
       <FontAwesomeIcon icon={faChevronRight} className={styles.icon} />
     </button>
   );
-};
+});
