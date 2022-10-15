@@ -1,6 +1,6 @@
 import styles from './create.account.module.scss'
 
-import { Input, LongButton } from 'shared-components'
+import { Input, LongButton, RegisterNewAccount } from 'shared-components'
 
 export const CreateAccount = ({stepNumber}) => {
     return (<div className={styles.createAccount}>
@@ -15,6 +15,7 @@ export const CreateAccount = ({stepNumber}) => {
                 <hr className={styles.dottedLine} />
                 <span className={styles.p1}>3</span>
             </div>
+            <RegisterNewAccount />
             {/* <p className={styles.p1}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas animi distinctio est sunt. Saepe earum id corporis vero voluptatum.</p>
         <Input id='tipProfila' name='tipProfila' type='text' placeholder='Tip profila*' hasError={false}  /> */}
         </div>
