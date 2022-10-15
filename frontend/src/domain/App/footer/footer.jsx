@@ -1,14 +1,15 @@
 import React from "react";
 
 import Image from "next/image";
-import Link from "next/link";
 
-import "./footer.module.scss";
+import styles from "./footer.module.scss";
 
 export const Footer = ({ props }) => {
   return (
-    <footer>
-      <div className="footer">Footer....</div>
+    <footer className={styles.footer}>
+      <div className={styles.imageWrapper}>
+        <Image src="/caregivers_footer.svg" alt="Negovatelji img" width={144} height={60} className={styles.image} />
+      </div>
     </footer>
   );
 };

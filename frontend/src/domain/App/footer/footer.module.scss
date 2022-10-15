@@ -1,0 +1,25 @@
+@import "styles/main.scss";
+
+.footer {
+    display: flex;
+    flex-direction: column;
+    padding: 128px 128px 64px;
+    gap: 64px;
+    background: $black-color;
+
+    position: absolute;
+    width: 1920px;
+    height: 100px;
+    left: 0px;
+    bottom: 0px;
+
+    .imageWrapper {
+        display: inline-block;
+        width: 20%;
+    
+        .image {
+            vertical-align: middle;
+        }
+    }
+}
+
