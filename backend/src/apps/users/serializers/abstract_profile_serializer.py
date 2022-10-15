@@ -7,5 +7,10 @@ class AbstractProfileSerializer(serializers.ModelSerializer):
 
     class Meta:
         fields = (
-            'id', 'profile_image', 'gender', 'postal_code', 'city', 'description',
+            'id',
+            'profile_image',
+            # 'gender', # TODO
+            # 'postal_code', # TODO
+            'city',
+            'description',
         )

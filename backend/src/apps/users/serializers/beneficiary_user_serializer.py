@@ -1,5 +1,5 @@
-from apps.users.serializers import AbstractUserSerializer, BeneficiaryProfileSerializer
+from apps.users.serializers import UserSerializer, BeneficiaryProfileSerializer
 
 
-class BeneficiaryUserSerializer(AbstractUserSerializer):
+class BeneficiaryUserSerializer(UserSerializer):
     profile = BeneficiaryProfileSerializer(source='beneficiary_profile')

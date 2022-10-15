@@ -5,6 +5,8 @@ import ENV from "config/env";
 import beneficiariesService from "./api/beneficiariesService";
 import BeneficiariesList from "components/beneficiaries/beneficiariesList";
 import { useState } from "react";
+import ProfileFilters from "shared-components/profile-filters/profile-filters";
+import { CardPagination } from "shared-components";
 
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
@@ -41,18 +43,48 @@ function GettingStarted(props) {
   };
   const [activepageNumber, setactivepageNumber] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(Math.ceil(total / pageSize));
+  const [textFilter, settextFilter] = useState("");
+  const [cityFilter, setcityFilter] = useState("");
+  const [genderFilter, setgenderFilter] = useState("");
   function changeNumberOfPages(totalRecords, pageSize) {
     setNumberOfPages(Math.ceil(totalRecords / pageSize));
+  }
+  let searchTimeout;
+  function changeCityFilter(city) {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => setcityFilter(city), 500);
+  }
+  function changeTextFilter(text) {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => settextFilter(text), 500);
+  }
+  function changeGenderFilter(gender) {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => setgenderFilter(gender), 500);
   }
   return (
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault>
+        <ProfileFilters
+          changeCityFilterHandler={changeCityFilter}
+          changeGenderFilterHandler={changeGenderFilter}
+          changeTextFilterHandler={changeTextFilter}
+        ></ProfileFilters>
         <BeneficiariesList
+          changeNumberOfPages={changeNumberOfPages}
+          cityFilter={cityFilter}
+          genderFilter={genderFilter}
+          textFilter={textFilter}
           intialBeneficiaries={results}
           pathname={pathname}
           activePageNumber={activepageNumber}
         ></BeneficiariesList>
+        <CardPagination
+          changePage={setactivepageNumber}
+          numberOfPages={numberOfPages}
+          pageNum={activepageNumber}
+        ></CardPagination>
       </LayoutDefault>
     </>
   );

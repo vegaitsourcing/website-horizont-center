@@ -2,6 +2,8 @@ import { LayoutDefault } from "layouts";
 
 import { NextSeo } from "next-seo";
 
+import { Input } from "shared-components";
+
 import ENV from "config/env";
 
 import { Blog } from "components";

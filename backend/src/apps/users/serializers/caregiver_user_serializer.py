@@ -1,5 +1,5 @@
-from apps.users.serializers import AbstractUserSerializer, CaregiverProfileSerializer
+from apps.users.serializers import UserSerializer, CaregiverProfileSerializer
 
 
-class CaregiverUserSerializer(AbstractUserSerializer):
+class CaregiverUserSerializer(UserSerializer):
     profile = CaregiverProfileSerializer(source='caregiver_profile')
