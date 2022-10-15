@@ -13,13 +13,13 @@ class CaregiverProfile(AbstractProfile):
     )
 
     work_application = models.CharField(
-        verbose_name=_('wokr application'),
-        max_lenght=250
+        verbose_name=_('work application'),
+        max_length=250
     )
 
     experience = models.CharField(
         verbose_name=_('experience'),
-        max_lenght=250,
+        max_length=250,
         null=True,
         blank=True,
     )
