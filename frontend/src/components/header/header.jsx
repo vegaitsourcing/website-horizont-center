@@ -27,8 +27,12 @@ export const Header = () => {
         })}
       </div>
       <div className={styles.buttons}>
-        <LongButton value='Prijava' type='border' / >
-        <LongButton value='Registracija' type='filled'/>
+        <Link href="/login" passHref>
+          <LongButton value="Prijava" type="border" />
+        </Link>
+        <Link href="/registration" passHref>
+          <LongButton value="Registracija" type="filled" />
+        </Link>
       </div>
     </header>
   );

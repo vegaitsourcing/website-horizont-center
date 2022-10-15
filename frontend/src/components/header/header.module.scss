@@ -5,12 +5,7 @@
     flex-direction: row;
     align-items: center;
     padding: 36px 128px;
-
-    position: absolute;
-    width: 100%;
-    //height: 115px;
-    left: 0px;
-    top: 0px;
+    height: 115px;
     background: $light-blue-color;
 
     .imageWrapper {
@@ -37,7 +32,7 @@
             font-weight: 500;
             font-size: 18px;
             line-height: 23px;
-            width: 65px;
+            width: 80px;
             height: 23px;
             margin-left: 64px;
             text-align: center;

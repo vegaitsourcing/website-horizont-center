@@ -10,8 +10,7 @@
 
 .contact-section-1 {
     background-color: $light-blue-color;
-    width: 100vw;
-    padding-block: 88px 108px;
+    padding: 88px 128px;
 
     .p1 {
         max-width: 570px;
@@ -24,7 +23,7 @@
     justify-content: center;
     gap: 10px;
 
-    padding-block: 193px;
+    padding: 193px 128px;
 
     & > * {
         width: 100%;
@@ -34,7 +33,7 @@
 .contact-section-3 {
     background-color: $light-blue-color;
 
-    padding-block: 236px;
+    padding: 236px 128px;
 
 }
 
