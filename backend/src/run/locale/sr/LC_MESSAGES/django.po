@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-13 17:12+0200\n"
+"POT-Creation-Date: 2022-10-15 13:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,29 +13,135 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps/users/admin.py:26
+#: apps/users/admin/user_admin.py:40
 msgid "Personal info"
 msgstr "Lični podaci"
 
-#: apps/users/admin.py:27
+#: apps/users/admin/user_admin.py:41
 msgid "Permissions"
 msgstr "Permisije"
 
-#: apps/users/admin.py:30
+#: apps/users/admin/user_admin.py:44
 msgid "Important dates"
 msgstr "Važni datumi"
 
-#: apps/users/apps.py:8 apps/users/models.py:20
+#: apps/users/apps.py:8 apps/users/models/user.py:22
 msgid "Users"
 msgstr "Korisnici"
 
-#: apps/users/models.py:19
+#: apps/users/models/abstract_profile.py:9
+msgid "Male"
+msgstr "Muško"
+
+#: apps/users/models/abstract_profile.py:10
+msgid "Female"
+msgstr "Žensko"
+
+#: apps/users/models/abstract_profile.py:16
+msgid "profile image"
+msgstr "profilna slika"
+
+#: apps/users/models/abstract_profile.py:21
+msgid "gender"
+msgstr "Pol"
+
+#: apps/users/models/abstract_profile.py:24
+msgid "postal code"
+msgstr "poštanski broj"
+
+#: apps/users/models/abstract_profile.py:28
+msgid "city"
+msgstr "grad"
+
+#: apps/users/models/abstract_profile.py:34
+msgid "description"
+msgstr "opis"
+
+#: apps/users/models/abstract_profile.py:39
+msgid "user"
+msgstr "korisnik"
+
+#: apps/users/models/beneficiary_profile.py:8
+msgid "Beneficiary profile"
+msgstr "Profil negovanog"
+
+#: apps/users/models/beneficiary_profile.py:9
+msgid "Beneficiary profiles"
+msgstr "Profili negovanih"
+
+#: apps/users/models/beneficiary_profile.py:12
+msgid "beneficiary person"
+msgstr "negovana osoba"
+
+#: apps/users/models/beneficiary_profile.py:16
+msgid "helping period"
+msgstr "rok pružanja pomoći"
+
+#: apps/users/models/beneficiary_profile.py:20
+#: apps/users/models/caregiver_profile.py:28
+msgid "weekly days"
+msgstr "dani u nedelji"
+
+#: apps/users/models/beneficiary_profile.py:23
+#: apps/users/models/caregiver_profile.py:32
+msgid "daily hours"
+msgstr "sati dnevno"
+
+#: apps/users/models/beneficiary_profile.py:27
+msgid "care type"
+msgstr "vrsta pomoći"
+
+#: apps/users/models/caregiver_profile.py:8
+msgid "Caregiver profile"
+msgstr "Profil negovatelja"
+
+#: apps/users/models/caregiver_profile.py:9
+msgid "Caregiver profiles"
+msgstr "Profili negovatelja"
+
+#: apps/users/models/caregiver_profile.py:12
+msgid "birthdate"
+msgstr "rođendan"
+
+#: apps/users/models/caregiver_profile.py:16
+msgid "work application"
+msgstr "prijava za rad"
+
+#: apps/users/models/caregiver_profile.py:21
+msgid "experience"
+msgstr "iskustvo"
+
+#: apps/users/models/caregiver_profile.py:38
+msgid "instagram url"
+msgstr "link do instagram stranice"
+
+#: apps/users/models/caregiver_profile.py:44
+msgid "facebook url"
+msgstr "link do facebook stranice"
+
+#: apps/users/models/user.py:21
 msgid "User"
 msgstr "Korisnik"
 
-#: apps/users/models.py:25
+#: apps/users/models/user.py:27
 msgid "email"
 msgstr "email"
+
+#: apps/users/models/user.py:35
+msgid "first name"
+msgstr "ime"
+
+#: apps/users/models/user.py:41
+msgid "last name"
+msgstr "prezime"
+
+#: apps/users/models/user.py:45
+msgid "phone number"
+msgstr "broj telefona"
+
+#: apps/users/models/user.py:52
+msgid "second phone number"
+msgstr "broj telefona 2"
 
 #: caregivers/settings/common.py:152
 msgid "Serbian (latin)"
