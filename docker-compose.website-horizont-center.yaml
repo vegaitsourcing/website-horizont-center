@@ -14,9 +14,9 @@ services:
     depends_on:
       - postgres
     volumes:
-      - ./scripts:/app/scripts/
-      - ./requirements:/app/requirements
-      - ./src:/app/src/
+      - ./backend/scripts:/app/scripts/
+      - ./backend/requirements:/app/requirements
+      - ./backend/src:/app/src/
     entrypoint: [ "sh", "/app/scripts/entrypoint.sh" ]
 
 
@@ -46,7 +46,7 @@ services:
   nextjs:
     container_name: caregivers-frontend
     ports:
-      - 3000:3000
+      - 48500:3000
     build:
       context: ./frontend
       dockerfile: next.Dockerfile
