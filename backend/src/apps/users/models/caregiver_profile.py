@@ -1,12 +1,49 @@
 from src.apps.users.models.abstract_profile import AbstractProfile
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 
 class CaregiverProfile(AbstractProfile):
-    experience = models.CharField(max_lenght=250)
-    weekly_days = models.IntegerField()
-    daily_hours = models.FloatField()
-    work_application = models.CharField(max_lenght=250)
-    birthday = models.DateField(max_lenght=10)  # 10 kaktera ako ima
-    instagram_url = models.URLField(max_lenght=250)
-    facebook_url = models.URLField(max_lenght=250)
+
+    class Meta:
+        verbose_name= _('Caregiver profile')
+        verbose_name_plural= _('Caregiver profiles')
+
+    birthdate= models.DateField(
+        verbose_name =_('birthdate')
+    )
+
+    work_application = models.CharField(
+        verbose_name =_('wokr application'),
+        max_lenght = 250
+    )
+
+    experience = models.CharField(
+        verbose_name = _('experience'),
+        max_lenght = 250,
+        null=True,
+        blank=True,
+    )
+
+    weekly_days = models.IntegerField(
+        verbose_name = _('weekly days')
+    )
+
+    daily_hours = models.FloatField(
+        verbose_name = _('daily hours'),
+        null=True,
+        blank=True,
+    )
+
+    instagram_url = models.URLField(
+        verbose_name = _('instagram url'),
+        null=True,
+        blank=True,
+    )
+
+    facebook_url = models.URLField(
+        verbose_name = _('facebook url'),
+        null=True,
+        blank=True,
+    )
+
