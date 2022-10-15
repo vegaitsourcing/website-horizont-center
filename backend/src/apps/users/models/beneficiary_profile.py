@@ -16,8 +16,12 @@ class BeneficiaryProfile(AbstractProfile):
         verbose_name=_('helping period'),
         max_length=250
     )
-    weekly_days = models.IntegerField()
-    daily_hours = models.IntegerField()
+    weekly_days = models.IntegerField(
+        verbose_name=_('weekly days')
+    )
+    daily_hours = models.IntegerField(
+        verbose_name=_('daily hours')
+    )
     care_type = models.CharField(
         max_length=250,
         verbose_name=_('care type')
