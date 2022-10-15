@@ -7,7 +7,8 @@ from apps.users.serializers import BeneficiaryUserSerializer
 
 class RegisterBeneficiaryAPIView(APIView):
 
-    def post(self, request, **kwargs) -> JsonResponse:
+    @staticmethod
+    def post(request, **kwargs) -> JsonResponse:
         beneficiary_serializer = BeneficiaryUserSerializer(data=request.data)
         if beneficiary_serializer.is_valid():
             beneficiary_profile_kwargs = beneficiary_serializer.validated_data.pop('beneficiary_profile')
