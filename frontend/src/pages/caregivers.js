@@ -42,19 +42,21 @@ function About(props) {
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
-        {results.map(({ id, work_application, image, created, city, description, first_name, last_name }) => (
-          <ProfileListItem
-            body={description}
-            city={city}
-            createdDate={created}
-            firstName={first_name}
-            image={image}
-            lastName={last_name}
-            title={work_application}
-            key={id}
-            url={`${pathname}/${id}`}
-          ></ProfileListItem>
-        ))}
+        <center>
+          {results.map(({ id, work_application, image, created, city, description, first_name, last_name }) => (
+            <ProfileListItem
+              body={description}
+              city={city}
+              createdDate={created}
+              firstName={first_name}
+              image={image}
+              lastName={last_name}
+              title={work_application}
+              key={id}
+              url={`${pathname}/${id}`}
+            ></ProfileListItem>
+          ))}
+        </center>
       </LayoutDefault>
     </>
   );

@@ -1,6 +1,6 @@
 import ABOUT from "config/data/about";
 const caregiversService = {
-  getAllCaregivers: () => {
+  getAllCaregivers: (pageSize, pageNumber) => {
     return new Promise((resolve, reject) => {
       resolve({ ...mockData, ...ABOUT });
     });

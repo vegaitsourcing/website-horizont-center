@@ -5,6 +5,7 @@ import { NextSeo } from "next-seo";
 import ENV from "config/env";
 import beneficiariesService from "./api/beneficiariesService";
 import { ProfileListItem } from "shared-components/profile-list-item/profile-list-item";
+import { Input } from "shared-components";
 
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
@@ -44,20 +45,26 @@ function GettingStarted(props) {
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault>
-        {results.map(({ id, care_type, image, created, city, description, first_name, last_name, helping_period }) => (
-          <ProfileListItem
-            body={description}
-            city={city}
-            createdDate={created}
-            firstName={first_name}
-            image={image}
-            lastName={last_name}
-            title={care_type}
-            key={id}
-            url={`${pathname}/${id}`}
-            period={helping_period}
-          ></ProfileListItem>
-        ))}
+        <center>
+          <Input placeholder={"Pretraži..."} type={"search"}></Input>
+          <Input placeholder={"Pretraži..."} type={"dropdown"}></Input>
+          {results.map(
+            ({ id, care_type, image, created, city, description, first_name, last_name, helping_period }) => (
+              <ProfileListItem
+                body={description}
+                city={city}
+                createdDate={created}
+                firstName={first_name}
+                image={image}
+                lastName={last_name}
+                title={care_type}
+                key={id}
+                url={`${pathname}/${id}`}
+                period={helping_period}
+              ></ProfileListItem>
+            )
+          )}
+        </center>
       </LayoutDefault>
     </>
   );
