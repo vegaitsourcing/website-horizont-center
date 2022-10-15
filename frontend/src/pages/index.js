@@ -5,6 +5,7 @@ import { LayoutDefault } from "layouts";
 import { NextSeo } from "next-seo";
 
 import ENV from "config/env";
+import { Card } from "../shared-components/card/card";
 
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
@@ -35,7 +36,15 @@ export const Home = (props) => {
   return (
     <>
       <NextSeo {...SEOS} />
-      <LayoutDefault pathname={pathname}>Stranica o nama...</LayoutDefault>
+      <LayoutDefault pathname={pathname}>
+        <Card
+          category="Tempor"
+          description="Felis lectus tortor massa a eget viverra integer faucibus adipiscing. Faucibus nunc, auctor arcu magna cursu"
+          smallDescription="Morbi sem pharetra varius porttitor amet, nulla arcu massa tempor ridiculus."
+          date="20.09.2022"
+          onClick={() => {}}
+        />
+      </LayoutDefault>
     </>
   );
 };

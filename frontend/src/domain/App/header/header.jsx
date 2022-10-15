@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+
+import { LongButton } from "shared-components/long-button/long.button";
 
 /* routes */
 import { tabItems } from "./tabItems";
@@ -25,8 +27,8 @@ export const Header = () => {
         })}
       </div>
       <div className={styles.buttons}>
-        <button>Prijava</button>
-        <button>Registaracija</button>
+        <LongButton value='Prijava' type='border' / >
+        <LongButton value='Registracija' type='filled'/>
       </div>
     </header>
   );
