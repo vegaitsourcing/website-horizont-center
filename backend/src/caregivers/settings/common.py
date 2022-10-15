@@ -56,6 +56,7 @@ DEFAULT_APPS = [
 
     # third party apps:
     'rest_framework',
+    'corsheaders',
 
     # local apps:
     'apps.users',
@@ -68,6 +69,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -97,6 +99,9 @@ TEMPLATES = [
 ]
 
 # ##### SECURITY CONFIGURATION ############################
+CORS_ALLOWED_ORIGINS = [
+    os.getenv('CORS_ALLOWED_ORIGIN'),
+]
 
 # We store the secret key here
 # The required SECRET_KEY is fetched at the end of this file
