@@ -19,10 +19,10 @@ class AbstractProfile(BaseModel):
         max_length=10,
         choices=Gender.choices,
         verbose_name=_('gender'),
-    ),
+    )
     postal_code = models.IntegerField(
         verbose_name=_('postal code'),
-    ),
+    )
     city = models.CharField(
         max_length=250,
         verbose_name=_('city'),
