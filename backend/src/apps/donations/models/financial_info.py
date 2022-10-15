@@ -42,3 +42,7 @@ class FinancialInfo(BaseModel):
         on_delete=models.CASCADE,
         related_name='financial_info'
     )
+
+    def __str__(self):
+        donation_label = str(self.donation)[:20]
+        return _('Financial info for Donation') + f' "{donation_label}"'

@@ -1,7 +1,6 @@
 from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-
 from caregivers.models import BaseModel
 
 
@@ -34,3 +33,6 @@ class Donation(BaseModel):
         verbose_name=_('is active'),
         default=True
     )
+
+    def __str__(self):
+        return self.title
