@@ -13,8 +13,9 @@ class BeneficiaryProfileAdmin(admin.ModelAdmin):
         'care_type',
     )
 
-    search_fields = ('beneficiary_person',
-                     'care_type',
-                     )
+    search_fields = (
+        'beneficiary_person',
+        'care_type',
+    )
 
     ordering = ('care_type',)

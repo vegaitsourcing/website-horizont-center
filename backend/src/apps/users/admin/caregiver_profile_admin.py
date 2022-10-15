@@ -13,5 +13,8 @@ class CaregiverProfileAdmin(admin.ModelAdmin):
         'work_application',
     )
 
-    search_fields = ('city', 'work_application',)
+    search_fields = (
+        'city',
+        'work_application',
+    )
     ordering = ('city',)
