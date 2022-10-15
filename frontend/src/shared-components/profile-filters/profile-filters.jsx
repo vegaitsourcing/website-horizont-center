@@ -6,8 +6,18 @@ function ProfileFilters({ changeCityFilterHandler, changeTextFilterHandler, chan
   return (
     <div className={styles.wrapper}>
       <Input placeholder={"Pretraži..."} type={"search"} valueChangedHandler={changeTextFilterHandler}></Input>
-      <Input placeholder={"Pol"} type={"dropdown"} valueChangedHandler={changeGenderFilterHandler}></Input>
-      <Input placeholder={"Grad"} type={"dropdown"} valueChangedHandler={changeCityFilterHandler}></Input>
+      <Input
+        placeholder={"Pol"}
+        type={"dropdown"}
+        options={["male", "female"]}
+        valueChangedHandler={changeGenderFilterHandler}
+      ></Input>
+      <Input
+        placeholder={"Grad"}
+        type={"dropdown"}
+        options={["Novi Sad", "Subotica"]}
+        valueChangedHandler={changeCityFilterHandler}
+      ></Input>
     </div>
   );
 }
