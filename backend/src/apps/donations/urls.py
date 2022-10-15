@@ -1,5 +1,4 @@
 from django.urls import path
-
 from apps.donations.views import DonationAPIView
 
 BASE_DONATIONS_PATH = 'donations/'

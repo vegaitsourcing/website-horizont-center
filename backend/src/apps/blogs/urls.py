@@ -1,5 +1,4 @@
 from django.urls import path
-
 from apps.blogs.views import BlogAPIView
 
 BASE_BLOGS_PATH = 'blogs/'
