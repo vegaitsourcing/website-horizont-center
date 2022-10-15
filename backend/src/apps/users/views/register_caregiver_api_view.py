@@ -12,7 +12,5 @@ class RegisterCaregiverAPIView(APIView):
         if caregiver_serializer.is_valid():
             user = create_caregiver_user(caregiver_serializer)
             send_verification_email(user)
-
             return JsonResponse(data={'message': 'success'})
-
         return JsonResponse(data={'errors': caregiver_serializer.errors}, status=BAD_REQUEST)
