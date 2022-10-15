@@ -38,6 +38,7 @@ class BlogSection(BaseModel):
     blog = models.ForeignKey(
         to='blogs.Blog',
         verbose_name=_('blog'),
+        related_name='sections',
         on_delete=models.CASCADE,
         null=True
     )
