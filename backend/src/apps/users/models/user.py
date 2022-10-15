@@ -31,20 +31,24 @@ class User(AbstractUser):
     first_name = models.CharField(
         null=False,
         blank=False,
-        verbose_name=_('first name')
+        verbose_name=_('first name'),
+        max_length=250,
     )
     last_name = models.CharField(
         null=False,
         blank=False,
         verbose_name=_('last name'),
+        max_length=250,
     )
     phone_number = models.CharField(
         verbose_name=_('phone number'),
+        max_length=250,
     )
-    second_phone_number = models.IntegerField(
+    second_phone_number = models.CharField(
         null=True,
         blank=True,
         verbose_name=_('second phone number'),
+        max_length=250,
     )
 
     USERNAME_FIELD = 'email'
