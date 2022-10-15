@@ -9,20 +9,11 @@
     color: $subtext-color;
 }
 
-.loginCard {
-    width: 600px;
-    background-color: $white-color;
-    position: absolute;
-
-    // centering inside the window
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
+.login {
+    margin: 5% 30%;
     border-radius: 16px;
+    box-shadow: 0px 0px 24px rgb(0 0 0 / 5%);
 
-    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.05);
-    
     .createAccountHeader {
         text-align: center;
     }

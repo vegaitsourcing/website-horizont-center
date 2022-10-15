@@ -8,7 +8,7 @@ export const About = () => {
     <>
       <section className={styles["about-section-1"]}>
         <div className={styles.container}>
-          <h1 className={styles.h1}>O nama</h1>
+          <h2 className={styles.h2}>O nama</h2>
           <p className={styles.p1}>
             Felis lectus tortor massa a eget viverra integer faucibus adipiscing. Faucibus nunc, auctor arcu magna
             cursus.

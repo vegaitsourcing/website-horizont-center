@@ -29,7 +29,7 @@ export const LoginForm = ({}) => {
   };
 
   return (
-    <div className={styles.loginCard}>
+    <div className={styles.login}>
       <div className={styles.createAccountHeader}>
         <h4 className={styles.h4}>Prijavite se</h4>
       </div>

@@ -8,7 +8,7 @@ export const Contact = () => {
   return (
     <>
       <section className={styles["contact-section-1"]}>
-        <h1 className={styles.h1}>Kontakt</h1>
+        <h2 className={styles.h2}>Kontakt</h2>
         <p className={styles.p1}>
           Felis lectus tortor massa a eget viverra integer faucibus adipiscing. Faucibus nunc, auctor arcu magna cursus.
         </p>
