@@ -1,8 +1,8 @@
-from src.caregivers.models import BaseModel
+from src.apps.users.models.abstract_profile import AbstractProfile
 from django.db import models
 
 
-class Caregiver(BaseModel):
+class CaregiverProfile(AbstractProfile):
     experience = models.CharField(max_lenght=250)
     weekly_days = models.IntegerField()
     daily_hours = models.FloatField()
