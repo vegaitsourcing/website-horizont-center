@@ -6,10 +6,10 @@ from django.db import models
 class BlogCategory(BaseModel):
     class Meta:
         verbose_name = _('Blog Category')
-        verbose_name_plural = ('Blog Categories')
+        verbose_name_plural = _('Blog Categories')
 
     name = models.CharField(
-        verbose_name=_('name'),
+        verbose_name=_('category name'),
         max_length=100
     )
     color = models.CharField(
@@ -19,7 +19,6 @@ class BlogCategory(BaseModel):
     blog = models.ManyToManyField(
         to='blogs.Blog',
         verbose_name=_('blog'),
-
     )
 
     def __str__(self):

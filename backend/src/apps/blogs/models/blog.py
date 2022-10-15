@@ -19,3 +19,5 @@ class Blog(BaseModel):
         blank=True,
     )
 
+    def __str__(self):
+        return self.title
