@@ -1,0 +1,47 @@
+@import "src/styles/variables";
+@import "src/styles/main";
+.cardItem {
+	width: 544px;
+	height: 799px;
+	border: 1px solid $blue-color;
+	border-radius: 16px;
+	background-color: $white-color;
+
+
+	.content {
+		margin: 51px 24px 48px;
+	}
+
+  .imageWrapper {
+		border-bottom: none;
+	}
+
+	.image {
+		border-top-left-radius: 16px;
+		border-top-right-radius: 16px;
+	}
+
+
+
+	.category {
+		background-color: #BFDDFF;
+		color: #0075FF;
+		padding: 3px 12px;
+		border-radius: 10px;
+		font-family: 'Open Sans';
+		font-style: normal;
+		font-weight: 600;
+		font-size: 18px;
+		line-height: 150%;
+	}
+  .description {
+		margin-top: 16px;
+
+		.p1 {
+			margin-top: 24px;
+		}
+	}
+
+
+}
+

@@ -4,7 +4,7 @@ import { NextSeo } from "next-seo";
 
 import ENV from "config/env";
 
-import { BorderButton } from "shared-components";
+import { LongButton, ShortButton, Input } from "shared-components";
 
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
@@ -28,11 +28,20 @@ function Service(props) {
     ...BASE_SEO,
   };
 
+  // Primer callback funkcije za dugmice
+  // const alert = () => {
+  //   alert("nest");
+  // };
+
   return (
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
-        <BorderButton value="SAZNAJ VIŠE" type="border" />
+        <Input type="text" id="vaseIme" name="vaseIme" placeholder="Unesite Vaše ime*" hasError={false} />
+        <Input type="text" id="vaseIme" name="vaseIme" placeholder="Unesite Vaše ime*" hasError={false} />
+        <LongButton value="SAZNAJ VIŠE" type="border" />
+        <LongButton value="SAZNAJ VIŠE" type="filled" />
+        <ShortButton onclick={alert} type="next" />
       </LayoutDefault>
     </>
   );
