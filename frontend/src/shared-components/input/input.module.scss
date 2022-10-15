@@ -1,7 +1,6 @@
 @import '../../styles/main.scss';
 
 .input {
-
     &[type=text]::-ms-clear {  display: none; width : 0; height: 0; }
     &[type=text]::-ms-reveal {  display: none; width : 0; height: 0; }
     &[type="search"]::-webkit-search-decoration,
@@ -70,16 +69,10 @@
 }
 
 .input + .icon {
-    float: left;
-    margin-top: -33px;
-    margin-left: 260px;
-    /* this is so when you click on the chevron, your click actually goes on the dropdown menu */
+    margin-left: -1.5%;
     pointer-events: none;
-    /* everything after this is just to cover up the original arrow */
-    /* (for browsers that don't support the syntax used above) */
     background-color: transparent;
     color:black!important;
-    padding-right: 5px;
 }
 
 .icon {
