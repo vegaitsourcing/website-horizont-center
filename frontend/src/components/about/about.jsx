@@ -1,7 +1,6 @@
 import React from "react";
 
 import Image from "next/image";
-import { LongButton } from "shared-components";
 import styles from "./about.module.scss";
 
 export const About = () => {
@@ -23,7 +22,7 @@ export const About = () => {
           </p>
         </div>
         <div className={styles.img}>
-          <Image src="/images/contactPageImage1.png" width="640" height="550" alt="about us" />
+          <Image src="/images/contactPageImage1.jpeg" width="640" height="550" alt="about us" />
         </div>
       </section>
       <section className={styles["about-section-4"]}>

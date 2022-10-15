@@ -1,5 +1,4 @@
-import { Header } from "domain/App";
-import { Footer } from "domain/App";
+import { Header, Footer } from "components";
 
 import styles from "./default.layout.module.scss";
 
