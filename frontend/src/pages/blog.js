@@ -4,6 +4,13 @@ import { NextSeo } from "next-seo";
 
 import ENV from "config/env";
 
+<<<<<<< HEAD
+import { LongButton, ShortButton, Input } from "shared-components";
+
+import {Blog} from 'components';
+
+=======
+>>>>>>> 51b5a3adee7ba7425b1c36725c62bf0ca5aeb81c
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
 function Service(props) {
@@ -29,7 +36,9 @@ function Service(props) {
   return (
     <>
       <NextSeo {...SEOS} />
-      <LayoutDefault pathname={pathname}>Blog stranica....</LayoutDefault>
+      <LayoutDefault pathname={pathname}>
+        <Blog />
+      </LayoutDefault>
     </>
   );
 }
