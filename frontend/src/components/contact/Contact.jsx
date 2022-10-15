@@ -1,7 +1,7 @@
 import React from "react";
 
 import Image from "next/image";
-import { BorderButton } from "shared-components";
+import { LongButton } from "shared-components";
 import styles from "./Contact.module.scss";
 
 export const Contact = () => {
@@ -72,7 +72,7 @@ export const Contact = () => {
             et libero dolorum aperiam tenetur iste minus odio. In quae facilis sunt corrupti impedit debitis,
             consectetur, aperiam molestiae vel deleniti iste rerum veniam, quam facere explicabo!
           </p>
-          <BorderButton value="napravi profil" />
+          <LongButton value="napravi profil" />
         </div>
       </section>
       <section className={styles["contact-section-5"]}>
