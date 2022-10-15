@@ -41,7 +41,7 @@ function Service(props) {
         <Input type="text" id="vaseIme" name="vaseIme" placeholder="Unesite Vaše ime*" hasError={false} />
         <LongButton value="SAZNAJ VIŠE" type="border" />
         <LongButton value="SAZNAJ VIŠE" type="filled" />
-        <ShortButton onclick={alert} type="next" />
+        {/* //<ShortButton onclick={alert} type="next" /> */}
       </LayoutDefault>
     </>
   );
