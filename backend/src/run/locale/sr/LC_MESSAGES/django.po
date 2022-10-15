@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-15 16:16+0200\n"
+"POT-Creation-Date: 2022-10-15 16:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,36 +52,28 @@ msgid "Companies"
 msgstr "Kompanije"
 
 #: apps/donations/models/donation_company.py:14
-#, fuzzy
-#| msgid "last name"
 msgid "name"
-msgstr "Prezime"
+msgstr "Ime kompanije"
 
 #: apps/donations/models/donation_company.py:21
 msgid "company image"
 msgstr "Slika kompanije"
 
 #: apps/donations/models/donation_company.py:30
-#, fuzzy
-#| msgid "facebook url"
 msgid "facebook"
-msgstr "link do facebook stranice"
+msgstr "link do facebook naloga"
 
 #: apps/donations/models/donation_company.py:33
-#, fuzzy
-#| msgid "instagram url"
 msgid "instagram"
-msgstr "link do instagram stranice"
+msgstr "link do instagram naloga"
 
 #: apps/donations/models/donation_company.py:37
 msgid "donation"
 msgstr "donacija"
 
 #: apps/donations/models/financial_donation.py:10
-#, fuzzy
-#| msgid "donation"
 msgid "Financial donation"
-msgstr "Finansijska donacija"
+msgstr "Donacija u novcu"
 
 #: apps/donations/models/financial_donation.py:11
 msgid "Financial donations"
@@ -96,26 +88,20 @@ msgid "payment receiver"
 msgstr "Primalac"
 
 #: apps/donations/models/financial_donation.py:22
-#, fuzzy
-#| msgid "postal code"
 msgid "payment code"
-msgstr "poštanski broj"
+msgstr "šifra plaćanja"
 
 #: apps/donations/models/financial_donation.py:25
-#, fuzzy
-#| msgid "payment bank_account"
 msgid "payment bank account"
-msgstr "Račun primaoca"
+msgstr "račun primaoca"
 
 #: apps/donations/models/financial_donation.py:30
 msgid "payment model"
 msgstr "Model"
 
 #: apps/donations/models/financial_donation.py:33
-#, fuzzy
-#| msgid "payment reference model"
 msgid "payment reference number"
-msgstr "Poziv na broj"
+msgstr "poziv na broj"
 
 #: apps/users/admin/user_admin.py:40
 msgid "Personal info"
