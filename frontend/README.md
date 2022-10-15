@@ -18,6 +18,8 @@ Setup steps:
 2. Run the development server: `npm run dev`
 
 docker-compose steps:
-1. docker-compose -f docker-compose.website-horizont-center.yaml build
-2. ❯ docker-compose -f docker-compose.website-horizont-center.yaml up
+1. `docker-compose -f docker-compose.website-horizont-center.yaml build`
+2. `docker-compose -f docker-compose.website-horizont-center.yaml up`
+
+
 Open http://0.0.0.0:3000 with your browser to see the result.
