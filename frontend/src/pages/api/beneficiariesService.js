@@ -1,8 +1,14 @@
 import ABOUT from "config/data/about";
 const beneficiariesService = {
-  getAllBeneficiaries: () => {
+  getAllBeneficiaries: (pageSize, pageNumber) => {
     return new Promise((resolve, reject) => {
-      resolve({ ...mockData, ...ABOUT });
+      var responseData = {
+        results: mockData.results.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
+        pageNumber: pageNumber,
+        pageSize: pageSize,
+        total: mockData.results.length,
+      };
+      resolve({ ...responseData, ...ABOUT });
     });
   },
 };

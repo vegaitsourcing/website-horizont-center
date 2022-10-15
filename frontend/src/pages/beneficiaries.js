@@ -3,7 +3,8 @@ import { LayoutDefault } from "layouts";
 import { NextSeo } from "next-seo";
 import ENV from "config/env";
 import beneficiariesService from "./api/beneficiariesService";
-import { ProfileListItem } from "shared-components/profile-list-item/profile-list-item";
+import BeneficiariesList from "components/beneficiaries/beneficiariesList";
+import { useState } from "react";
 
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
@@ -38,29 +39,20 @@ function GettingStarted(props) {
     ],
     ...BASE_SEO,
   };
-
+  const [activepageNumber, setactivepageNumber] = useState(1);
+  const [numberOfPages, setNumberOfPages] = useState(Math.ceil(total / pageSize));
+  function changeNumberOfPages(totalRecords, pageSize) {
+    setNumberOfPages(Math.ceil(totalRecords / pageSize));
+  }
   return (
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault>
-        <div style={{ display: "grid", justifyContent: "center" }}>
-          {results.map(
-            ({ id, care_type, image, created, city, description, first_name, last_name, helping_period }) => (
-              <ProfileListItem
-                body={description}
-                city={city}
-                createdDate={created}
-                firstName={first_name}
-                image={image}
-                lastName={last_name}
-                title={care_type}
-                key={id}
-                url={`${pathname}/${id}`}
-                period={helping_period}
-              ></ProfileListItem>
-            )
-          )}
-        </div>
+        <BeneficiariesList
+          intialBeneficiaries={results}
+          pathname={pathname}
+          activePageNumber={activepageNumber}
+        ></BeneficiariesList>
       </LayoutDefault>
     </>
   );
@@ -68,7 +60,7 @@ function GettingStarted(props) {
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
-  const responseData = await beneficiariesService.getAllBeneficiaries();
+  const responseData = await beneficiariesService.getAllBeneficiaries(process.env.PROFILE_PAGE_SIZE, 1);
   return { props: { data: responseData, pathname: resolvedUrl } };
 }
 
