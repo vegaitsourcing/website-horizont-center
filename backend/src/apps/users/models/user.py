@@ -28,14 +28,24 @@ class User(AbstractUser):
         unique=True
     )
     username = None
-    first_name = models.CharField(null=False, blank=False)
-    last_name = models.CharField(null=False, blank=False)
-    phone_number = models.CharField(null=False, blank=False)
-    is_staff = models.BooleanField()
-    is_active = models.BooleanField(default=False)
-    password = models.CharField()
-    second_phone_number = models.IntegerFiled(null=True, blank=True)
-    created = models.BooleanField()
+    first_name = models.CharField(
+        null=False,
+        blank=False,
+        verbose_name=_('first name')
+    )
+    last_name = models.CharField(
+        null=False,
+        blank=False,
+        verbose_name=_('last name'),
+    )
+    phone_number = models.CharField(
+        verbose_name=_('phone number'),
+    )
+    second_phone_number = models.IntegerField(
+        null=True,
+        blank=True,
+        verbose_name=_('second phone number'),
+    )
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'phone_number', 'password']
