@@ -18,18 +18,4 @@ class Blog(BaseModel):
         null=True,
         blank=True,
     )
-    blog_author = models.OneToOneField(
-        to='blogs.BlogAuthor',
-        verbose_name=_('blog author'),
-        on_delete=models.CASCADE,
-    )
-    blog_category = models.ManyToManyField(
-        to='blogs.BlogCategory',
-        verbose_name=_('blog category'),
-    )
-    blog_section = models.ForeignKey(
-        to='blogs.BlogSection',
-        verbose_name=_('blog section'),
-        on_delete=models.CASCADE,
-    )
 

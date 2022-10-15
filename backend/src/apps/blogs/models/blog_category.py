@@ -16,3 +16,11 @@ class BlogCategory(BaseModel):
         verbose_name=_('color'),
         max_length=100
     )
+    blog = models.ManyToManyField(
+        to='blogs.Blog',
+        verbose_name=_('blog'),
+
+    )
+
+    def __str__(self):
+        return self.name
