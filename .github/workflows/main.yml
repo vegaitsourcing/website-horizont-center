@@ -11,9 +11,9 @@ jobs:
       - name: Checkout main
         uses: actions/checkout@main
       - name: Building backend docker image
-        run: docker build -f ./backend/django.Dockerfile -t codeforacause/website-horizont-center:${{ github.run_number }}
+        run: docker build ./backend/ -t codeforacause/website-horizont-center:${{ github.run_number }}
       - name: Building frontend docker image
-        run: docker build -f ./frontend/next.Dockerfile -t codeforacause/website-horizont-center:${{ github.run_number }}
+        run: docker build ./frontend/-t codeforacause/website-horizont-center:${{ github.run_number }}
       - name: Login to Docker Hub
         uses: docker/login-action@v2
         with:
