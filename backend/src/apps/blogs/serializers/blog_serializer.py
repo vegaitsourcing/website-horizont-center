@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from apps.blogs.models.blog import Blog
-from .blog_section_serializer import BlogSectionSerializer
-from .blog_category_serializer import BlogCategorySerializer
+from apps.blogs.serializers.blog_section_serializer import BlogSectionSerializer
+from apps.blogs.serializers.blog_category_serializer import BlogCategorySerializer
 
 
 class BlogSerializer(serializers.ModelSerializer):
