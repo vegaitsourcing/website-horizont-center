@@ -19,7 +19,7 @@ class BeneficiaryProfile(AbstractProfile):
     weekly_days = models.IntegerField(
         verbose_name=_('weekly days')
     )
-    daily_hours = models.IntegerField(
+    daily_hours = models.FloatField(
         verbose_name=_('daily hours')
     )
     care_type = models.CharField(
