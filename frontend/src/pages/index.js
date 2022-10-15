@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { LayoutDefault } from "layouts";
 
+import { About } from "components/about/about";
 import { NextSeo } from "next-seo";
 
 import ENV from "config/env";
@@ -35,7 +36,9 @@ export const Home = (props) => {
   return (
     <>
       <NextSeo {...SEOS} />
-      <LayoutDefault pathname={pathname}>Stranica o nama...</LayoutDefault>
+      <LayoutDefault pathname={pathname}>
+        <About />
+      </LayoutDefault>
     </>
   );
 };
