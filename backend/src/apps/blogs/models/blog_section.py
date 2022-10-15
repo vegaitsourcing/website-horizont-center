@@ -1,0 +1,37 @@
+from caregivers.models import BaseModel
+from django.utils.translation import gettext_lazy as _
+from django.core.validators import MinLengthValidator
+from django.db import models
+
+
+class BlogSection(BaseModel):
+    class Meta:
+        verbose_name = _('Blog Section')
+        verbose_name_plural = _('Blog Sections')
+
+    class MediaType(models.TextChoices):
+        FACEBOOK = 'facebook', _('facebook'),
+        INSTAGRAM = 'instagram', _('instagram'),
+
+    title = models.CharField(
+        verbose_name=_('title'),
+        max_length=100,
+    )
+    description = models.TextField(
+        verbose_name=_('description'),
+        validators=[
+            MinLengthValidator(limit_value=100)
+        ],
+        blank=True,
+        null=True,
+    )
+    media_url = models.URLField(
+        verbose_name=_('media url'),
+        blank=True,
+        null=True,
+    )
+    media_type = models.CharField(
+        max_length=100,
+        choices=MediaType.choices,
+        verbose_name=_('media type'),
+    )
