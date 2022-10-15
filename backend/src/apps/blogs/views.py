@@ -1,20 +1,19 @@
 from django.http.response import JsonResponse
 from rest_framework.generics import get_object_or_404
 from rest_framework.views import APIView
+from apps.blogs.models import Blog
+from apps.blogs.serializers.blog_serializer import BlogSerializer
 
-from apps.donations.models import Donation
-from apps.donations.serializers.donations_serializer import DonationsSerializer
 
-
-class DonationAPIView(APIView):
+class BlogAPIView(APIView):
     @staticmethod
     def get(request) -> JsonResponse:
-        donations = Donation.objects.all()
-        serializer = DonationsSerializer(donations, many=True)
+        blogs = Blog.objects.all()
+        serializer = BlogSerializer(blogs, many=True)
         return JsonResponse(data=serializer.data, safe=False)
 
     @staticmethod
     def get_by_id(request, pk: int) -> JsonResponse:
-        donation = get_object_or_404(Donation, id=pk)
-        serializer = DonationsSerializer(donation)
+        blog = get_object_or_404(Blog, id=pk)
+        serializer = BlogSerializer(blog)
         return JsonResponse(data=serializer.data, safe=False)
