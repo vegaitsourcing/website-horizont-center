@@ -37,4 +37,13 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
+    list-style-type: none;
+}
+
+.blogFooter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 256px;
+    margin-inline: auto;
 }
