@@ -18,13 +18,11 @@ export const ProfileListItem = ({ firstName, lastName, city, createdDate, title,
         <div className={`${styles.p2} ${styles.createdDate}`}>{createdDate}</div>
         <div className={`${styles.h4} ${styles.title}`}>{title}</div>
         <div className={`${styles.p1} ${styles.textBody}`}>{body}</div>
-        {period ? (
+        {period && (
           <div className={`${styles.profilePeriod} ${styles.p2}`}>
             <FontAwesomeIcon icon={faCalendar} className={styles.icon} />
             <span className={styles.period}>{period}</span>
           </div>
-        ) : (
-          ""
         )}
         <Link href={url} passHref>
           <span className={`${styles.p2} ${styles.link}`}>Prikaži više</span>
