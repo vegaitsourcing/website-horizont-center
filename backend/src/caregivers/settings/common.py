@@ -56,11 +56,8 @@ DEFAULT_APPS = [
 
     # third party apps:
     'rest_framework',
-    << << << < HEAD
     'rest_framework.authtoken',
-    == == == =
     'django_filters',
-    >>>>>> > f007b39(feat: donations pagination)
 
     # local apps:
     'apps.users',
