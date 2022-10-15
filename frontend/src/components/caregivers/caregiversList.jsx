@@ -2,14 +2,25 @@ import caregiversService from "pages/api/caregiversService";
 import React, { useEffect, useState } from "react";
 import { ProfileListItem } from "shared-components/profile-list-item/profile-list-item";
 
-function CaregiversList({ intialCaregivers, pathname, activepageNumber }) {
+function CaregiversList({
+  intialCaregivers,
+  pathname,
+  activepageNumber,
+  textFilter,
+  genderFilter,
+  cityFilter,
+  changeNumberOfPages,
+}) {
   const [caregivers, setcaregivers] = useState(intialCaregivers);
   function fetchData() {
-    caregiversService.getAllCaregivers(3, activepageNumber).then(({ results }) => {
-      setcaregivers([...results]);
-    });
+    caregiversService
+      .getAllCaregivers(3, activepageNumber, textFilter, genderFilter, cityFilter)
+      .then(({ results, pageSize, total }) => {
+        setcaregivers([...results]);
+        changeNumberOfPages(total, pageSize);
+      });
   }
-  useEffect(() => fetchData(), [activepageNumber]);
+  useEffect(() => fetchData(), [activepageNumber, cityFilter, textFilter, genderFilter]);
   return (
     <div style={{ display: "grid", justifyContent: "center" }}>
       {caregivers.map(({ id, work_application, image, created, city, description, first_name, last_name }) => (
