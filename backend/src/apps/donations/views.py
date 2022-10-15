@@ -1,7 +1,6 @@
 from django.http.response import JsonResponse
 from rest_framework.generics import get_object_or_404
 from rest_framework.views import APIView
-
 from apps.donations.models import Donation
 from apps.donations.serializers.donations_serializer import DonationsSerializer
 

@@ -7,7 +7,8 @@ from apps.users.serializers import CaregiverUserSerializer
 
 class RegisterCaregiverAPIView(APIView):
 
-    def post(self, request, **kwargs) -> JsonResponse:
+    @staticmethod
+    def post(request, **kwargs) -> JsonResponse:
         caregiver_serializer = CaregiverUserSerializer(data=request.data)
         if caregiver_serializer.is_valid():
             caregiver_profile_kwargs = caregiver_serializer.validated_data.pop('caregiver_profile')
