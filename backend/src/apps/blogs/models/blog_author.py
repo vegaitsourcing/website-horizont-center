@@ -33,3 +33,12 @@ class BlogAuthor(BaseModel):
     instagram_url = models.URLField(
         verbose_name=_('instagram url'),
     )
+    blog = models.OneToOneField(
+        to='blogs.Blog',
+        verbose_name=_('blog'),
+        on_delete=models.CASCADE,
+        null=True
+    )
+
+    def __str__(self):
+        return f'{self.first_name} {self.last_name}'

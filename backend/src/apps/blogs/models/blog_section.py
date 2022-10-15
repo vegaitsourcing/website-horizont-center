@@ -35,3 +35,9 @@ class BlogSection(BaseModel):
         choices=MediaType.choices,
         verbose_name=_('media type'),
     )
+    blog = models.ForeignKey(
+        to='blogs.Blog',
+        verbose_name=_('blog'),
+        on_delete=models.CASCADE,
+        null=True
+    )
