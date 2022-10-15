@@ -8,12 +8,11 @@ class BlogCategory(BaseModel):
         verbose_name = _('Blog Category')
         verbose_name_plural = ('Blog Categories')
 
-        name = models.CharField(
-            verbose_name=_('name'),
-            max_length=100
-        )
-
-        color = models.CharField(
-            verbose_name=_('color'),
-            max_length=100
-        )
+    name = models.CharField(
+        verbose_name=_('name'),
+        max_length=100
+    )
+    color = models.CharField(
+        verbose_name=_('color'),
+        max_length=100
+    )

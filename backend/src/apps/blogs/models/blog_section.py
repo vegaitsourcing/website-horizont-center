@@ -17,7 +17,6 @@ class BlogSection(BaseModel):
         verbose_name=_('title'),
         max_length=100,
     )
-
     description = models.TextField(
         verbose_name=_('description'),
         validators=[
@@ -26,13 +25,11 @@ class BlogSection(BaseModel):
         blank=True,
         null=True,
     )
-
     media_url = models.URLField(
         verbose_name=_('media url'),
         blank=True,
         null=True,
     )
-
     media_type = models.CharField(
         max_length=100,
         choices=MediaType.choices,
