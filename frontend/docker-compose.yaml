@@ -6,6 +6,5 @@ services:
     build:
       context: ./
       dockerfile: next.Dockerfile
-    volumes:
-      - ./ /usr/app
-      - /usr/app
+    env_file:
+      - .env

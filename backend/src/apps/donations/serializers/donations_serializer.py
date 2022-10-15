@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from apps.donations.models import Donation
-from .financial_donations_serializer import FinancialInfoSerializer
+from apps.donations.serializers.financial_donations_serializer import FinancialInfoSerializer
 
 
 class DonationsSerializer(serializers.ModelSerializer):
