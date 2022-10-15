@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser, UserManager as BaseUserMana
 from django.contrib.postgres.fields import CIEmailField
 from django.utils.translation import gettext_lazy as _
 from django.db import models
+from caregivers.models import BaseModel
 
 
 class UserManager(BaseUserManager):
@@ -15,7 +16,7 @@ class UserManager(BaseUserManager):
         return user
 
 
-class User(AbstractUser):
+class User(AbstractUser, BaseModel):
     class Meta:
         verbose_name = _('User')
         verbose_name_plural = _('Users')
@@ -47,8 +48,8 @@ class User(AbstractUser):
     second_phone_number = models.CharField(
         null=True,
         blank=True,
-        verbose_name=_('second phone number'),
         max_length=250,
+        verbose_name=_('second phone number'),
     )
 
     USERNAME_FIELD = 'email'
