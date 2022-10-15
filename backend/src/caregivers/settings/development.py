@@ -1,4 +1,5 @@
 # Python imports
+import os
 from os.path import join
 
 # project imports
@@ -18,3 +19,5 @@ LOGOUT_REDIRECT_URL = 'core_login'
 # ##### APPLICATION CONFIGURATION #########################
 
 INSTALLED_APPS = DEFAULT_APPS
+
+

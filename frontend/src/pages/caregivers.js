@@ -3,7 +3,8 @@ import caregiversService from "./api/caregiversService";
 import { LayoutDefault } from "layouts";
 
 import env from "config/env";
-import { ProfileListItem } from "shared-components/profile-list-item/profile-list-item";
+import CaregiversList from "components/caregivers/caregiversList";
+import { useState } from "react";
 
 function About(props) {
   const {
@@ -22,7 +23,6 @@ function About(props) {
       block_top,
     },
   } = props;
-
   const disc = 4;
   const SEOS = {
     title,
@@ -37,26 +37,20 @@ function About(props) {
     ],
     ...env.BASE_SEO,
   };
-
+  const [activepageNumber, setactivepageNumber] = useState(1);
+  const [numberOfPages, setNumberOfPages] = useState(Math.ceil(total / pageSize));
+  function changeNumberOfPages(totalRecords, pageSize) {
+    setNumberOfPages(Math.ceil(totalRecords / pageSize));
+  }
   return (
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
-        <div style={{ display: "grid", justifyContent: "center" }}>
-          {results.map(({ id, work_application, image, created, city, description, first_name, last_name }) => (
-            <ProfileListItem
-              body={description}
-              city={city}
-              createdDate={created}
-              firstName={first_name}
-              image={image}
-              lastName={last_name}
-              title={work_application}
-              key={id}
-              url={`${pathname}/${id}`}
-            ></ProfileListItem>
-          ))}
-        </div>
+        <CaregiversList
+          intialCaregivers={results}
+          pathname={pathname}
+          activepageNumber={activepageNumber}
+        ></CaregiversList>
       </LayoutDefault>
     </>
   );
@@ -64,7 +58,7 @@ function About(props) {
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
-  var responseData = await caregiversService.getAllCaregivers();
+  var responseData = await caregiversService.getAllCaregivers(process.env.PROFILE_PAGE_SIZE, 1);
   return { props: { data: responseData, pathname: resolvedUrl } };
 }
 

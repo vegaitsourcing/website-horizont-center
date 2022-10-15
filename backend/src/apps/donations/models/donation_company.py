@@ -28,9 +28,13 @@ class DonationCompany(BaseModel):
     )
     facebook_url = models.URLField(
         verbose_name=_('facebook'),
+        blank=True,
+        null=True
     )
     instagram_url = models.URLField(
         verbose_name=_('instagram'),
+        blank=True,
+        null=True
     )
     donation = models.OneToOneField(
         to='donations.Donation',
