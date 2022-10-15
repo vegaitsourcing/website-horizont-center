@@ -10,7 +10,14 @@ export const RegistrationStepOne = () => {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas animi distinctio est sunt. Saepe
         earum id corporis vero voluptatum.
       </p>
-      <Input id="tipProfila" name="tipProfila" type="text" placeholder="Tip profila*" hasError={false} />
+      <Input
+        id="tipProfila"
+        name="tipProfila"
+        type="dropdown"
+        placeholder="Tip profila*"
+        hasError={false}
+        options={["Negovatelj", "Negovani"]}
+      />
     </div>
   );
 };
