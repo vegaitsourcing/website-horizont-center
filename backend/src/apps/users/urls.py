@@ -5,5 +5,5 @@ from apps.users.views import RegisterCaregiverAPIView, RegisterBeneficiaryAPIVie
 api_url_patterns = [
     path('register-caregiver/', RegisterCaregiverAPIView.as_view(), name='register_caregiver'),
     path('register-beneficiary/', RegisterBeneficiaryAPIView.as_view(), name='register_beneficiary'),
-    path('register/<str:token>', RegisterAPIView.as_view(), name='register'),
+    path('register/<str:url_hash>', RegisterAPIView.as_view(), name='register'),
 ]
