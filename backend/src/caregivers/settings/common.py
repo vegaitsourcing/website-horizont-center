@@ -1,5 +1,4 @@
 # Python imports
-import os
 import sys
 from os import getenv
 from os.path import abspath, basename, dirname, join, normpath
@@ -42,8 +41,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = getenv('EMAIL_HOST_PASSWORD')
 
 # these are the apps
 DEFAULT_APPS = [
@@ -100,8 +99,9 @@ TEMPLATES = [
 ]
 
 # ##### SECURITY CONFIGURATION ############################
+FE_APP_ORIGIN = getenv('CORS_ALLOWED_ORIGIN')
 CORS_ALLOWED_ORIGINS = [
-    os.getenv('CORS_ALLOWED_ORIGIN'),
+    FE_APP_ORIGIN,
 ]
 
 # We store the secret key here
@@ -184,3 +184,9 @@ REST_FRAMEWORK = {
         'apps.users.authentication.TokenAuthentication',
     ]
 }
+
+ALLOWED_HOST = getenv('ALLOWED_HOST')
+# allow all hosts during development
+ALLOWED_HOSTS = [
+    ALLOWED_HOST
+]
