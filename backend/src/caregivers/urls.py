@@ -17,4 +17,9 @@ api_urlpatterns = [
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include((api_urlpatterns, 'caregivers'), namespace='api')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT_2)
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
