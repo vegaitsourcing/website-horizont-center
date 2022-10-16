@@ -1,6 +1,6 @@
+from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from django.core.validators import MinLengthValidator
 from caregivers.models import BaseModel
 
 
@@ -37,6 +37,7 @@ class BlogAuthor(BaseModel):
         to='blogs.Blog',
         verbose_name=_('blog'),
         on_delete=models.CASCADE,
+        related_name='author',
         null=True
     )
 
