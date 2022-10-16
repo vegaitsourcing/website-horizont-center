@@ -13,6 +13,17 @@
     background: $black-color;
     color: $white-color;
 
+    @include respond-to (tablet) {
+        padding: 24px !important;
+
+        
+        .p1 {max-width: 30%;}
+
+        .footer__body {
+            gap: 60px;
+        }
+    }
+
     .imageWrapper {
         display: inline-block;
         width: 20%;
@@ -63,5 +74,9 @@
 
     &-year {
         text-transform: uppercase;
+    }
+
+    .p1 {
+        max-width: 80%;
     }
 }

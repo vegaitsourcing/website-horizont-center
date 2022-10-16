@@ -15,7 +15,7 @@ export const Footer = ({ props }) => {
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut beatae pariatur mollitia voluptatibus ab quis?
           Deserunt eum libero qui dolores.
         </p>
-        <div>
+        <div className={styles.contactListDiv}>
           <ul className={styles["contact-list"]}>
             <li className={styles.p1}>Lorem, ipsum.</li>
             <li className={styles.p1}>Lorem, ipsum.</li>
