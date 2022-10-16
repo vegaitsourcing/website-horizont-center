@@ -93,7 +93,7 @@ function Service(props) {
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
-  const responseData = await BlogService.getAllBlogs(process.env.POST_PAGE_SIZE, 1, "", "");
+  const responseData = await BlogService.getAllMockBlogs(process.env.POST_PAGE_SIZE, 1, "", "");
   return {
     props: {
       data: { ...responseData.data, ...{ pageSize: process.env.POST_PAGE_SIZE }, ...ABOUT },

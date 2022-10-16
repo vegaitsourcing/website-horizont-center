@@ -28,7 +28,7 @@ export const RegistrationStepTwo = ({ stepNumber, valueChangedHandler }) => {
         />
       )}
       <div className={styles.notRobotBox}>
-        <div className={styles.reCaptcha}>not robot</div>
+        {/*TODO: <div className={styles.reCaptcha}>not robot</div>*/}
         <div className={styles.notRobotText}>
           <p className={styles.p1}>
             Slanjem aplikacije prihvatate da budete kontaktirani za razgovor sa sa zainteresovanim osobama za traženje

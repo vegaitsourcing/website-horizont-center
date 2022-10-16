@@ -19,8 +19,8 @@ function Contact(props) {
     pathname,
     data: {
       title,
-      results,
-      pageNumber,
+      items,
+      pagination,
       pageSize,
       total,
       metaTitle,
@@ -45,8 +45,9 @@ function Contact(props) {
     ],
     ...BASE_SEO,
   };
+	const { total_items,total_pages} =pagination;
   const [activepageNumber, setactivepageNumber] = useState(1);
-  const [numberOfPages, setNumberOfPages] = useState(Math.ceil(total / pageSize));
+  const [numberOfPages, setNumberOfPages] = useState(total_pages);
   const [filterType, setfilterType] = useState("");
   const [filterText, setfilterText] = useState("");
   function changeNumberOfPages(totalRecords, pageSize) {
@@ -72,11 +73,12 @@ function Contact(props) {
         ></PostTitle>
         <PostFilters changeFilterText={changeTextFilter} changeFilterType={changeFilterType}></PostFilters>
         <DonationsList
+					pageSize={pageSize}
           activePageNumber={activepageNumber}
           changeNumberOfPages={changeNumberOfPages}
           filterText={filterText}
           filterType={filterType}
-          initialDonations={results}
+          initialDonations={items}
         ></DonationsList>
         <CardPagination
           changePage={setactivepageNumber}
@@ -90,8 +92,8 @@ function Contact(props) {
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
-  const responseData = await DonationService.getAllMockDonations(process.env.POST_PAGE_SIZE, 1, "", "");
-  return { props: { data: { ...responseData.data, ...ABOUT }, pathname: resolvedUrl } };
+  const responseData = await DonationService.getAllDonations(process.env.POST_PAGE_SIZE, 1, "", "");
+  return { props: { data: { ...responseData.data,...{pageSize:process.env.POST_PAGE_SIZE}, ...ABOUT }, pathname: resolvedUrl } };
 }
 
 export default Contact;

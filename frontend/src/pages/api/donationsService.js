@@ -5,7 +5,7 @@ const DonationService = {
   getAllDonations: (pageSize, pageNumber, filterText, filterType) => {
     return API.getAllResources(
       BASE_RESOURCE_NAME,
-      `pageSize=${pageSize}&pageNumber=${pageNumber}&fiterText=${filterText}&filterType=${filterType}`
+      `ipp=${pageSize}&page=${pageNumber}&contains=${filterText}&filterType=${filterType}`
     );
   },
   getDonationById: (donationId) => {

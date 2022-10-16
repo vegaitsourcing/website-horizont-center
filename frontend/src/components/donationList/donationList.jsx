@@ -6,6 +6,7 @@ import { Card } from "shared-components";
 import DonationService from "pages/api/donationsService";
 
 export const DonationsList = ({
+	pageSize,
   initialDonations,
   pathname,
   activePageNumber,
@@ -15,11 +16,12 @@ export const DonationsList = ({
 }) => {
   const [donations, setdonations] = useState(initialDonations);
   function fetchData() {
-    DonationService.getAllMockDonations(3, activePageNumber, filterText, filterType).then(({ data }) => {
-      const { results, total, pageSize } = data;
+    DonationService.getAllDonations(pageSize, activePageNumber, filterText, filterType).then(({ data }) => {
+      const { items, pagination } = data;
+			const {total_items}=pagination;
       console.log("data", data);
-      setdonations([...results]);
-      changeNumberOfPages(total, pageSize);
+      setdonations([...items]);
+      changeNumberOfPages(total_items, pageSize);
     });
   }
   useEffect(() => fetchData(), [activePageNumber, filterType, filterText]);

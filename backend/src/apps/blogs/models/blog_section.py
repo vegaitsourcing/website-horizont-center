@@ -10,8 +10,8 @@ class BlogSection(BaseModel):
         verbose_name_plural = _('Blog Sections')
 
     class MediaType(models.TextChoices):
-        FACEBOOK = 'facebook', _('facebook'),
-        INSTAGRAM = 'instagram', _('instagram'),
+        FACEBOOK = 'image', _('image'),
+        INSTAGRAM = 'video', _('video'),
 
     title = models.CharField(
         verbose_name=_('title'),
