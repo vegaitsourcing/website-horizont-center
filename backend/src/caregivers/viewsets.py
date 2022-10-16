@@ -22,7 +22,8 @@ class ViewSet(viewsets.ViewSet):
         serializer = ListResponseSerializer(
             queryset=self.filter_queryset(queryset=self.model_class.objects.all()),
             model_serializer_class=self.serializer_class,
-            request=request
+            model_serializer_kwargs=self.get_serializer_kwargs(),
+            request=request,
         )
         return JsonResponse(data=serializer.data)
 
@@ -33,6 +34,9 @@ class ViewSet(viewsets.ViewSet):
 
     def retrieve(self, request, pk=None) -> JsonResponse:
         if instance := self.model_class.objects.filter(pk=pk).first():
-            serializer = self.serializer_class(instance)
+            serializer = self.serializer_class(instance, **self.get_serializer_kwargs())
             return JsonResponse(data=serializer.data)
         return JsonResponse(data={'message': _('Not fount')}, status=NOT_FOUND)
+
+    def get_serializer_kwargs(self, **kwargs) -> dict:
+        return kwargs

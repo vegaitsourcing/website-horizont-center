@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.blogs.models.blog_section import BlogSection
+from apps.blogs.models import BlogSection
 
 
 class BlogSectionSerializer(serializers.ModelSerializer):
