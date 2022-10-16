@@ -5,6 +5,7 @@ import { PDFDocument, StandardFonts } from "pdf-lib";
 import styles from "./payment.slip.module.scss";
 
 export const PaymentSlip = ({
+  linkText,
   uplatilacValue,
   svrhaUplateValue,
   primalacValue,
@@ -66,7 +67,7 @@ export const PaymentSlip = ({
 
   return (
     <a onClick={modifyPdf} className={styles.link}>
-      klik
+      {linkText}
     </a>
   );
 };

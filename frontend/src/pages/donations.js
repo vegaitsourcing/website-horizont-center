@@ -33,6 +33,7 @@ function Contact(props) {
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
         <PaymentSlip
+          linkText="Pregled uplatnice"
           uplatilacValue="Mirko"
           svrhaUplateValue="testiranje"
           primalacValue="Rajko"
