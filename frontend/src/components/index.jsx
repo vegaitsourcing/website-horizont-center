@@ -7,3 +7,4 @@ export * from "./registration/";
 export * from "./login/login";
 export * from "./single-blog/single.blog";
 export * from "./single-donation/single.donation";
+export * from "./payment-slip/payment.slip";

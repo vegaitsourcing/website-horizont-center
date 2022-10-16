@@ -8,6 +8,23 @@
     height: 115px;
     background: $light-blue-color;
 
+    .responsiveNav {display: none;}
+
+    @include respond-to(tablet) {
+        padding: 24px 24px;
+        height: auto;
+
+        justify-content: space-between;
+    
+        .imageWrapper {
+            width: 120px !important;
+        }
+
+        .responsiveNav {
+            display: block;
+        }
+    }
+
     .imageWrapper {
         display: inline-block;
         width: 20%;
@@ -22,7 +39,7 @@
         flex-direction: row;
         justify-content: center;
         width: 80%;
-        @include respond-to(mobile) {
+        @include respond-to(tablet) {
             background: white;
             display: none;
         }
@@ -52,6 +69,64 @@
     .buttons {
         display: flex;
         gap: 24px;
+
+        @include respond-to(tablet) {
+            background: white;
+            display: none;
+        }
+    }
+
+    .responsiveNav {
+
+        .nav {
+            //display: none;
+            position: absolute;
+            display: none;
+            top: 100px;
+            left: 0;
+            background-color: $light-blue-color;
+            width: calc(100% - 48px);
+            padding: 16px 24px;
+            border-bottom: 2px solid $blue-color;
+
+            .tabItem {
+                color: $blue-color;
+                padding-bottom: 50px;
+                font-family: "open Sans";
+                font-weight: 500;
+            }
+
+            &.show {
+                display: block;
+            }
+
+            .buttons {
+                display: flex !important;
+                margin: 0;
+                background-color: $light-blue-color !important;
+                max-width: 100%;
+                justify-content: space-between;
+                
+                gap: 5;
+    
+                button {
+                    width: 50%;
+                }
+                
+                @include respond-to(tablet) {
+                    background: white;
+                    display: block;
+                }
+            }
+        }
+
+        svg {
+            width: 20px;
+            height: 20px;
+
+            path {
+                fill: $blue-color;
+            }
+        }
     }
 }
-

@@ -1,6 +1,7 @@
-from caregivers.models import BaseModel
-from django.utils.translation import gettext_lazy as _
+from colorfield.fields import ColorField
 from django.db import models
+from django.utils.translation import gettext_lazy as _
+from caregivers.models import BaseModel
 
 
 class BlogCategory(BaseModel):
@@ -8,13 +9,21 @@ class BlogCategory(BaseModel):
         verbose_name = _('Blog Category')
         verbose_name_plural = _('Blog Categories')
 
+    COLOR_PALETTE = [
+        ('#F87024', _('orange'),),
+        ('#0075FF', _('blue'),),
+        ('#229EBD', _('light green-blue'),),
+    ]
+
     name = models.CharField(
         verbose_name=_('category name'),
         max_length=100
     )
-    color = models.CharField(
+    color = ColorField(
         verbose_name=_('color'),
-        max_length=100
+        samples=COLOR_PALETTE,
+        null=True,
+        blank=True,
     )
 
     def __str__(self):

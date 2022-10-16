@@ -1,0 +1,2 @@
+from apps.users.viewsets.beneficiary_profile_viewset import BeneficiaryProfileViewSet
+from apps.users.viewsets.caregiver_profile_viewset import CaregiverProfileViewSet

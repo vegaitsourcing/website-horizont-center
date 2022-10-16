@@ -1,8 +1,10 @@
-from django.urls import path
-from apps.donations.views import DonationAPIView
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from apps.donations.viewsets import DonationViewSet
 
-BASE_DONATIONS_PATH = 'donations/'
+router = DefaultRouter()
+router.register(r'donations', DonationViewSet, basename='donations')
+
 api_urlpatterns = [
-    path(f'{BASE_DONATIONS_PATH}', DonationAPIView.get, name='donations_list'),
-    path(f'{BASE_DONATIONS_PATH}<int:pk>', DonationAPIView.get_by_id, name='donations_details'),
+    path(r'', include(router.urls)),
 ]
