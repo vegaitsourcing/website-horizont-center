@@ -239,7 +239,7 @@ export const Blog = () => {
   return (
     <>
       <div className={styles.blogHeader}>
-        <h2 className={styles.h2}>Podrška</h2>
+        <h2 className={styles.h2}>Blog</h2>
         <p className={styles.p1}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt reprehenderit nisi corporis quas sint eos
           inventore accusamus fuga dignissimos maxime?

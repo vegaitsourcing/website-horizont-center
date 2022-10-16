@@ -2,8 +2,8 @@ from rest_framework import serializers
 from apps.users.models import User
 
 
-class AbstractUserSerializer(serializers.ModelSerializer):
-    profile: serializers.ModelSerializer
+class UserSerializer(serializers.ModelSerializer):
+    profile: serializers.ModelSerializer = None
 
     class Meta:
         model = User

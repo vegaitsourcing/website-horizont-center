@@ -21,19 +21,18 @@ class AbstractProfile(BaseModel):
         verbose_name=_('gender'),
     ),
     postal_code = models.IntegerField(
-        verbose_name=_('postal code')
+        verbose_name=_('postal code'),
     ),
     city = models.CharField(
         max_length=250,
-        verbose_name=_('city')
+        verbose_name=_('city'),
     )
     description = models.TextField(
         validators=[
-            MinLengthValidator(limit_value=100)
+            MinLengthValidator(limit_value=100),
         ],
         verbose_name=_('description'),
     )
-
     user = models.OneToOneField(
         to='users.User',
         verbose_name=_('user'),

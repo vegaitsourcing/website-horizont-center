@@ -1,1 +1,11 @@
 @import "styles/main.scss";
+
+.registerAccount {
+    padding: 30px;
+
+    .profileOption {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

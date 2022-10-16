@@ -7,7 +7,8 @@ from apps.users.utils import create_beneficiary_user, send_verification_email
 
 class RegisterBeneficiaryAPIView(APIView):
 
-    def post(self, request, **kwargs) -> JsonResponse:
+    @staticmethod
+    def post(request, **kwargs) -> JsonResponse:
         beneficiary_serializer = BeneficiaryUserSerializer(data=request.data)
         if beneficiary_serializer.is_valid():
             user = create_beneficiary_user(beneficiary_serializer)

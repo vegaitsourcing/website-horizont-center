@@ -7,7 +7,8 @@ from apps.users.utils import create_caregiver_user, send_verification_email
 
 class RegisterCaregiverAPIView(APIView):
 
-    def post(self, request, **kwargs) -> JsonResponse:
+    @staticmethod
+    def post(request, **kwargs) -> JsonResponse:
         caregiver_serializer = CaregiverUserSerializer(data=request.data)
         if caregiver_serializer.is_valid():
             user = create_caregiver_user(caregiver_serializer)

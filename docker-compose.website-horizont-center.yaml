@@ -1,0 +1,58 @@
+version: '3.7'
+
+services:
+
+  django:
+    container_name: caregivers-django
+    build:
+      context: ./backend/
+      dockerfile: django.Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "${DJANGO_PORT}:8000"
+    depends_on:
+      - postgres
+    volumes:
+      - ./backend/scripts:/app/scripts/
+      - ./backend/requirements:/app/requirements
+      - ./backend/src:/app/src/
+    entrypoint: [ "sh", "/app/scripts/entrypoint.sh" ]
+
+
+  postgres:
+    container_name: caregivers-postgres
+    image: postgres:14
+    environment:
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_DB=${DB_NAME}
+    volumes:
+      - caregivers-postgres-data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: caregivers-pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
+    ports:
+      - "${PGADMIN_PORT}:80"
+    depends_on:
+      - postgres
+    volumes:
+      - caregivers-pgadmin-data:/var/lib/pgadmin
+
+  nextjs:
+    container_name: caregivers-frontend
+    ports:
+      - 48500:3000
+    build:
+      context: ./frontend
+      dockerfile: next.Dockerfile
+    env_file:
+      - .env
+
+volumes:
+  caregivers-postgres-data:
+  caregivers-pgadmin-data:

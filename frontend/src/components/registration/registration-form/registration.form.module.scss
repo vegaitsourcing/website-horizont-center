@@ -5,29 +5,42 @@
 }
 
 .p1 {
-    font-weight: 300;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: white;
+    background-color: #0075FF !important;
+    padding: 5px;
+}
+
+.p2 {
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
     color: $subtext-color;
+    background-color: $create-account-details-color;
+    padding: 5px;
 }
 
 .createAccount {
-    width: 1408px;
-    text-align: center;
-    background-color: $white-color;
-    position: absolute;
-
-    // centering inside the window
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
+    margin: 5% 20%;
+    padding: 0px 100px;
     border-radius: 16px;
+    box-shadow: 0px 0px 24px rgb(0 0 0 / 5%);
 
-    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.05);
-}
-
-.createAccountHeader {
-    padding-block: 24px;
-    border-bottom: 1px solid $create-account-details-color;
+    .createAccountHeader {
+        text-align: center;
+        padding: 24px;
+        border-bottom: 1px solid $create-account-details-color;
+    }
 }
 
 .createAccountBody {
@@ -70,7 +83,7 @@
     padding-block: 24px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     border-top: 1px solid $create-account-details-color;
 
 }

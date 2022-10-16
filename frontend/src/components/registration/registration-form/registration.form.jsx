@@ -31,7 +31,7 @@ export const RegistrationForm = ({}) => {
       return <RegistrationStepOne />;
     }
     if (stepNumber === 2) {
-      return <RegistrationStepTwo />;
+      return <RegistrationStepTwo userType={"caregiver"} />;
     }
     return <ImageUpload />;
   };
@@ -44,11 +44,11 @@ export const RegistrationForm = ({}) => {
       </div>
       <div className={styles.createAccountBody}>
         <div className={styles.steps}>
-          <span className={styles.p1}>1</span>
+          <span className={stepNumber === 1 ? styles.p1 : styles.p2}>1</span>
           <hr className={styles.dottedLine} />
-          <span className={styles.p1}>2</span>
+          <span className={stepNumber === 2 ? styles.p1 : styles.p2}>2</span>
           <hr className={styles.dottedLine} />
-          <span className={styles.p1}>3</span>
+          <span className={stepNumber === 3 ? styles.p1 : styles.p2}>3</span>
         </div>
         {renderStep()}
       </div>

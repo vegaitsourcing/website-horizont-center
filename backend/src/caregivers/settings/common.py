@@ -57,6 +57,7 @@ DEFAULT_APPS = [
     # third party apps:
     'rest_framework',
     'corsheaders',
+    'rest_framework.authtoken',
 
     # local apps:
     'apps.users',
@@ -176,3 +177,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+# ###### DJANGO REST FRAMEWORK ###########################
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'apps.users.authentication.TokenAuthentication',
+    ]
+}

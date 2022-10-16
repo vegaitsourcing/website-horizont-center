@@ -1,12 +1,16 @@
 import ABOUT from "config/data/about";
 const beneficiariesService = {
-  getAllBeneficiaries: (pageSize, pageNumber) => {
+  getAllBeneficiaries: (pageSize, pageNumber, textFilter, genderFilter, cityFilter) => {
     return new Promise((resolve, reject) => {
+      var filteredData = mockData.results.filter(
+        ({ city, care_type, gender }) =>
+          gender.includes(genderFilter) && city.includes(cityFilter) && care_type.includes(textFilter)
+      );
       var responseData = {
-        results: mockData.results.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
+        results: filteredData.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
         pageNumber: pageNumber,
         pageSize: pageSize,
-        total: mockData.results.length,
+        total: filteredData.length,
       };
       resolve({ ...responseData, ...ABOUT });
     });
@@ -25,6 +29,7 @@ var mockData = {
       first_name: "Marko",
       last_name: "Puzovic",
       care_type: "Potrebna pomoć ZA VOŽNJU NA PREGLEDE I OBAVLJANJE POSLOVA NABAVKE",
+      gender: "male",
     },
     {
       id: "2",
@@ -37,6 +42,7 @@ var mockData = {
       first_name: "Petar",
       last_name: "Petrovic",
       care_type: "Potrebna pomoć ZA VOŽNJU NA PREGLEDE I OBAVLJANJE POSLOVA NABAVKE",
+      gender: "female",
     },
     {
       id: "3",
@@ -49,6 +55,7 @@ var mockData = {
       first_name: "Zoran",
       last_name: "Mihajlovic",
       care_type: "Potrebna SPECIJALNA NEGA",
+      gender: "male",
     },
     {
       id: "4",
@@ -61,6 +68,7 @@ var mockData = {
       first_name: "Stefan",
       last_name: "Peric",
       care_type: "Potrebana SOCIJALIZACIJA I EMOTIVNA PODRŠKA",
+      gender: "male",
     },
     {
       id: "5",
@@ -73,6 +81,7 @@ var mockData = {
       first_name: "Luka",
       last_name: "Lukic",
       care_type: "Potrebana SOCIJALIZACIJA I EMOTIVNA PODRŠKA",
+      gender: "male",
     },
   ],
   pageNumber: 1,

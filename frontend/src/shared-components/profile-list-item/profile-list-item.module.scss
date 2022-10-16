@@ -23,11 +23,10 @@
             margin-bottom: 15.5px;
             margin-top: 15.5px;
             width: 128px;
-            height: 107px;
+            height: 128px;
             background-color: $light-blue-color;
-            padding-top: 10px;
             border-radius: 100%;
-            object-fit: fill;
+            object-fit: cover;
             object-position: top;
         }
         .profileName
@@ -103,5 +102,4 @@
 .profileListItem:hover
 {
     border: 1px solid $blue-color;
-    cursor: pointer;
 }
