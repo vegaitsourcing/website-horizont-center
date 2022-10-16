@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from apps.blogs.models.blog_category import BlogCategory
+from apps.blogs.models import BlogCategory
 
 
 class BlogCategorySerializer(serializers.ModelSerializer):
