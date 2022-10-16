@@ -16,7 +16,7 @@ export const Blog = ({
 }) => {
   const [blogs, setblogs] = useState(intialBlogs);
   function fetchData() {
-    BlogService.getAllMockBlogs(pageSize, activePageNumber, filterText, filterType).then(({ data }) => {
+    BlogService.getAllBlogs(pageSize, activePageNumber, filterText, filterType).then(({ data }) => {
       const { items, pagination } = data;
       const { total_items } = pagination;
       setblogs([...items]);
