@@ -8,9 +8,11 @@ class SendVerificationTokenEmailNotification(EmailNotification):
     def __init__(self, token: str, email: str) -> None:
         template = get_template('verify_email.html')
 
-        context = {'website_url': settings.FE_APP_ORIGIN,
-                   'verification_url': f'{settings.FE_APP_ORIGIN}/api/v1/register/{token}',
-                   'logo_url': f'{settings.ALLOWED_HOST}/static/logo.png'}
+        context = {
+            'website_url': settings.FE_APP_ORIGIN,
+            'verification_url': f'{settings.FE_APP_ORIGIN}/api/v1/register/{token}',
+            'logo_url': f'{settings.ALLOWED_HOST}/static/logo.png'
+        }
         html_template = template.render(context)
 
         plain_message = strip_tags(html_template)
