@@ -83,12 +83,12 @@ export const About = () => {
       <section className={styles["about-section-5"]}>
         <div className={styles["images-box"]}>
           <div className={[styles.flex_img_container + " " + styles.up]}>
-            <img src="/images/contact_page2.png" className={styles.big} />
-            <img src="/images/contact_page3.png" className={styles.small} />
+            <img src="/images/contact_page2.jpeg" className={styles.big} />
+            <img src="/images/contact_page3.jpeg" className={styles.small} />
           </div>
           <div className={[styles.flex_img_container + " " + styles.down]}>
-            <img src="/images/contact_page4.png" className={styles.small} />
-            <img src="/images/contact_page1.png" className={styles.big} />
+            <img src="/images/contact_page4.jpeg" className={styles.small} />
+            <img src="/images/contact_page1.jpeg" className={styles.big} />
           </div>
         </div>
         <div className={styles.content}>
