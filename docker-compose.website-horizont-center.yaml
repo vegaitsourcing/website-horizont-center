@@ -16,6 +16,10 @@ services:
       - DJANGO_SUPERUSER_PASSWORD=#{DJANGO_PASSWORD}#
       - EMAIL_HOST_USER=#{EMAIL_HOST_USER}#
       - EMAIL_HOST_PASSWORD=#{EMAIL_HOST_PASSWORD}#
+    volumes:
+      - ./backend/scripts:/app/scripts/
+      - ./backend/requirements:/app/requirements
+      - ./backend/src:/app/src/
     ports:
       - "48501:8000"
     depends_on:
