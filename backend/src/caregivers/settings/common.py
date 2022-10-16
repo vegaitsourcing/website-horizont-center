@@ -186,7 +186,6 @@ REST_FRAMEWORK = {
 }
 
 ALLOWED_HOST = getenv('ALLOWED_HOST')
-# allow all hosts during development
 ALLOWED_HOSTS = [
     ALLOWED_HOST
 ]
