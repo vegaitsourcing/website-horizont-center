@@ -28,14 +28,14 @@ export const RegistrationForm = ({}) => {
   const handleRegistrationChange = (newData, form, itemType) => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
     if (form === "formStep1" && newData) {
-      console.log(registrationForm);
+      console.log("set new form 1");
       registrationForm.formStep1 = { data: { profileType: newData }, isCompleted: true };
       localStorage.setItem("registrationForm", JSON.stringify(registrationForm));
     }
-    if (form === "formStep2" && newData) {
+    if (form === "formStep2") {
+      console.log("set new form 2");
       const historyData = registrationForm.formStep2?.data;
       registrationForm.formStep2 = { data: { ...historyData, [itemType]: newData }, isCompleted: true };
-      console.log(registrationForm);
       localStorage.setItem("registrationForm", JSON.stringify(registrationForm));
     }
   };

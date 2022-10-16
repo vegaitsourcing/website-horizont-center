@@ -39,12 +39,14 @@ export const Input = ({
   else if (type == "search") {
     return (
       <div className={styles.inputWrapper}>
+        <div>{inputValue}</div>
         <input
           onChange={(e) => valueChangedHandler && valueChangedHandler(e.currentTarget.value)}
           type={type}
           name={name}
           id={id}
           placeholder={placeholder}
+          value={inputValue}
           className={styles.input + " " + (hasError ? styles.hasError : null)}
         />
         <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.icon} />
@@ -53,6 +55,7 @@ export const Input = ({
   } else {
     return (
       <input
+        value={inputValue}
         type={type}
         name={name}
         id={id}

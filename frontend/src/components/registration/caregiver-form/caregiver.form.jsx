@@ -5,11 +5,11 @@ import { Input } from "shared-components";
 import styles from "./caregiver.form.module.scss";
 
 export const CaregiverForm = ({ stepNumber, valueChangedHandler }) => {
-  const [formStep2Data, setFormStep2Data] = useState();
+  const [formData, setFormData] = useState({});
 
   useEffect(() => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
-    setFormStep2Data(registrationForm.formStep2);
+    setFormData(registrationForm.formStep2);
   }, [stepNumber]);
 
   const generalInformations = [
@@ -48,6 +48,7 @@ export const CaregiverForm = ({ stepNumber, valueChangedHandler }) => {
                 options={input.options}
                 name={input.name}
                 placeholder={input.placeholder}
+                inputValue={formData?.data?.[input.name]}
                 valueChangedHandler={(e) => valueChangedHandler(e, input.name)}
               />
             );
