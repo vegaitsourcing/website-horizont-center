@@ -2,6 +2,8 @@ import { LayoutDefault } from "layouts";
 
 import { NextSeo } from "next-seo";
 
+import { PaymentSlip } from "components";
+
 import ENV from "config/env";
 
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
@@ -29,7 +31,19 @@ function Contact(props) {
   return (
     <>
       <NextSeo {...SEOS} />
-      <LayoutDefault pathname={pathname}>Stranica donacije...</LayoutDefault>
+      <LayoutDefault pathname={pathname}>
+        <PaymentSlip
+          uplatilacValue="Mirko"
+          svrhaUplateValue="testiranje"
+          primalacValue="Rajko"
+          sifraPlacanjaValue="289"
+          valutaValue="RSD"
+          iznosValue="2000"
+          racunaPrimaocaValue="912837928379123871923"
+          modelValue="nesto"
+          pozivNaBrojValue="nesto"
+        />
+      </LayoutDefault>
     </>
   );
 }
