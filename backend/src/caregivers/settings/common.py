@@ -57,6 +57,7 @@ DEFAULT_APPS = [
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',
+    'colorfield',
 
     # local apps:
     'apps.users',
@@ -187,5 +188,5 @@ REST_FRAMEWORK = {
 
 ALLOWED_HOST = getenv('ALLOWED_HOST')
 ALLOWED_HOSTS = [
-    ALLOWED_HOST
+    ALLOWED_HOST,
 ]
