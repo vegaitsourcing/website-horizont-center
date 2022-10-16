@@ -20,12 +20,14 @@ initialize_django_project() {
   if [ "$APP_ENV" = 'development' ]; then
     printc "Starting project in $APP_ENV mode \n\n" "info"
     python3 manage.py migrate
+    python3 manage.py create_superuser --noinput
     python3 manage.py compilemessages
     python3 manage.py runserver 0.0.0.0:8000
 
   elif [ "$APP_ENV" = 'production' ]; then
     printc "Starting project in $APP_ENV mode \n\n" "info"
     python3 manage.py migrate
+    python3 manage.py create_superuser --noinput
     python3 manage.py compilemessages
     python3 manage.py runserver 0.0.0.0:8000
 

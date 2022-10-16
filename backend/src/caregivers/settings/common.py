@@ -57,6 +57,7 @@ DEFAULT_APPS = [
     'rest_framework',
     'corsheaders',
     'rest_framework.authtoken',
+    'colorfield',
 
     # local apps:
     'apps.users',
