@@ -11,9 +11,9 @@ RUN mkdir /app && chown app:app /app /var/log
 
 USER app
 
-COPY ./app/scripts          /app/scripts
-COPY ./app/requirements     /app/requirements
-COPY ./app/src              /app/src
+COPY --chown=app:app ./scripts          /app/scripts
+COPY --chown=app:app ./requirements     /app/requirements
+COPY --chown=app:app ./src              /app/src
 
 
 RUN pip install --upgrade pip
