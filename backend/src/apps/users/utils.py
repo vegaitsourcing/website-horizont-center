@@ -1,7 +1,7 @@
-from apps.users.models import User, CaregiverProfile, BeneficiaryProfile
-from apps.users.serializers import CaregiverUserSerializer, BeneficiaryUserSerializer
-from caregivers.utils import SendVerificationTokenEmailNotification
 from django.core import signing
+from apps.users.models import User, CaregiverProfile, BeneficiaryProfile
+from apps.users.serializers import BeneficiaryProfileSerializer, CaregiverProfileSerializer
+from caregivers.utils import SendVerificationTokenEmailNotification
 
 
 def send_verification_email(user: User) -> None:
@@ -10,18 +10,18 @@ def send_verification_email(user: User) -> None:
     send_verification_token_email_notification.start()
 
 
-def create_caregiver_user(caregiver_serializer: CaregiverUserSerializer) -> User:
-    caregiver_profile_kwargs = caregiver_serializer.validated_data.pop('caregiver_profile')
-    user = User.objects.create_user(**caregiver_serializer.validated_data)
-    CaregiverProfile.objects.create(user=user, **caregiver_profile_kwargs)
+def create_caregiver_user(serializer: CaregiverProfileSerializer) -> User:
+    user_kwargs = serializer.validated_data.pop('user')
+    user = User.objects.create_user(**user_kwargs)
+    CaregiverProfile.objects.create(user=user, **serializer.validated_data)
 
     return user
 
 
-def create_beneficiary_user(beneficiary_serializer: BeneficiaryUserSerializer) -> User:
-    beneficiary_profile_kwargs = beneficiary_serializer.validated_data.pop('beneficiary_profile')
-    user = User.objects.create_user(**beneficiary_serializer.validated_data)
-    BeneficiaryProfile.objects.create(user=user, **beneficiary_profile_kwargs)
+def create_beneficiary_user(serializer: BeneficiaryProfileSerializer) -> User:
+    user_kwargs = serializer.validated_data.pop('user')
+    user = User.objects.create_user(**user_kwargs)
+    BeneficiaryProfile.objects.create(user=user, **serializer.validated_data)
 
     return user
 
