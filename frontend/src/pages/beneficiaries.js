@@ -7,6 +7,7 @@ import BeneficiariesList from "components/beneficiaries/beneficiariesList";
 import { useState } from "react";
 import ProfileFilters from "shared-components/profile-filters/profile-filters";
 import { CardPagination } from "shared-components";
+import ABOUT from "config/data/ABOUT";
 
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
@@ -15,10 +16,9 @@ function GettingStarted(props) {
     pathname,
     data: {
       title,
-      results,
-      pageNumber,
+      items,
       pageSize,
-      total,
+      pagination,
       metaTitle,
       description,
       metaDescription,
@@ -41,8 +41,9 @@ function GettingStarted(props) {
     ],
     ...BASE_SEO,
   };
+  const { total_pages, total_items } = pagination;
   const [activepageNumber, setactivepageNumber] = useState(1);
-  const [numberOfPages, setNumberOfPages] = useState(Math.ceil(total / pageSize));
+  const [numberOfPages, setNumberOfPages] = useState(total_pages);
   const [textFilter, settextFilter] = useState("");
   const [cityFilter, setcityFilter] = useState("");
   const [genderFilter, setgenderFilter] = useState("");
@@ -51,16 +52,14 @@ function GettingStarted(props) {
   }
   let searchTimeout;
   function changeCityFilter(city) {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => setcityFilter(city), 500);
+    setcityFilter(city);
   }
   function changeTextFilter(text) {
     clearTimeout(searchTimeout);
     searchTimeout = setTimeout(() => settextFilter(text), 500);
   }
   function changeGenderFilter(gender) {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => setgenderFilter(gender), 500);
+    setgenderFilter(gender);
   }
   return (
     <>
@@ -72,11 +71,12 @@ function GettingStarted(props) {
           changeTextFilterHandler={changeTextFilter}
         ></ProfileFilters>
         <BeneficiariesList
+          pageSize={pageSize}
           changeNumberOfPages={changeNumberOfPages}
           cityFilter={cityFilter}
           genderFilter={genderFilter}
           textFilter={textFilter}
-          intialBeneficiaries={results}
+          intialBeneficiaries={items}
           pathname={pathname}
           activePageNumber={activepageNumber}
         ></BeneficiariesList>
@@ -92,8 +92,13 @@ function GettingStarted(props) {
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
-  const responseData = await beneficiariesService.getAllBeneficiaries(process.env.PROFILE_PAGE_SIZE, 1);
-  return { props: { data: responseData, pathname: resolvedUrl } };
+  const responseData = await beneficiariesService.getAllMockBeneficiaries(process.env.PROFILE_PAGE_SIZE, 1, "", "", "");
+  return {
+    props: {
+      data: { ...responseData.data, ...{ pageSize: process.env.PROFILE_PAGE_SIZE }, ...ABOUT },
+      pathname: resolvedUrl,
+    },
+  };
 }
 
 export default GettingStarted;

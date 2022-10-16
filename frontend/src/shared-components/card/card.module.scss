@@ -3,9 +3,9 @@
 .cardItem {
 	width: 544px;
 	min-height: 799px;
-	border: 1px solid $blue-color;
 	border-radius: 16px;
 	background-color: $white-color;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 	position: relative;
 
 	img {
@@ -63,4 +63,8 @@
 	position: absolute;
 	bottom: 88px;
 	font-weight: 100;
+}
+.cardItem:hover
+{
+	border : solid 1px $blue-color
 }

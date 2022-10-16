@@ -7,23 +7,11 @@ import CaregiversList from "components/caregivers/caregiversList";
 import { useState } from "react";
 import { CardPagination } from "shared-components";
 import ProfileFilters from "shared-components/profile-filters/profile-filters";
-
+import ABOUT from "config/data/ABOUT";
 function About(props) {
   const {
     pathname,
-    data: {
-      title,
-      results,
-      pageNumber,
-      pageSize,
-      total,
-      metaTitle,
-      description,
-      metaDescription,
-      header,
-      slug,
-      block_top,
-    },
+    data: { title, items, pageSize, pagination, metaTitle, description, metaDescription, header, slug, block_top },
   } = props;
   const disc = 4;
   const SEOS = {
@@ -39,8 +27,9 @@ function About(props) {
     ],
     ...env.BASE_SEO,
   };
+  const { total_pages, total_items } = pagination;
   const [activepageNumber, setactivepageNumber] = useState(1);
-  const [numberOfPages, setNumberOfPages] = useState(Math.ceil(total / pageSize));
+  const [numberOfPages, setNumberOfPages] = useState(total_pages);
   const [textFilter, settextFilter] = useState("");
   const [cityFilter, setcityFilter] = useState("");
   const [genderFilter, setgenderFilter] = useState("");
@@ -51,16 +40,14 @@ function About(props) {
   }
   let searchTimeout;
   function changeCityFilter(city) {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => setcityFilter(city), 500);
+    setcityFilter(city);
   }
   function changeTextFilter(text) {
     clearTimeout(searchTimeout);
     searchTimeout = setTimeout(() => settextFilter(text), 500);
   }
   function changeGenderFilter(gender) {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => setgenderFilter(gender), 500);
+    setgenderFilter(gender);
   }
   return (
     <>
@@ -72,8 +59,9 @@ function About(props) {
           changeGenderFilterHandler={changeGenderFilter}
         ></ProfileFilters>
         <CaregiversList
+          pageSize={pageSize}
           changeNumberOfPages={changeNumberOfPages}
-          intialCaregivers={results}
+          intialCaregivers={items}
           pathname={pathname}
           activepageNumber={activepageNumber}
           cityFilter={cityFilter}
@@ -92,8 +80,13 @@ function About(props) {
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
-  var responseData = await caregiversService.getAllCaregivers(process.env.PROFILE_PAGE_SIZE, 1);
-  return { props: { data: responseData, pathname: resolvedUrl } };
+  var responseData = await caregiversService.getAllMockCaregivers(process.env.PROFILE_PAGE_SIZE, 1, "", "", "");
+  return {
+    props: {
+      data: { ...responseData.data, ...{ pageSize: process.env.PROFILE_PAGE_SIZE }, ...ABOUT },
+      pathname: resolvedUrl,
+    },
+  };
 }
 
 export default About;

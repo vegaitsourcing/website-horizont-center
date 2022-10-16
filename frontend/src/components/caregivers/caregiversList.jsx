@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ProfileListItem } from "shared-components/profile-list-item/profile-list-item";
 
 function CaregiversList({
+  pageSize,
   intialCaregivers,
   pathname,
   activepageNumber,
@@ -14,10 +15,12 @@ function CaregiversList({
   const [caregivers, setcaregivers] = useState(intialCaregivers);
   function fetchData() {
     caregiversService
-      .getAllCaregivers(3, activepageNumber, textFilter, genderFilter, cityFilter)
-      .then(({ results, pageSize, total }) => {
-        setcaregivers([...results]);
-        changeNumberOfPages(total, pageSize);
+      .getAllMockCaregivers(pageSize, activepageNumber, textFilter, genderFilter, cityFilter)
+      .then(({ data }) => {
+        const { items, pagination } = data;
+        const { total_pages, total_items } = pagination;
+        setcaregivers([...items]);
+        changeNumberOfPages(total_items, pageSize);
       });
   }
   useEffect(() => fetchData(), [activepageNumber, cityFilter, textFilter, genderFilter]);

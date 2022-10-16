@@ -38,19 +38,15 @@ export const Home = (props) => {
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
-        <About>
-          
-        </About>
-        </LayoutDefault>
+        <About></About>
+      </LayoutDefault>
     </>
   );
 };
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
-  const res = await fetch(`${BASE_API_URL}/api`);
-  const json = await res.json();
-  return { props: { data: json, pathname: resolvedUrl } };
+  return { props: { data: {}, pathname: resolvedUrl } };
 }
 
 export default Home;

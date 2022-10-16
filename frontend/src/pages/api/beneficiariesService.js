@@ -1,18 +1,31 @@
 import ABOUT from "config/data/about";
+import API from "./baseApi";
+const BASE_RESOURCE_NAME = "beneficiaries";
 const beneficiariesService = {
   getAllBeneficiaries: (pageSize, pageNumber, textFilter, genderFilter, cityFilter) => {
+    return API.getAllResources(
+      BASE_RESOURCE_NAME,
+      `ipp=${pageSize}&page=${pageNumber}&content=${textFilter}&filterGender=${genderFilter}&filterCity=${cityFilter}`
+    );
+  },
+  getBeneficiaryById: (beneficiaryId) => {
+    return API.getResourceById(BASE_RESOURCE_NAME, beneficiaryId, localStorage.getItem("token"));
+  },
+  getAllMockBeneficiaries: (pageSize, pageNumber, textFilter, genderFilter, cityFilter) => {
     return new Promise((resolve, reject) => {
       var filteredData = mockData.results.filter(
         ({ city, care_type, gender }) =>
           gender.includes(genderFilter) && city.includes(cityFilter) && care_type.includes(textFilter)
       );
       var responseData = {
-        results: filteredData.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
-        pageNumber: pageNumber,
-        pageSize: pageSize,
-        total: filteredData.length,
+        items: filteredData.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
+        pagination: {
+          total_items: filteredData.length,
+          total_pages: 2,
+        },
+        total: 2,
       };
-      resolve({ ...responseData, ...ABOUT });
+      resolve({ data: { ...responseData, ...ABOUT } });
     });
   },
 };
