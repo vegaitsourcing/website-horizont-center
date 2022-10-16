@@ -1,7 +1,7 @@
 from typing import Type
 from django.db.models import QuerySet
-from rest_framework import serializers
 from caregivers.paginator import Paginator
+from caregivers.serializers import BaseModelSerializer
 from caregivers.serializers.simple_serializers import SimpleSerializer
 
 
@@ -9,17 +9,17 @@ class ListResponseSerializer(SimpleSerializer):
 
     def __init__(
             self, queryset: QuerySet, request,
-            model_serializer_class: Type[serializers.ModelSerializer],
-            model_serializer_kwargs: dict = None, *args, **kwargs
+            model_serializer_class: Type[BaseModelSerializer],
+            *args, **kwargs
     ):
         super(ListResponseSerializer, self).__init__(*args, **kwargs)
+        self.request = request
         self.model_serializer_class = model_serializer_class
-        self.model_serializer_kwargs = model_serializer_kwargs or {}
         self.paginator = Paginator(queryset=queryset, request=request)
 
     @property
     def data(self) -> dict:
-        model_serializer = self.model_serializer_class(self.paginator.page, many=True, **self.model_serializer_kwargs)
+        model_serializer = self.model_serializer_class(self.paginator.page, many=True, request=self.request)
 
         pagination = {
             'total_items': self.paginator.total_items,

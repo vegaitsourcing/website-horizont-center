@@ -1,5 +1,4 @@
 from rest_framework import serializers
-
 from apps.blogs.models import Blog
 from apps.blogs.serializers import BlogAuthorSerializer
 from apps.blogs.serializers.blog_category_serializer import BlogCategorySerializer
@@ -15,9 +14,11 @@ class BlogSerializer(BaseModelSerializer):
     class Meta:
         model = Blog
         fields = '__all__'
-        image_fields = (
-            'image',
-        )
+
+    def get_image_field_names(self) -> tuple:
+        image_field_names = super(BlogSerializer, self).get_image_field_names()
+        image_field_names += ('image',)
+        return image_field_names
 
     def get_author_serializer(self, obj: Blog) -> dict:
         serializer = BlogAuthorSerializer(instance=obj.author, request=self.request)
