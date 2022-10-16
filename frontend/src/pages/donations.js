@@ -4,6 +4,8 @@ import { NextSeo } from "next-seo";
 
 import ENV from "config/env";
 
+import { SingleBlog } from "components";
+
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
 function Contact(props) {
@@ -29,7 +31,10 @@ function Contact(props) {
   return (
     <>
       <NextSeo {...SEOS} />
-      <LayoutDefault pathname={pathname}>Stranica donacije...</LayoutDefault>
+      <LayoutDefault pathname={pathname}>
+        {/* Stranica donacije... */}
+        <SingleBlog />
+      </LayoutDefault>
     </>
   );
 }
