@@ -1,8 +1,10 @@
-from django.urls import path
-from apps.blogs.views import BlogAPIView
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
+from apps.blogs.viewsets import BlogViewSet
 
-BASE_BLOGS_PATH = 'blogs/'
+router = DefaultRouter()
+router.register(r'blogs', BlogViewSet, basename='blogs')
+
 api_urlpatterns = [
-    path(f'{BASE_BLOGS_PATH}', BlogAPIView.get, name='blog_list'),
-    path(f'{BASE_BLOGS_PATH}<int:pk>', BlogAPIView.get_by_id, name='blog_details')
+    path(r'', include(router.urls)),
 ]
