@@ -20,10 +20,8 @@ function Service(props) {
     pathname,
     data: {
       title,
-      results,
-      pageNumber,
-      pageSize,
-      total,
+      items,
+      pagination,
       metaTitle,
       description,
       metaDescription,
@@ -46,8 +44,9 @@ function Service(props) {
     ],
     ...BASE_SEO,
   };
+	const  {total_items,total_pages} = pagination;
   const [activepageNumber, setactivepageNumber] = useState(1);
-  const [numberOfPages, setNumberOfPages] = useState(Math.ceil(total / pageSize));
+  const [numberOfPages, setNumberOfPages] = useState(total_pages);
   const [filterType, setfilterType] = useState("");
   const [filterText, setfilterText] = useState("");
   function changeNumberOfPages(totalRecords, pageSize) {
@@ -73,7 +72,7 @@ function Service(props) {
         ></PostTitle>
         <PostFilters changeFilterText={changeTextFilter} changeFilterType={changeFilterType}></PostFilters>
         <Blog
-          intialBlogs={results}
+          intialBlogs={items}
           changeNumberOfPages={changeNumberOfPages}
           activePageNumber={activepageNumber}
           filterText={filterText}
@@ -92,7 +91,7 @@ function Service(props) {
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
-  const responseData = await BlogService.getAllMockBlogs(process.env.POST_PAGE_SIZE, 1, "", "");
+  const responseData = await BlogService.getAllBlogs(process.env.POST_PAGE_SIZE, 1, "", "");
   return { props: { data: { ...responseData.data, ...ABOUT }, pathname: resolvedUrl } };
 }
 

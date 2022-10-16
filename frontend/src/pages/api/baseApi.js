@@ -1,11 +1,14 @@
 import axios from "axios";
-axios.defaults.baseURL = process.env.BASE_URL;
+const api = axios.create({
+  baseURL: 'http://localhost:8000/api/v1',
+});
 const API = {
-  getAllResources: (resource, queryParams) => {
-    return axios.get(`${resource}?${queryParams}`);
+  getAllResources: (resource, queryParams = '') => {
+	console.log(process.env.BASE_API_URL)
+    return api.get(`${resource}/?${queryParams}`);
   },
   getResourceById: (resource, resourceId, token) => {
-    return axios.get(`${resource}/${resourceId}`, {
+    return api.get(`${resource}/${resourceId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

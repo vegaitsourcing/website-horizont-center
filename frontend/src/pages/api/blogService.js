@@ -4,8 +4,8 @@ const BASE_RESOURCE_NAME = "blogs";
 const BlogService = {
   getAllBlogs: (pageSize, pageNumber, filterText, filterType) => {
     return API.getAllResources(
-      BASE_RESOURCE_NAME,
-      `pageSize=${pageSize}&pageNumber=${pageNumber}&fiterText=${filterText}&filterType=${filterType}`
+      BASE_RESOURCE_NAME
+      // `ipp=${pageSize}&page=${pageNumber}&content=${filterText}&filterType=${filterType}`
     );
   },
   getBlogById: (blogId) => {

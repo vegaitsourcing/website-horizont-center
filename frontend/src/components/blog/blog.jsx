@@ -6,13 +6,13 @@ import { Input, Card, CardPagination } from "shared-components";
 import BlogService from "pages/api/blogService";
 
 export const Blog = ({ intialBlogs, pathname, activePageNumber, filterText, filterType, changeNumberOfPages }) => {
-  const [blogs, setblogs] = useState(intialBlogs);
+  const [blogs, setblogs] = useState([]);
   function fetchData() {
-    BlogService.getAllMockBlogs(3, activePageNumber, filterText, filterType).then(({ data }) => {
-      const { results, total, pageSize } = data;
-      console.log("data", data);
-      setblogs([...results]);
-      changeNumberOfPages(total, pageSize);
+    BlogService.getAllBlogs(3, activePageNumber, filterText, filterType).then(({ data }) => {
+      const { items, pagination } = data;
+			const {total_items} = pagination
+      setblogs([...items]);
+      changeNumberOfPages(total_items, 3);
     });
   }
   useEffect(() => fetchData(), [activePageNumber, filterType, filterText]);
