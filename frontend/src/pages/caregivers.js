@@ -7,7 +7,7 @@ import CaregiversList from "components/caregivers/caregiversList";
 import { useState } from "react";
 import { CardPagination } from "shared-components";
 import ProfileFilters from "shared-components/profile-filters/profile-filters";
-import ABOUT from "config/data/ABOUT";
+import ABOUT from "config/data/about";
 function About(props) {
   const {
     pathname,
