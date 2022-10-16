@@ -16,11 +16,19 @@
     @include respond-to (tablet) {
         padding: 24px !important;
 
-        
-        .p1 {max-width: 30%;}
 
         .footer__body {
-            gap: 60px;
+            flex-direction: column;
+            gap: 20px;
+
+            .contact-list {
+                width: 100%;
+                gap: 10px;
+            }
+        }
+
+        .social-links {
+            margin-block: 34px;
         }
     }
 
