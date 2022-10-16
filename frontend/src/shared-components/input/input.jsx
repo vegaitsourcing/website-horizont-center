@@ -4,7 +4,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass, faChevronDown, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 import styles from "./input.module.scss";
 
-export const Input = ({ id, name, type, placeholder, hasError, options, required, valueChangedHandler }) => {
+export const Input = ({
+  id,
+  name,
+  type,
+  placeholder,
+  hasError,
+  options,
+  inputValue,
+  required,
+  valueChangedHandler,
+}) => {
   if (type == "dropdown")
     return (
       <div className={styles.inputWrapper}>
@@ -16,7 +26,11 @@ export const Input = ({ id, name, type, placeholder, hasError, options, required
         >
           {placeholder != null ? <option value="">{placeholder}</option> : null}
           {options.map((option) => {
-            return <option value={option}>{option}</option>;
+            return (
+              <option value={option} selected={option === inputValue}>
+                {option}
+              </option>
+            );
           })}
         </select>
         <FontAwesomeIcon icon={faChevronDown} className={styles.icon} />

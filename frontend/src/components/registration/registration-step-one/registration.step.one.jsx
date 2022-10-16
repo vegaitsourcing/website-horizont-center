@@ -3,20 +3,13 @@ import { useState, useEffect } from "react";
 import styles from "./registration.step.one.module.scss";
 import { Input } from "shared-components";
 
-export const RegistrationStepOne = () => {
-  const [userType, setUserType] = useState("");
-
-  // function setUserTypeFunction(e) {
-  //   console.log("new user type");
-  //   console.log(e);
-  // }
+export const RegistrationStepOne = ({ stepNumber, valueChangedHandler }) => {
+  const [formStep1Data, setFormStep1Data] = useState();
 
   useEffect(() => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
-    console.log(registrationForm);
-    registrationForm.push({ userType: userType });
-    localStorage.setItem("registrationForm", JSON.stringify(registrationForm));
-  }, [userType]);
+    setFormStep1Data(registrationForm?.formStep1);
+  }, [stepNumber]);
 
   return (
     <div className={styles.registerAccount}>
@@ -32,7 +25,8 @@ export const RegistrationStepOne = () => {
           placeholder="Tip profila*"
           hasError={false}
           options={["Negovatelj", "Negovani"]}
-          valueChangedHandler={(e) => setUserType(e)}
+          inputValue={formStep1Data?.data?.profileType}
+          valueChangedHandler={(e) => valueChangedHandler(e)}
         />
       </div>
     </div>
