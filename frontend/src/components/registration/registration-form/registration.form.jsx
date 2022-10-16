@@ -9,10 +9,36 @@ import styles from "./registration.form.module.scss";
 
 export const RegistrationForm = ({}) => {
   const [stepNumber, setStepNumber] = useState(1);
+  const [regForm, setRegistrationForm] = useState({
+    stepNumber: stepNumber,
+    formStep1: { data: {}, isCompleted: false },
+    formStep2: { data: {}, isCompleted: false },
+    formStep3: { data: {}, isCompleted: false },
+  });
 
   useEffect(() => {
-    console.log("Step number", stepNumber);
-  }, [stepNumber]);
+    const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
+    if (registrationForm !== null) {
+      return;
+    }
+    localStorage.setItem("registrationForm", JSON.stringify(regForm));
+    setRegistrationForm(registrationForm);
+  }, []);
+
+  const handleRegistrationChange = (newData, form, itemType) => {
+    const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
+    if (form === "formStep1" && newData) {
+      console.log("set new form 1");
+      registrationForm.formStep1 = { data: { profileType: newData }, isCompleted: true };
+      localStorage.setItem("registrationForm", JSON.stringify(registrationForm));
+    }
+    if (form === "formStep2") {
+      console.log("set new form 2");
+      const historyData = registrationForm.formStep2?.data;
+      registrationForm.formStep2 = { data: { ...historyData, [itemType]: newData }, isCompleted: true };
+      localStorage.setItem("registrationForm", JSON.stringify(registrationForm));
+    }
+  };
 
   const switchToStep = (direction) => {
     direction === "next"
@@ -25,20 +51,29 @@ export const RegistrationForm = ({}) => {
   };
 
   const renderStep = () => {
-    console.log("render step");
-    console.log(stepNumber);
     if (stepNumber === 1) {
-      return <RegistrationStepOne />;
+      return (
+        <RegistrationStepOne
+          stepNumber={stepNumber}
+          valueChangedHandler={(e) => handleRegistrationChange(e, "formStep1")}
+        />
+      );
     }
     if (stepNumber === 2) {
-      return <RegistrationStepTwo userType={"caregiver"} />;
+      return (
+        <RegistrationStepTwo
+          stepNumber={stepNumber}
+          valueChangedHandler={(e, itemType) => handleRegistrationChange(e, "formStep2", itemType)}
+        />
+      );
     }
-    return <ImageUpload />;
+    return (
+      <ImageUpload stepNumber={stepNumber} valueChangedHandler={(e) => handleRegistrationChange(e, "formStep3")} />
+    );
   };
 
   return (
     <div className={styles.createAccount}>
-      {console.log("render")}
       <div className={styles.createAccountHeader}>
         <h4 className={styles.h4}>Napravi profil</h4>
       </div>
