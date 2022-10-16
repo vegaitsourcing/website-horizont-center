@@ -1,39 +1,8 @@
 @import '../../styles/main.scss';
 
-.h1 {
-    margin: 0;
-    margin-bottom: 84px;
-}
-
-.h2,
-.h4 {
-    margin-top: 0;
-}
-
 .singleBlogContainer {
     width: 1244px;
     margin-inline: auto;
-}
-
-.singleBlogMain {
-    padding-block: 587px 0;
-
-    .h2 {
-        font-weight: 600;
-        margin-top: 96px;
-    }
-
-    article:nth-child(1) .h2{
-        margin-top: 0;
-    }
-
-    .p1 {
-        font-weight: 300;
-    }
-
-    img {
-        margin-top: 96px;
-    }
 }
 
 .aboutDetails {

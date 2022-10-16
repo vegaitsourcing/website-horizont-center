@@ -5,3 +5,4 @@ export * from "shared-components/card/card";
 export * from "shared-components/card-pagination/card.pagination";
 export * from "shared-components/image-upload-section/image.upload";
 export * from "shared-components/section-header/section.header";
+export * from "shared-components/blog-articles/blog.articles";
