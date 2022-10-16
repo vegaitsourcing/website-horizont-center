@@ -60,38 +60,38 @@ export const CaregiverForm = ({ stepNumber, valueChangedHandler }) => {
         <label>Iskustvo i stručna sprema</label>
         <div className={styles.formGrid}>
           <Input
-            id="prijavaRad"
-            name="prijavaRad"
+            id="work_application"
+            name="work_application"
             type="dropdown"
             options={["prijava-rad"]}
             placeholder="Prijava za rad*"
-            value={""}
-            valueChangedHandler={(e) => valueChangedHandler(e)}
+            inputValue={formData?.data?.["work_application"]}
+            valueChangedHandler={(e) => valueChangedHandler(e, "work_application")}
           />
           <Input
-            id="iskustvo"
-            name="iskustvo"
+            id="experience"
+            name="experience"
             type="text"
             placeholder="Iskustvo*"
-            value={""}
-            valueChangedHandler={(e) => valueChangedHandler(e)}
+            inputValue={formData?.data?.["experience"]}
+            valueChangedHandler={(e) => valueChangedHandler(e, "experience")}
           />
           <Input
-            id="dostupnost"
-            name="dostupnost"
+            id="weekly_days"
+            name="weekly_days"
             type="dropdown"
-            options={["sad", "posle"]}
+            options={["1", "2", "3", "4", "5", "6", "7"]}
             placeholder="Dostupnost*"
-            value={""}
-            valueChangedHandler={(e) => valueChangedHandler(e)}
+            inputValue={formData?.data?.["weekly_days"]}
+            valueChangedHandler={(e) => valueChangedHandler(e, "weekly_days")}
           />
           <Input
-            id="satiDnevno"
-            name="satiDnevno"
+            id="daily_hours"
+            name="daily_hours"
             type="text"
             placeholder="Koliko sati dnevno*"
-            value={""}
-            valueChangedHandler={(e) => valueChangedHandler(e)}
+            inputValue={formData?.data?.["daily_hours"]}
+            valueChangedHandler={(e) => valueChangedHandler(e, "daily_hours")}
           />
         </div>
       </div>
