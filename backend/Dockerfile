@@ -12,10 +12,9 @@ WORKDIR /app/src
 
 USER app
 
-COPY ./scripts          /app/scripts
-COPY ./requirements     /app/requirements
-COPY ./src              /app/src
-
+COPY ./scripts /app/scripts/
+COPY ./requirements /app/requirements
+COPY ./src /app/src/
 
 RUN pip install --upgrade pip
 RUN pip install -r /app/requirements/development.txt
