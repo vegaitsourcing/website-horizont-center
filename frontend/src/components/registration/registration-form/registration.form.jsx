@@ -11,7 +11,8 @@ export const RegistrationForm = ({}) => {
   const [stepNumber, setStepNumber] = useState(1);
 
   useEffect(() => {
-    console.log("Step number", stepNumber);
+    // const registrationForm = localStorage.getItem("registrationForm");
+    localStorage.setItem("registrationForm", JSON.stringify([{ stepNumber: stepNumber }]));
   }, [stepNumber]);
 
   const switchToStep = (direction) => {
@@ -25,8 +26,6 @@ export const RegistrationForm = ({}) => {
   };
 
   const renderStep = () => {
-    console.log("render step");
-    console.log(stepNumber);
     if (stepNumber === 1) {
       return <RegistrationStepOne />;
     }
@@ -38,7 +37,6 @@ export const RegistrationForm = ({}) => {
 
   return (
     <div className={styles.createAccount}>
-      {console.log("render")}
       <div className={styles.createAccountHeader}>
         <h4 className={styles.h4}>Napravi profil</h4>
       </div>
