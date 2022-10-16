@@ -40,8 +40,6 @@ function Contact(props) {
           valutaValue="RSD"
           iznosValue="2000"
           racunaPrimaocaValue="912837928379123871923"
-          modelValue="nesto"
-          pozivNaBrojValue="nesto"
         />
       </LayoutDefault>
     </>

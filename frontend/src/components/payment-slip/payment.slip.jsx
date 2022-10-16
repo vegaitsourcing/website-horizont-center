@@ -17,8 +17,8 @@ export const PaymentSlip = ({
 }) => {
   const [pdfBytes, setpdfBytes] = useState("");
 
-  console.log("uplatilac", uplatilacValue);
-  console.log("uplatilac", racunaPrimaocaValue);
+  if (modelValue == null) modelValue = "";
+  if (pozivNaBrojValue == null) pozivNaBrojValue = "";
 
   function addDataToPdf(pdf) {
     const form = pdf.getForm();
