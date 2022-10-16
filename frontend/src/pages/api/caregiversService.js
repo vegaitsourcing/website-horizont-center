@@ -1,6 +1,16 @@
-import ABOUT from "config/data/about";
+import API from "./baseApi";
+const BASE_RESOURCE_NAME = "caregivers";
 const caregiversService = {
   getAllCaregivers: (pageSize, pageNumber, textFilter, genderFilter, cityFilter) => {
+    return API.getAllResources(
+      BASE_RESOURCE_NAME,
+      `pageSize=${pageSize}&pageNumber=${pageNumber}&fiterText=${textFilter}&filterGender=${genderFilter}&filterCity=${cityFilter}`
+    );
+  },
+  getCaregiverById: (beneficiaryId) => {
+    return API.getResourceById(BASE_RESOURCE_NAME, beneficiaryId, localStorage.getItem("token"));
+  },
+  /* getAllCaregivers: (pageSize, pageNumber, textFilter, genderFilter, cityFilter) => {
     return new Promise((resolve, reject) => {
       var filteredData = mockData.results.filter(
         ({ city, work_application, gender }) =>
@@ -14,10 +24,10 @@ const caregiversService = {
       };
       resolve({ ...responseData, ...ABOUT });
     });
-  },
+  },*/
 };
 
-var mockData = {
+/*var mockData = {
   results: [
     {
       id: "1",
@@ -84,5 +94,5 @@ var mockData = {
   pageSize: 20,
   total: 200,
 };
-
+*/
 export default caregiversService;

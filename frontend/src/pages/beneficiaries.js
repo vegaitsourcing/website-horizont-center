@@ -7,6 +7,7 @@ import BeneficiariesList from "components/beneficiaries/beneficiariesList";
 import { useState } from "react";
 import ProfileFilters from "shared-components/profile-filters/profile-filters";
 import { CardPagination } from "shared-components";
+import ABOUT from "config/data/ABOUT";
 
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
@@ -93,7 +94,7 @@ function GettingStarted(props) {
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
   const responseData = await beneficiariesService.getAllBeneficiaries(process.env.PROFILE_PAGE_SIZE, 1);
-  return { props: { data: responseData, pathname: resolvedUrl } };
+  return { props: { data: { ...responseData.data, ...ABOUT }, pathname: resolvedUrl } };
 }
 
 export default GettingStarted;
