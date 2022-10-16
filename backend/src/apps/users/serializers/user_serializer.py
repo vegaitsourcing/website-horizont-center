@@ -3,11 +3,11 @@ from apps.users.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
-    profile: serializers.ModelSerializer = None
 
     class Meta:
         model = User
         fields = (
-            'id', 'email', 'first_name', 'last_name', 'phone_number',
-            'second_phone_number', 'profile',
+            'id', 'password', 'last_login', 'is_superuser',
+            'is_staff', 'is_active', 'date_joined', 'created', 'modified',
+            'email', 'first_name', 'last_name', 'phone_number', 'second_phone_number',
         )
