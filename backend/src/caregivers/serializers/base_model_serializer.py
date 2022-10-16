@@ -2,8 +2,6 @@ from rest_framework import serializers
 
 
 class BaseModelSerializer(serializers.ModelSerializer):
-    class Meta:
-        image_fields = ()
 
     def __init__(self, *args, request, **kwargs):
         super(BaseModelSerializer, self).__init__(*args, **kwargs)
@@ -11,6 +9,11 @@ class BaseModelSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         data = super(BaseModelSerializer, self).to_representation(instance)
-        for image_field in self.Meta.image_fields:
-            data[image_field] = self.request.build_absolute_uri(data[image_field])
+        for image_field_name in self.get_image_field_names():
+            if not data[image_field_name]:
+                continue
+            data[image_field_name] = self.request.build_absolute_uri(data[image_field_name])
         return data
+
+    def get_image_field_names(self) -> tuple:
+        return tuple()

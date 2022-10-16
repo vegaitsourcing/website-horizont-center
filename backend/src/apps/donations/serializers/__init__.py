@@ -1,2 +1,3 @@
+from apps.donations.serializers.donation_company_serializer import DonationCompanySerializer
 from apps.donations.serializers.donation_serializer import DonationSerializer
 from apps.donations.serializers.financial_info_serializer import FinancialInfoSerializer

@@ -40,4 +40,5 @@ class DonationCompany(BaseModel):
         to='donations.Donation',
         verbose_name=_('donation'),
         on_delete=models.CASCADE,
+        related_name='company',
     )

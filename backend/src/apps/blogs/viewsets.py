@@ -10,8 +10,3 @@ class BlogViewSet(ViewSet):
     serializer_class = BlogSerializer
     filter_backends = (filters.DjangoFilterBackend,)
     filterset_class = BlogFilter
-
-    def get_serializer_kwargs(self) -> dict:
-        return {
-            'request': self.request,
-        }
