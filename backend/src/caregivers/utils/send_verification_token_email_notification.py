@@ -1,4 +1,3 @@
-import os
 from django.template.loader import get_template
 from django.utils.html import strip_tags
 from caregivers.utils.email_notification import EmailNotification
