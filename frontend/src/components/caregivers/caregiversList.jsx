@@ -14,8 +14,9 @@ function CaregiversList({
   const [caregivers, setcaregivers] = useState(intialCaregivers);
   function fetchData() {
     caregiversService
-      .getAllCaregivers(3, activepageNumber, textFilter, genderFilter, cityFilter)
-      .then(({ results, pageSize, total }) => {
+      .getAllMockCaregivers(3, activepageNumber, textFilter, genderFilter, cityFilter)
+      .then(({ data }) => {
+        const { results, total, pageSize } = data;
         setcaregivers([...results]);
         changeNumberOfPages(total, pageSize);
       });

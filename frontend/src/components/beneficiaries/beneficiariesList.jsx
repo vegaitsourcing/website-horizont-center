@@ -14,8 +14,9 @@ function BeneficiariesList({
   const [beneficiaries, setbeneficiaries] = useState(intialBeneficiaries);
   function fetchData() {
     beneficiariesService
-      .getAllBeneficiaries(3, activePageNumber, textFilter, genderFilter, cityFilter)
-      .then(({ results, total, pageSize }) => {
+      .getAllMockBeneficiaries(3, activePageNumber, textFilter, genderFilter, cityFilter)
+      .then(({ data }) => {
+        const { results, total, pageSize } = data;
         setbeneficiaries([...results]);
         changeNumberOfPages(total, pageSize);
       });

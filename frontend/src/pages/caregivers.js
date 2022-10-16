@@ -92,7 +92,7 @@ function About(props) {
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
-  var responseData = await caregiversService.getAllCaregivers(process.env.PROFILE_PAGE_SIZE, 1, "", "", "");
+  var responseData = await caregiversService.getAllMockCaregivers(process.env.PROFILE_PAGE_SIZE, 1, "", "", "");
   return { props: { data: { ...responseData.data, ...ABOUT }, pathname: resolvedUrl } };
 }
 

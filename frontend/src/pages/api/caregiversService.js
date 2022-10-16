@@ -1,3 +1,4 @@
+import about from "config/data/about";
 import API from "./baseApi";
 const BASE_RESOURCE_NAME = "caregivers";
 const caregiversService = {
@@ -10,7 +11,7 @@ const caregiversService = {
   getCaregiverById: (beneficiaryId) => {
     return API.getResourceById(BASE_RESOURCE_NAME, beneficiaryId, localStorage.getItem("token"));
   },
-  /* getAllCaregivers: (pageSize, pageNumber, textFilter, genderFilter, cityFilter) => {
+  getAllMockCaregivers: (pageSize, pageNumber, textFilter, genderFilter, cityFilter) => {
     return new Promise((resolve, reject) => {
       var filteredData = mockData.results.filter(
         ({ city, work_application, gender }) =>
@@ -22,12 +23,12 @@ const caregiversService = {
         pageSize: pageSize,
         total: filteredData.length,
       };
-      resolve({ ...responseData, ...ABOUT });
+      resolve({ data: { ...responseData, ...about } });
     });
-  },*/
+  },
 };
 
-/*var mockData = {
+var mockData = {
   results: [
     {
       id: "1",
@@ -94,5 +95,5 @@ const caregiversService = {
   pageSize: 20,
   total: 200,
 };
-*/
+
 export default caregiversService;

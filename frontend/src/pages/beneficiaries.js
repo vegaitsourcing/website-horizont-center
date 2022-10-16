@@ -93,7 +93,7 @@ function GettingStarted(props) {
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
-  const responseData = await beneficiariesService.getAllBeneficiaries(process.env.PROFILE_PAGE_SIZE, 1);
+  const responseData = await beneficiariesService.getAllMockBeneficiaries(process.env.PROFILE_PAGE_SIZE, 1, "", "", "");
   return { props: { data: { ...responseData.data, ...ABOUT }, pathname: resolvedUrl } };
 }
 

@@ -1,19 +1,36 @@
 import { LayoutDefault } from "layouts";
 
+import ABOUT from "config/data/about";
 import { NextSeo } from "next-seo";
 
-import { Input } from "shared-components";
+import { CardPagination, Input } from "shared-components";
 
 import ENV from "config/env";
 
 import { Blog } from "components";
+import BlogService from "./api/blogService";
+import { useState } from "react";
+import PostFilters from "shared-components/post-filters/post-filters";
+import PostTitle from "shared-components/post-title/post-title";
 
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
 function Service(props) {
   const {
     pathname,
-    data: { title, metaTitle, description, metaDescription, slug, services, block_top = {} },
+    data: {
+      title,
+      results,
+      pageNumber,
+      pageSize,
+      total,
+      metaTitle,
+      description,
+      metaDescription,
+      slug,
+      services,
+      block_top = {},
+    },
   } = props;
 
   const SEOS = {
@@ -29,12 +46,45 @@ function Service(props) {
     ],
     ...BASE_SEO,
   };
-
+  const [activepageNumber, setactivepageNumber] = useState(1);
+  const [numberOfPages, setNumberOfPages] = useState(Math.ceil(total / pageSize));
+  const [filterType, setfilterType] = useState("");
+  const [filterText, setfilterText] = useState("");
+  function changeNumberOfPages(totalRecords, pageSize) {
+    setNumberOfPages(Math.ceil(totalRecords / pageSize));
+  }
+  let searchTimeout;
+  function changeFilterType(type) {
+    setfilterType(type);
+  }
+  function changeTextFilter(text) {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => setfilterText(text), 500);
+  }
   return (
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
-        <Blog />
+        <PostTitle
+          title={"Podrška"}
+          text={
+            "Felis lectus tortor massa a eget viverra integer faucibus adipiscing. Faucibus nunc, auctor arcu magna cursus "
+          }
+        ></PostTitle>
+        <PostFilters changeFilterText={changeTextFilter} changeFilterType={changeFilterType}></PostFilters>
+        <Blog
+          intialBlogs={results}
+          changeNumberOfPages={changeNumberOfPages}
+          activePageNumber={activepageNumber}
+          filterText={filterText}
+          filterType={filterType}
+          pathname={pathname}
+        />
+        <CardPagination
+          changePage={setactivepageNumber}
+          numberOfPages={numberOfPages}
+          pageNum={activepageNumber}
+        ></CardPagination>
       </LayoutDefault>
     </>
   );
@@ -42,9 +92,8 @@ function Service(props) {
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
-  const res = await fetch(`${BASE_API_URL}/api/service`);
-  const json = await res.json();
-  return { props: { data: json, pathname: resolvedUrl } };
+  const responseData = await BlogService.getAllMockBlogs(process.env.POST_PAGE_SIZE, 1, "", "");
+  return { props: { data: { ...responseData.data, ...ABOUT }, pathname: resolvedUrl } };
 }
 
 export default Service;
