@@ -7,7 +7,7 @@ from django.core import signing
 def send_verification_email(user: User) -> None:
     url_hash = generate_url_hash_from_email(user.email)
     send_verification_token_email_notification = SendVerificationTokenEmailNotification(url_hash, user.email)
-    send_verification_token_email_notification.try_to_send_email()
+    send_verification_token_email_notification.start()
 
 
 def create_caregiver_user(caregiver_serializer: CaregiverUserSerializer) -> User:
