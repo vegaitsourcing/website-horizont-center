@@ -32,7 +32,7 @@ function Contact(props) {
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
-        <PaymentSlip
+        {/* <PaymentSlip
           linkText="Pregled uplatnice"
           uplatilacValue="Mirko"
           svrhaUplateValue="testiranje"
@@ -41,7 +41,7 @@ function Contact(props) {
           valutaValue="RSD"
           iznosValue="2000"
           racunaPrimaocaValue="912837928379123871923"
-        />
+        /> */}
       </LayoutDefault>
     </>
   );
