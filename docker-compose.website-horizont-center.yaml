@@ -17,7 +17,7 @@ services:
       - EMAIL_HOST_USER=#{EMAIL_HOST_USER}#
       - EMAIL_HOST_PASSWORD=#{EMAIL_HOST_PASSWORD}#
     ports:
-      - "48500:8000"
+      - "48501:8000"
     depends_on:
       - postgres
 
