@@ -7,7 +7,8 @@ from apps.users.utils import get_email_from_hash
 
 class CompleteRegistrationAPIView(APIView):
 
-    def get(self, request, url_hash: str) -> JsonResponse:
+    @staticmethod
+    def get(request, url_hash: str) -> JsonResponse:
         email = get_email_from_hash(url_hash)
         user = get_object_or_404(User, email=email)
         user.is_active = True

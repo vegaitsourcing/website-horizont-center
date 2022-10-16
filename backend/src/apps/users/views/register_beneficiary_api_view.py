@@ -9,7 +9,7 @@ class RegisterBeneficiaryAPIView(APIView):
 
     @staticmethod
     def post(request, **kwargs) -> JsonResponse:
-        serializer = BeneficiaryProfileSerializer(data=request.data)
+        serializer = BeneficiaryProfileSerializer(data=request.data, request=request)
         if serializer.is_valid():
             user = create_beneficiary_user(serializer)
             send_verification_email(user)

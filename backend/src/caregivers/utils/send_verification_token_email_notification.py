@@ -1,7 +1,7 @@
+from django.conf import settings
 from django.template.loader import get_template
 from django.utils.html import strip_tags
 from caregivers.utils.email_notification import EmailNotification
-from django.conf import settings
 
 
 class SendVerificationTokenEmailNotification(EmailNotification):
@@ -10,7 +10,7 @@ class SendVerificationTokenEmailNotification(EmailNotification):
 
         context = {
             'website_url': settings.FE_APP_ORIGIN,
-            'verification_url': f'{settings.FE_APP_ORIGIN}/api/v1/register/{token}',
+            'verification_url': f'http://{settings.ALLOWED_HOST}:{settings.DJANGO_PORT}/api/v1/register/{token}',
             'logo_url': f'{settings.ALLOWED_HOST}/static/logo.png'
         }
         html_template = template.render(context)

@@ -9,7 +9,7 @@ class RegisterCaregiverAPIView(APIView):
 
     @staticmethod
     def post(request, **kwargs) -> JsonResponse:
-        serializer = CaregiverProfileSerializer(data=request.data)
+        serializer = CaregiverProfileSerializer(data=request.data, request=request)
         if serializer.is_valid():
             user = create_caregiver_user(serializer)
             send_verification_email(user)
