@@ -22,12 +22,13 @@ export const Input = ({
           onChange={(e) => valueChangedHandler && valueChangedHandler(e.currentTarget.value)}
           name={name}
           id={id}
+          value={inputValue}
           className={styles.input + " " + styles.dropdown + " " + (hasError ? styles.hasError : null)}
         >
           {placeholder != null ? <option value="">{placeholder}</option> : null}
-          {options.map((option) => {
+          {options.map((option, index) => {
             return (
-              <option value={option} selected={option === inputValue}>
+              <option key={index} value={option}>
                 {option}
               </option>
             );

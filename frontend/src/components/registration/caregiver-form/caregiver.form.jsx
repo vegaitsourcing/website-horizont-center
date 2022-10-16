@@ -43,6 +43,7 @@ export const CaregiverForm = ({ stepNumber, valueChangedHandler }) => {
           {generalInformations.map((input) => {
             return (
               <Input
+                key={input.id}
                 id={input.id}
                 type={input.type}
                 options={input.options}
