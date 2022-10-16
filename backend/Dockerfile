@@ -22,3 +22,4 @@ RUN pip install -r /app/requirements/development.txt
 WORKDIR /app/src
 
 EXPOSE 8000
+ENTRYPOINT [ "sh", "/app/scripts/entrypoint.sh" ]
