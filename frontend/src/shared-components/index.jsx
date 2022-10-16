@@ -8,3 +8,4 @@ export * from "shared-components/section-header/section.header";
 export * from "shared-components/blog-articles/blog.articles";
 export * from "shared-components/about-details/about.details";
 export * from "shared-components/container/container";
+export * from "shared-components/donation-info/donation.info";

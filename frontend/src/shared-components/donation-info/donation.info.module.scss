@@ -1,0 +1,75 @@
+@import '../../styles/main.scss';
+
+.donationBox {
+    margin-top: 578px;
+
+    a {
+        @extend .p1;
+        color: $blue-color;
+    }
+}
+
+.h2, .h4 {
+    font-weight: 600;
+}
+
+.donationFlex {
+    display: flex;
+    gap: 64px;
+}
+
+.categoryList {
+    margin-inline: auto;
+    padding: 0;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 38px;
+    margin-bottom: 14px;
+}
+
+.category {
+    @extend .p1;
+
+   color: $blue-color;
+   background-color: hsl(212, 100%, 87%); 
+   padding: 4px 12px;
+   border-radius: 10px;
+   width: fit-content;
+   font-weight: 600;
+}
+
+.donationGeneralDescription {
+    width: 60%;
+
+    .p1:not(.category){
+        font-weight: 300;
+    }
+}
+
+.infoList {
+    padding: 0;
+    list-style-type: none;
+
+    span {
+        @extend .p1;
+    }
+
+    p {
+        @extend .p1;
+        font-weight: 300;
+    }
+
+    li + li {
+        margin-top: 16px;
+    }
+}
+
+.donationBox a, .infoList {
+    margin-top: 36px;
+}
+
+.infoList .infoValue {
+    font-weight: 300;
+}

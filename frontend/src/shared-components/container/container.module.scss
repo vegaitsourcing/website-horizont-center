@@ -1,6 +1,6 @@
 @import '../../styles/main.scss';
 
-.singleBlogContainer {
+.singleBlogContainer, .singleDonationContainer {
     width: min(1244px, 90%);
     margin-inline: auto;
 }
