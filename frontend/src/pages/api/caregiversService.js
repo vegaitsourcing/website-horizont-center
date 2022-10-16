@@ -5,7 +5,7 @@ const caregiversService = {
   getAllCaregivers: (pageSize, pageNumber, textFilter, genderFilter, cityFilter) => {
     return API.getAllResources(
       BASE_RESOURCE_NAME,
-      `pageSize=${pageSize}&pageNumber=${pageNumber}&fiterText=${textFilter}&filterGender=${genderFilter}&filterCity=${cityFilter}`
+      `ipp=${pageSize}&page=${pageNumber}&content=${textFilter}&filterGender=${genderFilter}&filterCity=${cityFilter}`
     );
   },
   getCaregiverById: (beneficiaryId) => {
@@ -18,10 +18,11 @@ const caregiversService = {
           gender.includes(genderFilter) && city.includes(cityFilter) && work_application.includes(textFilter)
       );
       var responseData = {
-        results: filteredData.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
-        pageNumber: pageNumber,
-        pageSize: pageSize,
-        total: filteredData.length,
+        items: filteredData.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
+        pagination: {
+          total_pages: 2,
+          total_items: filteredData.length,
+        },
       };
       resolve({ data: { ...responseData, ...about } });
     });

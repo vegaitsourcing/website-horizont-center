@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { ProfileListItem } from "shared-components/profile-list-item/profile-list-item";
 
 function BeneficiariesList({
+  pageSize,
   intialBeneficiaries,
   pathname,
   activePageNumber,
@@ -14,11 +15,12 @@ function BeneficiariesList({
   const [beneficiaries, setbeneficiaries] = useState(intialBeneficiaries);
   function fetchData() {
     beneficiariesService
-      .getAllMockBeneficiaries(3, activePageNumber, textFilter, genderFilter, cityFilter)
+      .getAllMockBeneficiaries(pageSize, activePageNumber, textFilter, genderFilter, cityFilter)
       .then(({ data }) => {
-        const { results, total, pageSize } = data;
-        setbeneficiaries([...results]);
-        changeNumberOfPages(total, pageSize);
+        const { items, pagination } = data;
+        const { total_pages, total_items } = pagination;
+        setbeneficiaries([...items]);
+        changeNumberOfPages(total_items, pageSize);
       });
   }
   useEffect(() => fetchData(), [activePageNumber, textFilter, genderFilter, cityFilter]);

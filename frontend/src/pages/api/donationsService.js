@@ -79,5 +79,9 @@ var mockData = {
       is_active: true,
     },
   ],
+  pagination: {
+    total_items: 5,
+    total_pages: 2,
+  },
 };
 export default DonationService;

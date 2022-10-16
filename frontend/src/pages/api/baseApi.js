@@ -1,10 +1,10 @@
 import axios from "axios";
 const api = axios.create({
-  baseURL: 'http://localhost:8000/api/v1',
+  baseURL: process.env.API_URL,
 });
 const API = {
-  getAllResources: (resource, queryParams = '') => {
-	console.log(process.env.BASE_API_URL)
+  getAllResources: (resource, queryParams = "") => {
+    console.log(process.env.API_URL);
     return api.get(`${resource}/?${queryParams}`);
   },
   getResourceById: (resource, resourceId, token) => {

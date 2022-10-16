@@ -5,18 +5,25 @@ import styles from "./blog.module.scss";
 import { Input, Card, CardPagination } from "shared-components";
 import BlogService from "pages/api/blogService";
 
-export const Blog = ({ intialBlogs, pathname, activePageNumber, filterText, filterType, changeNumberOfPages }) => {
-  const [blogs, setblogs] = useState([]);
+export const Blog = ({
+  pageSize,
+  intialBlogs,
+  pathname,
+  activePageNumber,
+  filterText,
+  filterType,
+  changeNumberOfPages,
+}) => {
+  const [blogs, setblogs] = useState(intialBlogs);
   function fetchData() {
-    BlogService.getAllBlogs(3, activePageNumber, filterText, filterType).then(({ data }) => {
+    BlogService.getAllMockBlogs(pageSize, activePageNumber, filterText, filterType).then(({ data }) => {
       const { items, pagination } = data;
-			const {total_items} = pagination
+      const { total_items } = pagination;
       setblogs([...items]);
-      changeNumberOfPages(total_items, 3);
+      changeNumberOfPages(total_items, pageSize);
     });
   }
   useEffect(() => fetchData(), [activePageNumber, filterType, filterText]);
-
   return (
     <div className={styles.blogBody}>
       <ul className={styles.blogList}>

@@ -4,8 +4,8 @@ const BASE_RESOURCE_NAME = "blogs";
 const BlogService = {
   getAllBlogs: (pageSize, pageNumber, filterText, filterType) => {
     return API.getAllResources(
-      BASE_RESOURCE_NAME
-      // `ipp=${pageSize}&page=${pageNumber}&content=${filterText}&filterType=${filterType}`
+      BASE_RESOURCE_NAME,
+      `ipp=${pageSize}&page=${pageNumber}&content=${filterText}&filterType=${filterType}`
     );
   },
   getBlogById: (blogId) => {
@@ -17,10 +17,9 @@ const BlogService = {
         data[filterType ? filterType : "title"].includes(filterText)
       );
       var responseData = {
-        results: filteredData.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
-        pageNumber: pageNumber,
+        items: filteredData.slice((pageNumber - 1) * pageSize, pageNumber * pageSize),
         pageSize: pageSize,
-        total: filteredData.length,
+        pagination: { total_items: filteredData.length, total_pages: Math.ceil(filteredData.length / pageSize) },
       };
       resolve({ data: { ...responseData, ...ABOUT } });
     });
@@ -101,4 +100,8 @@ var mockData = {
         "The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.",
     },
   ],
+  pagination: {
+    total_pages: 2,
+    total_items: 5,
+  },
 };
