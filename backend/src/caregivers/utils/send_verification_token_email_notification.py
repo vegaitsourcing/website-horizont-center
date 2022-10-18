@@ -6,7 +6,7 @@ from caregivers.utils.email_notification import EmailNotification
 
 class SendVerificationTokenEmailNotification(EmailNotification):
     def __init__(self, token: str, email: str) -> None:
-        template = get_template('verify_email.html')
+        template = get_template('emails/identity_verification.html')
 
         context = {
             'website_url': settings.FE_APP_ORIGIN,

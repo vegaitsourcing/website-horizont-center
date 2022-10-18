@@ -11,7 +11,7 @@ api_url_patterns = [
     path(r'', include(router.urls)),
     path('register-caregiver/', views.RegisterCaregiverAPIView.as_view(), name='register_caregiver'),
     path('register-beneficiary/', views.RegisterBeneficiaryAPIView.as_view(), name='register_beneficiary'),
-    path('register/<str:url_hash>/', views.CompleteRegistrationAPIView.as_view(), name='complete_registration'),
+    path('complete-register/<str:hash>/', views.CompleteRegistrationAPIView.as_view(), name='complete_registration'),
     path('login/', views.LoginAPIView.as_view(), name='login'),
     path('logout/', views.LogoutAPIView.as_view(), name='logout'),
 ]
