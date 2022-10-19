@@ -1,10 +1,13 @@
-from caregivers.models import BaseModel
 from django.db import models
 from django.core.validators import MinLengthValidator
 from django.utils.translation import gettext_lazy as _
+from caregivers.models import BaseModel
 
 
 class AbstractProfile(BaseModel):
+    class Meta:
+        abstract = True
+
     class Gender(models.TextChoices):
         MALE = 'MALE', _('Male')
         FEMALE = 'FEMALE', _('Female')
@@ -38,3 +41,6 @@ class AbstractProfile(BaseModel):
         verbose_name=_('user'),
         on_delete=models.CASCADE,
     )
+
+    def __str__(self):
+        return f'{self._meta.verbose_name} ' + _('for') + f' {self.user}'

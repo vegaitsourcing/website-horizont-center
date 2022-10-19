@@ -5,8 +5,8 @@ from django.utils.translation import gettext_lazy as _
 
 class BeneficiaryProfile(AbstractProfile):
     class Meta:
-        verbose_name = _('Beneficiary profile')
-        verbose_name_plural = _('Beneficiary profiles')
+        verbose_name = _('Beneficiary Profile')
+        verbose_name_plural = _('Beneficiary Profiles')
 
     beneficiary_person = models.CharField(
         verbose_name=_('beneficiary person'),

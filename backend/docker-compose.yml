@@ -15,7 +15,7 @@ services:
       - postgres
     volumes:
       - ./scripts:/app/scripts/
-      - ./requirements:/app/requirements
+      - ./requirements:/app/requirements/
       - ./src:/app/src/
     entrypoint: [ "sh", "/app/scripts/entrypoint.sh" ]
 

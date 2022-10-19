@@ -5,8 +5,8 @@ from django.utils.translation import gettext_lazy as _
 
 class CaregiverProfile(AbstractProfile):
     class Meta:
-        verbose_name = _('Caregiver profile')
-        verbose_name_plural = _('Caregiver profiles')
+        verbose_name = _('Caregiver Profile')
+        verbose_name_plural = _('Caregiver Profiles')
 
     birthdate = models.DateField(
         verbose_name=_('birthdate')

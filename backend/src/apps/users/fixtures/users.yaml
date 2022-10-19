@@ -1,0 +1,118 @@
+# START User + CaregiverProfile fixtures #######################################################################
+
+- model: users.User
+  pk: 2 # start from ID 2 in case the superuser was created before fixtures were loaded
+  fields:
+    email: milos@example.com
+    password: pbkdf2_sha256$260000$2IjFBdqCkWpi0Hs7la0UFG$UOGWoe6P41gCTfCmmbWoS/slytH+vpy3pf6wguCR/d0= # raw: pass4user
+    first_name: Miloš
+    last_name: Roknić
+    phone_number: +1234567890
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: users.CaregiverProfile
+  pk: 1
+  fields:
+    user: 2
+    gender: MALE
+    postal_code: 21000
+    city: Novi Sad
+    description: Ovo je opis za profil negovanog. Opis bi trebalo da sadrži neke osnovne podatke o osobi čiji je profil.
+    birthdate: 1994-02-13
+    work_application: negovatelj
+    experience: 2 godine volontiranja
+    weekly_days: 2
+    daily_hours: 2.5
+    instagram_url: https://www.instagram.com/vega_it/
+    facebook_url: https://www.facebook.com/VegaITSourcing
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: users.User
+  pk: 3
+  fields:
+    email: nikola@example.com
+    password: pbkdf2_sha256$260000$2IjFBdqCkWpi0Hs7la0UFG$UOGWoe6P41gCTfCmmbWoS/slytH+vpy3pf6wguCR/d0= # raw: pass4user
+    first_name: Nikola
+    last_name: Nikolić
+    phone_number: +1234567890
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: users.CaregiverProfile
+  pk: 2
+  fields:
+    user: 3
+    gender: MALE
+    postal_code: 21000
+    city: Novi Sad
+    description: Ovo je opis za profil negovanog. Opis bi trebalo da sadrži neke osnovne podatke o osobi čiji je profil.
+    birthdate: 1990-02-13
+    work_application: negovatelj
+    experience: 3 godine volontiranja
+    weekly_days: 1
+    daily_hours: 2
+    instagram_url: https://www.instagram.com/vega_it/
+    facebook_url: https://www.facebook.com/VegaITSourcing
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+# END User + CaregiverProfile fixtures #######################################################################
+
+# START User + BeneficiaryProfile fixtures ###################################################################
+- model: users.User
+  pk: 4
+  fields:
+    email: mara@example.com
+    password: pbkdf2_sha256$260000$2IjFBdqCkWpi0Hs7la0UFG$UOGWoe6P41gCTfCmmbWoS/slytH+vpy3pf6wguCR/d0= # raw: pass4user
+    first_name: Mara
+    last_name: Marić
+    phone_number: +1234567890
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: users.BeneficiaryProfile
+  pk: 1
+  fields:
+    user: 4
+    gender: FEMALE
+    postal_code: 21000
+    city: Novi Sad
+    description: Ovo je opis za profil negovanog. Opis bi trebalo da sadrži neke osnovne podatke o osobi čiji je profil.
+    beneficiary_person: baka
+    helping_period: dva meseca
+    weekly_days: 5
+    daily_hours: 8
+    care_type: kućna nega
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: users.User
+  pk: 5
+  fields:
+    email: stoja@example.com
+    password: pbkdf2_sha256$260000$2IjFBdqCkWpi0Hs7la0UFG$UOGWoe6P41gCTfCmmbWoS/slytH+vpy3pf6wguCR/d0= # raw: pass4user
+    first_name: Stoja
+    last_name: Stojić
+    phone_number: +1234567890
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: users.BeneficiaryProfile
+  pk: 2
+  fields:
+    user: 5
+    gender: FEMALE
+    postal_code: 21000
+    city: Novi Sad
+    description: Ovo je opis za profil negovanog. Opis bi trebalo da sadrži neke osnovne podatke o osobi čiji je profil.
+    beneficiary_person: majka
+    helping_period: mesec dana
+    weekly_days: 6
+    daily_hours: 2
+    care_type: šetnja po prirodi
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+# END User + BeneficiaryProfile fixtures #####################################################################
