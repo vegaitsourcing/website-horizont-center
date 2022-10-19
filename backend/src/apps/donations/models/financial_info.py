@@ -6,8 +6,8 @@ from caregivers.models import BaseModel
 
 class FinancialInfo(BaseModel):
     class Meta:
-        verbose_name = _('Financial info')
-        verbose_name_plural = _('Financial info')
+        verbose_name = _('Financial Info')
+        verbose_name_plural = _('Financial Info')
 
     payment_purpose = models.CharField(
         verbose_name=_('payment purpose'),

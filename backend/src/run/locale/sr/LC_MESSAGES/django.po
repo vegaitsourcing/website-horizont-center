@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-15 16:41+0200\n"
+"POT-Creation-Date: 2022-10-19 18:30+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,6 +13,121 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
+#: apps/blogs/apps.py:8 apps/blogs/models/blog.py:9
+msgid "Blogs"
+msgstr ""
+
+#: apps/blogs/models/blog.py:8
+msgid "Blog"
+msgstr ""
+
+#: apps/blogs/models/blog.py:12 apps/blogs/models/blog_section.py:17
+#: apps/donations/models/donation.py:14
+msgid "title"
+msgstr "Naslov"
+
+#: apps/blogs/models/blog.py:16 apps/blogs/models/blog_author.py:30
+#: apps/blogs/models/blog_section.py:13
+msgid "image"
+msgstr ""
+
+#: apps/blogs/models/blog.py:17
+msgid "images/blogs"
+msgstr ""
+
+#: apps/blogs/models/blog.py:23
+msgid "categories"
+msgstr ""
+
+#: apps/blogs/models/blog_author.py:9
+msgid "Blog Author"
+msgstr ""
+
+#: apps/blogs/models/blog_author.py:10
+msgid "Blog Authors"
+msgstr ""
+
+#: apps/blogs/models/blog_author.py:13 apps/users/models/user.py:42
+msgid "first name"
+msgstr "ime"
+
+#: apps/blogs/models/blog_author.py:17 apps/users/models/user.py:48
+msgid "last name"
+msgstr "prezime"
+
+#: apps/blogs/models/blog_author.py:21 apps/blogs/models/blog_section.py:21
+#: apps/donations/models/donation.py:31
+#: apps/donations/models/donation_company.py:27
+#: apps/users/models/abstract_profile.py:37
+msgid "description"
+msgstr "Opis"
+
+#: apps/blogs/models/blog_author.py:27
+#: apps/users/models/caregiver_profile.py:38
+msgid "facebook url"
+msgstr "link do facebook stranice"
+
+#: apps/blogs/models/blog_author.py:31
+msgid "images/blogAuthors"
+msgstr ""
+
+#: apps/blogs/models/blog_author.py:34
+#: apps/users/models/caregiver_profile.py:33
+msgid "instagram url"
+msgstr "link do instagram stranice"
+
+#: apps/blogs/models/blog_author.py:38 apps/blogs/models/blog_section.py:40
+msgid "blog"
+msgstr ""
+
+#: apps/blogs/models/blog_category.py:9
+msgid "Blog Category"
+msgstr ""
+
+#: apps/blogs/models/blog_category.py:10
+msgid "Blog Categories"
+msgstr ""
+
+#: apps/blogs/models/blog_category.py:13
+msgid "orange"
+msgstr ""
+
+#: apps/blogs/models/blog_category.py:14
+msgid "blue"
+msgstr ""
+
+#: apps/blogs/models/blog_category.py:15
+msgid "light green-blue"
+msgstr ""
+
+#: apps/blogs/models/blog_category.py:19
+msgid "category name"
+msgstr ""
+
+#: apps/blogs/models/blog_category.py:23
+msgid "color"
+msgstr ""
+
+#: apps/blogs/models/blog_section.py:9
+msgid "Blog Section"
+msgstr ""
+
+#: apps/blogs/models/blog_section.py:10
+msgid "Blog Sections"
+msgstr ""
+
+#: apps/blogs/models/blog_section.py:14
+msgid "video"
+msgstr ""
+
+#: apps/blogs/models/blog_section.py:29
+msgid "media url"
+msgstr ""
+
+#: apps/blogs/models/blog_section.py:36
+msgid "media type"
+msgstr ""
+
 #: apps/donations/apps.py:8 apps/donations/models/donation.py:11
 msgid "Donations"
 msgstr "Donacije"
@@ -21,10 +136,6 @@ msgstr "Donacije"
 msgid "Donation"
 msgstr "Donacija"
 
-#: apps/donations/models/donation.py:14
-msgid "title"
-msgstr "Naslov"
-
 #: apps/donations/models/donation.py:18
 msgid "subtitle"
 msgstr "Podnaslov"
@@ -32,12 +143,6 @@ msgstr "Podnaslov"
 #: apps/donations/models/donation.py:25
 msgid "cover image"
 msgstr "Slika"
-
-#: apps/donations/models/donation.py:31
-#: apps/donations/models/donation_company.py:27
-#: apps/users/models/abstract_profile.py:34
-msgid "description"
-msgstr "Opis"
 
 #: apps/donations/models/donation.py:34
 msgid "is active"
@@ -63,43 +168,41 @@ msgstr "Slika kompanije"
 msgid "facebook"
 msgstr "link do facebook naloga"
 
-#: apps/donations/models/donation_company.py:33
+#: apps/donations/models/donation_company.py:35
 msgid "instagram"
 msgstr "link do instagram naloga"
 
-#: apps/donations/models/donation_company.py:37
+#: apps/donations/models/donation_company.py:41
+#: apps/donations/models/financial_info.py:41
 msgid "donation"
 msgstr "donacija"
 
-#: apps/donations/models/financial_donation.py:10
-msgid "Financial donation"
-msgstr "Donacija u novcu"
+#: apps/donations/models/financial_info.py:9
+#: apps/donations/models/financial_info.py:10
+msgid "Financial Info"
+msgstr ""
 
-#: apps/donations/models/financial_donation.py:11
-msgid "Financial donations"
-msgstr "Finansijske donacije"
-
-#: apps/donations/models/financial_donation.py:14
+#: apps/donations/models/financial_info.py:13
 msgid "payment purpose"
 msgstr "Svrha uplate"
 
-#: apps/donations/models/financial_donation.py:18
+#: apps/donations/models/financial_info.py:17
 msgid "payment receiver"
 msgstr "Primalac"
 
-#: apps/donations/models/financial_donation.py:22
+#: apps/donations/models/financial_info.py:21
 msgid "payment code"
 msgstr "šifra plaćanja"
 
-#: apps/donations/models/financial_donation.py:25
+#: apps/donations/models/financial_info.py:24
 msgid "payment bank account"
 msgstr "račun primaoca"
 
-#: apps/donations/models/financial_donation.py:30
+#: apps/donations/models/financial_info.py:29
 msgid "payment model"
 msgstr "Model"
 
-#: apps/donations/models/financial_donation.py:33
+#: apps/donations/models/financial_info.py:34
 msgid "payment reference number"
 msgstr "poziv na broj"
 
@@ -115,45 +218,49 @@ msgstr "Permisije"
 msgid "Important dates"
 msgstr "Važni datumi"
 
-#: apps/users/apps.py:8 apps/users/models/user.py:22
+#: apps/users/apps.py:8 apps/users/models/user.py:29
 msgid "Users"
 msgstr "Korisnici"
 
-#: apps/users/models/abstract_profile.py:9
+#: apps/users/models/abstract_profile.py:12
 msgid "Male"
 msgstr "Muško"
 
-#: apps/users/models/abstract_profile.py:10
+#: apps/users/models/abstract_profile.py:13
 msgid "Female"
 msgstr "Žensko"
 
-#: apps/users/models/abstract_profile.py:16
+#: apps/users/models/abstract_profile.py:19
 msgid "profile image"
 msgstr "profilna slika"
 
-#: apps/users/models/abstract_profile.py:21
+#: apps/users/models/abstract_profile.py:24
 msgid "gender"
 msgstr "Pol"
 
-#: apps/users/models/abstract_profile.py:24
+#: apps/users/models/abstract_profile.py:27
 msgid "postal code"
 msgstr "poštanski broj"
 
-#: apps/users/models/abstract_profile.py:28
+#: apps/users/models/abstract_profile.py:31
 msgid "city"
 msgstr "grad"
 
-#: apps/users/models/abstract_profile.py:39
+#: apps/users/models/abstract_profile.py:41
 msgid "user"
 msgstr "korisnik"
 
+#: apps/users/models/abstract_profile.py:46
+msgid "for"
+msgstr ""
+
 #: apps/users/models/beneficiary_profile.py:8
-msgid "Beneficiary profile"
-msgstr "Profil negovanog"
+msgid "Beneficiary Profile"
+msgstr ""
 
 #: apps/users/models/beneficiary_profile.py:9
-msgid "Beneficiary profiles"
-msgstr "Profili negovanih"
+msgid "Beneficiary Profiles"
+msgstr ""
 
 #: apps/users/models/beneficiary_profile.py:12
 msgid "beneficiary person"
@@ -164,12 +271,12 @@ msgid "helping period"
 msgstr "rok pružanja pomoći"
 
 #: apps/users/models/beneficiary_profile.py:20
-#: apps/users/models/caregiver_profile.py:28
+#: apps/users/models/caregiver_profile.py:25
 msgid "weekly days"
 msgstr "dani u nedelji"
 
 #: apps/users/models/beneficiary_profile.py:23
-#: apps/users/models/caregiver_profile.py:32
+#: apps/users/models/caregiver_profile.py:28
 msgid "daily hours"
 msgstr "sati dnevno"
 
@@ -178,57 +285,49 @@ msgid "care type"
 msgstr "vrsta pomoći"
 
 #: apps/users/models/caregiver_profile.py:8
-msgid "Caregiver profile"
-msgstr "Profil negovatelja"
+msgid "Caregiver Profile"
+msgstr ""
 
 #: apps/users/models/caregiver_profile.py:9
-msgid "Caregiver profiles"
-msgstr "Profili negovatelja"
+msgid "Caregiver Profiles"
+msgstr ""
 
 #: apps/users/models/caregiver_profile.py:12
 msgid "birthdate"
 msgstr "rođendan"
 
-#: apps/users/models/caregiver_profile.py:16
+#: apps/users/models/caregiver_profile.py:15
 msgid "work application"
 msgstr "prijava za rad"
 
-#: apps/users/models/caregiver_profile.py:21
+#: apps/users/models/caregiver_profile.py:19
 msgid "experience"
 msgstr "iskustvo"
 
-#: apps/users/models/caregiver_profile.py:38
-msgid "instagram url"
-msgstr "link do instagram stranice"
-
-#: apps/users/models/caregiver_profile.py:44
-msgid "facebook url"
-msgstr "link do facebook stranice"
-
-#: apps/users/models/user.py:21
+#: apps/users/models/user.py:28
 msgid "User"
 msgstr "Korisnik"
 
-#: apps/users/models/user.py:27
+#: apps/users/models/user.py:34
 msgid "email"
 msgstr "email"
 
-#: apps/users/models/user.py:35
-msgid "first name"
-msgstr "ime"
-
-#: apps/users/models/user.py:41
-msgid "last name"
-msgstr "prezime"
-
-#: apps/users/models/user.py:45
+#: apps/users/models/user.py:52
 msgid "phone number"
 msgstr "broj telefona"
 
-#: apps/users/models/user.py:52
+#: apps/users/models/user.py:59
 msgid "second phone number"
 msgstr "broj telefona 2"
 
-#: caregivers/settings/common.py:156
+#: apps/users/serializers/login_serializer.py:22
+msgid "Invalid credentials"
+msgstr ""
+
+#: caregivers/settings/common.py:171
 msgid "Serbian (latin)"
 msgstr "Srpski (latinica)"
+
+#: caregivers/viewsets.py:35
+msgid "Not fount"
+msgstr ""
