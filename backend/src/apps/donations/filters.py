@@ -3,7 +3,7 @@ from django_filters.rest_framework import FilterSet
 from apps.donations.models import Donation
 
 
-class DonationFilter(FilterSet):
+class DonationFilterSet(FilterSet):
     contains = CharFilter(field_name='title', lookup_expr='icontains')
 
     class Meta:
