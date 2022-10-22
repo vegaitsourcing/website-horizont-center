@@ -18,6 +18,8 @@ class BlogSerializer(BaseModelSerializer):
         image_field_names += ('image',)
         return image_field_names
 
-    def get_author_serializer(self, obj: Blog) -> dict:
+    def get_author_serializer(self, obj: Blog) -> dict | None:
+        if not obj.has_author:
+            return None
         serializer = BlogAuthorSerializer(instance=obj.author, request=self.request)
         return serializer.data

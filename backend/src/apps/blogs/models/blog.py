@@ -26,3 +26,7 @@ class Blog(BaseModel):
 
     def __str__(self):
         return self.title
+
+    @property
+    def has_author(self) -> bool:
+        return bool(getattr(self, 'author', False))

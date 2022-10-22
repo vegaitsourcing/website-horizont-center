@@ -16,3 +16,8 @@ LOGOUT_REDIRECT_URL = 'core_login'
 # ##### APPLICATION CONFIGURATION #########################
 
 INSTALLED_APPS = DEFAULT_APPS
+
+FIXTURES = (
+    'users',
+    'blogs',
+)

@@ -1,0 +1,92 @@
+# START of BlogCategories ######################################################################
+- model: blogs.BlogCategory
+  pk: 1
+  fields:
+    name: edukacija
+    color: '#F87024'
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.BlogCategory
+  pk: 2
+  fields:
+    name: novost
+    color: '#0075FF'
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.BlogCategory
+  pk: 3
+  fields:
+    name: zakon
+    color: '#229EBD'
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+# END of BlogCategories ########################################################################
+
+# START of Blogs, BlogSections and BlogAuthors #################################################
+- model: blogs.Blog
+  pk: 1
+  fields:
+    title: Negovatelji u Srbiji
+    categories:
+      - 1
+      - 2
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.BlogSection
+  pk: 1
+  fields:
+    blog: 1
+    title: Prva sekcija
+    description: U ovom blogu možete pročitati više o negovateljima u Srbiji. U ovom blogu možete pročitati više o negovateljima u Srbiji.U ovom blogu možete pročitati više o negovateljima u Srbiji.U ovom blogu možete pročitati više o negovateljima u Srbiji.
+    media_url: https://www.youtube.com/watch?v=oK8eYmJUt7Y
+    media_type: video
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.BlogSection
+  pk: 2
+  fields:
+    blog: 1
+    title: Druga sekcija
+    description: U ovom blogu možete pročitati više o negovateljima u Srbiji. U ovom blogu možete pročitati više o negovateljima u Srbiji.U ovom blogu možete pročitati više o negovateljima u Srbiji.U ovom blogu možete pročitati više o negovateljima u Srbiji.
+    media_url: https://www.carelink.org/wp-content/uploads/2021/08/how_to_become_a_caregiver-2048x1365.jpg
+    media_type: image
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.BlogAuthor
+  pk: 1
+  fields:
+    blog: 1
+    first_name: Sanja
+    last_name: Marić
+    description: Opis autorke Sanje Marić koja piše blogove za sajt centra Horizont. Opis autorke Sanje Marić koja piše blogove za sajt centra Horizont.
+    facebook_url: https://www.facebook.com/VegaITSourcing
+    instagram_url: https://www.instagram.com/vega_it/
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.Blog
+  pk: 2
+  fields:
+    categories:
+      - 1
+      - 3
+    title: Osobe koje traže negu u Srbiji
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.BlogSection
+  pk: 3
+  fields:
+    blog: 2
+    title: Prva sekcija
+    description: U ovom blogu možete pročitati više o osobama koje traže negu u Srbiji. U ovom blogu možete pročitati više o osobama koje traže negu u Srbiji.U ovom blogu možete pročitati više o osobama koje traže negu u Srbiji.
+    media_url: https://www.carelink.org/wp-content/uploads/2021/08/how_to_become_a_caregiver-2048x1365.jpg
+    media_type: image
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+# END of Blogs, BlogSections and BlogAuthors ###################################################
