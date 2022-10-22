@@ -29,6 +29,7 @@
   pk: 1
   fields:
     title: Negovatelji u Srbiji
+    description: Opis bloga u kojem se govori o negovateljima u Srbiji. Opis bloga u kojem se govori o negovateljima u Srbiji. Opis bloga u kojem se govori o negovateljima u Srbiji.
     categories:
       - 1
       - 2
@@ -72,6 +73,7 @@
 - model: blogs.Blog
   pk: 2
   fields:
+    description: Opis bloga u kojem se govori o osobama koje traže negu u Srbiji. Opis bloga u kojem se govori o osobama koje traže negu u Srbiji. Opis bloga u kojem se govori o osobama koje traže negu u Srbiji.
     categories:
       - 1
       - 3

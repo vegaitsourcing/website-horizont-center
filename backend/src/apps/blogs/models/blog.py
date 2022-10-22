@@ -1,3 +1,4 @@
+from django.core.validators import MinLengthValidator
 from apps.common.models import BaseModel
 from django.utils.translation import gettext_lazy as _
 from django.db import models
@@ -17,6 +18,12 @@ class Blog(BaseModel):
         upload_to=_('images/blogs'),
         null=True,
         blank=True,
+    )
+    description = models.TextField(
+        verbose_name=_('description'),
+        validators=[
+            MinLengthValidator(limit_value=100)
+        ],
     )
     categories = models.ManyToManyField(
         to='blogs.BlogCategory',
