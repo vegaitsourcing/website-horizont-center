@@ -60,6 +60,7 @@ DEFAULT_APPS = [
     'colorfield',
 
     # local apps:
+    'apps.common',
     'apps.users',
     'apps.donations',
     'apps.blogs',

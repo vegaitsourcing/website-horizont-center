@@ -5,10 +5,8 @@ from typing import List
 from django.core.mail import send_mail as core_send_email
 import logging
 
-logger = logging.getLogger(__name__)
 
-
-class EmailNotification(ABC, Thread):
+class EmailThread(ABC, Thread):
     def __init__(
             self, subject: str, plain_message: str, email_from: str, recipient_list: List[str],
             html_message: str = None
@@ -21,7 +19,7 @@ class EmailNotification(ABC, Thread):
         self.html_message = html_message
         threading.Thread.__init__(self)
 
-    def run(self) -> bool:
+    def run(self) -> None:
         try:
             core_send_email(
                 subject=self.subject,
@@ -30,7 +28,6 @@ class EmailNotification(ABC, Thread):
                 recipient_list=self.recipient_list,
                 html_message=self.html_message,
             )
-            return True
-        except Exception as exception:
+        except Exception:
+            logger = logging.getLogger(__name__)
             logger.error("Failed to send email")
-            return False

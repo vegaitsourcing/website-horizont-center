@@ -1,7 +1,7 @@
 from drf_extra_fields.fields import Base64ImageField
 from apps.users.models import AbstractProfile
 from apps.users.serializers import UserSerializer
-from caregivers.serializers import BaseModelSerializer
+from apps.common.serializers import BaseModelSerializer
 
 
 class AbstractProfileSerializer(BaseModelSerializer):

@@ -1,5 +1,5 @@
+from apps.common.serializers import BaseModelSerializer
 from apps.blogs.models import BlogAuthor
-from caregivers.serializers import BaseModelSerializer
 
 
 class BlogAuthorSerializer(BaseModelSerializer):

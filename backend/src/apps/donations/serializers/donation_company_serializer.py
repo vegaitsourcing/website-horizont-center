@@ -1,5 +1,5 @@
 from apps.donations.models import DonationCompany
-from caregivers.serializers import BaseModelSerializer
+from apps.common.serializers import BaseModelSerializer
 
 
 class DonationCompanySerializer(BaseModelSerializer):

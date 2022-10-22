@@ -4,7 +4,7 @@ from django.contrib.postgres.fields import CIEmailField
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 from apps.users.models import BeneficiaryProfile, CaregiverProfile
-from caregivers.models import BaseModel
+from apps.common.models import BaseModel
 
 
 class UserManager(BaseUserManager):

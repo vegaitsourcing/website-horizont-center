@@ -1,7 +1,7 @@
 from colorfield.fields import ColorField
 from django.db import models
 from django.utils.translation import gettext_lazy as _
-from caregivers.models import BaseModel
+from apps.common.models import BaseModel
 
 
 class BlogCategory(BaseModel):

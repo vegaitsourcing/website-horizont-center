@@ -1,3 +1,0 @@
-from caregivers.serializers.base_model_serializer import BaseModelSerializer
-from caregivers.serializers.list_response_serializer import ListResponseSerializer
-from caregivers.serializers.simple_serializers import SimpleSerializer

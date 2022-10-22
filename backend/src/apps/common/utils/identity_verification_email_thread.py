@@ -1,10 +1,11 @@
 from django.conf import settings
 from django.template.loader import get_template
 from django.utils.html import strip_tags
-from caregivers.utils.email_notification import EmailNotification
+
+from apps.common.utils import EmailThread
 
 
-class SendVerificationTokenEmailNotification(EmailNotification):
+class IdentityVerificationEmailThread(EmailThread):
     def __init__(self, token: str, email: str) -> None:
         template = get_template('emails/identity_verification.html')
 

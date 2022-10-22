@@ -1,8 +1,7 @@
 from typing import Type
 from django.db.models import QuerySet
-from caregivers.paginator import Paginator
-from caregivers.serializers import BaseModelSerializer
-from caregivers.serializers.simple_serializers import SimpleSerializer
+from apps.common.paginator import Paginator
+from apps.common.serializers import SimpleSerializer, BaseModelSerializer
 
 
 class ListResponseSerializer(SimpleSerializer):

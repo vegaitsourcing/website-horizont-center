@@ -2,7 +2,7 @@ from django_filters import rest_framework as filters
 from apps.blogs.filters import BlogFilter
 from apps.blogs.models import Blog
 from apps.blogs.serializers.blog_serializer import BlogSerializer
-from caregivers.viewsets import ViewSet
+from apps.common.viewsets import ViewSet
 
 
 class BlogViewSet(ViewSet):

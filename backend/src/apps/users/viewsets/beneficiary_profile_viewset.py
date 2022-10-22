@@ -2,7 +2,7 @@ from django_filters import rest_framework as filters
 from apps.users.filters import BeneficiaryProfileFilter
 from apps.users.models import BeneficiaryProfile
 from apps.users.serializers import BeneficiaryProfileSerializer
-from caregivers.viewsets import ViewSet
+from apps.common.viewsets import ViewSet
 
 
 class BeneficiaryProfileViewSet(ViewSet):

@@ -5,8 +5,9 @@ from django.db.models import QuerySet
 from django.http import JsonResponse
 from django.utils.translation import gettext_lazy as _
 from rest_framework import viewsets
-from caregivers.models import BaseModel
-from caregivers.serializers import ListResponseSerializer, BaseModelSerializer
+
+from apps.common.models import BaseModel
+from apps.common.serializers import BaseModelSerializer, ListResponseSerializer
 
 
 class ViewSet(viewsets.ViewSet):
