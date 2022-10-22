@@ -41,3 +41,6 @@ class FinancialInfo(BaseModel):
         on_delete=models.CASCADE,
         related_name='financial_info'
     )
+
+    def __str__(self):
+        return f'{self._meta.verbose_name.title()} ' + _('for') + f' {self.donation}'

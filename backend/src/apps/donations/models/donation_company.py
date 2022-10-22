@@ -42,3 +42,6 @@ class DonationCompany(BaseModel):
         on_delete=models.CASCADE,
         related_name='company',
     )
+
+    def __str__(self):
+        return self.name
