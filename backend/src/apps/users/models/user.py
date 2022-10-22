@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser, UserManager as BaseUserMana
 from django.contrib.postgres.fields import CIEmailField
 from django.utils.translation import gettext_lazy as _
 from django.db import models
+from apps.users.models import BeneficiaryProfile, CaregiverProfile
 from caregivers.models import BaseModel
 
 
@@ -64,3 +65,8 @@ class User(AbstractUser, BaseModel):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+
+    def get_profile(self) -> BeneficiaryProfile | CaregiverProfile | None:
+        if beneficiary_profile := BeneficiaryProfile.objects.filter(user=self).first():
+            return beneficiary_profile
+        return CaregiverProfile.objects.filter(user=self).first()

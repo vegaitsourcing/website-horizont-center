@@ -2,8 +2,6 @@ from django.utils.translation import gettext_lazy as _
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
 from rest_framework.request import Request
-
-from apps.users.models import AbstractProfile
 from apps.users.models import User
 
 
@@ -26,14 +24,15 @@ class LoginSerializer(serializers.Serializer):
     @property
     def validated_data(self):
         token, _ = Token.objects.get_or_create(user=self.user)
-        abstract_profile = AbstractProfile.objects.get(user=self.user)
-        return {
+        data = {
             'token': token.key,
             'id': self.user.id,
             'first_name': self.user.first_name,
             'last_name': self.user.last_name,
-            'image': self.request.build_absolute_uri(abstract_profile.profile_image.url),
         }
+        if profile := self.user.get_profile():
+            data['image'] = self.request.build_absolute_uri(profile.profile_image.url)
+        return data
 
     def update(self, instance, validated_data):
         pass
