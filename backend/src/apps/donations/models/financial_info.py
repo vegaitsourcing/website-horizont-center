@@ -24,7 +24,6 @@ class FinancialInfo(BaseModel):
         verbose_name=_('payment bank account'),
         max_length=20
     )
-
     payment_model = models.IntegerField(
         verbose_name=_('payment model'),
         blank=True,

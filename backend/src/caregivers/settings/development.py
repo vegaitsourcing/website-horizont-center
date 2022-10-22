@@ -20,4 +20,5 @@ INSTALLED_APPS = DEFAULT_APPS
 FIXTURES = (
     'users',
     'blogs',
+    'donations',
 )
