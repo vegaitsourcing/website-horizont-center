@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Input } from "shared-components";
 
 import { CaregiverForm } from "../caregiver-form/caregiver.form";
 import { BeneficiaryForm } from "../beneficiary-form/beneficiary.form";
@@ -19,12 +18,12 @@ export const RegistrationStepTwo = ({ stepNumber, valueChangedHandler }) => {
       {userType === "Negovatelj" ? (
         <CaregiverForm
           stepNumber={stepNumber}
-          valueChangedHandler={(e, itemType) => valueChangedHandler(e, itemType)}
+          valueChangedHandler={(e, itemType) => valueChangedHandler(e, itemType, "caregiver")}
         />
       ) : (
         <BeneficiaryForm
           stepNumber={stepNumber}
-          valueChangedHandler={(e, itemType) => valueChangedHandler(e, itemType)}
+          valueChangedHandler={(e, itemType) => valueChangedHandler(e, itemType, "beneficiary")}
         />
       )}
       <div className={styles.notRobotBox}>

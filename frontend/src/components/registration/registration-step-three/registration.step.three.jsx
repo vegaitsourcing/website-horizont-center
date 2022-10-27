@@ -1,7 +1,7 @@
 import React, { useState, Component } from "react";
-import styles from "./image.upload.module.scss";
 
-export const ImageUpload = () => {
+import styles from "./registration.step.three.module.scss";
+export const RegistrationStepThree = () => {
   const [img, setImg] = useState("../../images/default_profile_image.svg");
   const [countValue, setCount] = useState(0);
 

@@ -2,7 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 
 import { RegistrationStepOne } from "../registration-step-one/registration.step.one";
 import { RegistrationStepTwo } from "../registration-step-two/registration.step.two";
-import { ImageUpload } from "shared-components";
+import { RegistrationStepThree } from "../registration-step-three/registration.step.three";
 import { LongButton } from "shared-components";
 
 import styles from "./registration.form.module.scss";
@@ -25,17 +25,18 @@ export const RegistrationForm = ({}) => {
     setRegistrationForm(registrationForm);
   }, []);
 
-  const handleRegistrationChange = (newData, form, itemType) => {
+  const handleRegistrationChange = (newData, form, itemType, userForm) => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
-    if (form === "formStep1" && newData) {
-      console.log("set new form 1");
+    if (form === "formStep1") {
       registrationForm.formStep1 = { data: { profileType: newData }, isCompleted: true };
       localStorage.setItem("registrationForm", JSON.stringify(registrationForm));
     }
     if (form === "formStep2") {
-      console.log("set new form 2");
       const historyData = registrationForm.formStep2?.data;
-      registrationForm.formStep2 = { data: { ...historyData, [itemType]: newData }, isCompleted: true };
+      registrationForm.formStep2 = {
+        data: { ...historyData, [userForm]: { ...historyData?.[userForm], [itemType]: newData } },
+        isCompleted: true,
+      };
       localStorage.setItem("registrationForm", JSON.stringify(registrationForm));
     }
   };
@@ -63,12 +64,15 @@ export const RegistrationForm = ({}) => {
       return (
         <RegistrationStepTwo
           stepNumber={stepNumber}
-          valueChangedHandler={(e, itemType) => handleRegistrationChange(e, "formStep2", itemType)}
+          valueChangedHandler={(e, itemType, userForm) => handleRegistrationChange(e, "formStep2", itemType, userForm)}
         />
       );
     }
     return (
-      <ImageUpload stepNumber={stepNumber} valueChangedHandler={(e) => handleRegistrationChange(e, "formStep3")} />
+      <RegistrationStepThree
+        stepNumber={stepNumber}
+        valueChangedHandler={(e) => handleRegistrationChange(e, "formStep3")}
+      />
     );
   };
 
