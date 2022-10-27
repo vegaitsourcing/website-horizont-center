@@ -3,10 +3,10 @@ from rest_framework import serializers
 from apps.donations.models import Donation
 from apps.donations.serializers import DonationCompanySerializer
 from apps.donations.serializers.financial_info_serializer import FinancialInfoSerializer
-from apps.common.serializers import BaseModelSerializer
+from apps.common.serializers import ModelSerializer
 
 
-class DonationSerializer(BaseModelSerializer):
+class DonationSerializer(ModelSerializer):
     financial_info = FinancialInfoSerializer()
     company = serializers.SerializerMethodField('get_company_serializer')
 

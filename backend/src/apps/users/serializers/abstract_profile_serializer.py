@@ -2,10 +2,10 @@ from drf_extra_fields.fields import Base64ImageField
 
 from apps.users.models import AbstractProfile
 from apps.users.serializers import UserSerializer
-from apps.common.serializers import BaseModelSerializer
+from apps.common.serializers import ModelSerializer
 
 
-class AbstractProfileSerializer(BaseModelSerializer):
+class AbstractProfileSerializer(ModelSerializer):
     profile_image = Base64ImageField()
     user = UserSerializer()
 

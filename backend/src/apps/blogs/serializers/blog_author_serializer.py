@@ -1,8 +1,8 @@
-from apps.common.serializers import BaseModelSerializer
+from apps.common.serializers import ModelSerializer
 from apps.blogs.models import BlogAuthor
 
 
-class BlogAuthorSerializer(BaseModelSerializer):
+class BlogAuthorSerializer(ModelSerializer):
     class Meta:
         model = BlogAuthor
         fields = '__all__'

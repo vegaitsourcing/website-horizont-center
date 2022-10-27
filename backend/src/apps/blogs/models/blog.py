@@ -11,7 +11,7 @@ class Blog(BaseModel):
 
     title = models.CharField(
         verbose_name=_('title'),
-        max_length=100
+        max_length=100,
     )
     image = models.ImageField(
         verbose_name=_('image'),
@@ -28,7 +28,7 @@ class Blog(BaseModel):
     categories = models.ManyToManyField(
         to='blogs.BlogCategory',
         verbose_name=_('categories'),
-        related_name='blogs'
+        related_name='blogs',
     )
 
     def __str__(self):

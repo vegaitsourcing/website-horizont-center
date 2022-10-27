@@ -1,8 +1,8 @@
-from apps.common.serializers import BaseModelSerializer
+from apps.common.serializers import ModelSerializer
 from apps.users.models import User
 
 
-class UserSerializer(BaseModelSerializer):
+class UserSerializer(ModelSerializer):
     class Meta:
         model = User
         fields = (

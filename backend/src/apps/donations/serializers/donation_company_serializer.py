@@ -1,8 +1,8 @@
 from apps.donations.models import DonationCompany
-from apps.common.serializers import BaseModelSerializer
+from apps.common.serializers import ModelSerializer
 
 
-class DonationCompanySerializer(BaseModelSerializer):
+class DonationCompanySerializer(ModelSerializer):
     class Meta:
         model = DonationCompany
         fields = '__all__'

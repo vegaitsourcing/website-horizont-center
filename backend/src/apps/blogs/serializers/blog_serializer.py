@@ -1,10 +1,10 @@
 from rest_framework import serializers
 from apps.blogs.models import Blog
 from apps.blogs.serializers import BlogAuthorSerializer, BlogCategorySerializer, BlogSectionSerializer
-from apps.common.serializers import BaseModelSerializer
+from apps.common.serializers import ModelSerializer
 
 
-class BlogSerializer(BaseModelSerializer):
+class BlogSerializer(ModelSerializer):
     sections = BlogSectionSerializer(many=True)
     categories = BlogCategorySerializer(many=True)
     author = serializers.SerializerMethodField('get_author_serializer')
