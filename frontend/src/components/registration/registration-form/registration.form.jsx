@@ -29,7 +29,6 @@ export const RegistrationForm = ({}) => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
     if (form === "formStep1") {
       registrationForm.formStep1 = { data: { profileType: newData }, isCompleted: true };
-      localStorage.setItem("registrationForm", JSON.stringify(registrationForm));
     }
     if (form === "formStep2") {
       const historyData = registrationForm.formStep2?.data;
@@ -37,8 +36,12 @@ export const RegistrationForm = ({}) => {
         data: { ...historyData, [userForm]: { ...historyData?.[userForm], [itemType]: newData } },
         isCompleted: true,
       };
-      localStorage.setItem("registrationForm", JSON.stringify(registrationForm));
     }
+    if (form === "formStep3") {
+      const historyData = registrationForm.formStep3?.data;
+      registrationForm.formStep3 = { data: { ...historyData, [itemType]: newData }, isCompleted: true };
+    }
+    localStorage.setItem("registrationForm", JSON.stringify(registrationForm));
   };
 
   const switchToStep = (direction) => {
@@ -71,7 +74,7 @@ export const RegistrationForm = ({}) => {
     return (
       <RegistrationStepThree
         stepNumber={stepNumber}
-        valueChangedHandler={(e) => handleRegistrationChange(e, "formStep3")}
+        valueChangedHandler={(e, itemType) => handleRegistrationChange(e, "formStep3", itemType)}
       />
     );
   };
