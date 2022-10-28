@@ -6,7 +6,7 @@ export const tabItems = [
   },
   {
     name: "Blog",
-    pathname: "/blog",
+    pathname: "/blogs",
     active: false,
   },
   {

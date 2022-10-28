@@ -1,20 +1,17 @@
 import { LayoutDefault } from "layouts";
-
 import { NextSeo } from "next-seo";
-
 import ABOUT from "config/data/about";
 import ENV from "config/env";
-import { DonationsList } from "components/donationList/donationList";
+import { DonationList } from "components/donation-list/donationList";
 import { useState } from "react";
-import BlogService from "./api/blogService";
 import DonationService from "./api/donationsService";
 import PostTitle from "shared-components/post-title/post-title";
 import PostFilters from "shared-components/post-filters/post-filters";
-import { CardPagination } from "shared-components";
+import { Pager } from "shared-components";
 
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
-function Contact(props) {
+function Donations(props) {
   const {
     pathname,
     data: {
@@ -22,7 +19,6 @@ function Contact(props) {
       items,
       pagination,
       pageSize,
-      total,
       metaTitle,
       description,
       metaDescription,
@@ -45,7 +41,7 @@ function Contact(props) {
     ],
     ...BASE_SEO,
   };
-	const { total_items,total_pages} =pagination;
+  const { total_items, total_pages } = pagination;
   const [activepageNumber, setactivepageNumber] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(total_pages);
   const [filterType, setfilterType] = useState("");
@@ -70,21 +66,21 @@ function Contact(props) {
           text={
             "Felis lectus tortor massa a eget viverra integer faucibus adipiscing. Faucibus nunc, auctor arcu magna cursus "
           }
-        ></PostTitle>
-        <PostFilters changeFilterText={changeTextFilter} changeFilterType={changeFilterType}></PostFilters>
-        <DonationsList
-					pageSize={pageSize}
+        />
+        <PostFilters changeFilterText={changeTextFilter} changeFilterType={changeFilterType} />
+        <DonationList
+          pageSize={pageSize}
           activePageNumber={activepageNumber}
           changeNumberOfPages={changeNumberOfPages}
           filterText={filterText}
           filterType={filterType}
-          initialDonations={items}
-        ></DonationsList>
-        <CardPagination
+          donations={items}
+        />
+        <Pager
           changePage={setactivepageNumber}
           numberOfPages={numberOfPages}
           pageNum={activepageNumber}
-        ></CardPagination>
+        />
       </LayoutDefault>
     </>
   );
@@ -92,8 +88,8 @@ function Contact(props) {
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
-  const responseData = await DonationService.getAllDonations(process.env.POST_PAGE_SIZE, 1, "", "");
-  return { props: { data: { ...responseData.data,...{pageSize:process.env.POST_PAGE_SIZE}, ...ABOUT }, pathname: resolvedUrl } };
+  const responseData = await DonationService.getDonations(process.env.POST_PAGE_SIZE, 1, "", "");
+  return { props: { data: { ...responseData.data, ...{ pageSize: process.env.POST_PAGE_SIZE }, ...ABOUT }, pathname: resolvedUrl } };
 }
 
-export default Contact;
+export default Donations;

@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-
 import { LayoutDefault } from "layouts";
-
 import { About } from "components/about/about";
 import { NextSeo } from "next-seo";
-
 import ENV from "config/env";
-import { Card } from "../shared-components/card/card";
-
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
 export const Home = (props) => {
@@ -15,10 +10,6 @@ export const Home = (props) => {
     pathname,
     data: { title, metaTitle, description, metaDescription, packages = [], services = [], block_top = {} },
   } = props;
-
-  const [visible, setVisible] = useState(true);
-
-  const onDismiss = () => setVisible(false);
 
   const SEOS = {
     title: title,

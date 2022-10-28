@@ -5,7 +5,7 @@ import { LayoutDefault } from "layouts";
 import env from "config/env";
 import CaregiversList from "components/caregivers/caregiversList";
 import { useState } from "react";
-import { CardPagination } from "shared-components";
+import { Pager } from "shared-components";
 import ProfileFilters from "shared-components/profile-filters/profile-filters";
 import ABOUT from "config/data/about";
 function About(props) {
@@ -68,11 +68,11 @@ function About(props) {
           textFilter={textFilter}
           genderFilter={genderFilter}
         ></CaregiversList>
-        <CardPagination
+        <Pager
           changePage={setactivepageNumber}
           numberOfPages={numberOfPages}
           pageNum={activepageNumber}
-        ></CardPagination>
+        ></Pager>
       </LayoutDefault>
     </>
   );

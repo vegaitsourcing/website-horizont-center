@@ -1,9 +1,9 @@
 import styles from "./card.module.scss";
 import { LongButton } from "../long-button/long.button";
 
-export const Card = ({image, categories, title, description, date, onClick}) => {
+export const Card = ({key, image, categories, title, description, date, onClick}) => {
 	return (
-		<li className={styles.cardItem}>
+		<li className={styles.cardItem} key={key}>
 			<img src={image} alt="" className={styles.image}/>
 			<div className={styles.content}>
 				<div>

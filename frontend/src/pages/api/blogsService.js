@@ -1,7 +1,7 @@
 import API from "./baseApi";
 import ABOUT from "config/data/about";
 const BASE_RESOURCE_NAME = "blogs";
-const BlogService = {
+const BlogsService = {
   getAllBlogs: (pageSize, pageNumber, filterText, filterType) => {
     return API.getAllResources(
       BASE_RESOURCE_NAME,
@@ -25,7 +25,7 @@ const BlogService = {
     });
   },
 };
-export default BlogService;
+export default BlogsService;
 
 var mockData = {
   results: [

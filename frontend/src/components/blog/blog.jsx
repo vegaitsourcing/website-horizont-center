@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 
 import styles from "./blog.module.scss";
 
-import { Input, Card, CardPagination } from "shared-components";
-import BlogService from "pages/api/blogService";
+import { Input, Card, Pager } from "shared-components";
+import BlogsService from "pages/api/blogsService";
 
 export const Blog = ({
   pageSize,
@@ -16,7 +16,7 @@ export const Blog = ({
 }) => {
   const [blogs, setblogs] = useState(intialBlogs);
   function fetchData() {
-    BlogService.getAllMockBlogs(pageSize, activePageNumber, filterText, filterType).then(({ data }) => {
+    BlogsService.getAllMockBlogs(pageSize, activePageNumber, filterText, filterType).then(({ data }) => {
       const { items, pagination } = data;
       const { total_items } = pagination;
       setblogs([...items]);

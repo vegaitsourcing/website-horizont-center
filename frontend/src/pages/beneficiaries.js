@@ -6,7 +6,7 @@ import beneficiariesService from "./api/beneficiariesService";
 import BeneficiariesList from "components/beneficiaries/beneficiariesList";
 import { useState } from "react";
 import ProfileFilters from "shared-components/profile-filters/profile-filters";
-import { CardPagination } from "shared-components";
+import { Pager } from "shared-components";
 import ABOUT from "config/data/about";
 
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
@@ -80,11 +80,11 @@ function GettingStarted(props) {
           pathname={pathname}
           activePageNumber={activepageNumber}
         ></BeneficiariesList>
-        <CardPagination
+        <Pager
           changePage={setactivepageNumber}
           numberOfPages={numberOfPages}
           pageNum={activepageNumber}
-        ></CardPagination>
+        ></Pager>
       </LayoutDefault>
     </>
   );

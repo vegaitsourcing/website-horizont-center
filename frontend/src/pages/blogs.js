@@ -1,14 +1,10 @@
 import { LayoutDefault } from "layouts";
-
 import ABOUT from "config/data/about";
 import { NextSeo } from "next-seo";
-
-import { CardPagination, Input } from "shared-components";
-
+import { Pager } from "shared-components";
 import ENV from "config/env";
-
 import { Blog } from "components";
-import BlogService from "./api/blogService";
+import BlogsService from "./api/blogsService";
 import { useState } from "react";
 import PostFilters from "shared-components/post-filters/post-filters";
 import PostTitle from "shared-components/post-title/post-title";
@@ -81,11 +77,11 @@ function Service(props) {
           filterType={filterType}
           pathname={pathname}
         />
-        <CardPagination
+        <Pager
           changePage={setactivepageNumber}
           numberOfPages={numberOfPages}
           pageNum={activepageNumber}
-        ></CardPagination>
+        ></Pager>
       </LayoutDefault>
     </>
   );
@@ -93,7 +89,7 @@ function Service(props) {
 
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
-  const responseData = await BlogService.getAllMockBlogs(process.env.POST_PAGE_SIZE, 1, "", "");
+  const responseData = await BlogsService.getAllMockBlogs(process.env.POST_PAGE_SIZE, 1, "", "");
   return {
     props: {
       data: { ...responseData.data, ...{ pageSize: process.env.POST_PAGE_SIZE }, ...ABOUT },
