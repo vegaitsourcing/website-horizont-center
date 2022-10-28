@@ -26,7 +26,7 @@ Now, go to http://0.0.0.0:8000/ in your browser to view the running Django app
 
 Run the command below to load (all) test data (fixtures):
 
-    docker-compose run --rm django sh -c 'python manage.py load_data'
+    docker exec -it caregivers-django sh -c 'python manage.py load_data'
 
 **NOTE**: this will add a superuser as well with these credentials:
 

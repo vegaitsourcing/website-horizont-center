@@ -6,6 +6,7 @@ SECRET.key
 media/*
 # except the README
 !media/README
+!media/fixtures
 
 # do NOT ignore the static directory
 !static
