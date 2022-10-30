@@ -7,7 +7,7 @@ import { Blog } from "components";
 import BlogsService from "./api/blogsService";
 import { useState } from "react";
 import PostFilters from "shared-components/post-filters/post-filters";
-import PostTitle from "shared-components/post-title/post-title";
+import PageHeader from "shared-components/page-header/page.header";
 
 const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
@@ -61,12 +61,12 @@ function Service(props) {
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
-        <PostTitle
+        <PageHeader
           title={"Podrška"}
           text={
             "Felis lectus tortor massa a eget viverra integer faucibus adipiscing. Faucibus nunc, auctor arcu magna cursus "
           }
-        ></PostTitle>
+        ></PageHeader>
         <PostFilters changeFilterText={changeTextFilter} changeFilterType={changeFilterType}></PostFilters>
         <Blog
           pageSize={pageSize}
