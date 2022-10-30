@@ -28,7 +28,8 @@
   pk: 1
   fields:
     user: 2
-    gender: MALE
+    image: fixtures/caregiver_2.jpg
+    gender: male
     postal_code: 21000
     city: Novi Sad
     description: Ovo je opis za profil negovanog. Opis bi trebalo da sadrži neke osnovne podatke o osobi čiji je profil.
@@ -57,7 +58,8 @@
   pk: 2
   fields:
     user: 3
-    gender: MALE
+    image: fixtures/caregiver_3.jpg
+    gender: male
     postal_code: 21000
     city: Novi Sad
     description: Ovo je opis za profil negovanog. Opis bi trebalo da sadrži neke osnovne podatke o osobi čiji je profil.
@@ -86,7 +88,8 @@
   pk: 3
   fields:
     user: 4
-    gender: MALE
+    image: fixtures/caregiver_1.jpg
+    gender: male
     postal_code: 24000
     city: Subotica
     description: Ovo je opis za profil negovanog. Opis bi trebalo da sadrži neke osnovne podatke o osobi čiji je profil.
@@ -117,7 +120,8 @@
   pk: 1
   fields:
     user: 5
-    gender: MALE
+    image: fixtures/beneficiary_3.jpg
+    gender: male
     postal_code: 21000
     city: Sremska Kamenica
     description: Ovo je opis za profil negovanog. Opis bi trebalo da sadrži neke osnovne podatke o osobi čiji je profil.
@@ -144,7 +148,8 @@
   pk: 2
   fields:
     user: 6
-    gender: MALE
+    image: fixtures/beneficiary_2.jpg
+    gender: male
     postal_code: 21000
     city: Novi Sad
     description: Ovo je opis za profil negovanog. Opis bi trebalo da sadrži neke osnovne podatke o osobi čiji je profil.
@@ -171,7 +176,8 @@
   pk: 3
   fields:
     user: 7
-    gender: FEMALE
+    image: fixtures/beneficiary_1.jpg
+    gender: femail
     postal_code: 21000
     city: Novi Sad
     description: Ovo je opis za profil negovanog. Opis bi trebalo da sadrži neke osnovne podatke o osobi čiji je profil.
@@ -198,7 +204,7 @@
   pk: 4
   fields:
     user: 8
-    gender: FEMALE
+    gender: femail
     postal_code: 21000
     city: Novi Sad
     description: Ovo je opis za profil negovanog. Opis bi trebalo da sadrži neke osnovne podatke o osobi čiji je profil.

@@ -9,10 +9,10 @@ class AbstractProfile(BaseModel):
         abstract = True
 
     class Gender(models.TextChoices):
-        MALE = 'MALE', _('Male')
-        FEMALE = 'FEMALE', _('Female')
+        MALE = 'male', _('Male')
+        FEMALE = 'female', _('Female')
 
-    profile_image = models.ImageField(
+    image = models.ImageField(
         upload_to='images/users',
         null=True,
         blank=True,
