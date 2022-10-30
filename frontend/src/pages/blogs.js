@@ -1,101 +1,84 @@
 import { LayoutDefault } from "layouts";
-import ABOUT from "config/data/about";
 import { NextSeo } from "next-seo";
-import { Pager } from "shared-components";
+import { PageHeader, Pager } from "shared-components";
 import ENV from "config/env";
-import { Blog } from "components";
+import { BlogList } from "components";
 import BlogsService from "./api/blogsService";
 import { useState } from "react";
-import PostFilters from "shared-components/post-filters/post-filters";
-import PageHeader from "shared-components/page-header/page.header";
+import { BlogFilters } from "../components/blog-filters/blog.filters";
 
-const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
+const { BASE_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
-function Service(props) {
-  const {
-    pathname,
-    data: {
-      title,
-      items,
-      pagination,
-      pageSize,
-      metaTitle,
-      description,
-      metaDescription,
-      slug,
-      services,
-      block_top = {},
-    },
-  } = props;
+function Blogs(props) {
+	const {
+		pathname,
+		pageSize,
+		data: {
+			title,
+			items,
+			pagination,
+			metaDescription,
+		},
+	} = props;
 
-  const SEOS = {
-    title,
-    description: metaDescription,
-    canonical: `${BASE_URL}${pathname}`,
-    openGraph: [
-      {
-        url: BASE_URL,
-        images: { url: `${BASE_URL}${STATIC_DIR}logo.png` },
-        site_name: AUTHOR,
-      },
-    ],
-    ...BASE_SEO,
-  };
-  const { total_items, total_pages } = pagination;
-  const [activepageNumber, setactivepageNumber] = useState(1);
-  const [numberOfPages, setNumberOfPages] = useState(total_pages);
-  const [filterType, setfilterType] = useState("");
-  const [filterText, setfilterText] = useState("");
-  function changeNumberOfPages(totalRecords, pageSize) {
-    setNumberOfPages(Math.ceil(totalRecords / pageSize));
-  }
-  let searchTimeout;
-  function changeFilterType(type) {
-    setfilterType(type);
-  }
-  function changeTextFilter(text) {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => setfilterText(text), 500);
-  }
-  return (
-    <>
-      <NextSeo {...SEOS} />
-      <LayoutDefault pathname={pathname}>
-        <PageHeader
-          title={"Podrška"}
-          text={
-            "Felis lectus tortor massa a eget viverra integer faucibus adipiscing. Faucibus nunc, auctor arcu magna cursus "
-          }
-        ></PageHeader>
-        <PostFilters changeFilterText={changeTextFilter} changeFilterType={changeFilterType}></PostFilters>
-        <Blog
-          pageSize={pageSize}
-          intialBlogs={items}
-          changeNumberOfPages={changeNumberOfPages}
-          activePageNumber={activepageNumber}
-          filterText={filterText}
-          filterType={filterType}
-          pathname={pathname}
-        />
-        <Pager
-          changePage={setactivepageNumber}
-          numberOfPages={numberOfPages}
-          pageNum={activepageNumber}
-        ></Pager>
-      </LayoutDefault>
-    </>
-  );
+	const SEOS = {
+		title,
+		description: metaDescription,
+		canonical: `${BASE_URL}${pathname}`,
+		openGraph: [
+			{
+				url: BASE_URL,
+				images: { url: `${BASE_URL}${STATIC_DIR}logo.png` },
+				site_name: AUTHOR,
+			},
+		],
+		...BASE_SEO,
+	};
+	const [activePageNumber, setActivePageNumber] = useState(1);
+	const [blogs, setBlogs] = useState(items);
+	const [numberOfPages, setNumberOfPages] = useState(pagination.total_pages);
+
+	async function getBlogs(pageNumber, contains = null, category = null) {
+		setActivePageNumber(pageNumber);
+		const response = await BlogsService.getBlogs(pageSize, pageNumber, contains, category);
+		setBlogs(response.data.items);
+		setNumberOfPages(response.data.pagination.total_pages);
+	}
+
+	return (
+		<>
+			<NextSeo {...SEOS} />
+			<LayoutDefault pathname={pathname}>
+				<PageHeader
+					title={"Podrška"}
+					text={
+						"Felis lectus tortor massa a eget viverra integer faucibus adipiscing. " +
+						"Faucibus nunc, auctor arcu magna cursus "
+					}
+				/>
+				<BlogFilters onChange={getBlogs}/>
+				<BlogList blogs={blogs}/>
+				<Pager
+					onPageChange={getBlogs}
+					numberOfPages={numberOfPages}
+					activePageNumber={activePageNumber}
+				/>
+			</LayoutDefault>
+		</>
+	);
 }
 
 export async function getServerSideProps(ctx) {
-  const { resolvedUrl } = ctx;
-  const responseData = await BlogsService.getAllMockBlogs(process.env.POST_PAGE_SIZE, 1, "", "");
-  return {
-    props: {
-      data: { ...responseData.data, ...{ pageSize: process.env.POST_PAGE_SIZE }, ...ABOUT },
-      pathname: resolvedUrl,
-    },
-  };
+	const { resolvedUrl } = ctx;
+	const pageSize = process.env.POST_PAGE_SIZE;
+	const response = await BlogsService.getBlogs(pageSize, 1);
+	return {
+		props: {
+			data: { ...response.data },
+			pageSize: pageSize,
+			pathname: resolvedUrl
+		}
+	};
 }
 
-export default Service;
+export default Blogs;

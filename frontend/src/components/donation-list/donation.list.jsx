@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./donationList.module.scss";
-import { DonationCard } from "components/donation-card/donation-card";
+import styles from "./donation.list.module.scss";
+import { DonationCard } from "components/donation-card/donation.card";
 
 export const DonationList = ({ donations }) => {
 

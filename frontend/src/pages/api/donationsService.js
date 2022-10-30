@@ -2,7 +2,7 @@ import API from "./baseApi";
 
 const BASE_RESOURCE_NAME = "donations";
 
-const DonationService = {
+const DonationsService = {
 	getDonations: (pageSize, pageNumber, contains = null, isActive = null) => {
 		let queryParams = `ipp=${pageSize}&page=${pageNumber}`;
 		if (contains) queryParams += `&contains=${contains}`;
@@ -10,8 +10,8 @@ const DonationService = {
 		return API.getAllResources(BASE_RESOURCE_NAME, queryParams);
 	},
 	getDonationById: (donationId) => {
-		return API.getResourceById(BASE_RESOURCE_NAME, donationId, localStorage.getItem("token"));
+		return API.getResourceById(BASE_RESOURCE_NAME, donationId);
 	},
 };
 
-export default DonationService;
+export default DonationsService;

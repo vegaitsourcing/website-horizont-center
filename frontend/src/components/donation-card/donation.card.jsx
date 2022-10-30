@@ -1,5 +1,5 @@
-import styles from "./donation-card.module.scss";
-import { LongButton } from "../../shared-components/long-button/long.button";
+import styles from "./donation.card.module.scss";
+import { LongButton } from "../../shared-components";
 
 export const DonationCard = ({ id, image, title, description, date, onClick, financialInfo }) => {
 	const donationTypeConf = {

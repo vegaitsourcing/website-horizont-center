@@ -1,9 +1,9 @@
 import { LayoutDefault } from "layouts";
 import { NextSeo } from "next-seo";
 import ENV from "config/env";
-import { DonationList } from "components/donation-list/donationList";
+import { DonationList } from "components/donation-list/donation.list";
 import { useState } from "react";
-import DonationService from "./api/donationsService";
+import DonationsService from "./api/donationsService";
 import { Pager, PageHeader } from "shared-components";
 import { DonationFilters } from "components";
 
@@ -41,7 +41,7 @@ function Donations(props) {
 
 	async function getDonations(pageNumber, contains = null, isActive = null) {
 		setActivePageNumber(pageNumber);
-		const response = await DonationService.getDonations(pageSize, pageNumber, contains, isActive);
+		const response = await DonationsService.getDonations(pageSize, pageNumber, contains, isActive);
 		setDonations(response.data.items);
 		setNumberOfPages(response.data.pagination.total_pages);
 	}
@@ -72,7 +72,7 @@ function Donations(props) {
 export async function getServerSideProps(ctx) {
 	const { resolvedUrl } = ctx;
 	const pageSize = process.env.POST_PAGE_SIZE;
-	const response = await DonationService.getDonations(pageSize, 1);
+	const response = await DonationsService.getDonations(pageSize, 1);
 	return {
 		props: {
 			data: { ...response.data },
