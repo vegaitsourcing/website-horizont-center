@@ -9,6 +9,7 @@ const DonationsService = {
 		if (isActive !== null) queryParams += `&is_active=${isActive}`;
 		return API.getAllResources(BASE_RESOURCE_NAME, queryParams);
 	},
+
 	getDonationById: (donationId) => {
 		return API.getResourceById(BASE_RESOURCE_NAME, donationId);
 	},

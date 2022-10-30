@@ -5,7 +5,7 @@ import ENV from "config/env";
 import beneficiariesService from "./api/beneficiariesService";
 import BeneficiariesList from "components/beneficiaries/beneficiariesList";
 import { useState } from "react";
-import ProfileFilters from "shared-components/profile-filters/profile-filters";
+import ProfileFilters from "shared-components/profile-filters/profile.filters";
 import { Pager } from "shared-components";
 import ABOUT from "config/data/about";
 

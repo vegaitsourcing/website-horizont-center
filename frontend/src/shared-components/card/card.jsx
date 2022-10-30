@@ -21,7 +21,7 @@ export const Card = ({ id, image, categories, title, description, date, onClick 
 				<div className={styles.description}>
 					<h4 className={styles.h4}>{title}</h4>
 					<p className={styles.p1}>{description.substring(0, 200)}{description.length > 200 && "..."}</p>
-					<p className={styles.date}>{new Date(date).toLocaleDateString("fr-CA")}</p>
+					<p className={styles.date}>{new Date(date).toLocaleDateString("nl")}</p>
 				</div>
 				<div className={styles.button}>
 					<LongButton

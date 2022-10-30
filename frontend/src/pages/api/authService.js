@@ -49,10 +49,9 @@ const AuthService = {
           birthdate: birthdate,
           work_application: workApplication,
           experience,
-          experience,
           weekly_days: weeklyDays,
           daily_hours: dailyHours,
-          profile_image: profileImage,
+          image: profileImage,
         },
       },
       "caregiver"
@@ -94,7 +93,7 @@ const AuthService = {
           care_type: careType,
           weekly_days: weeklyDays,
           daily_hours: dailyHours,
-          profile_image: profileImage,
+          image: profileImage,
         },
       },
       "beneficiary"

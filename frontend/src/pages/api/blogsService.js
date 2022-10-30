@@ -9,12 +9,13 @@ const BlogsService = {
 		if (category) queryParams += `&category_name=${category}`;
 		return API.getAllResources(BASE_RESOURCE_NAME, queryParams);
 	},
+
 	getBlogById: (blogId) => {
 		return API.getResourceById(BASE_RESOURCE_NAME, blogId);
 	},
 
 	getAllBlogCategories: () => {
-		return API.getAllResources("blog-list-categories");
+		return API.getAllResources("blog-categories");
 	}
 };
 export default BlogsService;
