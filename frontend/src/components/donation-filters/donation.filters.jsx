@@ -1,21 +1,18 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Input, Select } from "../../shared-components";
 import styles from "./donation.filters.module.scss";
 
 export function DonationFilters({ onChange }) {
+	const [filters, setFilters] = useState({
+		contains: null,
+		isActive: null,
+	});
 
-	const [contains, setContains] = useState(null);
-	const [isActive, setIsActive] = useState(null);
-
-	function applyContainsFilter(contains) {
-		setContains(contains);
-		onChange(1, contains, isActive);
-	}
-
-	function applyIsActiveFilter(isActive) {
-		setIsActive(isActive);
-		onChange(1, contains, isActive);
-	}
+	const applyFilters = useCallback((newFilters) => {
+		const updatedFilters = { ...filters, ...newFilters };
+		setFilters(updatedFilters);
+		onChange(1, updatedFilters.contains, updatedFilters.isActive);
+	}, [filters, onChange]);
 
 	return (
 		<div className={styles.filters}>
@@ -24,14 +21,14 @@ export function DonationFilters({ onChange }) {
 				id="donationContains"
 				name="donationContains"
 				placeholder="Pretraži..."
-				onChange={applyContainsFilter}
+				onChange={value => applyFilters({contains: value})}
 			/>
 			<Select
 				id="donationStatus"
 				name="donationStatus"
 				options={{ true: "u toku", false: "završeno" }}
 				placeholder="Status..."
-				onChange={applyIsActiveFilter}
+				onChange={value => applyFilters({isActive: value})}
 			/>
 		</div>
 	);

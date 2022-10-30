@@ -1,23 +1,20 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Input, Select } from "../../shared-components";
 import styles from "./blog.filters.module.scss";
 import BlogsService from "../../pages/api/blogsService";
 
 export function BlogFilters({ onChange }) {
-
-	const [contains, setContains] = useState(null);
-	const [category, setCategory] = useState(null);
+	const [filters, setFilters] = useState({
+		contains: null,
+		category: null,
+	});
 	const [categoryOptions, setCategoryOptions] = useState(null);
 
-	function applyContainsFilter(contains) {
-		setContains(contains);
-		onChange(1, contains, category);
-	}
-
-	function applyCategoryFilter(category) {
-		setCategory(category);
-		onChange(1, contains, category);
-	}
+	const applyFilters = useCallback((newFilters) => {
+		const updatedFilters = { ...filters, ...newFilters };
+		setFilters(updatedFilters);
+		onChange(1, updatedFilters.contains, updatedFilters.category);
+	}, [filters, onChange]);
 
 	useEffect(() => {
 		async function fetchBlogCategories() {
@@ -41,14 +38,14 @@ export function BlogFilters({ onChange }) {
 				id="blogContains"
 				name="blogContains"
 				placeholder="Pretraži..."
-				onChange={applyContainsFilter}
+				onChange={value => applyFilters({contains: value}) }
 			/>
 			<Select
 				id="blogCategory"
 				name="blogCategory"
 				options={categoryOptions || {}}
 				placeholder="Kategorija..."
-				onChange={applyCategoryFilter}
+				onChange={value => applyFilters({category: value}) }
 			/>
 		</div>
 	);

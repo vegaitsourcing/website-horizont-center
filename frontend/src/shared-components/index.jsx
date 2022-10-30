@@ -7,6 +7,7 @@ export * from "shared-components/pager/pager";
 export * from "shared-components/image-upload-section/image.upload";
 export * from "shared-components/page-header/page.header";
 export * from "shared-components/profile-filters/profile.filters";
+export * from "shared-components/profile-list-item/profile-list-item";
 export * from "shared-components/section-header/section.header";
 export * from "shared-components/blog-articles/blog.articles";
 export * from "shared-components/about-details/about.details";

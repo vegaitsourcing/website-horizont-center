@@ -49,9 +49,9 @@ function Caregivers(props) {
 				<ProfileFilters onChange={getCaregivers}/>
 				<CaregiverList caregivers={caregivers}/>
 				<Pager
-					changePage={activePageNumber}
+					onPageChange={getCaregivers}
 					numberOfPages={numberOfPages}
-					pageNum={activePageNumber}
+					activePageNumber={activePageNumber}
 				/>
 			</LayoutDefault>
 		</>

@@ -1,27 +1,19 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { Input, Select } from "../../shared-components";
 import styles from "./profile.filters.module.scss";
 
 export function ProfileFilters({ onChange }) {
+	const [filters, setFilters] = useState({
+		contains: null,
+		gender: null,
+		city: null,
+	});
 
-	const [contains, setContains] = useState(null);
-	const [gender, setGender] = useState(null);
-	const [city, setCity] = useState(null);
-
-	function applyContainsFilter(contains) {
-		setContains(contains);
-		onChange(1, contains, gender, city);
-	}
-
-	function applyGenderFilter(gender) {
-		setGender(contains);
-		onChange(1, contains, gender, city);
-	}
-
-	function applyCityFilter(city) {
-		setCity(contains);
-		onChange(1, contains, gender, city);
-	}
+	const applyFilters = useCallback((newFilters) => {
+		const updatedFilters = { ...filters, ...newFilters };
+		setFilters(updatedFilters);
+		onChange(1, updatedFilters.contains, updatedFilters.gender, updatedFilters.city);
+	}, [filters, onChange]);
 
 	return (
 		<div className={styles.filters}>
@@ -30,21 +22,21 @@ export function ProfileFilters({ onChange }) {
 				id="profileContains"
 				name="profileContains"
 				placeholder="Pretraži..."
-				onChange={applyContainsFilter}
+				onChange={value => applyFilters({ contains: value })}
 			/>
 			<Select
 				id="profileGender"
 				name="profileGender"
 				options={{ male: "Muško", female: "Žensko" }}
 				placeholder="Pol..."
-				onChange={applyGenderFilter}
+				onChange={value => applyFilters({ gender: value })}
 			/>
 			<Select
 				id="profileCity"
 				name="profileCity"
 				options={{ "Novi Sad": "Novi Sad" }} // TODO: fetch cities from an API
-				placeholder="Mest..."
-				onChange={applyCityFilter}
+				placeholder="Mesto..."
+				onChange={value => applyFilters({ city: value })}
 			/>
 		</div>
 	);

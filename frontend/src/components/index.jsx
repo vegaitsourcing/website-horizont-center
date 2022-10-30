@@ -4,6 +4,7 @@ export * from "./footer/footer";
 export * from "./about/about";
 export * from "./blog-list/blog.list";
 export * from "./caregiver-list/caregiver.list";
+export * from "./beneficiary-list/beneficiary.list";
 export * from "./registration/";
 export * from "./login/login";
 export * from "./single-blog/single.blog";

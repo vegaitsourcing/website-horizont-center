@@ -177,7 +177,7 @@
   fields:
     user: 7
     image: fixtures/beneficiary_1.jpg
-    gender: femail
+    gender: female
     postal_code: 21000
     city: Novi Sad
     description: Ovo je opis za profil negovanog. Opis bi trebalo da sadrži neke osnovne podatke o osobi čiji je profil.
@@ -204,7 +204,7 @@
   pk: 4
   fields:
     user: 8
-    gender: femail
+    gender: female
     postal_code: 21000
     city: Novi Sad
     description: Ovo je opis za profil negovanog. Opis bi trebalo da sadrži neke osnovne podatke o osobi čiji je profil.

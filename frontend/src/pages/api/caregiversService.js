@@ -1,17 +1,15 @@
 import API from "./baseApi";
+import { ProfileService } from "./profileService";
 
 const BASE_RESOURCE_NAME = "caregivers";
+
 const caregiversService = {
 	getCaregivers: (pageSize, pageNumber, contains, gender, city) => {
-		let queryParams = `ipp=${pageSize}&page=${pageNumber}`;
-		if (contains) queryParams += `&contains=${contains}`;
-		if (gender) queryParams += `&gender=${gender}`;
-		if (city) queryParams += `&city=${city}`;
-		return API.getAllResources(BASE_RESOURCE_NAME, queryParams);
+		return ProfileService.getProfiles(BASE_RESOURCE_NAME, pageSize, pageNumber, contains, gender, city);
 	},
 
 	getCaregiverById: (beneficiaryId) => {
-		return API.getResourceById(BASE_RESOURCE_NAME, beneficiaryId, localStorage.getItem("token"));
+		return API.getResourceById(BASE_RESOURCE_NAME, beneficiaryId);
 	},
 };
 
