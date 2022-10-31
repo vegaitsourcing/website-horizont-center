@@ -16,13 +16,13 @@ export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
     let reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
     reader.onload = (upload) => {
-      valueChangedHandler(upload.target.result, "profile_image");
-      setFormStep3Data({ data: { profile_image: upload.target.result } });
+      valueChangedHandler(upload.target.result, "image");
+      setFormStep3Data({ data: { image: upload.target.result } });
     };
   };
 
   const openFileExplorer = () => {
-    var fileupload = document.getElementById("imgupload");
+    var fileupload = document.getElementById("image");
     fileupload.click();
   };
 
@@ -35,12 +35,12 @@ export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
   return (
     <div className={styles.imageUpload}>
       <div className={styles.imageField}>
-        <img src={formStep3Data?.data?.profile_image ?? defaultImg} className={styles.image} />
+        <img src={formStep3Data?.data?.image ?? defaultImg} className={styles.image} />
         <input
           onChange={changeHandler}
           type="file"
           accept="image/png, image/gif, image/jpeg"
-          id="imgupload"
+          id="image"
           style={{ display: "none" }}
         />
         <p onClick={openFileExplorer} className={styles.text}>

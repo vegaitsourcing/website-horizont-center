@@ -1,5 +1,6 @@
 // global styles
 import "styles/main.scss";
+import "react-datepicker/dist/react-datepicker.css";
 
 // seos
 import { DefaultSeo, LocalBusinessJsonLd, SocialProfileJsonLd } from "next-seo";

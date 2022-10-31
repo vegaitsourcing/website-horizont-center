@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect } from "react";
 import { RegistrationStepOne } from "../registration-step-one/registration.step.one";
 import { RegistrationStepTwo } from "../registration-step-two/registration.step.two";
 import { RegistrationStepThree } from "../registration-step-three/registration.step.three";
-import RegistrationService from "pages/api/userService";
+import authService from "pages/api/authService";
 import { LongButton } from "shared-components";
 
 import styles from "./registration.form.module.scss";
@@ -42,6 +42,7 @@ export const RegistrationForm = ({}) => {
       const historyData = registrationForm.formStep3?.data;
       registrationForm.formStep3 = { data: { ...historyData, [itemType]: newData }, isCompleted: true };
     }
+    console.log(registrationForm);
     localStorage.setItem("registrationForm", JSON.stringify(registrationForm));
   };
 
@@ -58,23 +59,25 @@ export const RegistrationForm = ({}) => {
         phone_number: formStep2.phone_number,
         password: formStep2.password,
       },
-      ...formStep2,
-      ...formStep3,
+      gender: formStep2.gender === "muški" ? "male" : "female",
+      postal_code: parseInt(formStep2.postal_code),
+      city: formStep2.city,
+      description: formStep3.description,
+      birthdate: formStep2.birthdate,
+      work_application: formStep2.work_application,
+      experience: formStep2.experience,
+      weekly_days: parseInt(formStep2.weekly_days),
+      daily_hours: parseFloat(formStep2.daily_hours),
+      image: formStep3.image,
     };
-
-    // const userData = { ...formStep2, ...formStep3 };
     console.log("Register api");
     console.log(userData);
 
-    return await RegistrationService.registerUser(userData, userType);
+    return await authService.registerCaregiver(userData, userType);
   }
 
   const switchToStep = (direction) => {
-    console.log(stepNumber);
-    if (stepNumber === 3) {
-      const response = registerUser();
-      console.log(response);
-    }
+    if (stepNumber === 3) registerUser();
     direction === "next"
       ? stepNumber !== 3
         ? setStepNumber(++stepNumber)
