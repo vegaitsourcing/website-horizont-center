@@ -5,7 +5,7 @@
     title: Prva donacija
     subtitle: Ovo je novčana donacija
     description: U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji. U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji.
-    image: fixtures/donation_1.jpg
+    image: fixtures/img_1.jpg
     created: 2022-10-14T00:00:00+00:00
     modified: 2022-10-14T00:00:00+00:00
 
@@ -40,7 +40,7 @@
     title: Druga donacija
     subtitle: Ovo je robna donacija
     description: U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji. U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji.
-    image: fixtures/donation_2.jpg
+    image: fixtures/img_2.jpg
     created: 2022-10-14T00:00:00+00:00
     modified: 2022-10-14T00:00:00+00:00
 
@@ -48,6 +48,50 @@
   pk: 2
   fields:
     donation: 2
+    name: Centar Horizont
+    description: Ovaj centar je osnovan kako bi unapredio sistem brige o nemoćnima u Srbiji koji je baziran na volonterskom radu.
+    facebook_url: https://www.facebook.com/VegaITSourcing
+    instagram_url: https://www.instagram.com/vega_it/
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: donations.Donation
+  pk: 3
+  fields:
+    is_active: true
+    title: Treća donacija
+    subtitle: Ovo je robna donacija
+    description: U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji. U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji.
+    image: fixtures/img_3.jpg
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: donations.DonationCompany
+  pk: 3
+  fields:
+    donation: 3
+    name: Centar Horizont
+    description: Ovaj centar je osnovan kako bi unapredio sistem brige o nemoćnima u Srbiji koji je baziran na volonterskom radu.
+    facebook_url: https://www.facebook.com/VegaITSourcing
+    instagram_url: https://www.instagram.com/vega_it/
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: donations.Donation
+  pk: 4
+  fields:
+    is_active: false
+    title: Četvrta donacija
+    subtitle: Ovo je robna donacija
+    description: U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji. U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji.
+    image: fixtures/img_4.jpg
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: donations.DonationCompany
+  pk: 4
+  fields:
+    donation: 4
     name: Centar Horizont
     description: Ovaj centar je osnovan kako bi unapredio sistem brige o nemoćnima u Srbiji koji je baziran na volonterskom radu.
     facebook_url: https://www.facebook.com/VegaITSourcing

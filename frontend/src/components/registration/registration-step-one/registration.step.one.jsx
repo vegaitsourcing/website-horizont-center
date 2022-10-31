@@ -25,7 +25,7 @@ export const RegistrationStepOne = ({ stepNumber, valueChangedHandler }) => {
           placeholder="Tip profila*"
           hasError={false}
           options={["Negovatelj", "Negovani"]}
-          inputDefaultValue={formStep1Data?.data?.profileType}
+          inputValue={formStep1Data?.data?.profileType}
           valueChangedHandler={(e) => valueChangedHandler(e)}
         />
       </div>

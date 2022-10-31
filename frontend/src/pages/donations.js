@@ -1,99 +1,85 @@
 import { LayoutDefault } from "layouts";
-
 import { NextSeo } from "next-seo";
-
-import ABOUT from "config/data/about";
 import ENV from "config/env";
-import { DonationsList } from "components/donationList/donationList";
+import { DonationList } from "components/donation-list/donation.list";
 import { useState } from "react";
-import BlogService from "./api/blogService";
-import DonationService from "./api/donationsService";
-import PostTitle from "shared-components/post-title/post-title";
-import PostFilters from "shared-components/post-filters/post-filters";
-import { CardPagination } from "shared-components";
+import DonationsService from "./api/donationsService";
+import { Pagination, PageHeader } from "shared-components";
+import { DonationFilters } from "components";
 
-const { BASE_URL = "", BASE_API_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
+const { BASE_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
-function Contact(props) {
-  const {
-    pathname,
-    data: {
-      title,
-      items,
-      pagination,
-      pageSize,
-      total,
-      metaTitle,
-      description,
-      metaDescription,
-      header,
-      slug,
-      block_top = {},
-    },
-  } = props;
 
-  const SEOS = {
-    title,
-    description: metaDescription,
-    canonical: `${BASE_URL}${pathname}`,
-    openGraph: [
-      {
-        url: BASE_URL,
-        images: { url: `${BASE_URL}${STATIC_DIR}logo-share.jpg` },
-        site_name: AUTHOR,
-      },
-    ],
-    ...BASE_SEO,
-  };
-	const { total_items,total_pages} =pagination;
-  const [activepageNumber, setactivepageNumber] = useState(1);
-  const [numberOfPages, setNumberOfPages] = useState(total_pages);
-  const [filterType, setfilterType] = useState("");
-  const [filterText, setfilterText] = useState("");
-  function changeNumberOfPages(totalRecords, pageSize) {
-    setNumberOfPages(Math.ceil(totalRecords / pageSize));
-  }
-  let searchTimeout;
-  function changeFilterType(type) {
-    setfilterType(type);
-  }
-  function changeTextFilter(text) {
-    clearTimeout(searchTimeout);
-    searchTimeout = setTimeout(() => setfilterText(text), 500);
-  }
-  return (
-    <>
-      <NextSeo {...SEOS} />
-      <LayoutDefault pathname={pathname}>
-        <PostTitle
-          title={"Prikupljenje donacija"}
-          text={
-            "Felis lectus tortor massa a eget viverra integer faucibus adipiscing. Faucibus nunc, auctor arcu magna cursus "
-          }
-        ></PostTitle>
-        <PostFilters changeFilterText={changeTextFilter} changeFilterType={changeFilterType}></PostFilters>
-        <DonationsList
-					pageSize={pageSize}
-          activePageNumber={activepageNumber}
-          changeNumberOfPages={changeNumberOfPages}
-          filterText={filterText}
-          filterType={filterType}
-          initialDonations={items}
-        ></DonationsList>
-        <CardPagination
-          changePage={setactivepageNumber}
-          numberOfPages={numberOfPages}
-          pageNum={activepageNumber}
-        ></CardPagination>
-      </LayoutDefault>
-    </>
-  );
+function Donations(props) {
+	const {
+		pathname,
+		pageSize,
+		data: {
+			title,
+			items,
+			pagination,
+			metaDescription,
+		},
+	} = props;
+
+	const SEOS = {
+		title,
+		description: metaDescription,
+		canonical: `${BASE_URL}${pathname}`,
+		openGraph: [
+			{
+				url: BASE_URL,
+				images: { url: `${BASE_URL}${STATIC_DIR}logo-share.jpg` },
+				site_name: AUTHOR,
+			},
+		],
+		...BASE_SEO,
+	};
+	const [activePageNumber, setActivePageNumber] = useState(1);
+	const [donations, setDonations] = useState(items);
+	const [numberOfPages, setNumberOfPages] = useState(pagination.total_pages);
+
+	async function getDonations(pageNumber, contains, isActive) {
+		setActivePageNumber(pageNumber);
+		const response = await DonationsService.getDonations(pageSize, pageNumber, contains, isActive);
+		setDonations(response.data.items);
+		setNumberOfPages(response.data.pagination.total_pages);
+	}
+
+	return (
+		<>
+			<NextSeo {...SEOS} />
+			<LayoutDefault pathname={pathname}>
+				<PageHeader
+					title={"Prikupljenje donacija"}
+					text={
+						"Felis lectus tortor massa a eget viverra integer faucibus adipiscing. " +
+						"Faucibus nunc, auctor arcu magna cursus "
+					}
+				/>
+				<DonationFilters onChange={getDonations}/>
+				<DonationList donations={donations}/>
+				<Pagination
+					onPageChange={getDonations}
+					numberOfPages={numberOfPages}
+					activePageNumber={activePageNumber}
+				/>
+			</LayoutDefault>
+		</>
+	);
 }
 
 export async function getServerSideProps(ctx) {
-  const { resolvedUrl } = ctx;
-  const responseData = await DonationService.getAllDonations(process.env.POST_PAGE_SIZE, 1, "", "");
-  return { props: { data: { ...responseData.data,...{pageSize:process.env.POST_PAGE_SIZE}, ...ABOUT }, pathname: resolvedUrl } };
+	const { resolvedUrl } = ctx;
+	const pageSize = process.env.POST_PAGE_SIZE;
+	const response = await DonationsService.getDonations(pageSize, 1);
+	return {
+		props: {
+			data: { ...response.data },
+			pageSize: pageSize,
+			pathname: resolvedUrl
+		}
+	};
 }
 
-export default Contact;
+export default Donations;
