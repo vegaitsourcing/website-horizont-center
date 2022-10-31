@@ -27,7 +27,7 @@ export const CaregiverForm = ({ stepNumber, valueChangedHandler }) => {
                 options={input.options}
                 name={input.name}
                 placeholder={input.placeholder}
-                inputDefaultValue={formData?.data?.caregiver?.[input.name]}
+                inputValue={formData?.data?.caregiver?.[input.name] ?? ""}
                 valueChangedHandler={(e) => valueChangedHandler(e, input.name)}
               />
             );
@@ -46,7 +46,7 @@ export const CaregiverForm = ({ stepNumber, valueChangedHandler }) => {
                 options={input.options}
                 name={input.name}
                 placeholder={input.placeholder}
-                inputDefaultValue={formData?.data?.caregiver?.[input.name]}
+                inputValue={formData?.data?.caregiver?.[input.name] ?? ""}
                 valueChangedHandler={(e) => valueChangedHandler(e, input.name)}
               />
             );

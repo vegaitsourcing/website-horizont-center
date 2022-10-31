@@ -1,0 +1,33 @@
+@import '../../styles/main.scss';
+
+.h1 {
+    margin: 0;
+    margin-bottom: 84px;
+}
+
+.h2,
+.h4 {
+    margin-top: 0;
+}
+
+.singleBlogTitle {
+    position: relative;
+    background-color: $light-blue-color;
+    padding-block: 88px 421px;
+    
+    .singleBlogTitleImg {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            max-width: 100%;
+        }
+    }
+}
+
+.singleBlogContainer {
+    width: 1244px;
+    margin-inline: auto;
+}
