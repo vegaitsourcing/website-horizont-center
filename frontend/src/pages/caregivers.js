@@ -2,7 +2,7 @@ import { NextSeo } from "next-seo";
 import { LayoutDefault } from "layouts";
 import env from "config/env";
 import { useState } from "react";
-import { Pager, ProfileFilters } from "shared-components";
+import { Pagination, ProfileFilters } from "shared-components";
 import CaregiversService from "./api/caregiversService";
 import { CaregiverList } from "../components";
 
@@ -35,7 +35,7 @@ function Caregivers(props) {
 	const [caregivers, setCaregivers] = useState(items);
 	const [numberOfPages, setNumberOfPages] = useState(pagination.total_pages);
 
-	async function getCaregivers(pageNumber, contains = null, gender = null, city = null) {
+	async function getCaregivers(pageNumber, contains, gender, city) {
 		setActivePageNumber(pageNumber);
 		const response = await CaregiversService.getCaregivers(pageSize, pageNumber, contains, gender, city);
 		setCaregivers(response.data.items);
@@ -48,7 +48,7 @@ function Caregivers(props) {
 			<LayoutDefault pathname={pathname}>
 				<ProfileFilters onChange={getCaregivers}/>
 				<CaregiverList caregivers={caregivers}/>
-				<Pager
+				<Pagination
 					onPageChange={getCaregivers}
 					numberOfPages={numberOfPages}
 					activePageNumber={activePageNumber}

@@ -4,7 +4,7 @@ import ENV from "config/env";
 import { DonationList } from "components/donation-list/donation.list";
 import { useState } from "react";
 import DonationsService from "./api/donationsService";
-import { Pager, PageHeader } from "shared-components";
+import { Pagination, PageHeader } from "shared-components";
 import { DonationFilters } from "components";
 
 const { BASE_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
@@ -39,7 +39,7 @@ function Donations(props) {
 	const [donations, setDonations] = useState(items);
 	const [numberOfPages, setNumberOfPages] = useState(pagination.total_pages);
 
-	async function getDonations(pageNumber, contains = null, isActive = null) {
+	async function getDonations(pageNumber, contains, isActive) {
 		setActivePageNumber(pageNumber);
 		const response = await DonationsService.getDonations(pageSize, pageNumber, contains, isActive);
 		setDonations(response.data.items);
@@ -59,7 +59,7 @@ function Donations(props) {
 				/>
 				<DonationFilters onChange={getDonations}/>
 				<DonationList donations={donations}/>
-				<Pager
+				<Pagination
 					onPageChange={getDonations}
 					numberOfPages={numberOfPages}
 					activePageNumber={activePageNumber}

@@ -24,7 +24,7 @@ export const Input = (props) => {
 				type={type}
 				name={name}
 				id={id}
-				onChange={event => onChange(event.currentTarget.value)}
+				onChange={event => onChange && onChange(event.currentTarget.value)}
 				placeholder={placeholder}
 				className={[styles.field, styles.input].join(" ")}
 			/>

@@ -1,6 +1,6 @@
 import { LayoutDefault } from "layouts";
 import { NextSeo } from "next-seo";
-import { PageHeader, Pager } from "shared-components";
+import { PageHeader, Pagination } from "shared-components";
 import ENV from "config/env";
 import { BlogList } from "components";
 import BlogsService from "./api/blogsService";
@@ -38,7 +38,7 @@ function Blogs(props) {
 	const [blogs, setBlogs] = useState(items);
 	const [numberOfPages, setNumberOfPages] = useState(pagination.total_pages);
 
-	async function getBlogs(pageNumber, contains = null, category = null) {
+	async function getBlogs(pageNumber, contains, category) {
 		setActivePageNumber(pageNumber);
 		const response = await BlogsService.getBlogs(pageSize, pageNumber, contains, category);
 		setBlogs(response.data.items);
@@ -58,7 +58,7 @@ function Blogs(props) {
 				/>
 				<BlogFilters onChange={getBlogs}/>
 				<BlogList blogs={blogs}/>
-				<Pager
+				<Pagination
 					onPageChange={getBlogs}
 					numberOfPages={numberOfPages}
 					activePageNumber={activePageNumber}

@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./pager.module.scss";
+import styles from "./pagination.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
@@ -17,7 +17,7 @@ function PageButtons({ numberOfPages, activePageNumber, onPageChange }) {
 	));
 }
 
-export const Pager = ({ activePageNumber, numberOfPages, onPageChange }) => {
+export const Pagination = ({ activePageNumber, numberOfPages, onPageChange }) => {
 	return (
 		<div className={styles.paginationWrapper}>
 			{activePageNumber > 1 && (

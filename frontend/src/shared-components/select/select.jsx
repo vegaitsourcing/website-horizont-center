@@ -16,7 +16,7 @@ export const Select = (props) => {
 	return (
 		<div className={styles.fieldWrapper}>
 			<select
-				onChange={event => onChange(event.currentTarget.value)}
+				onChange={event => onChange && onChange(event.currentTarget.value)}
 				name={name}
 				id={id}
 				value={inputValue}

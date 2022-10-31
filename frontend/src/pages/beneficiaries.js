@@ -3,7 +3,7 @@ import { LayoutDefault } from "layouts";
 import { NextSeo } from "next-seo";
 import ENV from "config/env";
 import { useState } from "react";
-import { Pager, ProfileFilters } from "shared-components";
+import { Pagination, ProfileFilters } from "shared-components";
 import BeneficiariesService from "./api/beneficiariesService";
 import { BeneficiaryList } from "../components";
 
@@ -39,7 +39,7 @@ function Beneficiaries(props) {
 	const [beneficiaries, setBeneficiaries] = useState(items);
 	const [numberOfPages, setNumberOfPages] = useState(pagination.total_pages);
 
-	async function getBeneficiaries(pageNumber, contains = null, gender = null, city = null) {
+	async function getBeneficiaries(pageNumber, contains, gender, city) {
 		setActivePageNumber(pageNumber);
 		const response = await BeneficiariesService.getBeneficiaries(pageSize, pageNumber, contains, gender, city);
 		setBeneficiaries(response.data.items);
@@ -52,7 +52,7 @@ function Beneficiaries(props) {
 			<LayoutDefault>
 				<ProfileFilters onChange={getBeneficiaries}/>
 				<BeneficiaryList beneficiaries={beneficiaries}/>
-				<Pager
+				<Pagination
 					onPageChange={getBeneficiaries}
 					numberOfPages={numberOfPages}
 					activePageNumber={activePageNumber}
