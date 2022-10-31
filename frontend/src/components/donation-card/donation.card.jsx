@@ -1,22 +1,18 @@
-import styles from "./card.module.scss";
-import { LongButton } from "../long-button/long.button";
-import { hex2rgba } from "../../utils";
+import styles from "./donation.card.module.scss";
+import { LongButton } from "../../shared-components";
 
+export const DonationCard = ({ id, image, title, description, date, onClick, financialInfo }) => {
+	const donationTypeConf = {
+		style: [styles.type, financialInfo ? styles.financialType : styles.goodsType].join(' '),
+		label: financialInfo ? "Finansijska pomoć" : "Robna pomoć"
+	}
 
-export const Card = ({ id, image, categories, title, description, date, onClick }) => {
 	return (
 		<li className={styles.cardItem} key={id}>
-			<img src={image} alt="" className={styles.image}/>
+			<img src={image} alt="" className={styles.image} />
 			<div className={styles.content}>
 				<div>
-					{categories.map((category) => (
-						<span key={category.name}
-									style={{ color: category.color, backgroundColor: hex2rgba(category.color, 0.2)}}
-									className={styles.category}
-						>
-							{category.name}
-						</span>
-					))}
+					<span className={donationTypeConf.style}>{donationTypeConf.label}</span>
 				</div>
 				<div className={styles.description}>
 					<h4 className={styles.h4}>{title}</h4>

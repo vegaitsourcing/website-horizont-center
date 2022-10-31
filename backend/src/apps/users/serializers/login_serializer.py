@@ -31,7 +31,7 @@ class LoginSerializer(serializers.Serializer):
             'last_name': self.user.last_name,
         }
         if profile := self.user.get_profile():
-            data['image'] = self.request.build_absolute_uri(profile.profile_image.url)
+            data['image'] = self.request.build_absolute_uri(profile.image.url)
         return data
 
     def update(self, instance, validated_data):

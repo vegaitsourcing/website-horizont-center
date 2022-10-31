@@ -1,16 +1,15 @@
 import { LayoutDefault } from "layouts";
 import { NextSeo } from "next-seo";
+import { PageHeader, Pagination } from "shared-components";
 import ENV from "config/env";
-import { DonationList } from "components/donation-list/donation.list";
+import { BlogList } from "components";
+import BlogsService from "./api/blogsService";
 import { useState } from "react";
-import DonationsService from "./api/donationsService";
-import { Pagination, PageHeader } from "shared-components";
-import { DonationFilters } from "components";
+import { BlogFilters } from "../components/blog-filters/blog.filters";
 
 const { BASE_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
-
-function Donations(props) {
+function Blogs(props) {
 	const {
 		pathname,
 		pageSize,
@@ -29,20 +28,20 @@ function Donations(props) {
 		openGraph: [
 			{
 				url: BASE_URL,
-				images: { url: `${BASE_URL}${STATIC_DIR}logo-share.jpg` },
+				images: { url: `${BASE_URL}${STATIC_DIR}logo.png` },
 				site_name: AUTHOR,
 			},
 		],
 		...BASE_SEO,
 	};
 	const [activePageNumber, setActivePageNumber] = useState(1);
-	const [donations, setDonations] = useState(items);
+	const [blogs, setBlogs] = useState(items);
 	const [numberOfPages, setNumberOfPages] = useState(pagination.total_pages);
 
-	async function getDonations(pageNumber, contains, isActive) {
+	async function getBlogs(pageNumber, contains, category) {
 		setActivePageNumber(pageNumber);
-		const response = await DonationsService.getDonations(pageSize, pageNumber, contains, isActive);
-		setDonations(response.data.items);
+		const response = await BlogsService.getBlogs(pageSize, pageNumber, contains, category);
+		setBlogs(response.data.items);
 		setNumberOfPages(response.data.pagination.total_pages);
 	}
 
@@ -51,16 +50,16 @@ function Donations(props) {
 			<NextSeo {...SEOS} />
 			<LayoutDefault pathname={pathname}>
 				<PageHeader
-					title={"Prikupljenje donacija"}
+					title={"Podrška"}
 					text={
 						"Felis lectus tortor massa a eget viverra integer faucibus adipiscing. " +
 						"Faucibus nunc, auctor arcu magna cursus "
 					}
 				/>
-				<DonationFilters onChange={getDonations}/>
-				<DonationList donations={donations}/>
+				<BlogFilters onChange={getBlogs}/>
+				<BlogList blogs={blogs}/>
 				<Pagination
-					onPageChange={getDonations}
+					onPageChange={getBlogs}
 					numberOfPages={numberOfPages}
 					activePageNumber={activePageNumber}
 				/>
@@ -72,7 +71,7 @@ function Donations(props) {
 export async function getServerSideProps(ctx) {
 	const { resolvedUrl } = ctx;
 	const pageSize = process.env.POST_PAGE_SIZE;
-	const response = await DonationsService.getDonations(pageSize, 1);
+	const response = await BlogsService.getBlogs(pageSize, 1);
 	return {
 		props: {
 			data: { ...response.data },
@@ -82,4 +81,4 @@ export async function getServerSideProps(ctx) {
 	};
 }
 
-export default Donations;
+export default Blogs;

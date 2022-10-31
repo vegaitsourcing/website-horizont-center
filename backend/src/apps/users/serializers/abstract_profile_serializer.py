@@ -6,22 +6,24 @@ from apps.common.serializers import ModelSerializer
 
 
 class AbstractProfileSerializer(ModelSerializer):
-    profile_image = Base64ImageField()
+    image = Base64ImageField()
     user = UserSerializer()
 
     class Meta:
         model = AbstractProfile
         fields = (
             'id',
-            'profile_image',
+            'image',
             'gender',
             'postal_code',
             'city',
             'description',
             'user',
+            'created',
+            'modified',
         )
 
     def get_image_fields(self) -> tuple:
         image_fields = super(AbstractProfileSerializer, self).get_image_fields()
-        image_fields += ('profile_image',)
+        image_fields += ('image',)
         return image_fields

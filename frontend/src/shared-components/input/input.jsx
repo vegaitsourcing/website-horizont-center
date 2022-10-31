@@ -1,69 +1,34 @@
-import React, { useRef } from "react";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faChevronDown, faAngleDown } from "@fortawesome/free-solid-svg-icons";
+import React from "react";
 import styles from "./input.module.scss";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { Select } from "../select/select";
 
-export const Input = ({
-  id,
-  name,
-  type,
-  placeholder,
-  hasError,
-  options,
-  inputValue,
-  required,
-  valueChangedHandler,
-}) => {
-  if (type == "dropdown")
-    return (
-      <div className={styles.inputWrapper}>
-        <select
-          onChange={(e) => valueChangedHandler && valueChangedHandler(e.currentTarget.value)}
-          name={name}
-          id={id}
-          value={inputValue}
-          className={styles.input + " " + styles.dropdown + " " + (hasError ? styles.hasError : null)}
-        >
-          {placeholder != null ? <option value="">{placeholder}</option> : null}
-          {options.map((option, index) => {
-            return (
-              <option key={index} value={option}>
-                {option}
-              </option>
-            );
-          })}
-        </select>
-        <FontAwesomeIcon icon={faChevronDown} className={styles.icon} />
-      </div>
-    );
-  else if (type == "search") {
-    return (
-      <div className={styles.inputWrapper}>
-        <div>{inputValue}</div>
-        <input
-          onChange={(e) => valueChangedHandler && valueChangedHandler(e.currentTarget.value)}
-          type={type}
-          name={name}
-          id={id}
-          placeholder={placeholder}
-          value={inputValue}
-          className={styles.input + " " + (hasError ? styles.hasError : null)}
-        />
-        <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.icon} />
-      </div>
-    );
-  } else {
-    return (
-      <input
-        value={inputValue}
-        type={type}
-        name={name}
-        id={id}
-        onChange={(e) => valueChangedHandler && valueChangedHandler(e.currentTarget.value)}
-        placeholder={placeholder}
-        className={styles.input + " " + (hasError ? styles.hasError : null)}
-      />
-    );
-  }
+export const Input = (props) => {
+	const {
+		id,
+		name,
+		type,
+		placeholder,
+		inputValue,
+		onChange,
+		withSearchIcon = false
+	} = props;
+
+	if (type === "dropdown") return <Select {...props}/>
+
+	return (
+		<div className={styles.fieldWrapper}>
+			<input
+				value={inputValue}
+				type={type}
+				name={name}
+				id={id}
+				onChange={event => onChange && onChange(event.currentTarget.value)}
+				placeholder={placeholder}
+				className={[styles.field, styles.input].join(" ")}
+			/>
+			{withSearchIcon && <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.icon}/>}
+		</div>
+	);
 };

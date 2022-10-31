@@ -1,0 +1,13 @@
+@import '../../styles/main.scss';
+
+.filters {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 128px;
+	padding: 0 128px;
+}
+
+.filters > * {
+	margin: 0 10px;
+}
