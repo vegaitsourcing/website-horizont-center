@@ -1,13 +1,6 @@
 from django.core import signing
 from apps.users.models import User, CaregiverProfile, BeneficiaryProfile
 from apps.users.serializers import BeneficiaryProfileSerializer, CaregiverProfileSerializer
-from apps.common.utils import IdentityVerificationEmailThread
-
-
-def send_verification_email(user: User) -> None:
-    url_hash = generate_url_hash_from_email(user.email)
-    email_thread = IdentityVerificationEmailThread(url_hash, user.email)
-    email_thread.start()
 
 
 def create_caregiver_user(serializer: CaregiverProfileSerializer) -> User:
@@ -24,12 +17,6 @@ def create_beneficiary_user(serializer: BeneficiaryProfileSerializer) -> User:
     BeneficiaryProfile.objects.create(user=user, **serializer.validated_data)
 
     return user
-
-
-def generate_url_hash_from_email(email) -> str:
-    return signing.dumps({
-        'email': email
-    })
 
 
 def get_email_from_hash(url_hash: str) -> str:

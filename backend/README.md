@@ -2,7 +2,7 @@
 
 ## Development setup
 
-### Setup requirements
+### Requirements
 
 - **Docker**:
     - Windows - [Docker Desktop for Windows](https://docs.docker.com/docker-for-windows/install/)
@@ -10,7 +10,7 @@
     - Linux - [Docker Engine](https://docs.docker.com/engine/install/#server)
       and [Docker Compose](https://docs.docker.com/compose/install/)
 
-### Setup steps
+### Steps
 
 1. Create `.env` based on `example.env`
 2. Start the app:
@@ -20,24 +20,35 @@
    (for older versions of Docker Compose use: `docker-compose up`)
 
 Now, go to http://0.0.0.0:8000/ in your browser to view the running Django app
-(the port is the one set for `DJANGO_PORT` variable in `.evn`).  
+(the port is the one set for `DJANGO_PORT` variable in `.evn`).
+
+### Fixtures (optional)
+
+Run the command below to load (all) test data (fixtures):
+
+    docker exec -it caregivers-django sh -c 'python manage.py load_data'
+
+**NOTE**: this will add a superuser as well with these credentials:
+
+- email: admin@example.com
+- password: admin
 
 ### Superuser (optional)
 
-You can user a superuser to log in to Django Admin. If you followed through the
+With superuser, you can log in to Django Admin. If you followed through the
 [Setup steps](#setup-steps), Django Admin should be available at http://0.0.0.0:8000/admin/
 (the port is the one set for `DJANGO_PORT` variable in `.evn`).
 
 Run one of the two following commands to create a superuser:
 
-- `docker exec -it caregivers-django sh -c 'python manage.py createsuperuser --noinput'`
+- `docker exec -it caregivers-django sh -c 'python manage.py create_superuser --no-input'`
 
   to create a superuser with credentials specified in `.env` file (`DJANGO_SUPERUSER_EMAIL` and
   `DJANGO_SUPERUSER_PASSWORD`)
 
   **OR**
 
-- `docker exec -it caregivers-django sh -c 'python manage.py createsuperuser'`
+- `docker exec -it caregivers-django sh -c 'python manage.py create_superuser'`
 
   to create a superuser with different credentials that you will choose after running this
   command

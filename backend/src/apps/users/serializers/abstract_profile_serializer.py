@@ -1,10 +1,11 @@
 from drf_extra_fields.fields import Base64ImageField
+
 from apps.users.models import AbstractProfile
 from apps.users.serializers import UserSerializer
-from apps.common.serializers import BaseModelSerializer
+from apps.common.serializers import ModelSerializer
 
 
-class AbstractProfileSerializer(BaseModelSerializer):
+class AbstractProfileSerializer(ModelSerializer):
     profile_image = Base64ImageField()
     user = UserSerializer()
 
@@ -20,7 +21,7 @@ class AbstractProfileSerializer(BaseModelSerializer):
             'user',
         )
 
-    def get_image_field_names(self) -> tuple:
-        image_field_names = super(AbstractProfileSerializer, self).get_image_field_names()
-        image_field_names += ('profile_image',)
-        return image_field_names
+    def get_image_fields(self) -> tuple:
+        image_fields = super(AbstractProfileSerializer, self).get_image_fields()
+        image_fields += ('profile_image',)
+        return image_fields

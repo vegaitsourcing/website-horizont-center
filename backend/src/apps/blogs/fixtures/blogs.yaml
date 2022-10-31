@@ -33,6 +33,7 @@
     categories:
       - 1
       - 2
+    image: fixtures/blog_1.jpg
     created: 2022-10-14T00:00:00+00:00
     modified: 2022-10-14T00:00:00+00:00
 
@@ -77,6 +78,7 @@
     categories:
       - 1
       - 3
+    image: fixtures/blog_2.jpg
     title: Osobe koje traže negu u Srbiji
     created: 2022-10-14T00:00:00+00:00
     modified: 2022-10-14T00:00:00+00:00

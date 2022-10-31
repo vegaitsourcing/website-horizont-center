@@ -1,0 +1,22 @@
+@import '../../styles/main.scss';
+
+.singleBlogMain {
+    padding-block: 587px 0;
+
+    .h2 {
+        font-weight: 600;
+        margin-top: 96px;
+    }
+
+    article:nth-child(1) .h2{
+        margin-top: 0;
+    }
+
+    .p1 {
+        font-weight: 300;
+    }
+
+    img {
+        margin-top: 96px;
+    }
+}

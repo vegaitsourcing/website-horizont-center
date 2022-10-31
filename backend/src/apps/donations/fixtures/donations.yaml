@@ -5,6 +5,7 @@
     title: Prva donacija
     subtitle: Ovo je novčana donacija
     description: U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji. U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji.
+    image: fixtures/donation_1.jpg
     created: 2022-10-14T00:00:00+00:00
     modified: 2022-10-14T00:00:00+00:00
 
@@ -39,6 +40,7 @@
     title: Druga donacija
     subtitle: Ovo je robna donacija
     description: U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji. U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji.
+    image: fixtures/donation_2.jpg
     created: 2022-10-14T00:00:00+00:00
     modified: 2022-10-14T00:00:00+00:00
 

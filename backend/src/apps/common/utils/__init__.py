@@ -1,2 +1,0 @@
-from apps.common.utils.email_thread import EmailThread
-from apps.common.utils.identity_verification_email_thread import IdentityVerificationEmailThread
