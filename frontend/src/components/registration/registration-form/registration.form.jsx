@@ -3,6 +3,7 @@ import { useState, useCallback, useEffect } from "react";
 import { RegistrationStepOne } from "../registration-step-one/registration.step.one";
 import { RegistrationStepTwo } from "../registration-step-two/registration.step.two";
 import { RegistrationStepThree } from "../registration-step-three/registration.step.three";
+import RegistrationService from "pages/api/userService";
 import { LongButton } from "shared-components";
 
 import styles from "./registration.form.module.scss";
@@ -44,7 +45,36 @@ export const RegistrationForm = ({}) => {
     localStorage.setItem("registrationForm", JSON.stringify(registrationForm));
   };
 
+  async function registerUser() {
+    const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
+    const userType = registrationForm.formStep1.data.profileType === "Negovatelj" ? "caregiver" : "beneficiary";
+    const formStep2 = registrationForm.formStep2.data[userType];
+    const formStep3 = registrationForm.formStep3.data;
+    const userData = {
+      user: {
+        email: formStep2.email,
+        first_name: formStep2.first_name,
+        last_name: formStep2.last_name,
+        phone_number: formStep2.phone_number,
+        password: formStep2.password,
+      },
+      ...formStep2,
+      ...formStep3,
+    };
+
+    // const userData = { ...formStep2, ...formStep3 };
+    console.log("Register api");
+    console.log(userData);
+
+    return await RegistrationService.registerUser(userData, userType);
+  }
+
   const switchToStep = (direction) => {
+    console.log(stepNumber);
+    if (stepNumber === 3) {
+      const response = registerUser();
+      console.log(response);
+    }
     direction === "next"
       ? stepNumber !== 3
         ? setStepNumber(++stepNumber)

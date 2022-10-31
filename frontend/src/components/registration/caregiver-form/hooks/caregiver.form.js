@@ -3,6 +3,7 @@ export const generalInformations = [
   { id: "last_name", type: "text", name: "last_name", placeholder: "Unesite Vaše prezime*" },
   { id: "email", type: "email", name: "email", placeholder: "Unesite Vaš E-mail*" },
   { id: "phone_number", type: "text", name: "phone_number", placeholder: "Unesite Vaš broj telefona*" },
+  { id: "password", type: "text", name: "password", placeholder: "Unesite Vašu lozinku*" },
   {
     id: "postal_code",
     type: "dropdown",
