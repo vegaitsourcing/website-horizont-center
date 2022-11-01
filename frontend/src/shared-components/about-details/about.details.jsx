@@ -17,8 +17,8 @@ export const AboutDetails = ({ imageSrc, name, type, text, socialLinks }) => {
           </h3>
           <p className={styles.aboutParagraph}>{text}</p>
           <ul className={styles.aboutSocialLinks}>
-            {socialLinks.map((link) => (
-              <a href={link.url}>
+            {socialLinks.map((link, index) => (
+              <a key={index} href={link.url}>
                 <img src={link.iconPath} alt="" />
               </a>
             ))}
