@@ -5,7 +5,7 @@ import { BeneficiaryForm } from "../beneficiary-form/beneficiary.form";
 
 import styles from "./registration.step.two.module.scss";
 
-export const RegistrationStepTwo = ({ stepNumber, valueChangedHandler }) => {
+export const RegistrationStepTwo = ({ stepNumber, valueChangedHandler, isFormValid }) => {
   const [userType, setUserType] = useState();
 
   useEffect(() => {
@@ -19,11 +19,13 @@ export const RegistrationStepTwo = ({ stepNumber, valueChangedHandler }) => {
         <CaregiverForm
           stepNumber={stepNumber}
           valueChangedHandler={(e, itemType) => valueChangedHandler(e, itemType, "caregiver")}
+          isFormValid={isFormValid}
         />
       ) : (
         <BeneficiaryForm
           stepNumber={stepNumber}
           valueChangedHandler={(e, itemType) => valueChangedHandler(e, itemType, "beneficiary")}
+          isFormValid={isFormValid}
         />
       )}
       <div className={styles.notRobotBox}>

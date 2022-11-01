@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import styles from "./registration.step.one.module.scss";
 import { Input } from "shared-components";
 
-export const RegistrationStepOne = ({ stepNumber, valueChangedHandler }) => {
+export const RegistrationStepOne = ({ stepNumber, valueChangedHandler, isFormValid }) => {
   const [formStep1Data, setFormStep1Data] = useState();
 
   useEffect(() => {
@@ -18,6 +18,7 @@ export const RegistrationStepOne = ({ stepNumber, valueChangedHandler }) => {
         earum id corporis vero voluptatum.
       </p>
       <div className={styles.profileOption}>
+        {console.log("FORM 1 is valid:", isFormValid)}
         <Input
           id="tipProfila"
           name="tipProfila"
@@ -27,6 +28,7 @@ export const RegistrationStepOne = ({ stepNumber, valueChangedHandler }) => {
           options={["Negovatelj", "Negovani"]}
           inputValue={formStep1Data?.data?.profileType}
           valueChangedHandler={(e) => valueChangedHandler(e)}
+          isValidInput={isFormValid}
         />
       </div>
     </div>

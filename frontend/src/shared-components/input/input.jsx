@@ -1,40 +1,17 @@
-import { useEffect, useState } from "react";
-import styles from "./input.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { Select } from "../select/select";
-import DatePicker from "react-datepicker";
-import moment from "moment";
+import { SelectDate } from "shared-components";
+
+import styles from "./input.module.scss";
 
 export const Input = (props) => {
-  const { id, name, type, placeholder, inputValue, valueChangedHandler, withSearchIcon = false } = props;
-  const [datePickerValue, setDatePickerValue] = useState(inputValue);
-
-  useEffect(() => {
-    setDatePickerValue(inputValue);
-  }, [inputValue]);
-
-  const handleDatePickerChange = (event) => {
-    valueChangedHandler(moment(event).format("YYYY-MM-DD"));
-    setDatePickerValue(moment(event).format("YYYY-MM-DD"));
-  };
+  const { id, name, type, placeholder, inputValue, valueChangedHandler, isValidInput, withSearchIcon = false } = props;
+  console.log("IS VALID INPUT: ", isValidInput);
 
   if (type === "dropdown") return <Select {...props} />;
 
-  if (type === "datepicker") {
-    console.log("Date picker:", datePickerValue);
-    return (
-      <DatePicker
-        className={styles.datePicker}
-        placeholderText={inputValue ?? "Datum rođenja*"}
-        dateFormat="yyyy-mm-dd"
-        id="start-date"
-        autoComplete="off"
-        selected={Date.parse(datePickerValue) ?? new Date()}
-        onChange={(event) => handleDatePickerChange(event)}
-      />
-    );
-  }
+  if (type === "datepicker") return <SelectDate {...props} />;
 
   return (
     <div className={styles.fieldWrapper}>
@@ -45,9 +22,10 @@ export const Input = (props) => {
         id={id}
         onChange={(event) => valueChangedHandler(event.target.value)}
         placeholder={placeholder}
-        className={[styles.field, styles.input].join(" ")}
+        className={[styles.field, !isValidInput ? styles.inputError : ""].join(" ")}
       />
       {withSearchIcon && <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.icon} />}
+      {!isValidInput ? <div className={styles.textError}>Morate popuniti polje</div> : ""}
     </div>
   );
 };

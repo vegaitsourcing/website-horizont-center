@@ -1,5 +1,22 @@
+@import "styles/main.scss";
 @import '../../styles/field.scss';
 
-.react-datepicker__input-container {
-    background-color: red;
+.inputError {
+    border: 2px solid $error-color !important;
+    height: 44px !important;
+
+    &::placeholder {
+        color: red;
+    }
+
+    &:focus {
+        border: 2px solid $error-color !important;
+        outline: none;
+    }
+}
+
+.textError {
+    color: red;
+    font-size: medium;
+    margin: 1% 2%;
 }

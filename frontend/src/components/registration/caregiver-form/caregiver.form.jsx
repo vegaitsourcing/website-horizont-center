@@ -5,7 +5,7 @@ import { generalInformations, experienceAndQualifications } from "./hooks/caregi
 
 import styles from "./caregiver.form.module.scss";
 
-export const CaregiverForm = ({ stepNumber, valueChangedHandler }) => {
+export const CaregiverForm = ({ stepNumber, valueChangedHandler, isFormValid }) => {
   const [formData, setFormData] = useState({});
 
   useEffect(() => {
@@ -29,6 +29,7 @@ export const CaregiverForm = ({ stepNumber, valueChangedHandler }) => {
                 placeholder={input.placeholder}
                 inputValue={formData?.data?.caregiver?.[input.name] ?? ""}
                 valueChangedHandler={(e) => valueChangedHandler(e, input.name)}
+                isValidInput={formData?.data?.caregiver?.[input.name] === "" ? false : true}
               />
             );
           })}
@@ -48,6 +49,7 @@ export const CaregiverForm = ({ stepNumber, valueChangedHandler }) => {
                 placeholder={input.placeholder}
                 inputValue={formData?.data?.caregiver?.[input.name] ?? ""}
                 valueChangedHandler={(e) => valueChangedHandler(e, input.name)}
+                isValidInput={formData?.data?.caregiver?.[input.name] === "" ? false : true}
               />
             );
           })}

@@ -48,6 +48,7 @@ export const BeneficiaryForm = ({ stepNumber, valueChangedHandler }) => {
                 placeholder={input.placeholder}
                 inputValue={formData?.data?.beneficiary?.[input.name] ?? ""}
                 valueChangedHandler={(e) => valueChangedHandler(e, input.name)}
+                showInputErrors={true}
               />
             );
           })}
