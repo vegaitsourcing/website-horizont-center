@@ -5,8 +5,6 @@ ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update && apt-get install -y postgresql-client gettext
 
-# Create a user app without sudo permissions
-RUN addgroup --gid 1000 app && adduser --uid 1000 --ingroup app --system app
 WORKDIR /app
 
 ADD ./scripts .
