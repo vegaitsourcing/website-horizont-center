@@ -4,7 +4,7 @@ services:
 
   django:
     image: codeforacause/website-horizont-center:backend-#{TAG_NUMBER}#
-    container_name: horizont-center-django
+    container_name: horizont-center-backend
     environment:
       - APP_ENV=development
       - DB_NAME=caregivers
