@@ -18,7 +18,6 @@ export const RegistrationStepOne = ({ stepNumber, valueChangedHandler, isFormVal
         earum id corporis vero voluptatum.
       </p>
       <div className={styles.profileOption}>
-        {console.log("FORM 1 is valid:", isFormValid)}
         <Input
           id="tipProfila"
           name="tipProfila"

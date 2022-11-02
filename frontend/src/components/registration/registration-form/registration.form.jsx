@@ -1,15 +1,16 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import { RegistrationStepOne } from "../registration-step-one/registration.step.one";
 import { RegistrationStepTwo } from "../registration-step-two/registration.step.two";
 import { RegistrationStepThree } from "../registration-step-three/registration.step.three";
-import { regFormLocalStorage } from "./registration.form";
+import { registrationFormBlank } from "./registrationFormBlank";
+
 import authService from "pages/api/authService";
 import { LongButton } from "shared-components";
 
 import styles from "./registration.form.module.scss";
 
-export const RegistrationForm = ({}) => {
+export const RegistrationForm = () => {
   const [stepNumber, setStepNumber] = useState(1);
   const [isFormStep1Valid, setIsFormStep1Valid] = useState(false);
   const [isFormStep2Valid, setIsFormStep2Valid] = useState(false);
@@ -18,7 +19,7 @@ export const RegistrationForm = ({}) => {
   useEffect(() => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
     if (!registrationForm) {
-      localStorage.setItem("registrationForm", JSON.stringify(regFormLocalStorage));
+      localStorage.setItem("registrationForm", JSON.stringify(registrationFormBlank));
     }
     validateRegistrationForm(stepNumber);
   }, [stepNumber]);
@@ -51,6 +52,7 @@ export const RegistrationForm = ({}) => {
       registrationForm.formStep1 = { data: { profileType: newData }, isCompleted: newData === "" ? false : true };
     }
     if (form === "formStep2") {
+      console.log("USER FORM:", userForm);
       const historyData = registrationForm.formStep2?.data;
       registrationForm.formStep2 = {
         data: { ...historyData, [userForm]: { ...historyData?.[userForm], [itemType]: newData } },

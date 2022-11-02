@@ -6,7 +6,7 @@
     height: 44px !important;
 
     &::placeholder {
-        color: red;
+        color: $error-color;
     }
 
     &:focus {
@@ -16,7 +16,7 @@
 }
 
 .textError {
-    color: red;
+    color: $error-color;
     font-size: medium;
     margin: 1% 2%;
 }

@@ -1,24 +1,31 @@
 import { useState, useEffect } from "react";
 
 import { Input } from "shared-components";
-import { generalInformations, experienceAndQualifications } from "./hooks/caregiver.form";
 
 import styles from "./caregiver.form.module.scss";
 
-export const CaregiverForm = ({ stepNumber, valueChangedHandler, isFormValid }) => {
+export const CaregiverForm = ({ stepNumber, formInputFields, userFormType, valueChangedHandler }) => {
   const [formData, setFormData] = useState({});
 
   useEffect(() => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
     setFormData(registrationForm.formStep2);
+    console.log("Form data useEffect:", formData);
   }, [stepNumber]);
+
+  const handleValueChange = (value, inputName) => {
+    valueChangedHandler(value, inputName);
+    const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
+    setFormData(registrationForm.formStep2);
+    console.log("Form data:", formData);
+  };
 
   return (
     <form className={styles.form}>
       <div className={styles.formTop}>
-        <label>Opšte informacije</label>
+        <label>{userFormType === "caregiver" ? "Opšte informacije" : "Vaše informacije"}</label>
         <div className={styles.formGrid}>
-          {generalInformations.map((input) => {
+          {formInputFields[0].map((input) => {
             return (
               <Input
                 key={input.id}
@@ -27,18 +34,20 @@ export const CaregiverForm = ({ stepNumber, valueChangedHandler, isFormValid }) 
                 options={input.options}
                 name={input.name}
                 placeholder={input.placeholder}
-                inputValue={formData?.data?.caregiver?.[input.name] ?? ""}
-                valueChangedHandler={(e) => valueChangedHandler(e, input.name)}
-                isValidInput={formData?.data?.caregiver?.[input.name] === "" ? false : true}
+                inputValue={formData?.data?.[userFormType]?.[input.name] ?? ""}
+                valueChangedHandler={(e) => handleValueChange(e, input.name)}
+                isValidInput={formData?.data?.[userFormType]?.[input.name] === "" ? false : true}
               />
             );
           })}
         </div>
       </div>
       <div className={styles.formBottom}>
-        <label>Iskustvo i stručna sprema</label>
+        <label>
+          {userFormType === "caregiver" ? "Iskustvo i stručna sprema" : "Informacije osobe kojoj je potrebna nega"}
+        </label>
         <div className={styles.formGrid}>
-          {experienceAndQualifications.map((input) => {
+          {formInputFields[1].map((input) => {
             return (
               <Input
                 key={input.id}
@@ -47,9 +56,9 @@ export const CaregiverForm = ({ stepNumber, valueChangedHandler, isFormValid }) 
                 options={input.options}
                 name={input.name}
                 placeholder={input.placeholder}
-                inputValue={formData?.data?.caregiver?.[input.name] ?? ""}
-                valueChangedHandler={(e) => valueChangedHandler(e, input.name)}
-                isValidInput={formData?.data?.caregiver?.[input.name] === "" ? false : true}
+                inputValue={formData?.data?.[userFormType]?.[input.name] ?? ""}
+                valueChangedHandler={(e) => handleValueChange(e, input.name)}
+                isValidInput={formData?.data?.[userFormType]?.[input.name] === "" ? false : true}
               />
             );
           })}

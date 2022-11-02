@@ -7,7 +7,6 @@ import styles from "./input.module.scss";
 
 export const Input = (props) => {
   const { id, name, type, placeholder, inputValue, valueChangedHandler, isValidInput, withSearchIcon = false } = props;
-  console.log("IS VALID INPUT: ", isValidInput);
 
   if (type === "dropdown") return <Select {...props} />;
 
