@@ -9,7 +9,7 @@ export const SingleDonation = () => {
         title={"In interdum sit urna nam varius diam venenatis gravida arcu."}
         imageSrc={"/images/singleBlogtTitle.png"}
       />
-      <Container className={"singleDonationContainer"}>
+      <Container styledClass={"singleDonationContainer"}>
         <DonationInfo
           title={"Opšte informacije"}
           categories={["Finansijska pomoć"]}
@@ -26,7 +26,7 @@ export const SingleDonation = () => {
           ]}
         />
       </Container>
-      <Container className={"singleDonationContainer"}>
+      <Container styledClass={"singleDonationContainer"}>
         <AboutDetails
           imageSrc={"/images/aboutCompanyDonationsImage.png"}
           name={"Ime kompanije"}

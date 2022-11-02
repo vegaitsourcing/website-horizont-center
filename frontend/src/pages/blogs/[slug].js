@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { NextSeo } from "next-seo";
 import { LayoutDefault } from "layouts";
 
-const Post = () => {
+const SingleBlogDetails = () => {
   const router = useRouter();
   const { slug } = router.query;
 
@@ -18,4 +18,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default SingleBlogDetails;

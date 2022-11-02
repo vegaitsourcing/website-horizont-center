@@ -1,11 +1,12 @@
-import { SectionHeader, BlogArticles, AboutDetails, Container } from "shared-components";
+import { SectionHeader, BlogSections, AboutAuthor, Container } from "shared-components";
 import BlogsService from "pages/api/blogsService";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
-var loaded = false;
-var currentBlogId = 0;
+let loaded = false;
+let currentBlogId = 0;
 
-var buffer = {
+const buffer = {
   id: 0,
   sections: [],
   categories: [],
@@ -31,47 +32,34 @@ var buffer = {
 export const SingleBlog = ({ blogId }) => {
   const [blog, setBlog] = useState(buffer);
 
-  async function getBlog(blogId) {
-    const response = await BlogsService.getBlogById(blogId);
-    setBlog(response.data);
-  }
-  if (blogId != undefined && (!loaded || currentBlogId != blogId)) {
-    currentBlogId = blogId;
-    getBlog(blogId);
-    loaded = !loaded;
-  }
+  const router = useRouter();
+
+  useEffect(() => {
+    async function getBlog(blogId) {
+      const response = await BlogsService.getBlogById(blogId).catch((error) => {
+        if (error.response.status == 404) router.replace("/404");
+      });
+      try {
+        setBlog(response.data);
+      } catch (e) {}
+    }
+    if (blog === buffer) {
+      currentBlogId = blogId;
+      getBlog(blogId);
+      loaded = !loaded;
+    }
+  }, [blog, blogId]);
 
   return (
     <>
       <Container>
         <SectionHeader title={blog.title} imageSrc={blog.image} />
       </Container>
-      <Container className={"singleBlogContainer"}>
-        <BlogArticles articles={blog.sections} />
+      <Container styledClass={"singleBlogContainer"}>
+        <BlogSections sections={blog.sections} />
       </Container>
-      <Container className={"singleBlogContainer"}>
-        {blog.author ? (
-          <AboutDetails
-            imageSrc={blog.author.image ?? "/images/aboutDetailsImage.png"}
-            name={blog.author.first_name + " " + blog.author.last_name}
-            type={"author"}
-            text={blog.author.description}
-            socialLinks={[
-              blog.author.facebook_url != null
-                ? {
-                    url: blog.author.facebook_url,
-                    iconPath: "/images/facebookIconAboutDetails.svg",
-                  }
-                : null,
-              blog.author.instagram_url != null
-                ? {
-                    url: blog.author.instagram_url,
-                    iconPath: "/images/instagramIconAboutDetails.svg",
-                  }
-                : null,
-            ]}
-          />
-        ) : null}
+      <Container styledClass={"singleBlogContainer"}>
+        {blog.author ? <AboutAuthor type={"author"} blog={blog} /> : null}
       </Container>
     </>
   );

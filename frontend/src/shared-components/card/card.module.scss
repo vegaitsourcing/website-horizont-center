@@ -54,6 +54,11 @@
 .button {
 	position: absolute;
 	bottom: 24px;
+
+	LongButton {
+		margin-top: "16px";
+		display: "inline-flex";
+	}
 }
 
 .date {

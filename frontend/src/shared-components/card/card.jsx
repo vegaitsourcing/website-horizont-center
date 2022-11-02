@@ -29,7 +29,7 @@ export const Card = ({ id, image, categories, title, description, date, blogId }
         </div>
         <div className={styles.button}>
           <Link href={"/blogs/" + blogId} passHref>
-            <LongButton value="Saznaj više" type="filled" style={{ marginTop: "16px", display: "inline-flex" }} />
+            <LongButton value="Saznaj više" type="filled" />
           </Link>
         </div>
       </div>
