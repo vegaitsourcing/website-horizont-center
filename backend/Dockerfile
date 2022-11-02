@@ -7,9 +7,9 @@ RUN apt-get update && apt-get install -y postgresql-client gettext
 
 WORKDIR /app
 
-ADD ./scripts .
-ADD ./requirements .
-ADD ./src .
+ADD ./scripts /app/scripts
+ADD ./requirements /app/requirements
+ADD ./src /app/src
 
 RUN pip install --upgrade pip
 RUN pip install -r /app/requirements/development.txt
