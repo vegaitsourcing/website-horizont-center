@@ -50,22 +50,24 @@ export const Header = () => {
 	if (isLoadingUser) return null;
 
 	return (
-		<header className={styles.header}>
-			<div className={styles.imageWrapper}>
-				<Image src="/caregivers.svg" alt="Logo" width={144} height={60}/>
-			</div>
-			<div className={styles.navbar}>
-				{tabItems.map((tab, index) => {
-					return (
-						<div key={index} className={styles.tabItem}>
-							<Link href={tab.pathname} passHref>
-								<span className={styles.tabLabel}>{tab.name}</span>
-							</Link>
-						</div>
-					);
-				})}
-			</div>
-			{user ? <AuthenticatedMenu onLogout={() => setUser(null)}/> : <AnonymousMenu/>}
+		<header>
+			<nav className={styles.desktopNavigation}>
+				<div className={styles.imageWrapper}>
+					<Image src="/caregivers.svg" alt="Logo" width={144} height={60}/>
+				</div>
+				<div className={styles.middleMenu}>
+					{tabItems.map((tab, index) => {
+						return (
+							<div key={index} className={styles.tabItem}>
+								<Link href={tab.pathname} passHref>
+									<span className={styles.tabLabel}>{tab.name}</span>
+								</Link>
+							</div>
+						);
+					})}
+				</div>
+				{user ? <AuthenticatedMenu onLogout={() => setUser(null)}/> : <AnonymousMenu/>}
+			</nav>
 		</header>
 	);
 };
