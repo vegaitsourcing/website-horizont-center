@@ -7,10 +7,10 @@ import { Container } from "shared-components";
 export const SectionHeader = ({ title, imageSrc }) => {
   return (
     <section className={styles.singleBlogTitle}>
-      <Container className={"singleBlogContainer"}>
-        <h1 className={styles.h1}>{title}.</h1>
+      <Container styledClass={"singleBlogContainer"}>
+        <h1 className={styles.h1}>{title}</h1>
         <div className={styles.singleBlogTitleImg}>
-          <img src={imageSrc} alt="" />
+          <img className={styles.img} src={imageSrc} alt="" />
         </div>
       </Container>
     </section>

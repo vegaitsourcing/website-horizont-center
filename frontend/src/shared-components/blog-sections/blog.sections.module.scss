@@ -1,7 +1,8 @@
 @import '../../styles/main.scss';
 
 .singleBlogMain {
-    padding-block: 587px 0;
+    padding-block: 490px 0;
+    margin-bottom: 200px;
 
     .h2 {
         font-weight: 600;
@@ -16,7 +17,12 @@
         font-weight: 300;
     }
 
-    img {
+    img, iframe {
+
+        min-height:  547px;
         margin-top: 96px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 30px;
     }
 }
