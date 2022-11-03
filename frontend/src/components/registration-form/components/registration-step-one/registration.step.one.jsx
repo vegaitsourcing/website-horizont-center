@@ -8,7 +8,7 @@ export const RegistrationStepOne = ({ stepNumber, valueChangedHandler, isFormVal
 
   useEffect(() => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
-    setFormStep1Data(registrationForm?.formStep1);
+    setFormStep1Data(registrationForm.formStep1);
   }, [stepNumber]);
 
   return (

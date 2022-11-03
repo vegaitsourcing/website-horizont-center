@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 
 import { Input } from "shared-components";
 
-import styles from "./caregiver.form.module.scss";
+import styles from "./user.form.module.scss";
 
-export const CaregiverForm = ({ stepNumber, formInputFields, userFormType, valueChangedHandler }) => {
+export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChangedHandler }) => {
   const [formData, setFormData] = useState({});
 
   useEffect(() => {

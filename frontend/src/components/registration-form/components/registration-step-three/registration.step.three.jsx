@@ -13,16 +13,8 @@ export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
     setFormStep3Data(registrationForm?.formStep3);
     validateInputs(registrationForm?.formStep3);
+    setCount(registrationForm?.formStep3.data.description.length);
   }, [stepNumber]);
-
-  const validateInputs = (regForm) => {
-    if (regForm.data.image !== "") {
-      setIsValidImg(true);
-    }
-    if (regForm.data.description.length >= 75) {
-      setIsValidTextArea(true);
-    }
-  };
 
   const changeHandler = (event) => {
     let reader = new FileReader();
@@ -34,6 +26,15 @@ export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
     };
   };
 
+  const validateInputs = (regForm) => {
+    if (regForm.data.image !== "") {
+      setIsValidImg(true);
+    }
+    if (regForm.data.description.length >= 100) {
+      setIsValidTextArea(true);
+    }
+  };
+
   const openFileExplorer = () => {
     var fileupload = document.getElementById("image");
     fileupload.click();
@@ -42,7 +43,7 @@ export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
   const count = () => {
     var field = document.getElementById("description");
     setCount(field.value.length);
-    setIsValidTextArea(field.value.length >= 75 ? true : false);
+    setIsValidTextArea(field.value.length >= 100 ? true : false);
     valueChangedHandler(field.value, "description");
   };
 
@@ -76,7 +77,7 @@ export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
         <p id="counter" className={[styles.charCount, !isValidTextArea ? styles.error : ""].join(" ")}>
           <span>{countValue}/500 karaktera</span>
           <br />
-          {!isValidTextArea ? <span className={styles.textError}>Potrebno je uneti minimum 75 karaktera</span> : ""}
+          {!isValidTextArea ? <span className={styles.textError}>Potrebno je uneti minimum 100 karaktera</span> : ""}
         </p>
       </div>
     </div>

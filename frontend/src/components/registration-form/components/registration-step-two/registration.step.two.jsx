@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
 
-import { CaregiverForm } from "../caregiver-form/caregiver.form";
-// import { BeneficiaryForm } from "../beneficiary-form/beneficiary.form";
-
-import { caregiverFormFields } from "./hooks/caregiver.form";
-import { beneficiaryFormFields } from "./hooks/beneficiary.form";
+import { UserForm } from "../user-form/user.form";
+import { caregiverFormFields } from "../../hooks/caregiver.form";
+import { beneficiaryFormFields } from "../../hooks/beneficiary.form";
 
 import styles from "./registration.step.two.module.scss";
 
@@ -18,7 +16,7 @@ export const RegistrationStepTwo = ({ stepNumber, valueChangedHandler, isFormVal
 
   return (
     <div className={styles.registerAccount}>
-      <CaregiverForm
+      <UserForm
         stepNumber={stepNumber}
         valueChangedHandler={(e, itemType) => valueChangedHandler(e, itemType, userType)}
         isFormValid={isFormValid}

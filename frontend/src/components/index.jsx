@@ -5,7 +5,7 @@ export * from "./about/about";
 export * from "./blog-list/blog.list";
 export * from "./caregiver-list/caregiver.list";
 export * from "./beneficiary-list/beneficiary.list";
-export * from "./registration/";
+export * from "./registration-form/registration.form";
 export * from "./login/login";
 export * from "./single-blog/single.blog";
 export * from "./single-donation/single.donation";

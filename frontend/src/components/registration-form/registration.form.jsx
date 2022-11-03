@@ -1,16 +1,18 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
-import { RegistrationStepOne } from "../registration-step-one/registration.step.one";
-import { RegistrationStepTwo } from "../registration-step-two/registration.step.two";
-import { RegistrationStepThree } from "../registration-step-three/registration.step.three";
-import { registrationFormBlank } from "./registrationFormBlank";
+import { RegistrationStepOne, RegistrationStepTwo, RegistrationStepThree } from "./components";
+import { LongButton } from "shared-components";
+
+import { registrationFormBlank } from "./hooks/registrationFormBlank";
+import { getUserData, validateRegistrationForm } from "./utils/registrationUtils";
 
 import authService from "pages/api/authService";
-import { LongButton } from "shared-components";
 
 import styles from "./registration.form.module.scss";
 
 export const RegistrationForm = () => {
+  const router = useRouter();
   const [stepNumber, setStepNumber] = useState(1);
   const [isFormStep1Valid, setIsFormStep1Valid] = useState(false);
   const [isFormStep2Valid, setIsFormStep2Valid] = useState(false);
@@ -21,91 +23,38 @@ export const RegistrationForm = () => {
     if (!registrationForm) {
       localStorage.setItem("registrationForm", JSON.stringify(registrationFormBlank));
     }
-    validateRegistrationForm(stepNumber);
+    const isFormValid = validateRegistrationForm(stepNumber);
+    setIsFormValid(isFormValid, stepNumber);
   }, [stepNumber]);
-
-  const validateRegistrationForm = (stepNumber) => {
-    const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
-    if (stepNumber === 1) {
-      if (registrationForm.formStep1.data.profileType === "") {
-        return setIsFormStep1Valid(false);
-      }
-      setIsFormStep1Valid(true);
-    }
-    if (stepNumber === 2) {
-      const userType = registrationForm.formStep1.data.profileType === "Negovatelj" ? "caregiver" : "beneficiary";
-      const user = registrationForm.formStep2.data[userType];
-      let valid = true;
-      for (let key in user) {
-        if (user[key] === "") {
-          valid = false;
-        }
-      }
-      console.log("form step 2", valid);
-      setIsFormStep2Valid(valid);
-    }
-    if (stepNumber === 3) {
-      const formStep3data = registrationForm.formStep3.data;
-      let valid = true;
-      for (let key in formStep3data) {
-        if (formStep3data[key] === "") {
-          valid = false;
-        }
-      }
-      console.log("form step 3", valid);
-      setIsFormStep3Valid(valid);
-    }
-  };
 
   const handleRegistrationChange = (newData, form, itemType, userForm) => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
     if (form === "formStep1") {
-      registrationForm.formStep1 = { data: { profileType: newData }, isCompleted: newData === "" ? false : true };
+      registrationForm.formStep1 = { data: { profileType: newData }, isCompleted: false };
     }
     if (form === "formStep2") {
-      console.log("USER FORM:", userForm);
       const historyData = registrationForm.formStep2?.data;
       registrationForm.formStep2 = {
         data: { ...historyData, [userForm]: { ...historyData?.[userForm], [itemType]: newData } },
-        isCompleted: true,
+        isCompleted: false,
       };
     }
     if (form === "formStep3") {
       const historyData = registrationForm.formStep3?.data;
-      registrationForm.formStep3 = { data: { ...historyData, [itemType]: newData }, isCompleted: true };
+      registrationForm.formStep3 = { data: { ...historyData, [itemType]: newData }, isCompleted: false };
     }
     localStorage.setItem("registrationForm", JSON.stringify(registrationForm));
-    validateRegistrationForm(stepNumber);
+    const isFormValid = validateRegistrationForm(stepNumber);
+    setIsFormValid(isFormValid, stepNumber);
   };
 
   async function registerUser() {
-    const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
-    const userType = registrationForm.formStep1.data.profileType === "Negovatelj" ? "caregiver" : "beneficiary";
-    const formStep2 = registrationForm.formStep2.data[userType];
-    const formStep3 = registrationForm.formStep3.data;
-    const userData = {
-      user: {
-        email: formStep2.email,
-        first_name: formStep2.first_name,
-        last_name: formStep2.last_name,
-        phone_number: formStep2.phone_number,
-        password: formStep2.password,
-      },
-      gender: formStep2.gender === "muški" ? "male" : "female",
-      postal_code: parseInt(formStep2.postal_code),
-      city: formStep2.city,
-      description: formStep3.description,
-      birthdate: formStep2.birthdate,
-      work_application: formStep2.work_application,
-      experience: formStep2.experience,
-      weekly_days: parseInt(formStep2.weekly_days),
-      daily_hours: parseFloat(formStep2.daily_hours),
-      image: formStep3.image,
-    };
-    console.log("Register api");
-    console.log(userData);
-
-    // return await authService.registerCaregiver(userData, userType);
+    const userType = getUserData().userType;
+    const userData = getUserData().userData;
+    await authService.registerCaregiver(userData, userType).then(() => {
+      localStorage.setItem("registrationForm", JSON.stringify(registrationFormBlank));
+      router.push("/login");
+    });
   }
 
   const checkForm = (stepNumber) => {
@@ -117,6 +66,18 @@ export const RegistrationForm = () => {
     }
     if (stepNumber === 3) {
       return isFormStep3Valid;
+    }
+  };
+
+  const setIsFormValid = (isFormValid, stepNumber) => {
+    if (stepNumber === 1) {
+      setIsFormStep1Valid(isFormValid);
+    }
+    if (stepNumber === 2) {
+      setIsFormStep2Valid(isFormValid);
+    }
+    if (stepNumber === 3) {
+      setIsFormStep3Valid(isFormValid);
     }
   };
 
