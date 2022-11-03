@@ -4,7 +4,7 @@ import styles from "./blog.sections.module.scss";
 
 export const BlogSections = ({ sections }) => {
   const showVideo = (src) => {
-    var isYoutube = src && src.match(/(?:youtu|youtube)(?:\.com|\.be)\/([\w\W]+)/i);
+    let isYoutube = src && src.match(/(?:youtu|youtube)(?:\.com|\.be)\/([\w\W]+)/i);
     if (isYoutube) {
       return (
         <iframe

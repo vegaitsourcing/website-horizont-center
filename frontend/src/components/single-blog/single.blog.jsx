@@ -3,9 +3,6 @@ import BlogsService from "pages/api/blogsService";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
-let loaded = false;
-let currentBlogId = 0;
-
 const buffer = {
   id: 0,
   sections: [],
@@ -44,9 +41,7 @@ export const SingleBlog = ({ blogId }) => {
       } catch (e) {}
     }
     if (blog === buffer) {
-      currentBlogId = blogId;
       getBlog(blogId);
-      loaded = !loaded;
     }
   }, [blog, blogId]);
 
