@@ -1,36 +1,24 @@
 @import "src/styles/main";
 
-.desktopNavigation {
-
-	@include respond-to(tablet) {
-		display: none;
-	}
-
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 10px 5%;
-	height: 115px;
-	background: $light-blue-color;
-
-	.imageWrapper {
-		display: inline-block;
-		width: 20%;
-	}
-
-	.middleMenu {
-		display: flex;
-		width: 100%;
-		max-width: 800px;
-		justify-content: space-around;
-	}
-
+header {
 	.tabItem {
 		padding: 0;
 		font-weight: 500;
 		font-size: 18px;
 		height: 23px;
 		text-align: center;
+
+		@include respond-to(tablet) {
+			padding: 20px;
+			border-bottom: 1px solid $blue-color;
+			text-align: left;
+		}
+	}
+
+	.tabItem:first-of-type {
+		@include respond-to(tablet) {
+			border-top: 1px solid $blue-color;
+		}
 	}
 
 	.tabLabel {
@@ -41,39 +29,10 @@
 		font-size: 18px;
 		line-height: 25px;
 		color: $blue-color;
-	}
 
-	.anonymousMenu {
-		display: flex;
-		gap: 24px;
+		@include respond-to(mobile) {
+			padding: 20px;
+		}
 	}
-
-	.authenticatedMenu {
-		position: relative;
-		cursor: pointer;
-	}
-
-	.logoutButton {
-		border: 2px solid $blue-color;
-		position: absolute;
-		right: 0;
-		top: 70px;
-		width: 125px;
-		background-color: white;
-		display: flex;
-		cursor: pointer;
-		justify-content: center;
-		align-items: center;
-		height: 0;
-		overflow: hidden;
-		visibility: hidden;
-		transition-property: height, visibility;
-		transition-duration: 0.6s;
-	}
-
-	.authenticatedMenu:hover .logoutButton {
-		height: 50px;
-		visibility: visible;
-	}
-
 }
+

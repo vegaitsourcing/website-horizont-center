@@ -1,90 +1,90 @@
-@import "styles/main.scss";
+@import "src/styles/main";
 
 .p1 {
-    color: $white-color;
-    font-weight: 400;
-    font-size: 14px;
+	color: $white-color;
+	font-weight: 400;
+	font-size: 14px;
 }
 
 .footer {
-    display: flex;
-    flex-direction: column;
-    padding: 128px 128px 64px;
-    background: $black-color;
-    color: $white-color;
+	display: flex;
+	flex-direction: column;
+	padding: 128px 128px 64px;
+	background: $black-color;
+	color: $white-color;
 
-    @include respond-to (tablet) {
-        padding: 24px !important;
-
-
-        .footer__body {
-            flex-direction: column;
-            gap: 20px;
-
-            .contact-list {
-                width: 100%;
-                gap: 10px;
-            }
-        }
-
-        .social-links {
-            margin-block: 34px;
-        }
-    }
-
-    .imageWrapper {
-        display: inline-block;
-        width: 20%;
-    
-        .image {
-            vertical-align: middle;
-        }
-    }
+	@include respond-to(tablet) {
+		padding: 24px !important;
 
 
-    &__body {
-        display: flex;
-        justify-content: space-between;
+		.footer__body {
+			flex-direction: column;
+			gap: 20px;
 
-        p {
-            max-width: 614px;
-        }
-    }
+			.contact-list {
+				width: 100%;
+				gap: 10px;
+			}
+		}
+
+		.social-links {
+			margin-block: 34px;
+		}
+	}
+
+	.imageWrapper {
+		display: inline-block;
+		width: 20%;
+
+		.image {
+			vertical-align: middle;
+		}
+	}
+
+
+	&__body {
+		display: flex;
+		justify-content: space-between;
+
+		p {
+			max-width: 614px;
+		}
+	}
 }
 
-.contact-list, .social-links{
-    list-style-type: none;
+.contact-list, .social-links {
+	list-style-type: none;
 }
 
 .contact-list {
-    list-style-type: none;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 100px;
-    row-gap: 30px;
-    padding: 0;
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	column-gap: 100px;
+	row-gap: 30px;
+	padding: 0;
 }
 
 .social-links {
-    padding: 0;
-    display: flex;
-    gap: 36px;
+	padding: 0;
+	display: flex;
+	gap: 36px;
 
-    margin-bottom: 64px;
+	margin-bottom: 64px;
 }
 
 .copyrights {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 24px;
-    border-top: 1px solid hsla(255 255 255 / .3);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 24px;
+	border-top: 1px solid hsla(255 255 255 / .3);
 
-    &-year {
-        text-transform: uppercase;
-    }
+	&-year {
+		text-transform: uppercase;
+	}
 
-    .p1 {
-        max-width: 80%;
-    }
+	.p1 {
+		max-width: 80%;
+	}
 }
