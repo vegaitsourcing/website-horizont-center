@@ -30,12 +30,10 @@ export const getUserData = () => {
 
 export const validateRegistrationForm = (stepNumber) => {
   const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
-  registrationForm.formStep1.isCompleted = false;
-  registrationForm.formStep2.isCompleted = false;
-  registrationForm.formStep3.isCompleted = false;
   let isFormValid = false;
 
   if (stepNumber === 1) {
+    registrationForm.formStep1.isCompleted = false;
     if (registrationForm.formStep1.data.profileType !== "") {
       registrationForm.formStep1.isCompleted = true;
       isFormValid = true;
@@ -43,6 +41,7 @@ export const validateRegistrationForm = (stepNumber) => {
   }
 
   if (stepNumber === 2) {
+    registrationForm.formStep2.isCompleted = false;
     const userType = registrationForm.formStep1.data.profileType === "Negovatelj" ? "caregiver" : "beneficiary";
     const user = registrationForm.formStep2.data[userType];
     isFormValid = true;
@@ -57,6 +56,7 @@ export const validateRegistrationForm = (stepNumber) => {
   }
 
   if (stepNumber === 3) {
+    registrationForm.formStep3.isCompleted = false;
     const formStep3data = registrationForm.formStep3.data;
     isFormValid = true;
     if (formStep3data.description.length < 100 || formStep3data.image === "") {

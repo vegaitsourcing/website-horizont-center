@@ -5,7 +5,7 @@ import moment from "moment";
 import styles from "./select.date.module.scss";
 
 export const SelectDate = (props) => {
-  const { inputValue, valueChangedHandler } = props;
+  const { inputValue, isValidInput, valueChangedHandler } = props;
   const [datePickerValue, setDatePickerValue] = useState(inputValue);
 
   useEffect(() => {
@@ -18,14 +18,16 @@ export const SelectDate = (props) => {
   };
 
   return (
-    <DatePicker
-      className={styles.datePicker}
-      placeholderText={inputValue ?? "Datum rođenja*"}
-      dateFormat="yyyy-mm-dd"
-      id="start-date"
-      autoComplete="off"
-      selected={Date.parse(datePickerValue) ?? new Date()}
-      onChange={(event) => handleDatePickerChange(event)}
-    />
+    <div className={[styles.datePicker, !isValidInput ? styles.error : ""].join(" ")}>
+      <DatePicker
+        placeholderText={inputValue != "" ? inputValue : "Datum rođenja*"}
+        dateFormat="yyyy-mm-dd"
+        id="start-date"
+        autoComplete="off"
+        selected={Date.parse(datePickerValue) ?? new Date()}
+        onChange={(event) => handleDatePickerChange(event)}
+      />
+      {!isValidInput ? <div className={styles.textError}>Morate odabrati datum</div> : ""}
+    </div>
   );
 };
