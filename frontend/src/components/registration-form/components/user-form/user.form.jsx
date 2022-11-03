@@ -10,14 +10,12 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
   useEffect(() => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
     setFormData(registrationForm.formStep2);
-    console.log("Form data useEffect:", formData);
   }, [stepNumber]);
 
   const handleValueChange = (value, inputName) => {
     valueChangedHandler(value, inputName);
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
     setFormData(registrationForm.formStep2);
-    console.log("Form data:", formData);
   };
 
   return (

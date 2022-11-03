@@ -67,8 +67,6 @@ export const validateRegistrationForm = (stepNumber) => {
     }
   }
 
-  console.log("Reg form", registrationForm);
-  console.log(`Is form ${stepNumber} valid`, isFormValid);
   localStorage.setItem("registrationForm", JSON.stringify(registrationForm));
   return isFormValid;
 };

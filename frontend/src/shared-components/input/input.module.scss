@@ -2,15 +2,15 @@
 @import '../../styles/field.scss';
 
 .inputError {
-    border: 2px solid $error-color !important;
     height: 44px !important;
+    border: 2px solid $error-color !important;
 
     &::placeholder {
         color: $error-color;
     }
 
     &:focus {
-        border: 2px solid $error-color !important;
+        border: 2px solid $error-color;
         outline: none;
     }
 }

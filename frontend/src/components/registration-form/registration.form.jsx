@@ -51,7 +51,7 @@ export const RegistrationForm = () => {
   async function registerUser() {
     const userType = getUserData().userType;
     const userData = getUserData().userData;
-    await authService.registerCaregiver(userData, userType).then(() => {
+    await authService.register(userData, userType).then(() => {
       localStorage.setItem("registrationForm", JSON.stringify(registrationFormBlank));
       router.push("/login");
     });
