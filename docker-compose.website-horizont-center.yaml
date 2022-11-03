@@ -16,8 +16,8 @@ services:
       - DJANGO_SUPERUSER_PASSWORD=#{DJANGO_PASSWORD}#
       - EMAIL_HOST_USER=#{EMAIL_HOST_USER}#
       - EMAIL_HOST_PASSWORD=#{EMAIL_HOST_PASSWORD}#
-    # volumes:
-    #   - ".:/var/lib/horizont-data:rw"
+    volumes:
+      - ".:/var/lib/horizont-data:rw"
     #   # /backend/scripts:/app/scripts/
     #   # - ./backend/requirements:/app/requirements
     #   # - ./backend/src:/app/src/
