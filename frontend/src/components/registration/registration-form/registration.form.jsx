@@ -44,6 +44,17 @@ export const RegistrationForm = () => {
       console.log("form step 2", valid);
       setIsFormStep2Valid(valid);
     }
+    if (stepNumber === 3) {
+      const formStep3data = registrationForm.formStep3.data;
+      let valid = true;
+      for (let key in formStep3data) {
+        if (formStep3data[key] === "") {
+          valid = false;
+        }
+      }
+      console.log("form step 3", valid);
+      setIsFormStep3Valid(valid);
+    }
   };
 
   const handleRegistrationChange = (newData, form, itemType, userForm) => {
@@ -110,14 +121,11 @@ export const RegistrationForm = () => {
   };
 
   const switchToStep = (direction) => {
-    if (direction === "next") {
-      if (checkForm(stepNumber)) {
-        if (stepNumber === 3 && direction === "next") registerUser();
-        return stepNumber !== 3 ? setStepNumber(++stepNumber) : 0;
-      }
-      return;
+    if (direction === "back") return stepNumber !== 1 ? setStepNumber(--stepNumber) : 0;
+    if (checkForm(stepNumber)) {
+      if (stepNumber === 3 && direction === "next") registerUser();
+      return stepNumber !== 3 ? setStepNumber(++stepNumber) : 0;
     }
-    stepNumber !== 1 ? setStepNumber(--stepNumber) : 0;
   };
 
   const renderStep = () => {

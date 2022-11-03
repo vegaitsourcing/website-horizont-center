@@ -33,7 +33,7 @@ export const registrationFormBlank = {
         password: "",
         gender: "",
         postal_code: "",
-        beneficiary_persion: "",
+        beneficiary_person: "",
         helping_period: "",
         weekly_days: "",
         daily_hours: "",
