@@ -1,25 +1,40 @@
-import axios from "axios";
-
-const api = axios.create({
-  baseURL: "http://localhost:8000/api/v1",
-});
+import API from "./baseApi";
 
 const AuthService = {
-  login: (email, password) => {
-    return axios.post(`${BASE_URL}/login/`, {
+  login: async (email, password) => {
+    const response = await API.post("login/", {
       email: email,
       password: password,
     });
-  },
-  logout: () => {
-    return axios.post(`${BASE_URL}/logout/`, null, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
+    const userDataString = JSON.stringify({
+      token: response.data.token,
+      id: response.data.id,
+      firstName: response.data.first_name,
+      lastName: response.data.last_name,
     });
+    localStorage.setItem("user", userDataString);
+  },
+
+  isAuthenticated: () => {
+    return !!AuthService.getUser();
+  },
+
+  getUser: () => {
+    return JSON.parse(localStorage.getItem("user"));
+  },
+
+  getAuthorizationHeaders: () => {
+    const userJSON = localStorage.getItem("user");
+    const user = userJSON ? JSON.parse(userJSON) : null;
+    return user ? { Authorization: `Bearer ${user?.token}` } : {};
+  },
+
+  logout: async () => {
+    await API.post("logout/", null, { headers: AuthService.getAuthorizationHeaders() });
+    localStorage.removeItem("user");
   },
   register: (userData, type) => {
-    return api.post(`register-${type}/`, userData);
+    return API.post(`register-${type}/`, userData);
   },
 };
 export default AuthService;

@@ -9,87 +9,87 @@
 
 //mixins
 @mixin respond-to($media-args...) {
-    @each $media in $media-args {
-        @if $media == mobile {
-            @media (max-width: $mobile-width) {
-                @content;
-            }
-        }
-        @if $media == tablet {
-            @media (max-width: $tablet-width) {
-                @content;
-            }
-        }
-        @if $media == laptop {
-            @media (max-width: $laptop-width) {
-                @content;
-            }
-        }
-        // expects width value:
-        @media (max-width: $media-args) {
-            @content;
-        }
-    }
+	@each $media in $media-args {
+		@if $media == mobile {
+			@media (max-width: $mobile-width) {
+				@content;
+			}
+		}
+		@if $media == tablet {
+			@media (max-width: $tablet-width) {
+				@content;
+			}
+		}
+		@if $media == laptop {
+			@media (max-width: $laptop-width) {
+				@content;
+			}
+		}
+		// expects width value:
+		@media (max-width: $media-args) {
+			@content;
+		}
+	}
 }
 
 @mixin title {
-    font-family: $font-family-text;
-    font-style: normal;
-    font-weight: 700;
-    color: $title-color;
+	font-family: $font-family-text;
+	font-style: normal;
+	font-weight: 700;
+	color: $title-color;
 }
 
 @mixin text {
-    font-family: $font-family-text;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%;
-    color: $subtext-color;
+	font-family: $font-family-text;
+	font-style: normal;
+	font-weight: 500;
+	line-height: 150%;
+	color: $subtext-color;
 }
 
 #__next {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
 //Typography
 .h1 {
-    @include title;
-    font-size: 64px;
-    line-height: 81px;
+	@include title;
+	font-size: 64px;
+	line-height: 81px;
 }
 
 .h2 {
-    @include title;
-    font-size: 48px;
-    line-height: 60px;
+	@include title;
+	font-size: 48px;
+	line-height: 60px;
 }
 
 .h3 {
-    @include title;
-    font-size: 36px;
-    line-height: 45px;
-	margin: 0px;
+	@include title;
+	font-size: 36px;
+	line-height: 45px;
+	margin: 0;
 }
 
 .h4 {
-    @include title;
-    font-size: 24px;
-    line-height: 30px;
-	margin: 0px;
+	@include title;
+	font-size: 24px;
+	line-height: 30px;
+	margin: 0;
 }
 
 .p1 {
-    @include text;
-    font-size: 18px;
+	@include text;
+	font-size: 18px;
 }
 
 .p2 {
-    @include text;
-    font-size: 16px;
+	@include text;
+	font-size: 16px;
 }
 
 .react-datepicker__input-container {

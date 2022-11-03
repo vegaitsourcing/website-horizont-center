@@ -17,9 +17,10 @@ services:
       - EMAIL_HOST_USER=#{EMAIL_HOST_USER}#
       - EMAIL_HOST_PASSWORD=#{EMAIL_HOST_PASSWORD}#
     volumes:
-      - ./backend/scripts:/app/scripts/
-      - ./backend/requirements:/app/requirements
-      - ./backend/src:/app/src/
+      - ".:/var/lib/horizont-data:rw"
+    #   # /backend/scripts:/app/scripts/
+    #   # - ./backend/requirements:/app/requirements
+    #   # - ./backend/src:/app/src/
     ports:
       - "48501:8000"
     depends_on:
@@ -35,7 +36,7 @@ services:
     ports:
       - 5432
     volumes:
-      - ".:/var/lib/postgresql/data:rw"
+      - ".:/var/lib/postgresql/horizont-data:rw"
 
   nextjs:
     image: codeforacause/website-horizont-center:nextjs-#{TAG_NUMBER}#
@@ -43,8 +44,8 @@ services:
     ports:
       - 48500:3000
     environment:
-      - BASE_URL=http://localhost:3000
-      - API_URL=http://localhost:3000
+      - BASE_URL=http://django
+      - API_URL=http://django
       - STATIC_DIR=/
       - NAME=Negovatelji
       - TITLE=Negovatelji.com

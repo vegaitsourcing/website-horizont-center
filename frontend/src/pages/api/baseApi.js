@@ -11,6 +11,9 @@ const API = {
   getResourceById: (resource, resourceId) => {
     return api.get(`${resource}/${resourceId}`);
   },
+  post: (url, data, config) => {
+    return api.post(url, data, config);
+  },
 };
 
 export default API;

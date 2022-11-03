@@ -21,13 +21,17 @@
         justify-content: center;
         align-items: center;
 
-        img {
-            max-width: 100%;
-        }
     }
 }
 
 .singleBlogContainer {
     width: 1244px;
     margin-inline: auto;
+}
+
+.img {
+    aspect-ratio: 1244 / 768;
+    width: 100%;
+    max-width: 1244px;
+    border-radius: 30px;
 }
