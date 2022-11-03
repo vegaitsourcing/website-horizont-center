@@ -1,74 +1,73 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
 import { LongButton } from "shared-components/long-button/long.button";
-
-/* routes */
 import { tabItems } from "./tabItems";
-
 import styles from "./header.module.scss";
+import AuthService from "../../pages/api/authService";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
+function AuthenticatedMenu({ onLogout }) {
 
-export default function Buttons() {
-  return (
-    <div className={styles.buttons}>
-      <Link href="/login" passHref>
-        <LongButton value="Prijava" type="border" />
-      </Link>
-      <Link href="/registration" passHref>
-        <LongButton value="Registracija" type="filled" />
-      </Link>
-    </div>
-  );
+	const logout = useCallback(async () => {
+		await AuthService.logout();
+		onLogout();
+	}, [onLogout]);
+
+	return (
+		<div className={styles.authenticatedMenu}>
+			<Image src="/avatar.svg" alt="avatar" width={65} height={65}/>
+			<div className={styles.logoutButton} onClick={logout}>
+				<span className={styles.tabLabel}>Logout</span>
+			</div>
+		</div>
+	);
+}
+
+function AnonymousMenu() {
+	return (
+		<div className={styles.anonymousMenu}>
+			<Link href="/login" passHref>
+				<LongButton value="Prijava" type="border"/>
+			</Link>
+			<Link href="/registration" passHref>
+				<LongButton value="Registracija" type="filled"/>
+			</Link>
+		</div>
+	);
 }
 
 export const Header = () => {
-  const [toggleState, settoggleState] = useState(true);
+	const [isLoadingUser, setIsLoadingUser] = useState(true);
+	const [user, setUser] = useState(null);
 
-  const toggleNav = () => {
-    settoggleState(!toggleState);
-  };
+	useEffect(() => {
+		if (isLoadingUser) {
+			setUser(AuthService.getUser());
+			setIsLoadingUser(false);
+		}
+	}, [isLoadingUser]);
 
-  return (
-    <header className={styles.header}>
-      <div className={styles.imageWrapper}>
-        <Image src="/caregivers.svg" alt="Logo" width={144} height={60} className="image" />
-      </div>
-      <div className={styles.navbar}>
-        {tabItems.map((tab, index) => {
-          return (
-            <div key={index} className={styles.tabItem}>
-              <Link href={tab.pathname} passHref>
-                <span className={styles.tabName}>{tab.name}</span>
-              </Link>
-            </div>
-          );
-        })}
-      </div>
-      <Buttons />
-      <div className={styles.responsiveNav}>
-        {toggleState ? (
-          <FontAwesomeIcon icon={faBars} className={styles.icon} onClick={toggleNav} />
-        ) : (
-          <FontAwesomeIcon icon={faXmark} className={styles.icon} onClick={toggleNav} />
-        )}
+	if (isLoadingUser) return null;
 
-        <div className={styles.nav + " " + (!toggleState ? styles.show : null)}>
-          {tabItems.map((tab, index) => {
-            return (
-              <div key={index} className={styles.tabItem}>
-                <Link href={tab.pathname} passHref>
-                  <span className={styles.tabName}>{tab.name}</span>
-                </Link>
-              </div>
-            );
-          })}
-          <Buttons />
-        </div>
-      </div>
-    </header>
-  );
+	return (
+		<header>
+			<nav className={styles.desktopNavigation}>
+				<div className={styles.imageWrapper}>
+					<Image src="/caregivers.svg" alt="Logo" width={144} height={60}/>
+				</div>
+				<div className={styles.middleMenu}>
+					{tabItems.map((tab, index) => {
+						return (
+							<div key={index} className={styles.tabItem}>
+								<Link href={tab.pathname} passHref>
+									<span className={styles.tabLabel}>{tab.name}</span>
+								</Link>
+							</div>
+						);
+					})}
+				</div>
+				{user ? <AuthenticatedMenu onLogout={() => setUser(null)}/> : <AnonymousMenu/>}
+			</nav>
+		</header>
+	);
 };

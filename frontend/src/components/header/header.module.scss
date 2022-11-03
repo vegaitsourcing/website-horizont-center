@@ -1,133 +1,79 @@
 @import "src/styles/main";
 
-.header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    padding: 36px 128px;
-    height: 115px;
-    background: $light-blue-color;
+.desktopNavigation {
 
-    .responsiveNav {display: none;}
+	@include respond-to(tablet) {
+		display: none;
+	}
 
-    @include respond-to(tablet) {
-        padding: 24px 24px;
-        height: auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 5%;
+	height: 115px;
+	background: $light-blue-color;
 
-        justify-content: space-between;
-    
-        .imageWrapper {
-            width: 120px !important;
-        }
+	.imageWrapper {
+		display: inline-block;
+		width: 20%;
+	}
 
-        .responsiveNav {
-            display: block;
-            z-index: 10;
-        }
-    }
+	.middleMenu {
+		display: flex;
+		width: 100%;
+		max-width: 800px;
+		justify-content: space-around;
+	}
 
-    .imageWrapper {
-        display: inline-block;
-        width: 20%;
+	.tabItem {
+		padding: 0;
+		font-weight: 500;
+		font-size: 18px;
+		height: 23px;
+		text-align: center;
+	}
 
-        .image {
-            vertical-align: middle;
-        }
-    }
+	.tabLabel {
+		cursor: pointer;
+		font-family: 'Open Sans', sans-serif;
+		font-style: normal;
+		font-weight: 600;
+		font-size: 18px;
+		line-height: 25px;
+		color: $blue-color;
+	}
 
-    .navbar {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        width: 80%;
-        @include respond-to(tablet) {
-            background: white;
-            display: none;
-        }
+	.anonymousMenu {
+		display: flex;
+		gap: 24px;
+	}
 
-        .tabItem {
-            padding: 0px;
-            font-weight: 500;
-            font-size: 18px;
-            line-height: 23px;
-            width: 80px;
-            height: 23px;
-            margin-left: 64px;
-            text-align: center;
-        }
+	.authenticatedMenu {
+		position: relative;
+		cursor: pointer;
+	}
 
-        .tabName {
-            cursor: pointer;
-            font-family: 'Open Sans';
-            font-style: normal;
-            font-weight: 600;
-            font-size: 18px;
-            line-height: 25px;
-            color: $blue-color;
-        }
-    }
+	.logoutButton {
+		border: 2px solid $blue-color;
+		position: absolute;
+		right: 0;
+		top: 70px;
+		width: 125px;
+		background-color: white;
+		display: flex;
+		cursor: pointer;
+		justify-content: center;
+		align-items: center;
+		height: 0;
+		overflow: hidden;
+		visibility: hidden;
+		transition-property: height, visibility;
+		transition-duration: 0.6s;
+	}
 
-    .buttons {
-        display: flex;
-        gap: 24px;
+	.authenticatedMenu:hover .logoutButton {
+		height: 50px;
+		visibility: visible;
+	}
 
-        @include respond-to(tablet) {
-            background: white;
-            display: none;
-        }
-    }
-
-    .responsiveNav {
-
-        .nav {
-            //display: none;
-            position: absolute;
-            display: none;
-            top: 100px;
-            left: 0;
-            background-color: $light-blue-color;
-            width: calc(100% - 48px);
-            padding: 16px 24px;
-            border-bottom: 2px solid $blue-color;
-
-            .tabItem {
-                color: $blue-color;
-                padding-bottom: 50px;
-                font-family: "open Sans";
-                font-weight: 500;
-            }
-
-            &.show {
-                display: block;
-            }
-
-            .buttons {
-                display: flex !important;
-                margin: 0;
-                background-color: $light-blue-color !important;
-                max-width: 100%;
-                justify-content: space-between;
-                
-                gap: 5;
-    
-                button {
-                    width: 50%;
-                }
-                
-                @include respond-to(tablet) {
-                    background: white;
-                    display: block;
-                }
-            }
-        }
-
-        svg {
-            width: 20px;
-            height: 20px;
-
-            path {
-                fill: $blue-color;
-            }
-        }
-    }
 }
