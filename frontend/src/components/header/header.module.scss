@@ -8,7 +8,7 @@ header {
 		height: 23px;
 		text-align: center;
 
-		@include respond-to(tablet) {
+		@include respond-to(laptop) {
 			padding: 20px;
 			border-bottom: 1px solid $blue-color;
 			text-align: left;
@@ -16,7 +16,7 @@ header {
 	}
 
 	.tabItem:first-of-type {
-		@include respond-to(tablet) {
+		@include respond-to(laptop) {
 			border-top: 1px solid $blue-color;
 		}
 	}
@@ -29,10 +29,6 @@ header {
 		font-size: 18px;
 		line-height: 25px;
 		color: $blue-color;
-
-		@include respond-to(mobile) {
-			padding: 20px;
-		}
 	}
 }
 
