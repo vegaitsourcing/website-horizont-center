@@ -41,7 +41,6 @@ export function BlogFilters({ onChange }) {
         name="blogContains"
         placeholder="Pretraži..."
         valueChangedHandler={(value) => applyFilters({ contains: value })}
-        isValidInput={true}
       />
       <Select
         id="blogCategory"
@@ -49,7 +48,6 @@ export function BlogFilters({ onChange }) {
         options={categoryOptions || {}}
         placeholder="Kategorija..."
         valueChangedHandler={(value) => applyFilters({ category: value })}
-        isValidInput={true}
       />
     </div>
   );

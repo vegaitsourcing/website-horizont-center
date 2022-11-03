@@ -25,7 +25,6 @@ export function DonationFilters({ onChange }) {
         name="donationContains"
         placeholder="Pretraži..."
         valueChangedHandler={(value) => applyFilters({ contains: value })}
-        isValidInput={true}
       />
       <Select
         id="donationStatus"
@@ -33,7 +32,6 @@ export function DonationFilters({ onChange }) {
         options={{ true: "u toku", false: "završeno" }}
         placeholder="Status..."
         valueChangedHandler={(value) => applyFilters({ isActive: value })}
-        isValidInput={true}
       />
     </div>
   );

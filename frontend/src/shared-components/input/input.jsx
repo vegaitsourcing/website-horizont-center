@@ -6,7 +6,16 @@ import { SelectDate } from "shared-components";
 import styles from "./input.module.scss";
 
 export const Input = (props) => {
-  const { id, name, type, placeholder, inputValue, valueChangedHandler, isValidInput, withSearchIcon = false } = props;
+  const {
+    id,
+    name,
+    type,
+    placeholder,
+    inputValue,
+    valueChangedHandler,
+    isValidInput = true,
+    withSearchIcon = false,
+  } = props;
 
   if (type === "dropdown") return <Select {...props} />;
 

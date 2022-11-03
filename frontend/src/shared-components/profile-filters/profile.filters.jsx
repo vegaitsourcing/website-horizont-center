@@ -26,7 +26,6 @@ export function ProfileFilters({ onChange }) {
         name="profileContains"
         placeholder="Pretraži..."
         valueChangedHandler={(value) => applyFilters({ contains: value })}
-        isValidInput={true}
       />
       <Select
         id="profileGender"
@@ -34,7 +33,6 @@ export function ProfileFilters({ onChange }) {
         options={{ male: "Muško", female: "Žensko" }}
         placeholder="Pol..."
         valueChangedHandler={(value) => applyFilters({ gender: value })}
-        isValidInput={true}
       />
       <Select
         id="profileCity"
@@ -42,7 +40,6 @@ export function ProfileFilters({ onChange }) {
         options={{ "Novi Sad": "Novi Sad" }} // TODO: fetch cities from an API
         placeholder="Mesto..."
         valueChangedHandler={(value) => applyFilters({ city: value })}
-        isValidInput={true}
       />
     </div>
   );

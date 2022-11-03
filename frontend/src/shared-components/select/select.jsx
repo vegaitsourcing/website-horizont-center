@@ -4,7 +4,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import styles from "./select.module.scss";
 
 export const Select = (props) => {
-  const { id, name, placeholder, options, inputValue, valueChangedHandler, isValidInput } = props;
+  const { id, name, placeholder, options, inputValue, valueChangedHandler, isValidInput = true } = props;
   const [selectedValue, setSelectedValue] = useState(inputValue);
 
   useEffect(() => {
