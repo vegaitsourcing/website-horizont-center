@@ -20,8 +20,8 @@ export const SelectDate = (props) => {
   return (
     <div className={[styles.datePicker, !isValidInput ? styles.error : ""].join(" ")}>
       <DatePicker
-        placeholderText={inputValue != "" ? inputValue : "Datum rođenja*"}
-        dateFormat="yyyy-mm-dd"
+        placeholderText={inputValue != "" ? inputValue : "Datum rođenja Dan/Mesec/Godina**"}
+        dateFormat="dd/MM/yyyy"
         id="start-date"
         autoComplete="off"
         selected={Date.parse(datePickerValue) ?? new Date()}

@@ -53,6 +53,7 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
                 type={input.type}
                 options={input.options}
                 name={input.name}
+                step={input.step}
                 placeholder={input.placeholder}
                 inputValue={formData?.data?.[userFormType]?.[input.name] ?? ""}
                 valueChangedHandler={(e) => handleValueChange(e, input.name)}

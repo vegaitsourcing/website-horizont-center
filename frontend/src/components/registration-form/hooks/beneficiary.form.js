@@ -5,25 +5,26 @@ export const beneficiaryFormFields = [
     { id: "last_name", type: "text", name: "last_name", placeholder: "Unesite Vaše prezime*" },
     { id: "email", type: "email", name: "email", placeholder: "Unesite Vaš E-mail*" },
     { id: "phone_number", type: "text", name: "phone_number", placeholder: "Unesite Vaš broj telefona*" },
-    { id: "password", type: "text", name: "password", placeholder: "Unesite Vašu lozinku*" },
+    { id: "password", type: "password", name: "password", placeholder: "Unesite Vašu lozinku*" },
   ],
   //Beneficiary fields
   [
+    // TO DO: APi postanski brojevi
     {
       id: "postal_code",
-      type: "dropdown",
+      type: "number",
       name: "postal_code",
       placeholder: "Poštanski broj*",
-      options: ["21000", "11000"],
     },
+    // TO DO: API gradovi
     {
       id: "city",
-      type: "dropdown",
+      type: "text",
       name: "city",
       placeholder: "Grad*",
-      options: ["Novi Sad", "Beograd"],
     },
     { id: "beneficiary_person", type: "text", name: "beneficiary_person", placeholder: "Kome je potrebna nega*" },
+    //text polje
     {
       id: "helping_period",
       type: "text",
@@ -35,20 +36,21 @@ export const beneficiaryFormFields = [
       type: "dropdown",
       name: "gender",
       placeholder: "Pol*",
-      options: ["muški", "ženski"],
+      options: { male: "muški", female: "ženski" },
     },
     {
       id: "weekly_days",
       type: "dropdown",
       name: "weekly_days",
-      placeholder: "Dani u nedelji*",
-      options: [1, 2, 3, 4, 5, 6, 7],
+      placeholder: "Dostupnost broja dana nedeljno*",
+      options: { 1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7" },
     },
     {
       id: "daily_hours",
       type: "number",
       name: "daily_hours",
-      placeholder: "Sati dnevno*",
+      step: ".01",
+      placeholder: "Koliko sati dnevno*",
     },
     {
       id: "care_type",

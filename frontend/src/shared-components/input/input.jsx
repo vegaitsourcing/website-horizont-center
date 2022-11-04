@@ -10,6 +10,7 @@ export const Input = (props) => {
     id,
     name,
     type,
+    step,
     placeholder,
     inputValue,
     valueChangedHandler,
@@ -28,6 +29,7 @@ export const Input = (props) => {
         type={type}
         name={name}
         id={id}
+        step={step}
         onChange={(event) => valueChangedHandler(event.target.value)}
         placeholder={placeholder}
         className={[styles.field, !isValidInput ? styles.inputError : ""].join(" ")}
