@@ -2,17 +2,23 @@ import { NextSeo } from "next-seo";
 import { LayoutDefault } from "layouts";
 import env from "config/env";
 
+import { UserDetails } from "components";
+
+import AuthService from "../api/authService";
+import caregiversService from "../api/caregiversService";
+import { useState, useEffect } from "react";
+
 function Caregivers(props) {
-  console.log("PROPS:", props);
+  console.log("PROPS:", props.params.caregiverId);
 
   const {
     pathname,
     pageSize,
-    data: { title, items, pagination, metaDescription },
+    // data: { title, items, pagination, metaDescription },
   } = props;
   const SEOS = {
-    title,
-    description: metaDescription,
+    // title,
+    // description: metaDescription,
     canonical: `${env.BASE_URL}${pathname}`,
     openGraph: [
       {
@@ -24,40 +30,41 @@ function Caregivers(props) {
     ...env.BASE_SEO,
   };
 
+  const [isLoadingCaregiver, setIsLoadingCaregiver] = useState(true);
+  const [caregiver, setCaregiver] = useState();
+
+  async function getCaregiver(token) {
+    await caregiversService.getCaregiverById(props.params.caregiverId, token).then((response) => {
+      setCaregiver(response.data);
+      setIsLoadingCaregiver(false);
+    });
+  }
+
+  useEffect(() => {
+    if (isLoadingCaregiver) {
+      const token = AuthService.getUser().token;
+      getCaregiver(token);
+    }
+  }, [isLoadingCaregiver]);
+
+  if (isLoadingCaregiver) return null;
+
   return (
     <>
       <NextSeo {...SEOS} />
+      {console.log("caregiver", caregiver)}
       <LayoutDefault pathname={pathname}>
-        <div className="">
-          {/* {caregivers.map(({ id, work_application, image, created, city, description, user }) => (
-            <ProfileListItem
-              firstName={user.first_name}
-              lastName={user.last_name}
-              body={description}
-              city={city}
-              createdDate={created}
-              image={image}
-              title={work_application}
-              key={id}
-              url="#" // TODO
-            />
-          ))} */}
-        </div>
+        <UserDetails user={caregiver} />
       </LayoutDefault>
     </>
   );
 }
 
 export async function getServerSideProps(ctx) {
-  const { resolvedUrl } = ctx;
-  console.log(ctx);
-  const pageSize = process.env.POST_PAGE_SIZE;
-  //   const response = await CaregiversService.getCaregivers(pageSize, 1);
+  const { params } = ctx;
   return {
     props: {
-      data: {},
-      pageSize: pageSize,
-      pathname: resolvedUrl,
+      params: params,
     },
   };
 }

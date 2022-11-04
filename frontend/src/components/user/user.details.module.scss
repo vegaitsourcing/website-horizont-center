@@ -1,0 +1,118 @@
+@import "src/styles/variables";
+@import "src/styles/main";
+
+
+.userDetailsWrapper {
+    align-items: center;
+    justify-content: center;
+    margin: 36px;
+    display: flex;
+}
+
+.profileListItem
+{
+    width: 1244px;
+    padding: 36px 36px 64px;
+	border-radius: 16px;
+    display: table;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin: 36px;
+    min-height: 325px;
+    .profileImageSection
+    {
+        align-items: center;
+        height: 270px;
+        width: 240px;
+        text-align: center;     
+        vertical-align: middle;
+        border: 2px solid $input-color;
+        border-radius: 16px;
+
+        .roundedImage
+        {
+            display: block;
+            margin: auto;
+            margin-bottom: 15.5px;
+            margin-top: 32px;
+            width: 128px;
+            height: 128px;
+            background-color: $light-blue-color;
+            border-radius: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+        .profileName
+        {
+            color: $blue-color;
+            margin-bottom: 8px;
+        }
+        .profileLocation
+        {
+            
+            color:$blue-color;
+            .city
+            {
+                display: inline-block;
+                color: $subtext-color;
+            }
+            .icon
+            {
+                display: inline-block;
+                width: 16px;
+                height: 20px;
+                margin-right: 10px;
+                margin-bottom: -3px;
+            }
+        }
+    }
+    .profileDescriptionSection
+    {
+        vertical-align: top;
+        display: table-cell;
+        width: 100%;
+        height: 100%;
+        padding: 0px 36px;
+        
+        .createdDate
+        {
+            margin-bottom: 12px;
+        }
+        .title
+        {
+            margin-bottom: 24px;
+        }
+        .textBody
+        {
+            color: $subtext-color;
+            margin-bottom: 24px;
+        }
+        .profilePeriod
+        {
+            margin-bottom: 24px;
+            color:$subtext-color;
+            .period
+            {
+                display: inline-block;
+            }
+            .icon
+            {
+                display: inline-block;
+                width: 16px;
+                height: 20px;
+                margin-right: 10px;
+                margin-bottom: -3px;
+            }
+        }
+        .link
+        {
+            color: $blue-color;
+        }
+        .link:hover {
+            cursor: pointer;
+        }
+    }
+}
+.profileListItem:hover
+{
+    border: 1px solid $blue-color;
+}
