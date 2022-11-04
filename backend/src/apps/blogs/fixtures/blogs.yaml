@@ -93,4 +93,70 @@
     media_type: image
     created: 2022-10-14T00:00:00+00:00
     modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.Blog
+  pk: 3
+  fields:
+    description: Opis bloga u kojem se govori o negovateljima u Beogradu
+    categories:
+      - 1
+    image: fixtures/img_3.jpg
+    title: Negovatelji u Beogradu
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.BlogSection
+  pk: 4
+  fields:
+    blog: 3
+    title: Prva sekcija
+    description: U ovom blogu možete pročitati više o negovateljima u Bogoradu. U ovom blogu možete pročitati više o negovateljima u Bogoradu. U ovom blogu možete pročitati više o negovateljima u Bogoradu. U ovom blogu možete pročitati više o negovateljima u Bogoradu.
+    media_url: https://www.youtube.com/watch?v=oK8eYmJUt7Y
+    media_type: video
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.BlogSection
+  pk: 5
+  fields:
+    blog: 3
+    title: Druga sekcija
+    description: Nešto više o Beogradu. Nešto više o Beogradu. Nešto više o Beogradu. Nešto više o Beogradu. Nešto više o Beogradu. Nešto više o Beogradu. Nešto više o Beogradu.
+    media_url: https://prevozvukovic.com/wp-content/uploads/2021/09/BEOGRAD.jpg
+    media_type: image
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.Blog
+  pk: 4
+  fields:
+    description: Opis bloga u kojem se govori o negovateljima u Novom Sadu
+    categories:
+      - 2
+    image: fixtures/img_4.jpg
+    title: Negovatelji u Beogradu
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.BlogSection
+  pk: 5
+  fields:
+    blog: 4
+    title: Prva sekcija
+    description: U ovom blogu možete pročitati više o negovateljima u Novom Sadu. U ovom blogu možete pročitati više o negovateljima u Novom Sadu. U ovom blogu možete pročitati više o negovateljima u Novom Sadu.
+    media_url: https://prevozvukovic.com/wp-content/uploads/2021/09/BEOGRAD.jpg
+    media_type: image
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.BlogSection
+  pk: 6
+  fields:
+    blog: 4
+    title: Druga sekcija
+    description: Nešto više o Novom Sadu. Nešto više o Novom Sadu. Nešto više o Novom Sadu. Nešto više o Novom Sadu. Nešto više o Novom Sadu. Nešto više o Novom Sadu.
+    media_url: https://www.youtube.com/watch?v=oK8eYmJUt7Y
+    media_type: video
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
 # END of Blogs, BlogSections and BlogAuthors ###################################################
