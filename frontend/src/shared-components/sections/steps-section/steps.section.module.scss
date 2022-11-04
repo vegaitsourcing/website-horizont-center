@@ -1,0 +1,22 @@
+@import "./../sections.module";
+
+.stepsSection {
+	padding: 236px 128px;
+}
+
+.header {
+	text-align: center;
+	margin-bottom: 80px;
+}
+
+.stepNumber {
+	text-transform: uppercase;
+	font-weight: bold;
+	color: $blue-color;
+}
+
+.steps {
+	list-style-type: none;
+	display: flex;
+	gap: 144px;
+}
