@@ -21,8 +21,9 @@ class CaregiverProfile(AbstractProfile):
         null=True,
         blank=True,
     )
-    weekly_days = models.IntegerField(
-        verbose_name=_('weekly days')
+    weekly_days = models.CharField(
+        verbose_name=_('weekly days'),
+        max_length=250,
     )
     daily_hours = models.FloatField(
         verbose_name=_('daily hours'),
