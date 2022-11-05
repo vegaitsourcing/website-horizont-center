@@ -2,10 +2,9 @@ import { LayoutDefault } from "layouts";
 import { NextSeo } from "next-seo";
 import { PageHeader, Pagination } from "shared-components";
 import ENV from "config/env";
-import { BlogList } from "components";
+import { BlogFilters, BlogList } from "components";
 import BlogsService from "./api/blogsService";
 import { useState } from "react";
-import { BlogFilters } from "../components/blog-filters/blog.filters";
 
 const { BASE_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 

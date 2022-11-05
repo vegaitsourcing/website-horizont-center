@@ -1,11 +1,10 @@
 import { LayoutDefault } from "layouts";
 import { NextSeo } from "next-seo";
 import ENV from "config/env";
-import { DonationList } from "components/donation-list/donation.list";
 import { useState } from "react";
 import DonationsService from "./api/donationsService";
 import { Pagination, PageHeader } from "shared-components";
-import { DonationFilters } from "components";
+import { DonationFilters, DonationList } from "components";
 
 const { BASE_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 

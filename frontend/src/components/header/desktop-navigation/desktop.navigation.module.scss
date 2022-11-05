@@ -33,7 +33,8 @@
 		gap: 24px;
 
 		@include respond-to(1400px) {
-			gap: 5px;
+			margin-top: 35px;
+			gap: 10px;
 			flex-direction: column;
 			align-items: flex-end;
 		}

@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import { Input, Select } from "../../shared-components";
-import styles from "./donation.filters.module.scss";
+import styles from "./../../styles/filters.module.scss";
 
 export function DonationFilters({ onChange }) {
 	const [filters, setFilters] = useState({
