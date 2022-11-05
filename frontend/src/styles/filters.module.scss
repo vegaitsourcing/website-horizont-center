@@ -1,18 +1,20 @@
-@import '../../styles/main.scss';
+@import './main.scss';
 
 .filters {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-top: 50px;
-	padding: 30px 128px;
+	margin-top: 70px;
+	padding: 10px 128px;
 
 	@include respond-to(desktop) {
 		padding: 20px 5%;
 	}
 	@include respond-to(laptop) {
-		flex-direction: column;
 		gap: 20px;
 		margin-top: 20px;
+	}
+	@include respond-to(tablet) {
+		flex-direction: column;
 	}
 }

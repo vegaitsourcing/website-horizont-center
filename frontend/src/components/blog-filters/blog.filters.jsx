@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Input, Select } from "../../shared-components";
-import styles from "./blog.filters.module.scss";
+import styles from "./../../styles/filters.module.scss";
 import BlogsService from "../../pages/api/blogsService";
 
 export function BlogFilters({ onChange }) {

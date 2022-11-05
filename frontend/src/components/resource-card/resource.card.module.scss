@@ -1,7 +1,7 @@
 @import "src/styles/variables";
 @import "src/styles/main";
 
-.cardItem {
+.card {
 	display: flex;
 	flex-direction: column;
 	font-family: "Open Sans", sans-serif;
@@ -24,12 +24,12 @@
 		justify-content: space-between;
 	}
 
-	.blogInfo {
+	.info {
 		padding: 10% 6%;
 		margin-bottom: 60px;
 	}
 
-	.category {
+	.label {
 		background-color: #BFDDFF;
 		color: #0075FF;
 		padding: 3px 12px;
@@ -41,7 +41,7 @@
 		margin-right: 6px;
 	}
 
-	.blogTitle {
+	.title {
 		@extend .h4;
 		margin: 15px 0;
 	}
@@ -63,6 +63,6 @@
 	}
 }
 
-.cardItem:hover {
+.card:hover {
 	outline: solid 1px $blue-color;
 }

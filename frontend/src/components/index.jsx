@@ -12,3 +12,5 @@ export * from "./single-donation/single.donation";
 export * from "./payment-slip/payment.slip";
 export * from "./blog-filters/blog.filters";
 export * from "./donation-filters/donation.filters";
+export * from "./donation-list/donation.list";
+export * from "./resource-card/resource.card";
