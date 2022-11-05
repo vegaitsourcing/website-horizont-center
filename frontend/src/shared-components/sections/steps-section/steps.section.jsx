@@ -10,16 +10,25 @@ export function StepsSection({
 }) {
 
 	function SectionSteps() {
+		const rowItemCount = steps.length < 3 ? steps.length : 3;
+		const columnGapPercentage = rowItemCount === 1 ? 0 : rowItemCount === 2 ? 10 : 5;
+		const totalColumnGapPercentage = columnGapPercentage * (rowItemCount - 1);
+		const stepWith = `calc((100% - ${totalColumnGapPercentage}%) / ${rowItemCount})`;
+		const style = {
+			gridTemplateColumns: `repeat(${rowItemCount}, ${stepWith})`,
+			columnGap: `${columnGapPercentage}%`,
+		};
+
 		return (
-			<ul className={styles.steps}>
+			<div className={styles.steps} style={style}>
 				{steps.map((step, index) => (
-					<li key={index}>
+					<div className={styles.step} key={index}>
 						{withStepNumbers && (<div className={styles.stepNumber}>0{index + 1}</div>)}
 						<h3 className={styles.h4}>{step.title}</h3>
 						<p className={styles.p1}>{step.text}</p>
-					</li>
+					</div>
 				))}
-			</ul>
+			</div>
 		);
 	}
 
@@ -37,7 +46,7 @@ export function StepsSection({
 	return (
 		<section className={sectionClasses}>
 			{(title || description) && <SectionHeader/>}
-			<SectionSteps/>
+			{steps && <SectionSteps/>}
 		</section>
 	);
 }

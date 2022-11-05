@@ -8,7 +8,7 @@ export function SectionWithImage({ imageSrc, title, paragraph, paragraphItems, h
 				<h2 className={styles.h2}>{title}</h2>
 				<p className={styles.p1}>{paragraph}</p>
 				{paragraphItems && (
-					<ul>
+					<ul className={styles.paragraphItems}>
 						{paragraphItems.map((item, index) => (<li key={index}>{item}</li>))}
 					</ul>
 				)}
