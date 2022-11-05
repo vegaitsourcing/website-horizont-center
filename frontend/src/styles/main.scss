@@ -25,6 +25,11 @@
 				@content;
 			}
 		}
+		@if $media == desktop {
+			@media (max-width: $desktop-width) {
+				@content;
+			}
+		}
 		// expects width value:
 		@media (max-width: $media-args) {
 			@content;
@@ -90,4 +95,8 @@
 .p2 {
 	@include text;
 	font-size: 16px;
+}
+
+.hidden {
+	display: none !important;
 }

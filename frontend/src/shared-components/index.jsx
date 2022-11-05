@@ -12,3 +12,4 @@ export * from "shared-components/blog-sections/blog.sections";
 export * from "shared-components/about-author/about.author";
 export * from "shared-components/container/container";
 export * from "shared-components/donation-info/donation.info";
+export * from "shared-components/sections";

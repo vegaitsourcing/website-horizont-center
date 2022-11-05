@@ -1,0 +1,36 @@
+@import "./../header.module";
+
+.mobileNavigation {
+	display: none;
+	justify-content: space-between;
+	align-items: center;
+
+	@include respond-to(laptop) {
+		display: flex;
+	}
+
+	.openMobileMenuButton,
+	.closeMobileMenuButton {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: $blue-color;
+		padding: 25px;
+	}
+
+	.openMobileMenuButton svg,
+	.closeMobileMenuButton svg {
+		height: 30px;
+	}
+
+	.mobileMenu {
+		z-index: 100;
+		background-color: white;
+		position: fixed;
+		top: 85px;
+		left: 0;
+		height: 100%;
+		width: 100%;
+	}
+
+}
