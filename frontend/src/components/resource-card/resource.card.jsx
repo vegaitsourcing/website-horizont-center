@@ -1,38 +1,44 @@
 import styles from "./resource.card.module.scss";
 import Link from "next/link";
-import { hex2rgba } from "../../utils";
 import { LongButton } from "../../shared-components";
 
 /**
  * @param resourceURL: local path string to the specific resource details page
  * @param image: sting (URL)
- * @param tags: array with objects that have "name" (string) and "color" (string)
- * properties - "color" should be a hex color code (e.g. #FFFFFF)
+ * @param primaryTag: object with "name" (string) and "style" (object) properties
+ * @param secondaryTags: array with objects with "name" (string) and "style" (object)
  * @param title: string
  * @param teaserText: string
  * @param date: string
  * @returns {JSX.Element}
  */
-export const ResourceCard = ({ resourceURL, image, tags, title, teaserText, date }) => {
+export const ResourceCard = ({ resourceURL, image, primaryTag, secondaryTags = [], title, teaserText, date }) => {
 
-	const preparedTags = tags.map(tag => ({
-		...tag,
-		style: {
-			color: tag.color,
-			backgroundColor: hex2rgba(tag.color, 0.2),
-		},
-	}));
+	function SecondaryTags() {
+		return (
+			secondaryTags.map((tag) => (
+				<span key={tag.name} style={tag.style} className={styles.secondaryTag}>
+					{tag.name}
+				</span>
+			))
+		);
+	}
+
+	function PrimaryTag() {
+		return (
+			<span className={styles.imageTag} style={primaryTag.style}>
+				{primaryTag.name}
+			</span>
+		);
+	}
 
 	return (
 		<div className={styles.card} key={resourceURL}>
+			{primaryTag && <PrimaryTag/>}
 			<img src={image} alt="blog image" className={styles.image}/>
 			<div className={styles.description}>
 				<div className={styles.info}>
-					{preparedTags.map((tag) => (
-						<span key={tag.name} style={tag.style} className={styles.label}>
-              {tag.name}
-            </span>
-					))}
+					<SecondaryTags/>
 					<h4 className={styles.title}>{title}</h4>
 					<p className={styles.teaserText}>
 						{teaserText.substring(0, 200)}{teaserText.length > 200 && "..."}

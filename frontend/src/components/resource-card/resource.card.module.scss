@@ -18,6 +18,17 @@
 		border-top-right-radius: 16px;
 	}
 
+	.imageTag {
+		position: absolute;
+		background-color: $blue-color;
+		color: white;
+		border-radius: 5px;
+		padding: 6px 25px;
+		top: 24px;
+		right: 24px;
+		font-weight: 700;
+	}
+
 	.description {
 		display: flex;
 		flex-direction: column;
@@ -25,11 +36,11 @@
 	}
 
 	.info {
-		padding: 10% 6%;
+		padding: 5% 6% 10%;
 		margin-bottom: 60px;
 	}
 
-	.label {
+	.secondaryTag {
 		background-color: #BFDDFF;
 		color: #0075FF;
 		padding: 3px 12px;
@@ -43,7 +54,7 @@
 
 	.title {
 		@extend .h4;
-		margin: 15px 0;
+		margin: 25px 0 15px;
 	}
 
 	.teaserText {
