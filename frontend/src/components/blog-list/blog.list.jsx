@@ -1,23 +1,13 @@
 import React from "react";
 import styles from "./blog.list.module.scss";
-import { Card } from "shared-components";
+import { BlogCard } from "../blog-card/blog.card";
 
 export const BlogList = ({ blogs }) => {
-  return (
-    <div className={styles.blogBody}>
-      <ul className={styles.blogList}>
-        {blogs.map((blog) => (
-          <Card
-            key={blog.id}
-            categories={blog.categories}
-            description={blog.description}
-            title={blog.title}
-            date={blog.created}
-            image={blog.image}
-            blogId={blog.id}
-          />
-        ))}
-      </ul>
-    </div>
-  );
+	return (
+		<div className={styles.blogListWrapper}>
+			<ul className={styles.blogList}>
+				{blogs.map((blog) => (<BlogCard key={blog.id} blog={blog} />))}
+			</ul>
+		</div>
+	);
 };

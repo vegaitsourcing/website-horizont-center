@@ -1,35 +1,11 @@
 @import '../../styles/main.scss';
 
-.blogHeader {
-	padding-block: 88px 118px;
-}
+.blogListWrapper {
+	padding: 20px 128px;
 
-.h1 {
-	margin: 0;
-}
-
-.h2, .h4 {
-	margin-top: 0;
-}
-
-.blogHeader {
-	background-color: $light-blue-color;
-	padding: 88px 128px;
-
-	.p1 {
-		max-width: 570px;
+	@include respond-to(desktop) {
+		padding: 20px 5%;
 	}
-}
-
-.blogBody {
-	padding: 128px;
-}
-
-.blogBodyInputs {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	margin-bottom: 64px;
 }
 
 .blogList {
@@ -38,12 +14,13 @@
 	grid-template-columns: repeat(3, 1fr);
 	gap: 16px;
 	list-style-type: none;
-}
 
-.blogFooter {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-bottom: 256px;
-	margin-inline: auto;
+	@include respond-to(1600px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@include respond-to(laptop) {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
 }
