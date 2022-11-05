@@ -1,6 +1,7 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Input, Select } from "../../shared-components";
 import styles from "./profile.filters.module.scss";
+import CitiesService from "../../pages/api/countriesService";
 
 export function ProfileFilters({ onChange }) {
 	const [filters, setFilters] = useState({
@@ -8,6 +9,16 @@ export function ProfileFilters({ onChange }) {
 		gender: null,
 		city: null,
 	});
+	const [cityOptions, setCityOptions] = useState({});
+
+	useEffect(() => {
+		async function prepareCityOptions() {
+			const serbianCities = await CitiesService.getAllSerbianCities();
+			const serbianCityOptions = serbianCities.reduce((prev, curr) => ({ ...prev, [curr]: curr }), {});
+			setCityOptions(serbianCityOptions);
+		}
+		prepareCityOptions();
+	}, []);
 
 	const applyFilters = useCallback((newFilters) => {
 		const updatedFilters = { ...filters, ...newFilters };
@@ -34,7 +45,7 @@ export function ProfileFilters({ onChange }) {
 			<Select
 				id="profileCity"
 				name="profileCity"
-				options={{ "Novi Sad": "Novi Sad" }} // TODO: fetch cities from an API
+				options={cityOptions}
 				placeholder="Mesto..."
 				onChange={value => applyFilters({ city: value })}
 			/>
