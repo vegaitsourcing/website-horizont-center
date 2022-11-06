@@ -15,6 +15,12 @@
 		max-width: 570px;
 	}
 
+}
+
+.pageHeaderWithImage {
+	@extend .pageHeader;
+	padding-bottom: 770px;
+
 	.image {
 		width: calc(100% - 256px);
 		margin: 30px auto 20px;
@@ -22,15 +28,10 @@
 		object-fit: cover;
 		position: absolute;
 		border-radius: 30px;
-	}
-}
 
-.pageHeaderWithImage {
-	@extend .pageHeader;
-	padding-bottom: 370px;
-
-	@include respond-to(desktop) {
-
+		@include respond-to(desktop) {
+			width: 80%;
+		}
 	}
 }
 
