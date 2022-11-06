@@ -1,7 +1,6 @@
 @import "./../header.module";
 
 .desktopNavigation {
-
 	@include respond-to(laptop) {
 		display: none;
 	}
@@ -12,6 +11,13 @@
 	padding: 10px 5%;
 	height: 115px;
 	background: $light-blue-color;
+
+	.avatar {
+		height: 65px;
+		width: 65px;
+		object-fit: cover;
+		border-radius: 50px;
+	}
 
 	.middleMenu {
 		display: flex;

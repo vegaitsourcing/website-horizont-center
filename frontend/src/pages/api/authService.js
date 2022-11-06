@@ -14,6 +14,7 @@ const AuthService = {
 			id: response.data.id,
 			firstName: response.data.first_name,
 			lastName: response.data.last_name,
+			imageURL: response.data.image,
 		});
 		localStorage.setItem("user", userDataString);
 	},

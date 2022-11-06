@@ -27,7 +27,7 @@ function Blogs(props) {
 		openGraph: [
 			{
 				url: BASE_URL,
-				images: { url: `${BASE_URL}${STATIC_DIR}logo.png` },
+				images: { url: `${BASE_URL}${STATIC_DIR}images/logo.png` },
 				site_name: AUTHOR,
 			},
 		],

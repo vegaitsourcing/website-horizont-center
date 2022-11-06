@@ -1,15 +1,24 @@
-import React from "react";
-import Image from "next/image";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import styles from "./desktop.navigation.module.scss";
 import { LongButton } from "shared-components/long-button/long.button";
 import { LogoButton } from "../logo-button/logo.button";
 import { tabItems } from "../tabItems";
+import AuthService from "../../../pages/api/authService";
 
 function AuthenticatedMenu({ onLogout }) {
+	const [avatarURL, setAvatarURL] = useState("/images/avatar.svg");
+
+	useEffect(() => {
+		const user = AuthService.getUser();
+		if (user.imageURL) {
+			setAvatarURL(user.imageURL);
+		}
+	}, []);
+
 	return (
 		<div className={styles.authenticatedMenu}>
-			<Image src="/avatar.svg" alt="avatar" width={65} height={65}/>
+			<img className={styles.avatar} src={avatarURL} alt="avatar"/>
 			<div className={styles.logoutButton} onClick={onLogout}>
 				<span className={styles.tabLabel}>Logout</span>
 			</div>

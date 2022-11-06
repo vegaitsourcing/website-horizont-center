@@ -15,7 +15,7 @@ export function CaregiverList({ caregivers }) {
 					image={image}
 					title={work_application}
 					key={id}
-					url="#" // TODO
+					url={`/caregivers/${id}`}
 				/>
 			))}
 		</div>

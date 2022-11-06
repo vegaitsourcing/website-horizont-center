@@ -16,7 +16,7 @@ export function BeneficiaryList({ beneficiaries }) {
 						title={care_type}
 						key={id}
 						period={helping_period}
-						url="#" // TODO
+						url={`/beneficiaries/${id}`}
 					/>
 				)
 			)}
