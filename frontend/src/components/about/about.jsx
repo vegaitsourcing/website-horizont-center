@@ -37,6 +37,7 @@ export const About = () => {
 	return (
 		<div className={styles.aboutContent}>
 			<PageHeader
+				withBackground
 				title={"O nama"}
 				text={
 					"Felis lectus tortor massa a eget viverra integer faucibus adipiscing. " +

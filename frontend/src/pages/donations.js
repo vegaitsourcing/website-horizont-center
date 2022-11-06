@@ -50,6 +50,7 @@ function Donations(props) {
 			<NextSeo {...SEOS} />
 			<LayoutDefault pathname={pathname}>
 				<PageHeader
+					withBackground
 					title={"Prikupljenje donacija"}
 					text={
 						"Felis lectus tortor massa a eget viverra integer faucibus adipiscing. " +

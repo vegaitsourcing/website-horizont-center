@@ -6,6 +6,7 @@ export const Contact = () => {
 	return (
 		<div className={styles.contactPageContent}>
 			<PageHeader
+				withBackground
 				title={"Kontakt"}
 				text={
 					"Felis lectus tortor massa a eget viverra integer faucibus adipiscing. " +
