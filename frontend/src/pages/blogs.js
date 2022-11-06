@@ -49,6 +49,7 @@ function Blogs(props) {
 			<NextSeo {...SEOS} />
 			<LayoutDefault pathname={pathname}>
 				<PageHeader
+					withBackground
 					title={"Podrška"}
 					text={
 						"Felis lectus tortor massa a eget viverra integer faucibus adipiscing. " +

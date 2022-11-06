@@ -1,4 +1,4 @@
-import { SingleBlog } from "components";
+import { BlogDetails } from "components";
 import { useRouter } from "next/router";
 
 import { NextSeo } from "next-seo";
@@ -12,7 +12,7 @@ const SingleBlogDetails = () => {
     <>
       <NextSeo />
       <LayoutDefault>
-        <SingleBlog blogId={slug} />
+        <BlogDetails blogId={slug} />
       </LayoutDefault>
     </>
   );

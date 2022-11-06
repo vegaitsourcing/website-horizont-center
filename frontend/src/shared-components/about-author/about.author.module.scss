@@ -1,11 +1,30 @@
 @import '../../styles/main.scss';
 
 .aboutAuthorSection {
-	font-family: "Open Sans", sans-serif;
-	margin-block: 96px 256px;
-	border-top: 1px solid $gray-color;
-	padding-top: 64px;
-	display: flex;
+	margin: 70px 0 200px;
+
+	@include respond-to(mobile) {
+		margin: 30px 0 100px;
+	}
+
+	.aboutAuthorWrapper {
+		font-family: "Open Sans", sans-serif;
+		border-top: 1px solid $gray-color;
+		margin: 0 15%;
+		padding: 50px 0;
+		display: flex;
+
+		@include respond-to(laptop) {
+			margin: 0 10%;
+		}
+		@include respond-to(tablet) {
+			padding: 35px 0 10px;
+			margin: 0 5%;
+		}
+		@include respond-to(mobile) {
+			flex-direction: column;
+		}
+	}
 
 	.leftSide {
 		display: flex;
@@ -15,6 +34,17 @@
 		padding-right: 64px;
 		min-height: 117px;
 		border-right: 1px solid $gray-color;
+
+		@include respond-to(tablet) {
+			padding-right: 30px;
+		}
+		@include respond-to(mobile) {
+			border-right: none;
+			width: 100%;
+			gap: 0;
+			padding-right: 0;
+			justify-content: center;
+		}
 	}
 
 	.authorImage {
@@ -27,6 +57,14 @@
 	.rightSide {
 		position: relative;
 		margin-left: 64px;
+
+		@include respond-to(tablet) {
+			margin-left: 30px;
+		}
+		@include respond-to(mobile) {
+			margin-top: 30px;
+			margin-left: 0;
+		}
 	}
 
 	.authorName {
@@ -35,18 +73,33 @@
 		margin-top: 0;
 	}
 
+	.h4 {
+		font-size: 20px;
+	}
+
 	.authorInfo {
 		font-weight: 300;
 	}
 
 	.socialMediaLinks {
 		position: absolute;
-		list-style-type: none;
 		display: flex;
 		margin: 0;
 		gap: 48px;
 		top: 120%;
 		left: 0;
 		padding: 0;
+
+		@include respond-to(mobile) {
+			width: 90%;
+			gap: 30px;
+			justify-content: flex-end;
+		}
+	}
+
+	.socialMediaLink {
+		width: 30px;
+		display: flex;
+		justify-content: center;
 	}
 }

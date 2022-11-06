@@ -2,7 +2,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@700;800&display=swap');
 
 .pageHeader {
-	background-color: $light-blue-color;
 	padding: 45px 128px 88px;
 
 	@include respond-to(desktop) {
@@ -14,5 +13,54 @@
 
 	.p1 {
 		max-width: 570px;
+	}
+
+	.image {
+		width: calc(100% - 256px);
+		margin: 30px auto 20px;
+		height: 700px;
+		object-fit: cover;
+		position: absolute;
+		border-radius: 30px;
+	}
+}
+
+.pageHeaderWithImage {
+	@extend .pageHeader;
+	padding-bottom: 370px;
+
+	@include respond-to(desktop) {
+
+	}
+}
+
+.narrowPageHeader {
+	padding-left: 15%;
+	padding-right: 15%;
+	padding-bottom: 820px;
+
+	@include respond-to(desktop) {
+		padding-left: 10%;
+		padding-right: 10%;
+		padding-bottom: 720px;
+	}
+	@include respond-to(tablet) {
+		padding-left: 5%;
+		padding-right: 5%;
+		padding-bottom: 570px;
+	}
+
+	.image {
+		width: 70%;
+		height: 750px;
+
+		@include respond-to(desktop) {
+			width: 80%;
+			height: 650px;
+		}
+		@include respond-to(tablet) {
+			width: 90%;
+			height: 500px;
+		}
 	}
 }

@@ -29,20 +29,22 @@ export const AboutAuthor = ({ author }) => {
 
 	return (
 		<section className={styles.aboutAuthorSection}>
-			<div className={styles.leftSide}>
-				<img className={styles.authorImage} src={author.image} alt="author"/>
-				<h3 className={styles.authorName}>{author.first_name + " " + author.last_name}</h3>
-			</div>
-			<div className={styles.rightSide}>
-				<h3>O autoru</h3>
-				<p className={styles.authorInfo}>{author.description}</p>
-				<ul className={styles.socialMediaLinks}>
-					{socialLinks.map((link, index) => (
-						<a key={index} href={link.socialMediaURL}>
-							<img src={link.iconURL} alt={link.imgAlt}/>
-						</a>
-					))}
-				</ul>
+			<div className={styles.aboutAuthorWrapper}>
+				<div className={styles.leftSide}>
+					<img className={styles.authorImage} src={author.image} alt="author"/>
+					<h3 className={styles.authorName}>{author.first_name + " " + author.last_name}</h3>
+				</div>
+				<div className={styles.rightSide}>
+					<h4 className={styles.h4}>O autoru</h4>
+					<p className={styles.authorInfo}>{author.description}</p>
+					<div className={styles.socialMediaLinks}>
+						{socialLinks.map((link, index) => (
+							<a className={styles.socialMediaLink} key={index} href={link.socialMediaURL}>
+								<img src={link.iconURL} alt={link.imgAlt}/>
+							</a>
+						))}
+					</div>
+				</div>
 			</div>
 		</section>
 	);

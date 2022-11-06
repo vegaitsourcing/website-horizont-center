@@ -6,7 +6,6 @@ export * from "shared-components/pagination/pagination";
 export * from "shared-components/page-header/page.header";
 export * from "shared-components/profile-filters/profile.filters";
 export * from "shared-components/profile-list-item/profile-list-item";
-export * from "shared-components/section-header/section.header";
 export * from "shared-components/blog-sections/blog.sections";
 export * from "shared-components/about-author/about.author";
 export * from "shared-components/container/container";

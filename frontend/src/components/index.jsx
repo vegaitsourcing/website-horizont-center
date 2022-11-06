@@ -7,7 +7,7 @@ export * from "./caregiver-list/caregiver.list";
 export * from "./beneficiary-list/beneficiary.list";
 export * from "./registration/";
 export * from "./login-form/login.form";
-export * from "./single-blog/single.blog";
+export * from "./blog-details/blog.details"
 export * from "./payment-slip/payment.slip";
 export * from "./blog-filters/blog.filters";
 export * from "./donation-filters/donation.filters";
