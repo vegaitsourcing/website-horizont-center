@@ -30,13 +30,23 @@ class CaregiverProfile(AbstractProfile):
         null=True,
         blank=True,
     )
-    instagram_url = models.URLField(
-        verbose_name=_('instagram url'),
+    facebook_url = models.URLField(
+        verbose_name=_('facebook URL'),
         null=True,
         blank=True,
     )
-    facebook_url = models.URLField(
-        verbose_name=_('facebook url'),
+    instagram_url = models.URLField(
+        verbose_name=_('instagram URL'),
+        null=True,
+        blank=True,
+    )
+    linkedin_url = models.URLField(
+        verbose_name=_('linkedin URL'),
+        null=True,
+        blank=True,
+    )
+    twitter_url = models.URLField(
+        verbose_name=_('twitter URL'),
         null=True,
         blank=True,
     )

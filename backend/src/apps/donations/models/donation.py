@@ -19,10 +19,9 @@ class Donation(BaseModel):
         max_length=250
     )
     image = models.ImageField(
+        verbose_name=_('cover image'),
         upload_to='images/donations',
         null=True,
-        blank=True,
-        verbose_name=_('cover image'),
     )
     description = models.TextField(
         validators=[

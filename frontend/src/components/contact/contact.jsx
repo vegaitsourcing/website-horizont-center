@@ -13,7 +13,7 @@ export const Contact = () => {
 				}
 			/>
 			<SectionWithImage
-				imageSrc="/images/contact_page1.png"
+				imageSrc="/images/static.4.jpg"
 				title="Adipiscing platea aliquet"
 				paragraph={
 					`Ornare pulvinar ullamcorper in non elit leo, duis cursus. Adipiscing non faucibus molestie in tincidunt
@@ -43,17 +43,27 @@ export const Contact = () => {
 				steps={[
 					{
 						title: "Prvi korak",
-						text: "Opis prvog koraka. Opis prvog koraka. Opis prvog koraka. Opis prvog koraka."
+						text: "Opis prvog koraka. Opis prvog koraka. Opis prvog koraka. Opis prvog koraka.",
 					},
 					{
 						title: "Drugi korak",
-						text: "Opis drugog koraka. Opis drugog koraka. Opis drugog koraka. Opis drugog koraka. Opis drugog koraka. Opis drugog koraka."
+						text: "Opis drugog koraka. Opis drugog koraka. Opis drugog koraka. Opis drugog koraka. Opis drugog koraka. Opis drugog koraka.",
 					},
 					{
 						title: "Treći korak",
-						text: "Opis trećeg koraka. Opis trećeg koraka. Opis trećeg koraka. Opis trećeg koraka."
+						text: "Opis trećeg koraka. Opis trećeg koraka. Opis trećeg koraka. Opis trećeg koraka.",
 					},
 				]}
+			/>
+			<SectionWithImage
+				hasImageFirst
+				imageSrc="/images/static.6.jpg"
+				title="Adipiscing platea aliquet"
+				paragraph={
+					`Ornare pulvinar ullamcorper in non elit leo, duis cursus. Adipiscing non faucibus molestie in tincidunt
+					ridiculus senectus. Molestie nunc et sed ut id urna, lectus nullaringilla arcu elit nisi imperdiet integer
+					tortor semper venenatis. Bibendum sagittis pellentesque dignissim nunc.`
+				}
 			/>
 		</div>
 	);

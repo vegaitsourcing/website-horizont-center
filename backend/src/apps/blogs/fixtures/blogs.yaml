@@ -65,9 +65,12 @@
     blog: 1
     first_name: Sanja
     last_name: Marić
+    image: fixtures/caregiver_1.jpg
     description: Opis autorke Sanje Marić koja piše blogove za sajt centra Horizont. Opis autorke Sanje Marić koja piše blogove za sajt centra Horizont.
     facebook_url: https://www.facebook.com/VegaITSourcing
     instagram_url: https://www.instagram.com/vega_it/
+    linkedin_url: https://www.linkedin.com/company/vega-it-sourcing/
+    twitter_url: https://twitter.com/vegaitsourcing
     created: 2022-10-14T00:00:00+00:00
     modified: 2022-10-14T00:00:00+00:00
 

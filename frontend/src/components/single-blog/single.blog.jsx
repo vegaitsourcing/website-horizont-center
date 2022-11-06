@@ -54,7 +54,7 @@ export const SingleBlog = ({ blogId }) => {
         <BlogSections sections={blog.sections} />
       </Container>
       <Container styledClass={"singleBlogContainer"}>
-        {blog.author ? <AboutAuthor type={"author"} blog={blog} /> : null}
+        {blog.author ? <AboutAuthor author={blog.author} /> : null}
       </Container>
     </>
   );

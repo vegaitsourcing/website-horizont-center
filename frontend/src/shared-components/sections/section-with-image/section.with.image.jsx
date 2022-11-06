@@ -2,9 +2,9 @@ import styles from "./section.with.image.module.scss";
 
 export function SectionWithImage({ imageSrc, title, paragraph, paragraphItems, hasImageFirst = false }) {
 
-	function TextSide({ isFirst = true }) {
+	function TextSide({ className }) {
 		return (
-			<div className={isFirst ? styles.leftSide : styles.rightSide}>
+			<div className={className}>
 				<h2 className={styles.h2}>{title}</h2>
 				<p className={styles.p1}>{paragraph}</p>
 				{paragraphItems && (
@@ -16,18 +16,18 @@ export function SectionWithImage({ imageSrc, title, paragraph, paragraphItems, h
 		);
 	}
 
-	function ImageSide({ isFirst = false }) {
+	function ImageSide({ className }) {
 		return (
-			<div className={isFirst ? styles.rightSide : styles.leftSide}>
-				<img src={imageSrc} alt="section image"/>
+			<div className={className}>
+				<img className={styles.image} src={imageSrc} alt="section image"/>
 			</div>
 		);
 	}
 
 	return (
 		<section className={styles.narrowSection}>
-			{hasImageFirst ? <ImageSide/> : <TextSide/>}
-			{hasImageFirst ? <TextSide/> : <ImageSide/>}
+			{hasImageFirst ? <ImageSide className={styles.leftSide}/> : <TextSide className={styles.leftSide}/>}
+			{hasImageFirst ? <TextSide className={styles.rightSide}/> : <ImageSide className={styles.rightSide}/>}
 		</section>
 	);
 }

@@ -27,14 +27,24 @@ class DonationCompany(BaseModel):
         verbose_name=_('description'),
     )
     facebook_url = models.URLField(
-        verbose_name=_('facebook'),
+        verbose_name=_('facebook URL'),
+        null=True,
         blank=True,
-        null=True
     )
     instagram_url = models.URLField(
-        verbose_name=_('instagram'),
+        verbose_name=_('instagram URL'),
+        null=True,
         blank=True,
-        null=True
+    )
+    linkedin_url = models.URLField(
+        verbose_name=_('linkedin URL'),
+        null=True,
+        blank=True,
+    )
+    twitter_url = models.URLField(
+        verbose_name=_('twitter URL'),
+        null=True,
+        blank=True,
     )
     donation = models.OneToOneField(
         to='donations.Donation',

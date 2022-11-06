@@ -14,10 +14,9 @@ class Blog(BaseModel):
         max_length=100,
     )
     image = models.ImageField(
-        verbose_name=_('image'),
+        verbose_name=_('cover image'),
         upload_to=_('images/blogs'),
         null=True,
-        blank=True,
     )
     description = models.TextField(
         verbose_name=_('description'),
