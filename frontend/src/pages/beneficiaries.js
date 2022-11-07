@@ -1,7 +1,6 @@
 import { LayoutDefault } from "layouts";
-
 import { NextSeo } from "next-seo";
-import ENV from "config/env";
+import { ENV } from "config/env";
 import { useCallback, useEffect, useState } from "react";
 import { Pagination, ProfileFilters } from "shared-components";
 import BeneficiariesService from "./api/beneficiariesService";
@@ -9,9 +8,10 @@ import { BeneficiaryList } from "../components";
 
 const { BASE_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
-function Beneficiaries(props) {
-	const { pathname, pageSize } = props;
+const ITEMS_PER_PAGE = 3;
 
+function Beneficiaries(props) {
+	const { pathname } = props;
 	const SEOS = {
 		canonical: `${BASE_URL}${pathname}`,
 		openGraph: [
@@ -36,7 +36,7 @@ function Beneficiaries(props) {
 	useEffect(() => {
 		async function fetchBeneficiaries() {
 			const response = await BeneficiariesService.getBeneficiaries(
-				pageSize,
+				ITEMS_PER_PAGE,
 				activePageNumber,
 				filters.contains,
 				filters.gender,
@@ -47,7 +47,7 @@ function Beneficiaries(props) {
 		}
 
 		fetchBeneficiaries();
-	}, [activePageNumber, filters, pageSize]);
+	}, [activePageNumber, filters]);
 
 	const updateFilters = useCallback((newFilters) => {
 		const updatedFilters = { ...filters, ...newFilters };
@@ -73,10 +73,8 @@ function Beneficiaries(props) {
 
 export async function getServerSideProps(ctx) {
 	const { resolvedUrl } = ctx;
-	const pageSize = process.env.POST_PAGE_SIZE;
 	return {
 		props: {
-			pageSize: pageSize,
 			pathname: resolvedUrl
 		}
 	};

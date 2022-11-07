@@ -1,15 +1,12 @@
 import { LayoutDefault } from "layouts";
 import { NextSeo } from "next-seo";
 import { Contact } from "components";
-import ENV from "config/env";
+import { ENV } from "config/env";
 
 const { BASE_URL = "", STATIC_DIR = "", AUTHOR } = ENV;
 
 function Documentation(props) {
-	const {
-		pathname,
-	} = props;
-
+	const { pathname } = props;
 	const SEOS = {
 		title: "Kontakt",
 		canonical: `${BASE_URL}${pathname}`,

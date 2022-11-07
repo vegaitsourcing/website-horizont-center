@@ -4,7 +4,7 @@ import { NextSeo } from "next-seo";
 
 import { RegistrationForm } from "components";
 
-import ENV from "config/env";
+import { ENV } from "config/env";
 
 const { BASE_URL = "", BASE_API_URL = "", STATIC_DIR = "", AUTHOR } = ENV;
 

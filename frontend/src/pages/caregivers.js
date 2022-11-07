@@ -1,23 +1,25 @@
 import { NextSeo } from "next-seo";
 import { LayoutDefault } from "layouts";
-import env from "config/env";
+import { ENV } from "config/env";
 import { useCallback, useEffect, useState } from "react";
 import { Pagination, ProfileFilters } from "shared-components";
 import CaregiversService from "./api/caregiversService";
 import { CaregiverList } from "../components";
 
+const ITEMS_PER_PAGE = 3;
+
 function Caregivers(props) {
-	const { pathname, pageSize } = props;
+	const { pathname } = props;
 	const SEOS = {
-		canonical: `${env.BASE_URL}${pathname}`,
+		canonical: `${ENV.BASE_URL}${pathname}`,
 		openGraph: [
 			{
-				url: env.BASE_URL,
-				images: { url: `${env.BASE_URL}${env.STATIC_DIR}logo-share.jpg` },
-				site_name: env.AUTHOR,
+				url: ENV.BASE_URL,
+				images: { url: `${ENV.BASE_URL}${ENV.STATIC_DIR}logo-share.jpg` },
+				site_name: ENV.AUTHOR,
 			},
 		],
-		...env.BASE_SEO,
+		...ENV.BASE_SEO,
 	};
 
 	const [activePageNumber, setActivePageNumber] = useState(1);
@@ -32,7 +34,7 @@ function Caregivers(props) {
 	useEffect(() => {
 		async function fetchBeneficiaries() {
 			const response = await CaregiversService.getCaregivers(
-				pageSize,
+				ITEMS_PER_PAGE,
 				activePageNumber,
 				filters.contains,
 				filters.gender,
@@ -43,7 +45,7 @@ function Caregivers(props) {
 		}
 
 		fetchBeneficiaries();
-	}, [activePageNumber, filters, pageSize]);
+	}, [activePageNumber, filters]);
 
 	const updateFilters = useCallback((newFilters) => {
 		const updatedFilters = { ...filters, ...newFilters };
@@ -69,10 +71,11 @@ function Caregivers(props) {
 
 export async function getServerSideProps(ctx) {
 	const { resolvedUrl } = ctx;
-	const pageSize = process.env.POST_PAGE_SIZE;
+
+	console.log("resolvedUrl:", resolvedUrl);
+
 	return {
 		props: {
-			pageSize: pageSize,
 			pathname: resolvedUrl
 		}
 	};

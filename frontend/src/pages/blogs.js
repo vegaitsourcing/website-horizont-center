@@ -1,28 +1,18 @@
 import { LayoutDefault } from "layouts";
 import { NextSeo } from "next-seo";
 import { PageHeader, Pagination } from "shared-components";
-import ENV from "config/env";
+import { ENV } from "config/env";
 import { BlogFilters, BlogList } from "components";
 import BlogsService from "./api/blogsService";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const { BASE_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
-function Blogs(props) {
-	const {
-		pathname,
-		pageSize,
-		data: {
-			title,
-			items,
-			pagination,
-			metaDescription,
-		},
-	} = props;
+const ITEMS_PER_PAGE = 3;
 
+function Blogs(props) {
+	const { pathname } = props;
 	const SEOS = {
-		title,
-		description: metaDescription,
 		canonical: `${BASE_URL}${pathname}`,
 		openGraph: [
 			{
@@ -34,15 +24,33 @@ function Blogs(props) {
 		...BASE_SEO,
 	};
 	const [activePageNumber, setActivePageNumber] = useState(1);
-	const [blogs, setBlogs] = useState(items);
-	const [numberOfPages, setNumberOfPages] = useState(pagination.total_pages);
+	const [blogs, setBlogs] = useState([]);
+	const [numberOfPages, setNumberOfPages] = useState(0);
+	const [filters, setFilters] = useState({
+		contains: null,
+		category: null,
+	});
 
-	async function getBlogs(pageNumber, contains, category) {
-		setActivePageNumber(pageNumber);
-		const response = await BlogsService.getBlogs(pageSize, pageNumber, contains, category);
-		setBlogs(response.data.items);
-		setNumberOfPages(response.data.pagination.total_pages);
-	}
+	useEffect(() => {
+		async function fetchBlogs() {
+			const response = await BlogsService.getBlogs(
+				ITEMS_PER_PAGE,
+				activePageNumber,
+				filters.contains,
+				filters.category,
+			);
+			setBlogs(response.data.items);
+			setNumberOfPages(response.data.pagination.total_pages);
+		}
+
+		fetchBlogs();
+	}, [activePageNumber, filters]);
+
+	const updateFilters = useCallback((newFilters) => {
+		const updatedFilters = { ...filters, ...newFilters };
+		setActivePageNumber(1);
+		setFilters(updatedFilters);
+	}, [filters]);
 
 	return (
 		<>
@@ -56,10 +64,10 @@ function Blogs(props) {
 						"Faucibus nunc, auctor arcu magna cursus "
 					}
 				/>
-				<BlogFilters onChange={getBlogs}/>
+				<BlogFilters onChange={updateFilters}/>
 				<BlogList blogs={blogs}/>
 				<Pagination
-					onPageChange={getBlogs}
+					onPageChange={setActivePageNumber}
 					numberOfPages={numberOfPages}
 					activePageNumber={activePageNumber}
 				/>
@@ -70,12 +78,8 @@ function Blogs(props) {
 
 export async function getServerSideProps(ctx) {
 	const { resolvedUrl } = ctx;
-	const pageSize = process.env.POST_PAGE_SIZE;
-	const response = await BlogsService.getBlogs(pageSize, 1);
 	return {
 		props: {
-			data: { ...response.data },
-			pageSize: pageSize,
 			pathname: resolvedUrl
 		}
 	};

@@ -34,8 +34,8 @@
       - 1
       - 2
     image: fixtures/img_1.jpg
-    created: 2022-10-14T00:00:00+00:00
-    modified: 2022-10-14T00:00:00+00:00
+    created: 2022-10-14T00:00:01+00:00
+    modified: 2022-10-14T00:00:01+00:00
 
 - model: blogs.BlogSection
   pk: 1
@@ -83,8 +83,8 @@
       - 3
     image: fixtures/img_2.jpg
     title: Osobe koje traže negu u Srbiji
-    created: 2022-10-14T00:00:00+00:00
-    modified: 2022-10-14T00:00:00+00:00
+    created: 2022-10-14T00:00:02+00:00
+    modified: 2022-10-14T00:00:02+00:00
 
 - model: blogs.BlogSection
   pk: 3
@@ -105,8 +105,8 @@
       - 1
     image: fixtures/img_3.jpg
     title: Negovatelji u Beogradu
-    created: 2022-10-14T00:00:00+00:00
-    modified: 2022-10-14T00:00:00+00:00
+    created: 2022-10-14T00:00:03+00:00
+    modified: 2022-10-14T00:00:03+00:00
 
 - model: blogs.BlogSection
   pk: 4
@@ -135,11 +135,12 @@
   fields:
     description: Opis bloga u kojem se govori o negovateljima u Novom Sadu
     categories:
+      - 1
       - 2
     image: fixtures/img_4.jpg
     title: Negovatelji u Novom Sadu
-    created: 2022-10-14T00:00:00+00:00
-    modified: 2022-10-14T00:00:00+00:00
+    created: 2022-10-14T00:00:04+00:00
+    modified: 2022-10-14T00:00:04+00:00
 
 - model: blogs.BlogSection
   pk: 5
@@ -159,6 +160,39 @@
     title: Druga sekcija
     description: Nešto više o Novom Sadu. Nešto više o Novom Sadu. Nešto više o Novom Sadu. Nešto više o Novom Sadu. Nešto više o Novom Sadu. Nešto više o Novom Sadu.
     media_url: https://www.youtube.com/watch?v=oK8eYmJUt7Y
+    media_type: video
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.Blog
+  pk: 5
+  fields:
+    description: Opis bloga u kojem se govori o negovateljima u Nišu
+    categories:
+      - 2
+    image: fixtures/img_1.jpg
+    title: Negovatelji u Nišu
+    created: 2022-10-14T00:00:05+00:00
+    modified: 2022-10-14T00:00:05+00:00
+
+- model: blogs.BlogSection
+  pk: 5
+  fields:
+    blog: 4
+    title: Prva sekcija
+    description: U ovom blogu možete pročitati više o negovateljima u Nišu. U ovom blogu možete pročitati više o negovateljima u Nišu.U ovom blogu možete pročitati više o negovateljima u Nišu.U ovom blogu možete pročitati više o negovateljima u Nišu.
+    media_url: https://upload.wikimedia.org/wikipedia/commons/6/6f/Nisgradnocu.jpg?20080214161247
+    media_type: image
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.BlogSection
+  pk: 6
+  fields:
+    blog: 4
+    title: Druga sekcija
+    description: U ovom blogu možete pročitati više o negovateljima u Nišu. U ovom blogu možete pročitati više o negovateljima u Nišu.U ovom blogu možete pročitati više o negovateljima u Nišu.U ovom blogu možete pročitati više o negovateljima u Nišu.
+    media_url: https://www.youtube.com/watch?v=9QzqsaldtNM
     media_type: video
     created: 2022-10-14T00:00:00+00:00
     modified: 2022-10-14T00:00:00+00:00

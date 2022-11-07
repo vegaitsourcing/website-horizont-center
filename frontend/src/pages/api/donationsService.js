@@ -6,7 +6,7 @@ const DonationsService = {
 	getDonations: (pageSize, pageNumber, contains, isActive) => {
 		let queryParams = `ipp=${pageSize}&page=${pageNumber}`;
 		if (contains) queryParams += `&contains=${contains}`;
-		if (isActive !== undefined) queryParams += `&is_active=${isActive}`;
+		if (isActive !== null) queryParams += `&is_active=${isActive}`;
 		return API.getAllResources(BASE_RESOURCE_NAME, queryParams);
 	},
 
