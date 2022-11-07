@@ -5,7 +5,7 @@ const api = axios.create({
 	baseURL: ENV.BASE_API_URL,
 });
 
-console.log("ENV.BASE_API_URL:", ENV.BASE_API_URL); // TODO: REMOVE
+console.log("ENV.BASE_API_URL:", ENV.BASE_API_URL); // TODO: REMOVE when hosting server is configured
 
 const API = {
 	getAllResources: (resource, queryParams = "") => {
