@@ -1,0 +1,152 @@
+@import "src/styles/variables";
+@import "src/styles/main";
+
+.profileCard {
+	width: 80%;
+	border-radius: 16px;
+	box-shadow: rgba(149, 157, 165, 0.2) 0 8px 24px;
+	margin: 36px 0;
+	height: 325px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	@include respond-to(laptop) {
+		flex-direction: column;
+		height: fit-content;
+	}
+	@include respond-to(tablet) {
+		width: 95%;
+		margin: 10px 0;
+	}
+
+	.leftSide {
+		width: 30%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		text-align: center;
+		border-right: 1px solid $light-blue-color;
+
+		@include respond-to(laptop) {
+			border-right: 0;
+			flex-direction: row;
+			width: 100%;
+			padding: 30px 0 10px;
+		}
+	}
+
+	.rightSide {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 70%;
+		height: 100%;
+		padding: 0 36px;
+
+		@include respond-to(laptop) {
+			width: 90%;
+			padding: 10px 0 36px;
+		}
+	}
+
+	.imageWrapper {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-bottom: 20px;
+
+		@include respond-to(laptop) {
+			margin-bottom: 0;
+		}
+	}
+
+	.image {
+		display: block;
+		width: 128px;
+		height: 128px;
+		background-color: $light-blue-color;
+		border-radius: 100%;
+		object-fit: cover;
+		object-position: top;
+	}
+
+	.nameAndCity {
+		@include respond-to(laptop) {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			padding: 30px;
+		}
+	}
+
+	.name {
+		color: $blue-color;
+		margin-bottom: 8px;
+	}
+
+	.location {
+		color: $blue-color;
+	}
+
+	.city {
+		display: inline-block;
+		color: $subtext-color;
+		font-weight: 300;
+	}
+
+	.icon {
+		display: inline-block;
+		width: 16px;
+		height: 20px;
+		margin-right: 10px;
+		margin-bottom: -3px;
+	}
+
+	.createdDate {
+		margin-bottom: 12px;
+		font-weight: 300;
+	}
+
+	.title {
+		margin-bottom: 24px;
+	}
+
+	.textBody {
+		color: $subtext-color;
+		margin-bottom: 24px;
+		font-weight: 300;
+	}
+
+	.periodWrapper {
+		margin-bottom: 24px;
+		color: $subtext-color;
+	}
+
+	.period {
+		display: inline-block;
+	}
+
+	.icon {
+		display: inline-block;
+		width: 16px;
+		height: 20px;
+		margin-right: 10px;
+		margin-bottom: -3px;
+	}
+
+	.link {
+		color: $blue-color;
+		padding: 5px 5px 5px 0;
+		width: fit-content;
+	}
+
+	.link:hover {
+		cursor: pointer;
+	}
+}
+
+.profileCard:hover {
+	outline: 1px solid $blue-color;
+}
