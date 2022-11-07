@@ -5,6 +5,8 @@ const api = axios.create({
 	baseURL: ENV.BASE_API_URL,
 });
 
+console.log("ENV.BASE_API_URL:", ENV.BASE_API_URL); // TODO: REMOVE
+
 const API = {
 	getAllResources: (resource, queryParams = "") => {
 		return api.get(`${resource}/?${queryParams}`);
