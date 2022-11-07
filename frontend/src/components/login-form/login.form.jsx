@@ -5,7 +5,7 @@ import { Input, LongButton } from "shared-components";
 import Link from "next/link";
 import AuthService from "../../pages/api/authService";
 
-export const LoginForm = ({}) => {
+export const LoginForm = () => {
 	const router = useRouter();
 	const [formData, setFormData] = useState({
 		email: "",
