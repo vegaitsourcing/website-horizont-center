@@ -48,7 +48,7 @@ export const SingleDonation = ({ donationId }) => {
   return (
     <>
       <Container>
-        <SectionHeader title={donation.title} imageSrc={donation.image} />
+        <SectionHeader title={donation.title} imageSrc={donation.image} donationActive={donation.is_active} />
       </Container>
       <Container styledClass={"singleDonationContainer"}>
         <DonationInfo donation={donation} />

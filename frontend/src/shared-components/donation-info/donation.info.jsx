@@ -29,8 +29,8 @@ export const DonationInfo = ({ donation }) => {
           <div className={styles.donationInfo}>
             <h3 className={styles.h4}>Informacije za uplatu</h3>
             <ul className={styles.infoList}>
-              {financialInfo.map((singleInfo) => (
-                <li>
+              {financialInfo.map((singleInfo, index) => (
+                <li key={index}>
                   <span>{singleInfo.title}:</span> <span className={styles.infoValue}>{singleInfo.value}</span>
                 </li>
               ))}
