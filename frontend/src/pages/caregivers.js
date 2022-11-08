@@ -75,8 +75,6 @@ function Caregivers(props) {
 export async function getServerSideProps(ctx) {
   const { resolvedUrl } = ctx;
 
-  console.log("resolvedUrl:", resolvedUrl);
-
   return {
     props: {
       pathname: resolvedUrl,

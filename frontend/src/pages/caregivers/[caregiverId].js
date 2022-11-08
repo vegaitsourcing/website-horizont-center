@@ -9,8 +9,6 @@ import caregiversService from "../api/caregiversService";
 import { useState, useEffect } from "react";
 
 function Caregivers(props) {
-  console.log("PROPS:", props.params.caregiverId);
-
   const {
     pathname,
     pageSize,
@@ -35,7 +33,6 @@ function Caregivers(props) {
 
   async function getCaregiver(token) {
     await caregiversService.getCaregiverById(props.params.caregiverId, token).then((response) => {
-      console.log("Response", response);
       if (response.status === 401) {
         //TO DO: Handle 401 error page
         return alert("Ne mozete pristupiti ovoj stranici, morate biti ulogovani!");
@@ -57,7 +54,6 @@ function Caregivers(props) {
   return (
     <>
       <NextSeo {...SEOS} />
-      {console.log("caregiver", caregiver)}
       <LayoutDefault pathname={pathname}>
         <UserDetails user={caregiver} />
       </LayoutDefault>

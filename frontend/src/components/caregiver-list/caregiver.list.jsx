@@ -5,7 +5,6 @@ import styles from "./caregiver.list.module.scss";
 export function CaregiverList({ caregivers }) {
   return (
     <div className={styles.caregivers}>
-      {console.log(caregivers)}
       {caregivers.map(({ id, work_application, image, created, city, description, user }) => (
         <ProfileListItem
           firstName={user.first_name}

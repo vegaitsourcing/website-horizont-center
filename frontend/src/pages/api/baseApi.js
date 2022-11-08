@@ -21,7 +21,6 @@ const API = {
 
 api.interceptors.response.use(
   (response) => {
-    console.log("Response", response);
     return response;
   },
   (error) => {

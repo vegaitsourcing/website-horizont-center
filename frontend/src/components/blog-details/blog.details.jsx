@@ -32,7 +32,6 @@ export const BlogDetails = ({ blogId }) => {
   return (
     <>
       <PageHeader isNarrow title={blog.title} image={blog.image} />
-      {console.log("Blog:", blog)}
       <BlogSections sections={blog.sections} />
       {blog.author ? <AboutAuthor author={blog.author} /> : null}
     </>
