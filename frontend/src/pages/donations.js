@@ -1,30 +1,18 @@
 import { LayoutDefault } from "layouts";
 import { NextSeo } from "next-seo";
-import ENV from "config/env";
-import { DonationList } from "components/donation-list/donation.list";
-import { useState } from "react";
+import { ENV } from "config/env";
+import { useCallback, useEffect, useState } from "react";
 import DonationsService from "./api/donationsService";
-import { Pagination, PageHeader } from "shared-components";
-import { DonationFilters } from "components";
+import { PageHeader, Pagination } from "shared-components";
+import { DonationFilters, DonationList } from "components";
 
 const { BASE_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
+const ITEMS_PER_PAGE = 3;
 
 function Donations(props) {
-	const {
-		pathname,
-		pageSize,
-		data: {
-			title,
-			items,
-			pagination,
-			metaDescription,
-		},
-	} = props;
-
+	const { pathname } = props;
 	const SEOS = {
-		title,
-		description: metaDescription,
 		canonical: `${BASE_URL}${pathname}`,
 		openGraph: [
 			{
@@ -36,31 +24,50 @@ function Donations(props) {
 		...BASE_SEO,
 	};
 	const [activePageNumber, setActivePageNumber] = useState(1);
-	const [donations, setDonations] = useState(items);
-	const [numberOfPages, setNumberOfPages] = useState(pagination.total_pages);
+	const [donations, setDonations] = useState([]);
+	const [numberOfPages, setNumberOfPages] = useState(0);
+	const [filters, setFilters] = useState({
+		contains: null,
+		isActive: null,
+	});
 
-	async function getDonations(pageNumber, contains, isActive) {
-		setActivePageNumber(pageNumber);
-		const response = await DonationsService.getDonations(pageSize, pageNumber, contains, isActive);
-		setDonations(response.data.items);
-		setNumberOfPages(response.data.pagination.total_pages);
-	}
+	useEffect(() => {
+		async function fetchDonations() {
+			const response = await DonationsService.getDonations(
+				ITEMS_PER_PAGE,
+				activePageNumber,
+				filters.contains,
+				filters.isActive,
+			);
+			setDonations(response.data.items);
+			setNumberOfPages(response.data.pagination.total_pages);
+		}
+
+		fetchDonations();
+	}, [activePageNumber, filters]);
+
+	const updateFilters = useCallback((newFilters) => {
+		const updatedFilters = { ...filters, ...newFilters };
+		setActivePageNumber(1);
+		setFilters(updatedFilters);
+	}, [filters]);
 
 	return (
 		<>
 			<NextSeo {...SEOS} />
 			<LayoutDefault pathname={pathname}>
 				<PageHeader
+					withBackground
 					title={"Prikupljenje donacija"}
 					text={
 						"Felis lectus tortor massa a eget viverra integer faucibus adipiscing. " +
 						"Faucibus nunc, auctor arcu magna cursus "
 					}
 				/>
-				<DonationFilters onChange={getDonations}/>
+				<DonationFilters onChange={updateFilters}/>
 				<DonationList donations={donations}/>
 				<Pagination
-					onPageChange={getDonations}
+					onPageChange={setActivePageNumber}
 					numberOfPages={numberOfPages}
 					activePageNumber={activePageNumber}
 				/>
@@ -71,12 +78,8 @@ function Donations(props) {
 
 export async function getServerSideProps(ctx) {
 	const { resolvedUrl } = ctx;
-	const pageSize = process.env.POST_PAGE_SIZE;
-	const response = await DonationsService.getDonations(pageSize, 1);
 	return {
 		props: {
-			data: { ...response.data },
-			pageSize: pageSize,
 			pathname: resolvedUrl
 		}
 	};

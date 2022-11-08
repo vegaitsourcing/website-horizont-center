@@ -1,0 +1,28 @@
+@import "./../../../styles/main";
+
+.centeredSection {
+	padding: 193px 338px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+
+	@include respond-to(1500px) {
+		padding: 10%;
+	}
+	@include respond-to(laptop) {
+		flex-direction: column;
+	}
+	@include respond-to(tablet) {
+		padding: 5%;
+	}
+
+	.description {
+		font-size: 18px;
+	}
+
+	.buttonWrapper {
+		display: flex;
+		justify-content: center;
+		margin-top: 50px;
+	}
+}

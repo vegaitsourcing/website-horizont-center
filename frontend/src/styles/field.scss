@@ -3,6 +3,10 @@
 .fieldWrapper {
 	position: relative;
 
+	@include respond-to(laptop) {
+		width: 100%;
+	}
+
 	.field {
 		-webkit-appearance: none;
 		-moz-appearance: none;
@@ -15,9 +19,24 @@
 		border: 1px solid #D0D5DD;
 		border-radius: 10px;
 
+<<<<<<< HEAD
+=======
+		@include respond-to(laptop) {
+			width: 100%;
+		}
+
+		&.input {
+			height: 46px;
+		}
+
+>>>>>>> main
 		&.select {
 			cursor: pointer;
 			width: 350px;
+
+			@include respond-to(laptop) {
+				width: 100%;
+			}
 		}
 	}
 

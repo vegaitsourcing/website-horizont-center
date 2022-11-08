@@ -37,7 +37,7 @@ class ViewSet(viewsets.ViewSet):
         return JsonResponse(data={'message': _('Not fount')}, status=NOT_FOUND)
 
     def list(self, request) -> JsonResponse:
-        queryset = self.filter_queryset(queryset=self.model_class.objects.all())
+        queryset = self.filter_queryset(queryset=self.model_class.objects.order_by('-created').all())
         paginator = Paginator(queryset=queryset, request=request)
         serializer_kwargs = self.get_serializer_kwargs(paginator=paginator)
         serializer = self.serializer_class(**serializer_kwargs)

@@ -15,12 +15,24 @@
 	margin: 75px auto 100px;
 	border-radius: 16px;
 	box-shadow: 0 0 24px rgb(0 0 0 / 5%);
+
+	@include respond-to(mobile) {
+		width: 95%;
+		padding: 50px 0 150px;
+		margin: 0 auto;
+		border-radius: 0;
+		box-shadow: none;
+	}
 }
 
 .loginFormHeader {
 	text-align: center;
 	padding-block: 24px;
 	border-bottom: 1px solid $create-account-details-color;
+
+	@include respond-to(mobile) {
+		border-bottom: 0;
+	}
 }
 
 .loginFormInputs {
@@ -29,6 +41,13 @@
 	gap: 20px;
 	flex-direction: column;
 	padding: 54px 74px;
+
+	@include respond-to(tablet) {
+		padding: 50px;
+	}
+	@include respond-to(mobile) {
+		padding: 50px 30px;
+	}
 
 	.input {
 		width: 100%;
@@ -49,10 +68,17 @@
 	padding: 24px 74px;
 	display: flex;
 	align-items: center;
-
 	justify-content: space-between;
 	gap: 40px;
 	border-top: 1px solid $create-account-details-color;
+
+	@include respond-to(tablet) {
+		padding: 24px 50px;
+	}
+	@include respond-to(mobile) {
+		padding: 30px;
+		border-top: 0;
+	}
 
 	.registrationLinkWrapper {
 		display: flex;

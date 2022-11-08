@@ -34,8 +34,8 @@
       - 1
       - 2
     image: fixtures/img_1.jpg
-    created: 2022-10-14T00:00:00+00:00
-    modified: 2022-10-14T00:00:00+00:00
+    created: 2022-10-14T00:00:01+00:00
+    modified: 2022-10-14T00:00:01+00:00
 
 - model: blogs.BlogSection
   pk: 1
@@ -65,9 +65,12 @@
     blog: 1
     first_name: Sanja
     last_name: Marić
+    image: fixtures/caregiver_1.jpg
     description: Opis autorke Sanje Marić koja piše blogove za sajt centra Horizont. Opis autorke Sanje Marić koja piše blogove za sajt centra Horizont.
     facebook_url: https://www.facebook.com/VegaITSourcing
     instagram_url: https://www.instagram.com/vega_it/
+    linkedin_url: https://www.linkedin.com/company/vega-it-sourcing/
+    twitter_url: https://twitter.com/vegaitsourcing
     created: 2022-10-14T00:00:00+00:00
     modified: 2022-10-14T00:00:00+00:00
 
@@ -80,8 +83,8 @@
       - 3
     image: fixtures/img_2.jpg
     title: Osobe koje traže negu u Srbiji
-    created: 2022-10-14T00:00:00+00:00
-    modified: 2022-10-14T00:00:00+00:00
+    created: 2022-10-14T00:00:02+00:00
+    modified: 2022-10-14T00:00:02+00:00
 
 - model: blogs.BlogSection
   pk: 3
@@ -91,6 +94,106 @@
     description: U ovom blogu možete pročitati više o osobama koje traže negu u Srbiji. U ovom blogu možete pročitati više o osobama koje traže negu u Srbiji.U ovom blogu možete pročitati više o osobama koje traže negu u Srbiji.
     media_url: https://www.carelink.org/wp-content/uploads/2021/08/how_to_become_a_caregiver-2048x1365.jpg
     media_type: image
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.Blog
+  pk: 3
+  fields:
+    description: Opis bloga u kojem se govori o negovateljima u Beogradu
+    categories:
+      - 1
+    image: fixtures/img_3.jpg
+    title: Negovatelji u Beogradu
+    created: 2022-10-14T00:00:03+00:00
+    modified: 2022-10-14T00:00:03+00:00
+
+- model: blogs.BlogSection
+  pk: 4
+  fields:
+    blog: 3
+    title: Prva sekcija
+    description: U ovom blogu možete pročitati više o negovateljima u Bogoradu. U ovom blogu možete pročitati više o negovateljima u Bogoradu. U ovom blogu možete pročitati više o negovateljima u Bogoradu. U ovom blogu možete pročitati više o negovateljima u Bogoradu.
+    media_url: https://www.youtube.com/watch?v=oK8eYmJUt7Y
+    media_type: video
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.BlogSection
+  pk: 5
+  fields:
+    blog: 3
+    title: Druga sekcija
+    description: Nešto više o Beogradu. Nešto više o Beogradu. Nešto više o Beogradu. Nešto više o Beogradu. Nešto više o Beogradu. Nešto više o Beogradu. Nešto više o Beogradu.
+    media_url: https://prevozvukovic.com/wp-content/uploads/2021/09/BEOGRAD.jpg
+    media_type: image
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.Blog
+  pk: 4
+  fields:
+    description: Opis bloga u kojem se govori o negovateljima u Novom Sadu
+    categories:
+      - 1
+      - 2
+    image: fixtures/img_4.jpg
+    title: Negovatelji u Novom Sadu
+    created: 2022-10-14T00:00:04+00:00
+    modified: 2022-10-14T00:00:04+00:00
+
+- model: blogs.BlogSection
+  pk: 5
+  fields:
+    blog: 4
+    title: Prva sekcija
+    description: U ovom blogu možete pročitati više o negovateljima u Novom Sadu. U ovom blogu možete pročitati više o negovateljima u Novom Sadu. U ovom blogu možete pročitati više o negovateljima u Novom Sadu.
+    media_url: https://prevozvukovic.com/wp-content/uploads/2021/09/BEOGRAD.jpg
+    media_type: image
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.BlogSection
+  pk: 6
+  fields:
+    blog: 4
+    title: Druga sekcija
+    description: Nešto više o Novom Sadu. Nešto više o Novom Sadu. Nešto više o Novom Sadu. Nešto više o Novom Sadu. Nešto više o Novom Sadu. Nešto više o Novom Sadu.
+    media_url: https://www.youtube.com/watch?v=oK8eYmJUt7Y
+    media_type: video
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.Blog
+  pk: 5
+  fields:
+    description: Opis bloga u kojem se govori o negovateljima u Nišu
+    categories:
+      - 2
+    image: fixtures/img_1.jpg
+    title: Negovatelji u Nišu
+    created: 2022-10-14T00:00:05+00:00
+    modified: 2022-10-14T00:00:05+00:00
+
+- model: blogs.BlogSection
+  pk: 5
+  fields:
+    blog: 4
+    title: Prva sekcija
+    description: U ovom blogu možete pročitati više o negovateljima u Nišu. U ovom blogu možete pročitati više o negovateljima u Nišu.U ovom blogu možete pročitati više o negovateljima u Nišu.U ovom blogu možete pročitati više o negovateljima u Nišu.
+    media_url: https://upload.wikimedia.org/wikipedia/commons/6/6f/Nisgradnocu.jpg?20080214161247
+    media_type: image
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
+
+- model: blogs.BlogSection
+  pk: 6
+  fields:
+    blog: 4
+    title: Druga sekcija
+    description: U ovom blogu možete pročitati više o negovateljima u Nišu. U ovom blogu možete pročitati više o negovateljima u Nišu.U ovom blogu možete pročitati više o negovateljima u Nišu.U ovom blogu možete pročitati više o negovateljima u Nišu.
+    media_url: https://www.youtube.com/watch?v=9QzqsaldtNM
+    media_type: video
     created: 2022-10-14T00:00:00+00:00
     modified: 2022-10-14T00:00:00+00:00
 # END of Blogs, BlogSections and BlogAuthors ###################################################

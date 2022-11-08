@@ -21,21 +21,32 @@ class CaregiverProfile(AbstractProfile):
         null=True,
         blank=True,
     )
-    weekly_days = models.IntegerField(
-        verbose_name=_('weekly days')
+    weekly_days = models.CharField(
+        verbose_name=_('weekly days'),
+        max_length=250,
     )
     daily_hours = models.FloatField(
         verbose_name=_('daily hours'),
         null=True,
         blank=True,
     )
-    instagram_url = models.URLField(
-        verbose_name=_('instagram url'),
+    facebook_url = models.URLField(
+        verbose_name=_('facebook URL'),
         null=True,
         blank=True,
     )
-    facebook_url = models.URLField(
-        verbose_name=_('facebook url'),
+    instagram_url = models.URLField(
+        verbose_name=_('instagram URL'),
+        null=True,
+        blank=True,
+    )
+    linkedin_url = models.URLField(
+        verbose_name=_('linkedin URL'),
+        null=True,
+        blank=True,
+    )
+    twitter_url = models.URLField(
+        verbose_name=_('twitter URL'),
         null=True,
         blank=True,
     )

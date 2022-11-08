@@ -1,8 +1,11 @@
 import axios from "axios";
+import { ENV } from "config/env";
 
 const api = axios.create({
-  baseURL: "http://localhost:8000/api/v1",
+  baseURL: ENV.BASE_API_URL,
 });
+
+console.log("ENV.BASE_API_URL:", ENV.BASE_API_URL); // TODO: REMOVE when hosting server is configured
 
 const API = {
   getAllResources: (resource, queryParams = "") => {

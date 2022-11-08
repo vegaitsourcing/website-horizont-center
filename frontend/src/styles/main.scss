@@ -25,6 +25,11 @@
 				@content;
 			}
 		}
+		@if $media == desktop {
+			@media (max-width: $desktop-width) {
+				@content;
+			}
+		}
 		// expects width value:
 		@media (max-width: $media-args) {
 			@content;
@@ -106,4 +111,12 @@
 		border: 1px solid #D0D5DD;
 		border-radius: 10px;
     }
+}
+
+.hidden {
+	display: none !important;
+}
+
+.lightBlueBackground {
+	background-color: $light-blue-color;
 }
