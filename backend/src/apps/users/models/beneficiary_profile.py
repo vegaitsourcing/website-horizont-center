@@ -1,6 +1,7 @@
-from apps.users.models.abstract_profile import AbstractProfile
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+
+from apps.users.models.abstract_profile import AbstractProfile
 
 
 class BeneficiaryProfile(AbstractProfile):
@@ -16,8 +17,9 @@ class BeneficiaryProfile(AbstractProfile):
         verbose_name=_('helping period'),
         max_length=250
     )
-    weekly_days = models.IntegerField(
-        verbose_name=_('weekly days')
+    weekly_days = models.CharField(
+        verbose_name=_('weekly days'),
+        max_length=250,
     )
     daily_hours = models.FloatField(
         verbose_name=_('daily hours')

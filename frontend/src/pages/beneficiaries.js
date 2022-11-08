@@ -1,29 +1,18 @@
 import { LayoutDefault } from "layouts";
-
 import { NextSeo } from "next-seo";
-import ENV from "config/env";
-import { useState } from "react";
+import { ENV } from "config/env";
+import { useCallback, useEffect, useState } from "react";
 import { Pagination, ProfileFilters } from "shared-components";
 import BeneficiariesService from "./api/beneficiariesService";
 import { BeneficiaryList } from "../components";
 
 const { BASE_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 
-function Beneficiaries(props) {
-	const {
-		pathname,
-		pageSize,
-		data: {
-			title,
-			items,
-			pagination,
-			metaDescription,
-		},
-	} = props;
+const ITEMS_PER_PAGE = 3;
 
+function Beneficiaries(props) {
+	const { pathname } = props;
 	const SEOS = {
-		title,
-		description: metaDescription,
 		canonical: `${BASE_URL}${pathname}`,
 		openGraph: [
 			{
@@ -36,24 +25,44 @@ function Beneficiaries(props) {
 	};
 
 	const [activePageNumber, setActivePageNumber] = useState(1);
-	const [beneficiaries, setBeneficiaries] = useState(items);
-	const [numberOfPages, setNumberOfPages] = useState(pagination.total_pages);
+	const [beneficiaries, setBeneficiaries] = useState([]);
+	const [numberOfPages, setNumberOfPages] = useState(0);
+	const [filters, setFilters] = useState({
+		contains: null,
+		gender: null,
+		city: null,
+	});
 
-	async function getBeneficiaries(pageNumber, contains, gender, city) {
-		setActivePageNumber(pageNumber);
-		const response = await BeneficiariesService.getBeneficiaries(pageSize, pageNumber, contains, gender, city);
-		setBeneficiaries(response.data.items);
-		setNumberOfPages(response.data.pagination.total_pages);
-	}
+	useEffect(() => {
+		async function fetchBeneficiaries() {
+			const response = await BeneficiariesService.getBeneficiaries(
+				ITEMS_PER_PAGE,
+				activePageNumber,
+				filters.contains,
+				filters.gender,
+				filters.city
+			);
+			setBeneficiaries(response.data.items);
+			setNumberOfPages(response.data.pagination.total_pages);
+		}
+
+		fetchBeneficiaries();
+	}, [activePageNumber, filters]);
+
+	const updateFilters = useCallback((newFilters) => {
+		const updatedFilters = { ...filters, ...newFilters };
+		setActivePageNumber(1);
+		setFilters(updatedFilters);
+	}, [filters]);
 
 	return (
 		<>
 			<NextSeo {...SEOS} />
 			<LayoutDefault>
-				<ProfileFilters onChange={getBeneficiaries}/>
-				<BeneficiaryList beneficiaries={beneficiaries}/>
+				<ProfileFilters onChange={updateFilters}/>
+				<BeneficiaryList profiles={beneficiaries}/>
 				<Pagination
-					onPageChange={getBeneficiaries}
+					onPageChange={setActivePageNumber}
 					numberOfPages={numberOfPages}
 					activePageNumber={activePageNumber}
 				/>
@@ -64,12 +73,8 @@ function Beneficiaries(props) {
 
 export async function getServerSideProps(ctx) {
 	const { resolvedUrl } = ctx;
-	const pageSize = process.env.POST_PAGE_SIZE;
-	const response = await BeneficiariesService.getBeneficiaries(pageSize, 1);
 	return {
 		props: {
-			data: { ...response.data },
-			pageSize: pageSize,
 			pathname: resolvedUrl
 		}
 	};

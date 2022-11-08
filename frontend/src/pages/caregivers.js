@@ -1,55 +1,66 @@
 import { NextSeo } from "next-seo";
 import { LayoutDefault } from "layouts";
-import env from "config/env";
-import { useState } from "react";
+import { ENV } from "config/env";
+import { useCallback, useEffect, useState } from "react";
 import { Pagination, ProfileFilters } from "shared-components";
 import CaregiversService from "./api/caregiversService";
 import { CaregiverList } from "../components";
 
+const ITEMS_PER_PAGE = 3;
+
 function Caregivers(props) {
-	const {
-		pathname,
-		pageSize,
-		data: {
-			title,
-			items,
-			pagination,
-			metaDescription,
-		},
-	} = props;
+	const { pathname } = props;
 	const SEOS = {
-		title,
-		description: metaDescription,
-		canonical: `${env.BASE_URL}${pathname}`,
+		canonical: `${ENV.BASE_URL}${pathname}`,
 		openGraph: [
 			{
-				url: env.BASE_URL,
-				images: { url: `${env.BASE_URL}${env.STATIC_DIR}logo-share.jpg` },
-				site_name: env.AUTHOR,
+				url: ENV.BASE_URL,
+				images: { url: `${ENV.BASE_URL}${ENV.STATIC_DIR}logo-share.jpg` },
+				site_name: ENV.AUTHOR,
 			},
 		],
-		...env.BASE_SEO,
+		...ENV.BASE_SEO,
 	};
 
 	const [activePageNumber, setActivePageNumber] = useState(1);
-	const [caregivers, setCaregivers] = useState(items);
-	const [numberOfPages, setNumberOfPages] = useState(pagination.total_pages);
+	const [caregivers, setCaregivers] = useState([]);
+	const [numberOfPages, setNumberOfPages] = useState(0);
+	const [filters, setFilters] = useState({
+		contains: null,
+		gender: null,
+		city: null,
+	});
 
-	async function getCaregivers(pageNumber, contains, gender, city) {
-		setActivePageNumber(pageNumber);
-		const response = await CaregiversService.getCaregivers(pageSize, pageNumber, contains, gender, city);
-		setCaregivers(response.data.items);
-		setNumberOfPages(response.data.pagination.total_pages);
-	}
+	useEffect(() => {
+		async function fetchBeneficiaries() {
+			const response = await CaregiversService.getCaregivers(
+				ITEMS_PER_PAGE,
+				activePageNumber,
+				filters.contains,
+				filters.gender,
+				filters.city
+			);
+			setCaregivers(response.data.items);
+			setNumberOfPages(response.data.pagination.total_pages);
+		}
+
+		fetchBeneficiaries();
+	}, [activePageNumber, filters]);
+
+	const updateFilters = useCallback((newFilters) => {
+		const updatedFilters = { ...filters, ...newFilters };
+		setActivePageNumber(1);
+		setFilters(updatedFilters);
+	}, [filters]);
 
 	return (
 		<>
 			<NextSeo {...SEOS} />
 			<LayoutDefault pathname={pathname}>
-				<ProfileFilters onChange={getCaregivers}/>
-				<CaregiverList caregivers={caregivers}/>
+				<ProfileFilters onChange={updateFilters}/>
+				<CaregiverList profiles={caregivers}/>
 				<Pagination
-					onPageChange={getCaregivers}
+					onPageChange={setActivePageNumber}
 					numberOfPages={numberOfPages}
 					activePageNumber={activePageNumber}
 				/>
@@ -60,12 +71,11 @@ function Caregivers(props) {
 
 export async function getServerSideProps(ctx) {
 	const { resolvedUrl } = ctx;
-	const pageSize = process.env.POST_PAGE_SIZE;
-	const response = await CaregiversService.getCaregivers(pageSize, 1);
+
+	console.log("resolvedUrl:", resolvedUrl);
+
 	return {
 		props: {
-			data: { ...response.data },
-			pageSize: pageSize,
 			pathname: resolvedUrl
 		}
 	};

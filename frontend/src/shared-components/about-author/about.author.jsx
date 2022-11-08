@@ -1,45 +1,51 @@
 import React from "react";
-
 import styles from "./about.author.module.scss";
 
-export const AboutAuthor = ({ blog, type }) => {
-  let socialLinks = [
-    blog.author.facebook_url != null
-      ? {
-          url: blog.author.facebook_url,
-          iconPath: "/images/facebookIconAboutDetails.svg",
-        }
-      : null,
-    blog.author.instagram_url != null
-      ? {
-          url: blog.author.instagram_url,
-          iconPath: "/images/instagramIconAboutDetails.svg",
-        }
-      : null,
-  ];
+const socialLinkMappings = [
+	{
+		fieldName: "facebook_url",
+		iconURL: "/images/facebookIconBlue.svg",
+	},
+	{
+		fieldName: "instagram_url",
+		iconURL: "/images/instagramIconBlue.svg",
+	},
+	{
+		fieldName: "linkedin_url",
+		iconURL: "/images/linkedinIconBlue.svg",
+	},
+	{
+		fieldName: "twitter_url",
+		iconURL: "/images/twitterIconBlue.svg",
+	},
+];
 
-  return (
-    <section className={styles.aboutDetails}>
-      <div className={styles.aboutMain}>
-        <div className={styles.authorName}>
-          <img src={blog.author.image} alt="" />
-          <h3 className={styles.aboutHeading}>{blog.author.first_name + " " + blog.author.last_name}</h3>
-        </div>
-        <div className={styles.authorAbout}>
-          <h3 className={styles.aboutHeading}>
-            {type === "author" && "O autoru"}
-            {type === "company" && "O kompaniji"}
-          </h3>
-          <p className={styles.aboutParagraph}>{blog.author.description}</p>
-          <ul className={styles.aboutSocialLinks}>
-            {socialLinks.map((link, index) => (
-              <a key={index} href={link.url}>
-                <img src={link.iconPath} alt="" />
-              </a>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
+export const AboutAuthor = ({ author }) => {
+	const socialLinks = socialLinkMappings.map(mapping => {
+		if (author[mapping.fieldName]) {
+			return { ...mapping, socialMediaURL: author[mapping.fieldName], imgAlt: mapping.fieldName };
+		}
+	}).filter(item => !!item);
+
+	return (
+		<section className={styles.aboutAuthorSection}>
+			<div className={styles.aboutAuthorWrapper}>
+				<div className={styles.leftSide}>
+					<img className={styles.authorImage} src={author.image} alt="author"/>
+					<h3 className={styles.authorName}>{author.first_name + " " + author.last_name}</h3>
+				</div>
+				<div className={styles.rightSide}>
+					<h4 className={styles.h4}>O autoru</h4>
+					<p className={styles.authorInfo}>{author.description}</p>
+					<div className={styles.socialMediaLinks}>
+						{socialLinks.map((link, index) => (
+							<a className={styles.socialMediaLink} key={index} href={link.socialMediaURL}>
+								<img src={link.iconURL} alt={link.imgAlt}/>
+							</a>
+						))}
+					</div>
+				</div>
+			</div>
+		</section>
+	);
 };

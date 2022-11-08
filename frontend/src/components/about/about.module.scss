@@ -4,31 +4,19 @@
 	font-family: "Open Sans", sans-serif;
 }
 
-.narrowSection {
-	margin: 193px 256px;
-	display: flex;
-
-	.leftSide,
-	.rightSide {
-		width: 50%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-
-	.leftSide {
-		padding-right: 30px;
-	}
-
-	.rightSide {
-		padding-left: 30px;
-	}
-
-}
-
-.wideSection {
+.imageLinksSection {
 	margin: 193px 128px;
 	display: flex;
+
+	@include respond-to(1500px) {
+		margin: 10%;
+	}
+	@include respond-to(laptop) {
+		flex-direction: column;
+	}
+	@include respond-to(tablet) {
+		margin: 5%;
+	}
 }
 
 .imageLink {
@@ -41,11 +29,25 @@
 	height: 520px;
 	border-radius: 16px;
 
+	@include respond-to(laptop) {
+		flex-direction: column;
+		width: 100%;
+	}
+
+	@include respond-to(mobile) {
+		background-color: transparent;
+		height: 300px;
+	}
+
 	.bgImage {
 		height: 520px;
 		border-radius: 16px;
 		width: 100%;
 		object-fit: cover;
+
+		@include respond-to(mobile) {
+			height: 300px;
+		}
 	}
 
 	&:hover .bgImage {
@@ -56,20 +58,37 @@
 	&:first-of-type .bgImage {
 		border-top-right-radius: 0;
 		border-bottom-right-radius: 0;
+
+		@include respond-to(laptop) {
+			border-top-right-radius: 16px;
+			border-bottom-left-radius: 0;
+			margin-bottom: 2px;
+		}
 	}
 
 	&:last-of-type,
 	&:last-of-type .bgImage {
 		border-top-left-radius: 0;
 		border-bottom-left-radius: 0;
+
+		@include respond-to(laptop) {
+			border-top-right-radius: 0;
+			border-bottom-left-radius: 16px;
+			margin-bottom: 2px;
+		}
 	}
 
-	.goToIcon {
+	.ctaIcon {
 		width: 56px;
 		height: 56px;
 		position: absolute;
 		right: 36px;
 		bottom: 64px;
+
+		@include respond-to(mobile) {
+			right: 20px;
+			bottom: 20px;
+		}
 	}
 
 	.upperText {
@@ -78,6 +97,11 @@
 		position: absolute;
 		left: 36px;
 		top: 64px;
+
+		@include respond-to(mobile) {
+			left: 30px;
+			top: 20px;
+		}
 	}
 
 	.bottomText {
@@ -85,32 +109,25 @@
 		left: 36px;
 		bottom: 64px;
 		width: 70%;
+
+		@include respond-to(mobile) {
+			left: 30px;
+			bottom: 20px;
+			width: 65%;
+		}
+
 	}
 
 	.title {
 		font-size: 36px;
 		font-weight: 600;
+
+		@include respond-to(mobile) {
+			margin: 10px 0;
+		}
 	}
 
 	.description {
 		margin-bottom: 0;
-	}
-}
-
-.centeredNarrowSection {
-	padding: 193px 338px;
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-	background-color: $light-blue-color;
-
-	.description {
-		font-size: 18px;
-	}
-
-	.buttonWrapper {
-		display: flex;
-		justify-content: center;
-		margin-top: 50px;
 	}
 }

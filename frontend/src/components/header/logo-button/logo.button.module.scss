@@ -1,0 +1,19 @@
+@import "src/styles/main";
+
+header {
+	.logoWrapper {
+		width: 150px;
+		min-width: 150px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		@include respond-to(laptop) {
+			padding: 25px;
+		}
+	}
+
+	.logoWrapper img {
+		width: 100%;
+	}
+}

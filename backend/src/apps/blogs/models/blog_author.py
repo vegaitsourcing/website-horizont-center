@@ -23,15 +23,29 @@ class BlogAuthor(BaseModel):
             MinLengthValidator(limit_value=100)
         ],
     )
-    facebook_url = models.URLField(
-        verbose_name=_('facebook url'),
-    )
     image = models.ImageField(
         verbose_name=_('image'),
         upload_to=_('images/blogAuthors'),
     )
+    facebook_url = models.URLField(
+        verbose_name=_('facebook URL'),
+        null=True,
+        blank=True,
+    )
     instagram_url = models.URLField(
-        verbose_name=_('instagram url'),
+        verbose_name=_('instagram URL'),
+        null=True,
+        blank=True,
+    )
+    linkedin_url = models.URLField(
+        verbose_name=_('linkedin URL'),
+        null=True,
+        blank=True,
+    )
+    twitter_url = models.URLField(
+        verbose_name=_('twitter URL'),
+        null=True,
+        blank=True,
     )
     blog = models.OneToOneField(
         to='blogs.Blog',

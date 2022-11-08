@@ -1,0 +1,79 @@
+@import "./../header.module";
+
+.desktopNavigation {
+	@include respond-to(laptop) {
+		display: none;
+	}
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 5%;
+	height: 115px;
+	background: $light-blue-color;
+
+	.avatar {
+		height: 65px;
+		width: 65px;
+		object-fit: cover;
+		border-radius: 50px;
+	}
+
+	.middleMenu {
+		display: flex;
+		gap: 3em;
+		max-width: 800px;
+		justify-content: space-around;
+
+		@include respond-to(1300px) {
+			gap: 2em;
+		}
+
+		@include respond-to(1100px) {
+			gap: 1em;
+		}
+	}
+
+	.anonymousMenu {
+		display: flex;
+		gap: 24px;
+
+		@include respond-to(1400px) {
+			margin-top: 35px;
+			gap: 10px;
+			flex-direction: column;
+			align-items: flex-end;
+		}
+	}
+
+	.authenticatedMenu {
+		position: relative;
+		cursor: pointer;
+		padding: 20px 5px;
+	}
+
+	.logoutButton {
+		border: 2px solid $blue-color;
+		position: absolute;
+		right: 0;
+		top: 110px;
+		width: 125px;
+		background-color: white;
+		display: flex;
+		cursor: pointer;
+		justify-content: center;
+		align-items: center;
+		height: 0;
+		overflow: hidden;
+		visibility: hidden;
+		transition-property: height, visibility;
+		transition-duration: 0.4s;
+		border-radius: 16px;
+	}
+
+	.authenticatedMenu:hover .logoutButton {
+		height: 50px;
+		visibility: visible;
+	}
+
+}

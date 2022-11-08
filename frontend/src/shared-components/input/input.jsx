@@ -1,28 +1,41 @@
-import React from "react";
-import styles from "./input.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { Select } from "../select/select";
+import { SelectDate } from "shared-components";
+
+import styles from "./input.module.scss";
 
 export const Input = (props) => {
-	const { id, name, type, placeholder, inputValue, onChange, withSearchIcon = false, className = "" } = props;
+  const {
+    id,
+    name,
+    type,
+    step,
+    placeholder,
+    inputValue,
+    valueChangedHandler,
+    isValidInput = true,
+    withSearchIcon = false,
+  } = props;
 
-	const classes = [styles.fieldWrapper, className].join(" ");
+  if (type === "dropdown") return <Select {...props} />;
 
-	if (type === "dropdown") return <Select {...props} />;
+  if (type === "datepicker") return <SelectDate {...props} />;
 
-	return (
-		<div className={classes}>
-			<input
-				value={inputValue}
-				type={type}
-				name={name}
-				id={id}
-				onChange={(event) => onChange && onChange(event.currentTarget.value)}
-				placeholder={placeholder}
-				className={[styles.field, styles.input].join(" ")}
-			/>
-			{withSearchIcon && <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.icon}/>}
-		</div>
-	);
+  return (
+    <div className={styles.fieldWrapper}>
+      <input
+        defaultValue={inputValue ?? ""}
+        type={type}
+        name={name}
+        id={id}
+        step={step}
+        onChange={(event) => valueChangedHandler(event.target.value)}
+        placeholder={placeholder}
+        className={[styles.field, !isValidInput ? styles.inputError : ""].join(" ")}
+      />
+      {withSearchIcon && <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.icon} />}
+      {!isValidInput ? <div className={styles.textError}>Morate popuniti polje</div> : ""}
+    </div>
+  );
 };

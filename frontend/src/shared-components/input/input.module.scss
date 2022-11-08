@@ -1,1 +1,22 @@
+@import "styles/main.scss";
 @import '../../styles/field.scss';
+
+.inputError {
+    height: 44px !important;
+    border: 2px solid $error-color !important;
+
+    &::placeholder {
+        color: $error-color;
+    }
+
+    &:focus {
+        border: 2px solid $error-color;
+        outline: none;
+    }
+}
+
+.textError {
+    color: $error-color;
+    font-size: medium;
+    margin: 1% 2%;
+}
