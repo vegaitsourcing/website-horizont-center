@@ -11,12 +11,22 @@ const API = {
   getAllResources: (resource, queryParams = "") => {
     return api.get(`${resource}/?${queryParams}`);
   },
-  getResourceById: (resource, resourceId) => {
-    return api.get(`${resource}/${resourceId}`);
+  getResourceById: (resource, resourceId, token) => {
+    return api.get(`${resource}/${resourceId}`, { headers: { Authorization: `Bearer ${token}` } });
   },
   post: (url, data, config) => {
     return api.post(url, data, config);
   },
 };
+
+api.interceptors.response.use(
+  (response) => {
+    console.log("Response", response);
+    return response;
+  },
+  (error) => {
+    return error.response;
+  }
+);
 
 export default API;

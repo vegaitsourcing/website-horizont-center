@@ -19,15 +19,15 @@ function Caregivers(props) {
   const SEOS = {
     // title,
     // description: metaDescription,
-    canonical: `${env.BASE_URL}${pathname}`,
+    canonical: `${env?.BASE_URL}${pathname}`,
     openGraph: [
       {
-        url: env.BASE_URL,
-        images: { url: `${env.BASE_URL}${env.STATIC_DIR}logo-share.jpg` },
-        site_name: env.AUTHOR,
+        url: env?.BASE_URL,
+        images: { url: `${env?.BASE_URL}${env?.STATIC_DIR}logo-share.jpg` },
+        site_name: env?.AUTHOR,
       },
     ],
-    ...env.BASE_SEO,
+    ...env?.BASE_SEO,
   };
 
   const [isLoadingCaregiver, setIsLoadingCaregiver] = useState(true);
@@ -35,6 +35,11 @@ function Caregivers(props) {
 
   async function getCaregiver(token) {
     await caregiversService.getCaregiverById(props.params.caregiverId, token).then((response) => {
+      console.log("Response", response);
+      if (response.status === 401) {
+        //TO DO: Handle 401 error page
+        return alert("Ne mozete pristupiti ovoj stranici, morate biti ulogovani!");
+      }
       setCaregiver(response.data);
       setIsLoadingCaregiver(false);
     });
@@ -42,7 +47,7 @@ function Caregivers(props) {
 
   useEffect(() => {
     if (isLoadingCaregiver) {
-      const token = AuthService.getUser().token;
+      const token = AuthService.getUser()?.token;
       getCaregiver(token);
     }
   }, [isLoadingCaregiver]);
