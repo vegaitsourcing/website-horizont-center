@@ -38,16 +38,14 @@ export const PaymentSlip = ({
     primalac.setText(primalacValue.toString());
     sifraPlacanja.setText(sifraPlacanjaValue.toString());
     valuta.setText(valutaValue.toString());
-    iznos.setText("= " + parseFloat(iznosValue).toFixed(2).toString());
+    iznos.setText("= ");
     racunaPrimaoca.setText(racunaPrimaocaValue.toString());
     model.setText(modelValue.toString());
     pozivNaBroj.setText(pozivNaBrojValue.toString());
   }
 
   const modifyPdf = async () => {
-    const url = fs.readFile("Obrazac_br._1.pdf");
-    const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
-
+    const existingPdfBytes = await fetch("/Obrazac_br._1.pdf").then((res) => res.arrayBuffer());
     const pdfDoc = await PDFDocument.load(existingPdfBytes);
 
     addDataToPdf(pdfDoc);
