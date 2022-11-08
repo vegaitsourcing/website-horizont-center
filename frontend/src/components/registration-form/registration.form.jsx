@@ -1,57 +1,92 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 
-import { RegistrationStepOne } from "../registration-step-one/registration.step.one";
-import { RegistrationStepTwo } from "../registration-step-two/registration.step.two";
-import { RegistrationStepThree } from "../registration-step-three/registration.step.three";
+import { RegistrationStepOne, RegistrationStepTwo, RegistrationStepThree } from "./components";
 import { LongButton } from "shared-components";
+
+import { registrationFormBlank } from "./hooks/registrationFormBlank";
+import { getUserData, validateRegistrationForm } from "./utils/registrationUtils";
+
+import authService from "pages/api/authService";
 
 import styles from "./registration.form.module.scss";
 
-export const RegistrationForm = ({}) => {
+export const RegistrationForm = () => {
+  const router = useRouter();
   const [stepNumber, setStepNumber] = useState(1);
-  const [regForm, setRegistrationForm] = useState({
-    stepNumber: stepNumber,
-    formStep1: { data: {}, isCompleted: false },
-    formStep2: { data: {}, isCompleted: false },
-    formStep3: { data: {}, isCompleted: false },
-  });
+  const [isFormStep1Valid, setIsFormStep1Valid] = useState(false);
+  const [isFormStep2Valid, setIsFormStep2Valid] = useState(false);
+  const [isFormStep3Valid, setIsFormStep3Valid] = useState(false);
 
   useEffect(() => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
-    if (registrationForm !== null) {
-      return;
+    if (!registrationForm) {
+      localStorage.setItem("registrationForm", JSON.stringify(registrationFormBlank));
     }
-    localStorage.setItem("registrationForm", JSON.stringify(regForm));
-    setRegistrationForm(registrationForm);
-  }, []);
+    const isFormValid = validateRegistrationForm(stepNumber);
+    setIsFormValid(isFormValid, stepNumber);
+  }, [stepNumber]);
 
   const handleRegistrationChange = (newData, form, itemType, userForm) => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
     if (form === "formStep1") {
-      registrationForm.formStep1 = { data: { profileType: newData }, isCompleted: true };
+      registrationForm.formStep1 = { data: { profileType: newData }, isCompleted: false };
     }
     if (form === "formStep2") {
       const historyData = registrationForm.formStep2?.data;
       registrationForm.formStep2 = {
         data: { ...historyData, [userForm]: { ...historyData?.[userForm], [itemType]: newData } },
-        isCompleted: true,
+        isCompleted: false,
       };
     }
     if (form === "formStep3") {
       const historyData = registrationForm.formStep3?.data;
-      registrationForm.formStep3 = { data: { ...historyData, [itemType]: newData }, isCompleted: true };
+      registrationForm.formStep3 = { data: { ...historyData, [itemType]: newData }, isCompleted: false };
     }
     localStorage.setItem("registrationForm", JSON.stringify(registrationForm));
+    const isFormValid = validateRegistrationForm(stepNumber);
+    setIsFormValid(isFormValid, stepNumber);
+  };
+
+  async function registerUser() {
+    const userType = getUserData().userType;
+    const userData = getUserData().userData;
+    await authService.register(userData, userType).then(() => {
+      localStorage.setItem("registrationForm", JSON.stringify(registrationFormBlank));
+      router.push("/login");
+    });
+  }
+
+  const checkForm = (stepNumber) => {
+    if (stepNumber === 1) {
+      return isFormStep1Valid;
+    }
+    if (stepNumber === 2) {
+      return isFormStep2Valid;
+    }
+    if (stepNumber === 3) {
+      return isFormStep3Valid;
+    }
+  };
+
+  const setIsFormValid = (isFormValid, stepNumber) => {
+    if (stepNumber === 1) {
+      setIsFormStep1Valid(isFormValid);
+    }
+    if (stepNumber === 2) {
+      setIsFormStep2Valid(isFormValid);
+    }
+    if (stepNumber === 3) {
+      setIsFormStep3Valid(isFormValid);
+    }
   };
 
   const switchToStep = (direction) => {
-    direction === "next"
-      ? stepNumber !== 3
-        ? setStepNumber(++stepNumber)
-        : 0
-      : stepNumber !== 1
-      ? setStepNumber(--stepNumber)
-      : 0;
+    if (direction === "back") return stepNumber !== 1 ? setStepNumber(--stepNumber) : 0;
+    if (checkForm(stepNumber)) {
+      if (stepNumber === 3 && direction === "next") registerUser();
+      return stepNumber !== 3 ? setStepNumber(++stepNumber) : 0;
+    }
   };
 
   const renderStep = () => {
@@ -60,6 +95,7 @@ export const RegistrationForm = ({}) => {
         <RegistrationStepOne
           stepNumber={stepNumber}
           valueChangedHandler={(e) => handleRegistrationChange(e, "formStep1")}
+          isFormValid={isFormStep1Valid}
         />
       );
     }
@@ -68,6 +104,7 @@ export const RegistrationForm = ({}) => {
         <RegistrationStepTwo
           stepNumber={stepNumber}
           valueChangedHandler={(e, itemType, userForm) => handleRegistrationChange(e, "formStep2", itemType, userForm)}
+          isFormValid={isFormStep2Valid}
         />
       );
     }
