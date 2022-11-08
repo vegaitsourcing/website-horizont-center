@@ -6,7 +6,6 @@ export * from "./pagination/pagination";
 export * from "./page-header/page.header";
 export * from "./profile-filters/profile.filters";
 export * from "./profile-card/profile-card";
-export * from "./section-header/section.header";
 export * from "./blog-sections/blog.sections";
 export * from "./about-author/about.author";
 export * from "./container/container";
