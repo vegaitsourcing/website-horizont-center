@@ -41,7 +41,7 @@ services:
     ports:
       - "48500:3000"
     environment:
-      - BASE_URL=http://django/api/v1
+      - BASE_URL=https://horizont.codeforacause.rs
       - API_URL=http://django/api/v1
       - STATIC_DIR=/
       - NAME=Negovatelji

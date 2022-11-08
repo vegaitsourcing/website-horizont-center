@@ -1,32 +1,32 @@
-export const tabItems = [
+export const navigationItems = [
   {
     name: "O nama",
-    pathname: "/",
+    pathname: "",
     active: true,
   },
   {
     name: "Blog",
-    pathname: "/blogs",
+    pathname: "blogs",
     active: false,
   },
   {
     name: "Donacije",
-    pathname: "/donations",
+    pathname: "donations",
     active: false,
   },
   {
     name: "Negovatelji",
-    pathname: "/caregivers",
+    pathname: "caregivers",
     active: false,
   },
   {
     name: "Negovani",
-    pathname: "/beneficiaries",
+    pathname: "beneficiaries",
     active: false,
   },
   {
     name: "Kontakt",
-    pathname: "/contact",
+    pathname: "contact",
     active: false,
   },
 ];

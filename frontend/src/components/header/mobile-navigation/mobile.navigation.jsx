@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import styles from "./mobile.navigation.module.scss";
-import { tabItems } from "../tabItems";
+import { navigationItems } from "../../../config/navigationItems";
 import { LogoButton } from "../logo-button/logo.button";
 
 function MobileMenu({ onItemClick, onLogout }) {
@@ -14,7 +14,7 @@ function MobileMenu({ onItemClick, onLogout }) {
 	}, [onItemClick, onLogout]);
 
 	function MenuItems() {
-		let menuItems = [...tabItems];
+		let menuItems = [...navigationItems];
 		if (!onLogout) {
 			menuItems = menuItems.concat([
 				{

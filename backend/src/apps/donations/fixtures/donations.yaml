@@ -6,8 +6,8 @@
     subtitle: Ovo je novčana donacija
     description: U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji. U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji.
     image: fixtures/img_1.jpg
-    created: 2022-10-14T00:01:00+00:00
-    modified: 2022-10-14T00:01:00+00:00
+    created: 2022-10-14T00:00:01+00:00
+    modified: 2022-10-14T00:00:01+00:00
 
 - model: donations.FinancialInfo
   pk: 1
@@ -43,8 +43,8 @@
     subtitle: Ovo je robna donacija
     description: U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji. U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji.
     image: fixtures/img_2.jpg
-    created: 2022-10-14T00:02:00+00:00
-    modified: 2022-10-14T00:02:00+00:00
+    created: 2022-10-14T00:00:02+00:00
+    modified: 2022-10-14T00:00:02+00:00
 
 - model: donations.DonationCompany
   pk: 2
@@ -65,8 +65,8 @@
     subtitle: Ovo je robna donacija
     description: U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji. U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji.
     image: fixtures/img_3.jpg
-    created: 2022-10-14T00:03:00+00:00
-    modified: 2022-10-14T00:03:00+00:00
+    created: 2022-10-14T00:00:03+00:00
+    modified: 2022-10-14T00:00:03+00:00
 
 - model: donations.DonationCompany
   pk: 3
@@ -87,8 +87,8 @@
     subtitle: Ovo je robna donacija
     description: U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji. U ovoj donaciji mogu da učestvuju svi građani Srbije, ali i oni koji ne žive u Srbiji.
     image: fixtures/img_4.jpg
-    created: 2022-10-14T00:00:00+00:00
-    modified: 2022-10-14T00:00:00+00:00
+    created: 2022-10-14T00:00:04+00:00
+    modified: 2022-10-14T00:00:04+00:00
 
 - model: donations.DonationCompany
   pk: 4
@@ -98,8 +98,8 @@
     description: Ovaj centar je osnovan kako bi unapredio sistem brige o nemoćnima u Srbiji koji je baziran na volonterskom radu.
     facebook_url: https://www.facebook.com/VegaITSourcing
     twitter_url: https://twitter.com/vegaitsourcing
-    created: 2022-10-14T00:04:00+00:00
-    modified: 2022-10-14T00:04:00+00:00
+    created: 2022-10-14T00:00:00+00:00
+    modified: 2022-10-14T00:00:00+00:00
 
 - model: donations.Donation
   pk: 5

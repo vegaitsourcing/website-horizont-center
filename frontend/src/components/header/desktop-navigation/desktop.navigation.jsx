@@ -3,7 +3,7 @@ import Link from "next/link";
 import styles from "./desktop.navigation.module.scss";
 import { LongButton } from "shared-components/long-button/long.button";
 import { LogoButton } from "../logo-button/logo.button";
-import { tabItems } from "../tabItems";
+import { navigationItems } from "../../../config/navigationItems";
 import AuthService from "../../../pages/api/authService";
 
 function AuthenticatedMenu({ onLogout }) {
@@ -44,7 +44,7 @@ export const DesktopNavigation = ({ onLogout }) => {
 	function MainMenu() {
 		return (
 			<div className={styles.middleMenu}>
-				{tabItems.map((tab, index) => (
+				{navigationItems.map((tab, index) => (
 					<div key={index} className={styles.tabItem}>
 						<Link href={tab.pathname} passHref>
 							<span className={styles.tabLabel}>{tab.name}</span>
