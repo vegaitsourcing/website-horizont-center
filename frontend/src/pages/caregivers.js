@@ -1,8 +1,11 @@
 import { NextSeo } from "next-seo";
-import { LayoutDefault } from "layouts";
-import { ENV } from "config/env";
 import { useCallback, useEffect, useState } from "react";
-import { Pagination, ProfileFilters } from "shared-components";
+
+import { ENV } from "config/env";
+
+import { LayoutDefault } from "layouts";
+import { Pagination, ProfileFilters, Spinner } from "shared-components";
+
 import CaregiversService from "./api/caregiversService";
 import { CaregiverList } from "components";
 
@@ -22,6 +25,7 @@ function Caregivers(props) {
     ...ENV.BASE_SEO,
   };
 
+  const [isLoading, setIsLoading] = useState(true);
   const [activePageNumber, setActivePageNumber] = useState(1);
   const [caregivers, setCaregivers] = useState([]);
   const [numberOfPages, setNumberOfPages] = useState(0);
@@ -31,19 +35,21 @@ function Caregivers(props) {
     city: null,
   });
 
-  useEffect(() => {
-    async function fetchCaregivers() {
-      const response = await CaregiversService.getCaregivers(
-        ITEMS_PER_PAGE,
-        activePageNumber,
-        filters.contains,
-        filters.gender,
-        filters.city
-      );
+  async function fetchCaregivers() {
+    await CaregiversService.getCaregivers(
+      ITEMS_PER_PAGE,
+      activePageNumber,
+      filters.contains,
+      filters.gender,
+      filters.city
+    ).then((response) => {
       setCaregivers(response.data.items);
       setNumberOfPages(response.data.pagination.total_pages);
-    }
+      setIsLoading(false);
+    });
+  }
 
+  useEffect(() => {
     fetchCaregivers();
   }, [activePageNumber, filters]);
 
@@ -55,6 +61,14 @@ function Caregivers(props) {
     },
     [filters]
   );
+
+  if (isLoading) {
+    return (
+      <LayoutDefault>
+        <Spinner />
+      </LayoutDefault>
+    );
+  }
 
   return (
     <>

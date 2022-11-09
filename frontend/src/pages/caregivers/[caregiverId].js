@@ -5,6 +5,7 @@ import env from "config/env";
 
 import { ProfileDetails } from "components";
 import { LayoutDefault } from "layouts";
+import { Spinner } from "shared-components";
 
 import caregiversService from "../api/caregiversService";
 import { caregiverEditList } from "components/user/hooks/caregiverEditList";
@@ -45,7 +46,13 @@ function CaregiverProfile(props) {
     }
   }, [isLoadingCaregiver]);
 
-  if (isLoadingCaregiver) return null;
+  if (isLoadingCaregiver) {
+    return (
+      <LayoutDefault>
+        <Spinner />
+      </LayoutDefault>
+    );
+  }
 
   return (
     <>

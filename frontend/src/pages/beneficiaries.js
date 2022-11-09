@@ -1,8 +1,11 @@
-import { LayoutDefault } from "layouts";
 import { NextSeo } from "next-seo";
-import { ENV } from "config/env";
 import { useCallback, useEffect, useState } from "react";
-import { Pagination, ProfileFilters } from "shared-components";
+
+import { ENV } from "config/env";
+
+import { LayoutDefault } from "layouts";
+import { Pagination, ProfileFilters, Spinner } from "shared-components";
+
 import BeneficiariesService from "./api/beneficiariesService";
 import { BeneficiaryList } from "components";
 
@@ -24,6 +27,7 @@ function Beneficiaries(props) {
     ...BASE_SEO,
   };
 
+  const [isLoading, setIsLoading] = useState(true);
   const [activePageNumber, setActivePageNumber] = useState(1);
   const [beneficiaries, setBeneficiaries] = useState([]);
   const [numberOfPages, setNumberOfPages] = useState(0);
@@ -33,19 +37,21 @@ function Beneficiaries(props) {
     city: null,
   });
 
-  useEffect(() => {
-    async function fetchBeneficiaries() {
-      const response = await BeneficiariesService.getBeneficiaries(
-        ITEMS_PER_PAGE,
-        activePageNumber,
-        filters.contains,
-        filters.gender,
-        filters.city
-      );
+  async function fetchBeneficiaries() {
+    await BeneficiariesService.getBeneficiaries(
+      ITEMS_PER_PAGE,
+      activePageNumber,
+      filters.contains,
+      filters.gender,
+      filters.city
+    ).then((response) => {
       setBeneficiaries(response.data.items);
       setNumberOfPages(response.data.pagination.total_pages);
-    }
+      setIsLoading(false);
+    });
+  }
 
+  useEffect(() => {
     fetchBeneficiaries();
   }, [activePageNumber, filters]);
 
@@ -57,6 +63,14 @@ function Beneficiaries(props) {
     },
     [filters]
   );
+
+  if (isLoading) {
+    return (
+      <LayoutDefault>
+        <Spinner />
+      </LayoutDefault>
+    );
+  }
 
   return (
     <>

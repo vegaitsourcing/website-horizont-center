@@ -20,6 +20,8 @@
 
 	.leftSide {
 		width: 40%;
+		display: flex;
+		justify-content: flex-start;
 
 		@include respond-to(laptop) {
 			width: 100%;

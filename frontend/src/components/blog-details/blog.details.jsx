@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 
-import { BlogSections, AboutAuthor, PageHeader } from "shared-components";
+import { LayoutDefault } from "layouts";
+import { BlogSections, AboutAuthor, PageHeader, Spinner } from "shared-components";
+
 import BlogsService from "pages/api/blogsService";
 
 export const BlogDetails = ({ blogId }) => {
@@ -20,7 +22,13 @@ export const BlogDetails = ({ blogId }) => {
     }
   }, [isLoadingBlog]);
 
-  if (isLoadingBlog) return null;
+  if (isLoadingBlog) {
+    return (
+      <LayoutDefault>
+        <Spinner />
+      </LayoutDefault>
+    );
+  }
 
   return (
     <>
