@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { caregiverEditList } from "./hooks/caregiverEditList";
 
 import styles from "./user.details.module.scss";
 
-export const UserDetails = ({ user }) => {
+export const UserDetails = ({ user, editList }) => {
+  console.log("User", user);
+  console.log("Edit list:", editList);
   return (
     <div className={styles.userDetailsWrapper}>
       <div className={styles.userDetailsSection}>
@@ -31,7 +32,7 @@ export const UserDetails = ({ user }) => {
             <p className={styles.p1}>{user.description}</p>
           </div>
           <div className={styles.userDetails}>
-            {caregiverEditList.map((item, index) => {
+            {editList.map((item, index) => {
               return (
                 <div key={index} className={styles.elementInfo}>
                   <h5 className={styles.h5}>{item.title}</h5>

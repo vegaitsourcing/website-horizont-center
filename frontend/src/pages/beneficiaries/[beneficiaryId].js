@@ -7,11 +7,11 @@ import { LayoutDefault } from "layouts";
 import { UserDetails } from "components";
 
 import AuthService from "../api/authService";
-import caregiversService from "../api/caregiversService";
+import beneficiariesService from "../api/beneficiariesService";
 
-import { caregiverEditList } from "components/user/hooks/caregiverEditList";
+import { beneficiaryEditList } from "components/user/hooks/beneficiaryEditList";
 
-function Caregivers(props) {
+function Beneficiaries(props) {
   const {
     pathname,
     pageSize,
@@ -31,34 +31,34 @@ function Caregivers(props) {
     ...env?.BASE_SEO,
   };
 
-  const [isLoadingCaregiver, setIsLoadingCaregiver] = useState(true);
-  const [caregiver, setCaregiver] = useState();
+  const [isLoadingBeneficiary, setIsLoadingBeneficiary] = useState(true);
+  const [beneficiary, setBeneficiary] = useState();
 
-  async function getCaregiver(token) {
-    await caregiversService.getCaregiverById(props.params.caregiverId, token).then((response) => {
+  async function getBeneficiary(token) {
+    await beneficiariesService.getBeneficiaryById(props.params.beneficiaryId, token).then((response) => {
       if (response.status === 401) {
         //TO DO: Handle 401 error page
         return alert("Ne mozete pristupiti ovoj stranici, morate biti ulogovani!");
       }
-      setCaregiver(response.data);
-      setIsLoadingCaregiver(false);
+      setBeneficiary(response.data);
+      setIsLoadingBeneficiary(false);
     });
   }
 
   useEffect(() => {
-    if (isLoadingCaregiver) {
+    if (isLoadingBeneficiary) {
       const token = AuthService.getUser()?.token;
-      getCaregiver(token);
+      getBeneficiary(token);
     }
-  }, [isLoadingCaregiver]);
+  }, [isLoadingBeneficiary]);
 
-  if (isLoadingCaregiver) return null;
+  if (isLoadingBeneficiary) return null;
 
   return (
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
-        <UserDetails user={caregiver} editList={caregiverEditList} />
+        <UserDetails user={beneficiary} editList={beneficiaryEditList} />
       </LayoutDefault>
     </>
   );
@@ -73,4 +73,4 @@ export async function getServerSideProps(ctx) {
   };
 }
 
-export default Caregivers;
+export default Beneficiaries;
