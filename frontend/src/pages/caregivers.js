@@ -4,7 +4,7 @@ import { ENV } from "config/env";
 import { useCallback, useEffect, useState } from "react";
 import { Pagination, ProfileFilters } from "shared-components";
 import CaregiversService from "./api/caregiversService";
-import { CaregiverList } from "../components";
+import { CaregiverList } from "components";
 
 const ITEMS_PER_PAGE = 3;
 
