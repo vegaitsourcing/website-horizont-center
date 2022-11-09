@@ -12,3 +12,4 @@ export * from "./container/container";
 export * from "./donation-info/donation.info";
 export * from "./sections/";
 export * from "./select-date/select.date";
+export * from "./image-tag/image.tag";

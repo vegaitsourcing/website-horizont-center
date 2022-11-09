@@ -26,7 +26,7 @@ export const BlogDetails = ({ blogId }) => {
 		<>
 			<PageHeader isNarrow title={blog.title} image={blog.image}/>
 			<BlogSections sections={blog.sections}/>
-			{blog.author ? <AboutAuthor author={blog.author}/> : null}
+			{blog.author && <AboutAuthor author={blog.author}/>}
 		</>
 	);
 };
