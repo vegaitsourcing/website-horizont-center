@@ -1,6 +1,8 @@
 import axios from "axios";
 import { ENV } from "config/env";
 
+import AuthService from "./authService";
+
 const api = axios.create({
   baseURL: ENV.BASE_API_URL,
 });
@@ -11,8 +13,9 @@ const API = {
   getAllResources: (resource, queryParams = "") => {
     return api.get(`${resource}/?${queryParams}`);
   },
-  getResourceById: (resource, resourceId, token) => {
-    return api.get(`${resource}/${resourceId}`, { headers: { Authorization: `Bearer ${token}` } });
+  getResourceById: (resource, resourceId) => {
+    const headers = AuthService.getAuthorizationHeaders();
+    return api.get(`${resource}/${resourceId}`, headers ? { headers: headers } : null);
   },
   post: (url, data, config) => {
     return api.post(url, data, config);

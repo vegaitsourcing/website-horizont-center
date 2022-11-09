@@ -1,14 +1,14 @@
 import { NextSeo } from "next-seo";
-import { LayoutDefault } from "layouts";
+import { useState, useEffect } from "react";
+
 import env from "config/env";
 
 import { UserDetails } from "components";
+import { LayoutDefault } from "layouts";
 
-import AuthService from "../api/authService";
 import caregiversService from "../api/caregiversService";
-import { useState, useEffect } from "react";
 
-function Caregivers(props) {
+function CaregiverProfile(props) {
   const {
     pathname,
     pageSize,
@@ -31,8 +31,8 @@ function Caregivers(props) {
   const [isLoadingCaregiver, setIsLoadingCaregiver] = useState(true);
   const [caregiver, setCaregiver] = useState();
 
-  async function getCaregiver(token) {
-    await caregiversService.getCaregiverById(props.params.caregiverId, token).then((response) => {
+  async function getCaregiver() {
+    await caregiversService.getCaregiverById(props.params.caregiverId).then((response) => {
       if (response.status === 401) {
         //TO DO: Handle 401 error page
         return alert("Ne mozete pristupiti ovoj stranici, morate biti ulogovani!");
@@ -44,8 +44,7 @@ function Caregivers(props) {
 
   useEffect(() => {
     if (isLoadingCaregiver) {
-      const token = AuthService.getUser()?.token;
-      getCaregiver(token);
+      getCaregiver();
     }
   }, [isLoadingCaregiver]);
 
@@ -70,4 +69,4 @@ export async function getServerSideProps(ctx) {
   };
 }
 
-export default Caregivers;
+export default CaregiverProfile;
