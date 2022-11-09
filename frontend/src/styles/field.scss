@@ -2,7 +2,10 @@
 
 .fieldWrapper {
 	position: relative;
-	cursor: pointer;
+
+	@include respond-to(laptop) {
+		width: 100%;
+	}
 
 	.field {
 		-webkit-appearance: none;
@@ -16,11 +19,12 @@
 		border: 1px solid #D0D5DD;
 		border-radius: 10px;
 
-		&.input {
-			height: 46px;
+		@include respond-to(laptop) {
+			width: 100%;
 		}
 
 		&.select {
+			cursor: pointer;
 			width: 350px;
 		}
 	}

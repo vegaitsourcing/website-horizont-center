@@ -2,12 +2,59 @@
 
 .filters {
 	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-top: 128px;
-	padding: 0 128px;
-}
+	justify-content: space-between;
+	margin: 100px auto 20px;
+	padding: 10px 0;
+	width: 80%;
 
-.filters > * {
-	margin: 0 10px;
+	@include respond-to(laptop) {
+		flex-direction: column;
+		margin: 20px auto;
+	}
+	@include respond-to(tablet) {
+		width: 90%;
+	}
+	@include respond-to(mobile) {
+		width: 95%;
+	}
+
+	.leftSide {
+		width: 40%;
+
+		@include respond-to(laptop) {
+			width: 100%;
+			margin: 10px 0;
+		}
+	}
+
+	.rightSide {
+		width: 40%;
+		display: flex;
+		justify-content: flex-end;
+		gap: 20px;
+
+		@include respond-to(laptop) {
+			width: 100%;
+			justify-content: space-between;
+			margin: 10px 0;
+		}
+	}
+
+	.leftFilterField,
+	.leftFilterField input {
+		width: 100%;
+	}
+
+	.rightFilterField {
+		width: 45%;
+
+		@include respond-to(laptop) {
+			width: 48%;
+		}
+
+		select {
+			width: 100% !important;
+		}
+	}
+
 }

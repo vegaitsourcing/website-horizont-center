@@ -1,23 +1,34 @@
 import React from "react";
 import styles from "./blog.list.module.scss";
-import { Card } from "shared-components";
+import { ResourceCard } from "../resource-card/resource.card";
+import { createResourceCardSecondaryTag } from "../../utils";
+
+function prepareBlog(blog) {
+	return {
+		...blog,
+		resourceURL: `/blogs/${blog.id}`,
+		secondaryTags: blog.categories.map(category => createResourceCardSecondaryTag(category)),
+	};
+}
 
 export const BlogList = ({ blogs }) => {
-  return (
-    <div className={styles.blogBody}>
-      <ul className={styles.blogList}>
-        {blogs.map((blog) => (
-          <Card
-            key={blog.id}
-            categories={blog.categories}
-            description={blog.description}
-            title={blog.title}
-            date={blog.created}
-            image={blog.image}
-            blogId={blog.id}
-          />
-        ))}
-      </ul>
-    </div>
-  );
+	const preparedBlogs = blogs.map(blog => prepareBlog(blog))
+
+	return (
+		<div className={styles.blogListWrapper}>
+			<ul className={styles.blogList}>
+				{preparedBlogs.map((blog) => (
+					<ResourceCard
+						key={blog.id}
+						resourceURL={blog.resourceURL}
+						image={blog.image}
+						secondaryTags={blog.secondaryTags}
+						title={blog.title}
+						teaserText={blog.description}
+						date={blog.created}
+					/>
+				))}
+			</ul>
+		</div>
+	);
 };

@@ -1,7 +1,7 @@
 import { LayoutDefault } from "layouts";
 import { NextSeo } from "next-seo";
 import { LoginForm } from "components";
-import ENV from "config/env";
+import { ENV } from "config/env";
 import { useEffect, useState } from "react";
 import AuthService from "./api/authService";
 import { useRouter } from "next/router";

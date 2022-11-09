@@ -44,10 +44,17 @@
 	color: $title-color;
 }
 
+@mixin subtitle {
+	font-family: $font-family-text;
+	font-style: normal;
+	font-weight: 700;
+	color: $input-text-color;
+}
+
 @mixin text {
 	font-family: $font-family-text;
 	font-style: normal;
-	font-weight: 500;
+	font-weight: 300;
 	line-height: 150%;
 	color: $subtext-color;
 }
@@ -87,6 +94,14 @@
 	margin: 0;
 }
 
+.h5 {
+	@include subtitle;
+	font-size: 14px;
+	line-height: 19px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+
 .p1 {
 	@include text;
 	font-size: 18px;
@@ -97,6 +112,26 @@
 	font-size: 16px;
 }
 
+.react-datepicker__input-container {
+    input {
+        cursor: pointer;
+        -webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		padding: 0 24px;
+		font-size: 16px;
+		width: 300px !important;
+		height: 48px;
+		background: #FFFFFF;
+		border: 1px solid #D0D5DD;
+		border-radius: 10px;
+    }
+}
+
 .hidden {
 	display: none !important;
+}
+
+.lightBlueBackground {
+	background-color: $light-blue-color;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { LayoutDefault } from "layouts";
 import { About } from "components/about/about";
 import { NextSeo } from "next-seo";
-import ENV from "config/env";
+import { ENV } from "config/env";
 
 const { BASE_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
 

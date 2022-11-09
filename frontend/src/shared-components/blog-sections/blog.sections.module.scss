@@ -1,28 +1,32 @@
 @import '../../styles/main.scss';
 
-.singleBlogMain {
-    padding-block: 490px 0;
-    margin-bottom: 200px;
+.blogDetails {
+	padding: 0 15%;
 
-    .h2 {
-        font-weight: 600;
-        margin-top: 96px;
-    }
+	@include respond-to(desktop) {
+		padding: 0 10%;
+	}
+	@include respond-to(tablet) {
+		padding: 0 5%;
+	}
 
-    article:nth-child(1) .h2{
-        margin-top: 0;
-    }
+	.image,
+	.iframe {
+		min-height: 550px;
+		max-height: 800px;
+		width: 100%;
+		object-fit: cover;
+		margin: 20px 0;
+		border-radius: 30px;
+		border: none;
 
-    .p1 {
-        font-weight: 300;
-    }
-
-    img, iframe {
-
-        min-height:  547px;
-        margin-top: 96px;
-        width: 100%;
-        object-fit: cover;
-        border-radius: 30px;
-    }
+		@include respond-to(desktop) {
+			min-height: 450px;
+			max-height: 600px;
+		}
+		@include respond-to(tablet) {
+			min-height: 350px;
+			max-height: 450px;
+		}
+	}
 }

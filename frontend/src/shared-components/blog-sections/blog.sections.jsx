@@ -3,33 +3,23 @@ import React from "react";
 import styles from "./blog.sections.module.scss";
 
 export const BlogSections = ({ sections }) => {
-  const showVideo = (src) => {
-    let isYoutube = src && src.match(/(?:youtu|youtube)(?:\.com|\.be)\/([\w\W]+)/i);
-    if (isYoutube) {
-      return (
-        <iframe
-          src={src.replace("watch?v=", "embed/")}
-          frameBorder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        ></iframe>
-      );
-    }
-    return <video src={src} alt={article.title} type="video/mp4" />;
+  const MediaBlock = ({ type, url }) => {
+    if (type === "image") return <img className={styles.image} src={url} alt="blog section image" />;
+
+    return (
+      <iframe
+        className={styles.iframe}
+        src={url.replace("watch?v=", "embed/")}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      ></iframe>
+    );
   };
 
-  return (
-    <section className={styles.singleBlogMain}>
-      {sections.map((article, index) => (
-        <article key={index} className={styles.singleBlogMainArticle}>
-          <h2 className={styles.h2}>{article.title}</h2>
-          <p className={styles.p1}>{article.description}</p>
-          {article.media_type == "image" ? (
-            <img src={article.media_url} alt={article.title} />
-          ) : (
-            showVideo(article.media_url)
-          )}
-        </article>
-      ))}
+  return sections.map((section) => (
+    <section key={section.id} className={styles.blogDetails}>
+      <h2 className={styles.h2}>{section.title}</h2>
+      <p className={styles.p1}>{section.description}</p>
+      <MediaBlock type={section.media_type} url={section.media_url} />
     </section>
-  );
+  ));
 };

@@ -6,7 +6,7 @@ export function LogoButton() {
 	return (
 		<Link href="/" passHref>
 			<div className={styles.logoWrapper}>
-				<img src="/caregivers.svg" alt="Logo"/>
+				<img src="/images/logo.svg" alt="Logo"/>
 			</div>
 		</Link>
 	);

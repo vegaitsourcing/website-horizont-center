@@ -26,7 +26,7 @@ class BlogSection(BaseModel):
         null=True,
     )
     media_url = models.URLField(
-        verbose_name=_('media url'),
+        verbose_name=_('media URL'),
         blank=True,
         null=True,
     )
