@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 
 import { BlogSections, AboutAuthor, PageHeader } from "shared-components";
 import BlogsService from "pages/api/blogsService";
 
 export const BlogDetails = ({ blogId }) => {
-  const router = useRouter();
   const [isLoadingBlog, setIsLoadingBlog] = useState(true);
   const [blog, setBlog] = useState(null);
 
