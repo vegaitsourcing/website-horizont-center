@@ -3,19 +3,9 @@ import { PDFDocument } from "pdf-lib";
 
 import styles from "./payment.slip.module.scss";
 
-export const PaymentSlip = ({
-  linkText,
-  uplatilacValue,
-  svrhaUplateValue,
-  primalacValue,
-  sifraPlacanjaValue,
-  valutaValue,
-  iznosValue,
-  racunaPrimaocaValue,
-  modelValue,
-  pozivNaBrojValue,
-}) => {
-  const [pdfBytes, setpdfBytes] = useState("");
+export const PaymentSlip = ({ linkText, info }) => {
+  let modelValue = info.payment_model;
+  let pozivNaBrojValue = info.payment_reference_number;
 
   if (modelValue == null) modelValue = "";
   if (pozivNaBrojValue == null) pozivNaBrojValue = "";
@@ -23,23 +13,19 @@ export const PaymentSlip = ({
   function addDataToPdf(pdf) {
     const form = pdf.getForm();
 
-    const uplatilac = form.getTextField("topmostSubform[0].Page1[0].Z3[0]");
     const svrhaUplate = form.getTextField("topmostSubform[0].Page1[0].Z3[1]");
     const primalac = form.getTextField("topmostSubform[0].Page1[0].Z3[2]");
     const sifraPlacanja = form.getTextField("topmostSubform[0].Page1[0].Z3[3]");
-    const valuta = form.getTextField("topmostSubform[0].Page1[0].Z3[4]");
     const iznos = form.getTextField("topmostSubform[0].Page1[0].Z3[5]");
     const racunaPrimaoca = form.getTextField("topmostSubform[0].Page1[0].Z3[6]");
     const model = form.getTextField("topmostSubform[0].Page1[0].Z3[7]");
     const pozivNaBroj = form.getTextField("topmostSubform[0].Page1[0].Z3[10]");
 
-    uplatilac.setText(uplatilacValue.toString());
-    svrhaUplate.setText(svrhaUplateValue.toString());
-    primalac.setText(primalacValue.toString());
-    sifraPlacanja.setText(sifraPlacanjaValue.toString());
-    valuta.setText(valutaValue.toString());
+    svrhaUplate.setText(info.payment_purpose.toString());
+    primalac.setText(info.payment_receiver.toString());
+    sifraPlacanja.setText(info.payment_code.toString());
     iznos.setText("= ");
-    racunaPrimaoca.setText(racunaPrimaocaValue.toString());
+    racunaPrimaoca.setText(info.payment_bank_account.toString());
     model.setText(modelValue.toString());
     pozivNaBroj.setText(pozivNaBrojValue.toString());
   }
@@ -57,8 +43,6 @@ export const PaymentSlip = ({
       type: "application/pdf",
     });
     const docUrl = URL.createObjectURL(tempblob);
-    setpdfBytes(docUrl);
-
     window.open(docUrl);
   }
 

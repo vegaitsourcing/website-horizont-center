@@ -3,16 +3,14 @@ import { PaymentSlip } from "components";
 import styles from "./donation.info.module.scss";
 
 export const DonationInfo = ({ donation }) => {
-  let financialInfo = donation.financial_info
-    ? [
-        { title: "Svrha uplate", value: donation.financial_info.payment_purpose },
-        { title: "Primalac", value: donation.financial_info.payment_receiver },
-        { title: "Šifra plaćanja", value: donation.financial_info.payment_code },
-        { title: "Račun primaoca", value: donation.financial_info.payment_bank_account },
-        { title: "Model", value: donation.financial_info.payment_model },
-        { title: "Poziv na broj", value: donation.financial_info.payment_reference_number },
-      ]
-    : null;
+  let financialInfo = [
+    { title: "Svrha uplate", value: donation.financial_info?.payment_purpose },
+    { title: "Primalac", value: donation.financial_info?.payment_receiver },
+    { title: "Šifra plaćanja", value: donation.financial_info?.payment_code },
+    { title: "Račun primaoca", value: donation.financial_info?.payment_bank_account },
+    { title: "Model", value: donation.financial_info?.payment_model },
+    { title: "Poziv na broj", value: donation.financial_info?.payment_reference_number },
+  ];
 
   return (
     <div className={styles.donationBox}>
@@ -38,20 +36,7 @@ export const DonationInfo = ({ donation }) => {
           </div>
         ) : null}
       </div>
-      {donation.financial_info ? (
-        <PaymentSlip
-          linkText={"Izgled uplatnice"}
-          uplatilacValue={""}
-          svrhaUplateValue={donation.financial_info.payment_purpose}
-          primalacValue={donation.financial_info.payment_receiver}
-          sifraPlacanjaValue={donation.financial_info.payment_code}
-          valutaValue={""}
-          iznosValue={""}
-          racunaPrimaocaValue={donation.financial_info.payment_bank_account}
-          modelValue={donation.financial_info.payment_model}
-          pozivNaBrojValue={donation.financial_info.payment_reference_number}
-        />
-      ) : null}
+      {donation.financial_info ? <PaymentSlip linkText={"Izgled uplatnice"} info={donation.financial_info} /> : null}
     </div>
   );
 };
