@@ -6,8 +6,9 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-    background: #414141;
+    background: $gray-color;
 	opacity: 0.3;
+	z-index: 198;
 }
 
 .loader {
@@ -18,6 +19,7 @@
 	top: calc(50% - 100px);
 	left: calc(50% - 100px);
 	animation: rotate 1s linear infinite;
+	z-index: 199;
 }
 
 .loader::before {
