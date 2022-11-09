@@ -1,21 +1,26 @@
 import { BlogDetails } from "components";
-import { useRouter } from "next/router";
 
 import { NextSeo } from "next-seo";
 import { LayoutDefault } from "layouts";
 
-const SingleBlogDetails = () => {
-  const router = useRouter();
-  const { slug } = router.query;
-
+const SingleBlogDetails = (props) => {
   return (
     <>
       <NextSeo />
       <LayoutDefault>
-        <BlogDetails blogId={slug} />
+        <BlogDetails blogId={props.params.blogId} />
       </LayoutDefault>
     </>
   );
 };
+
+export async function getServerSideProps(ctx) {
+  const { params } = ctx;
+  return {
+    props: {
+      params: params,
+    },
+  };
+}
 
 export default SingleBlogDetails;

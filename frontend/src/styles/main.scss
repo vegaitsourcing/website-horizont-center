@@ -44,10 +44,17 @@
 	color: $title-color;
 }
 
+@mixin subtitle {
+	font-family: $font-family-text;
+	font-style: normal;
+	font-weight: 700;
+	color: $input-text-color;
+}
+
 @mixin text {
 	font-family: $font-family-text;
 	font-style: normal;
-	font-weight: 500;
+	font-weight: 300;
 	line-height: 150%;
 	color: $subtext-color;
 }
@@ -85,6 +92,14 @@
 	font-size: 24px;
 	line-height: 30px;
 	margin: 0;
+}
+
+.h5 {
+	@include subtitle;
+	font-size: 14px;
+	line-height: 19px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
 }
 
 .p1 {
