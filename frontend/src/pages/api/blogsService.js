@@ -10,8 +10,8 @@ const BlogsService = {
     return API.getAllResources(BASE_RESOURCE_NAME, queryParams);
   },
 
-  getBlogById: (blogId, token) => {
-    return API.getResourceById(BASE_RESOURCE_NAME, blogId, token);
+  getBlogById: (blogId) => {
+    return API.getResourceById(BASE_RESOURCE_NAME, blogId);
   },
 
   getAllBlogCategories: () => {
