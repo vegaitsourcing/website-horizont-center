@@ -7,8 +7,8 @@ import styles from "./user.details.module.scss";
 export const UserDetails = ({ user }) => {
   return (
     <div className={styles.userDetailsWrapper}>
-      <div className={styles.profileListItem}>
-        <div className={styles.profileImageSection}>
+      <div className={styles.userDetailsSection}>
+        <div className={styles.imageSection}>
           <img
             className={styles.roundedImage}
             src={user.image ?? "/images/profile.image.placeholder.svg"}
@@ -20,7 +20,7 @@ export const UserDetails = ({ user }) => {
             <span className={styles.city}>{user.city}</span>
           </div>
         </div>
-        <div className={styles.profileDescriptionSection}>
+        <div className={styles.descriptionSection}>
           <div className={`${styles.p2} ${styles.createdDate}`}>
             {new Date(user.user.created).toLocaleDateString("nl")}
           </div>
