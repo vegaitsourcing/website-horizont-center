@@ -1,6 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
 
-import { LayoutDefault } from "layouts";
 import { Spinner } from "shared-components";
 import { DesktopNavigation } from "./desktop-navigation/desktop.navigation";
 import { MobileNavigation } from "./mobile-navigation/mobile.navigation";
