@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 
 import env from "config/env";
 
+import { ProfileDetails } from "components";
 import { LayoutDefault } from "layouts";
-import { UserDetails } from "components";
 
 import beneficiariesService from "../api/beneficiariesService";
 import { beneficiaryEditList } from "components/user/hooks/beneficiaryEditList";
@@ -51,7 +51,7 @@ function BeneficiaryProfile(props) {
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
-        <UserDetails user={beneficiary} editList={beneficiaryEditList} />
+        <ProfileDetails profile={beneficiary} editList={beneficiaryEditList} />
       </LayoutDefault>
     </>
   );

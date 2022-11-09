@@ -2,7 +2,7 @@ import ErrorPage from "next/error";
 import { NextSeo } from "next-seo";
 import { LayoutDefault } from "layouts";
 
-const Code404Page = () => {
+const Code401Page = () => {
   return (
     <>
       <NextSeo />
@@ -13,4 +13,4 @@ const Code404Page = () => {
   );
 };
 
-export default Code404Page;
+export default Code401Page;

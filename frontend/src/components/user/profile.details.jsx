@@ -1,35 +1,33 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
-import styles from "./user.details.module.scss";
+import styles from "./profile.details.module.scss";
 
-export const UserDetails = ({ user, editList }) => {
-  console.log("User", user);
-  console.log("Edit list:", editList);
+export const ProfileDetails = ({ profile, editList }) => {
   return (
     <div className={styles.userDetailsWrapper}>
       <div className={styles.userDetailsSection}>
         <div className={styles.imageSection}>
           <img
             className={styles.roundedImage}
-            src={user.image ?? "/images/profile.image.placeholder.svg"}
+            src={profile.image ?? "/images/profile.image.placeholder.svg"}
             alt="profile image"
           />
-          <div className={styles.profileName}>{`${user.user.first_name} ${user.user.last_name}`}</div>
+          <div className={styles.profileName}>{`${profile.user.first_name} ${profile.user.last_name}`}</div>
           <div className={`${styles.profileLocation} ${styles.p2}`}>
             <FontAwesomeIcon icon={faLocationDot} className={styles.icon} />
-            <span className={styles.city}>{user.city}</span>
+            <span className={styles.city}>{profile.city}</span>
           </div>
         </div>
         <div className={styles.descriptionSection}>
           <div className={`${styles.p2} ${styles.createdDate}`}>
-            {new Date(user.user.created).toLocaleDateString("nl")}
+            {new Date(profile.user.created).toLocaleDateString("nl")}
           </div>
-          <h4 className={`${styles.h4} ${styles.title}`}>{`${user.user.first_name} ${user.user.last_name}`}</h4>
-          <div className={styles.workApplication}>{user.work_application}</div>
+          <h4 className={`${styles.h4} ${styles.title}`}>{`${profile.user.first_name} ${profile.user.last_name}`}</h4>
+          <div className={styles.workApplication}>{profile.work_application}</div>
           <div className={""}>
             <h5 className={styles.h5}>OPŠTE INFORMACIJE</h5>
-            <p className={styles.p1}>{user.description}</p>
+            <p className={styles.p1}>{profile.description}</p>
           </div>
           <div className={styles.userDetails}>
             {editList.map((item, index) => {
@@ -38,15 +36,15 @@ export const UserDetails = ({ user, editList }) => {
                   <h5 className={styles.h5}>{item.title}</h5>
                   {item.title === "DRUŠTVENE MREŽE" ? (
                     <div>
-                      <a className={styles.socialMediaLink} href={user.facebook_url ?? "http://facebook.com"}>
+                      <a className={styles.socialMediaLink} href={profile.facebook_url ?? "http://facebook.com"}>
                         <img src={"/images/facebookIconBlue.svg"} alt={item.fieldName} />
                       </a>
-                      <a className={styles.socialMediaLink} href={user.instagram_url ?? "http://instagram.com"}>
+                      <a className={styles.socialMediaLink} href={profile.instagram_url ?? "http://instagram.com"}>
                         <img src={"/images/instagramIconBlue.svg"} alt={item.fieldName2} />
                       </a>
                     </div>
                   ) : (
-                    <p className={styles.p1}>{user.user[item.fieldName] ?? user[item.fieldName]}</p>
+                    <p className={styles.p1}>{profile.user[item.fieldName] ?? profile[item.fieldName]}</p>
                   )}
                 </div>
               );
