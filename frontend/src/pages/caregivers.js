@@ -32,7 +32,7 @@ function Caregivers(props) {
   });
 
   useEffect(() => {
-    async function fetchBeneficiaries() {
+    async function fetchCaregivers() {
       const response = await CaregiversService.getCaregivers(
         ITEMS_PER_PAGE,
         activePageNumber,
@@ -44,7 +44,7 @@ function Caregivers(props) {
       setNumberOfPages(response.data.pagination.total_pages);
     }
 
-    fetchBeneficiaries();
+    fetchCaregivers();
   }, [activePageNumber, filters]);
 
   const updateFilters = useCallback(
