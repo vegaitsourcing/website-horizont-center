@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 
 import env from "config/env";
 
-import { UserDetails } from "components";
+import { ProfileDetails } from "components";
 import { LayoutDefault } from "layouts";
 
 import caregiversService from "../api/caregiversService";
@@ -54,7 +54,7 @@ function CaregiverProfile(props) {
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
-        <UserDetails user={caregiver} />
+        <ProfileDetails profile={caregiver} />
       </LayoutDefault>
     </>
   );

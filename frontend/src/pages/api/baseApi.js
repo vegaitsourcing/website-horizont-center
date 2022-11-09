@@ -1,5 +1,6 @@
 import axios from "axios";
 import { ENV } from "config/env";
+import Router from "next/router";
 
 import AuthService from "./authService";
 
@@ -27,6 +28,12 @@ api.interceptors.response.use(
     return response;
   },
   (error) => {
+    if (error.response.status === 401) {
+      return Router.push("/401");
+    }
+    if (error.response.status === 404) {
+      return Router.push("/404");
+    }
     return error.response;
   }
 );
