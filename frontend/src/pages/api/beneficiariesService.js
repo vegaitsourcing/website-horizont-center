@@ -7,8 +7,8 @@ const beneficiariesService = {
     return ProfileService.getProfiles(BASE_RESOURCE_NAME, pageSize, pageNumber, contains, gender, city);
   },
 
-  getBeneficiaryById: (beneficiaryId, token) => {
-    return API.getResourceById(BASE_RESOURCE_NAME, beneficiaryId, token);
+  getBeneficiaryById: (beneficiaryId) => {
+    return API.getResourceById(BASE_RESOURCE_NAME, beneficiaryId);
   },
 };
 

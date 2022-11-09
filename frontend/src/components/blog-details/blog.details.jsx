@@ -11,9 +11,6 @@ export const BlogDetails = ({ blogId }) => {
 
   async function getBlog() {
     await BlogsService.getBlogById(blogId).then((response) => {
-      // if (response.status === 404) {
-      //   return router.push("/404");
-      // }
       setBlog(response.data);
       setIsLoadingBlog(false);
     });
