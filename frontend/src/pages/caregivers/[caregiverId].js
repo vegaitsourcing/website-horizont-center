@@ -5,10 +5,8 @@ import env from "config/env";
 
 import { LayoutDefault } from "layouts";
 import { UserDetails } from "components";
-import { LayoutDefault } from "layouts";
 
 import caregiversService from "../api/caregiversService";
-
 import { caregiverEditList } from "components/user/hooks/caregiverEditList";
 
 function CaregiverProfile(props) {
@@ -36,10 +34,6 @@ function CaregiverProfile(props) {
 
   async function getCaregiver() {
     await caregiversService.getCaregiverById(props.params.caregiverId).then((response) => {
-      if (response.status === 401) {
-        //TO DO: Handle 401 error page
-        return alert("Ne mozete pristupiti ovoj stranici, morate biti ulogovani!");
-      }
       setCaregiver(response.data);
       setIsLoadingCaregiver(false);
     });

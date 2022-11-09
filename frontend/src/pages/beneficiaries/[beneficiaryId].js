@@ -6,12 +6,10 @@ import env from "config/env";
 import { LayoutDefault } from "layouts";
 import { UserDetails } from "components";
 
-import AuthService from "../api/authService";
 import beneficiariesService from "../api/beneficiariesService";
-
 import { beneficiaryEditList } from "components/user/hooks/beneficiaryEditList";
 
-function Beneficiaries(props) {
+function BeneficiaryProfile(props) {
   const {
     pathname,
     pageSize,
@@ -34,12 +32,8 @@ function Beneficiaries(props) {
   const [isLoadingBeneficiary, setIsLoadingBeneficiary] = useState(true);
   const [beneficiary, setBeneficiary] = useState();
 
-  async function getBeneficiary(token) {
-    await beneficiariesService.getBeneficiaryById(props.params.beneficiaryId, token).then((response) => {
-      if (response.status === 401) {
-        //TO DO: Handle 401 error page
-        return alert("Ne mozete pristupiti ovoj stranici, morate biti ulogovani!");
-      }
+  async function getBeneficiary() {
+    await beneficiariesService.getBeneficiaryById(props.params.beneficiaryId).then((response) => {
       setBeneficiary(response.data);
       setIsLoadingBeneficiary(false);
     });
@@ -47,8 +41,7 @@ function Beneficiaries(props) {
 
   useEffect(() => {
     if (isLoadingBeneficiary) {
-      const token = AuthService.getUser()?.token;
-      getBeneficiary(token);
+      getBeneficiary();
     }
   }, [isLoadingBeneficiary]);
 
@@ -73,4 +66,4 @@ export async function getServerSideProps(ctx) {
   };
 }
 
-export default Beneficiaries;
+export default BeneficiaryProfile;
