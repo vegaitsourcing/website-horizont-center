@@ -1,21 +1,26 @@
 import { SingleDonation } from "components";
-import { useRouter } from "next/router";
 
 import { NextSeo } from "next-seo";
 import { LayoutDefault } from "layouts";
 
-const SingleDonationDetails = () => {
-  const router = useRouter();
-  const { slug } = router.query;
-
+const SingleDonationDetails = (props) => {
   return (
     <>
       <NextSeo />
       <LayoutDefault>
-        <SingleDonation donationId={slug} />
+        <SingleDonation donationId={props.params.donationId} />
       </LayoutDefault>
     </>
   );
 };
+
+export async function getServerSideProps(ctx) {
+  const { params } = ctx;
+  return {
+    props: {
+      params: params,
+    },
+  };
+}
 
 export default SingleDonationDetails;
