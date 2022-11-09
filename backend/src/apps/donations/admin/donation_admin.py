@@ -1,11 +1,13 @@
 from django.contrib import admin
+
+from apps.common.admin import ModelAdminMixin
 from apps.donations.admin.donation_company_admin_inline import DonationCompanyAdminInline
 from apps.donations.admin.financial_info_admin_inline import FinancialInfoAdminInline
 from apps.donations.models.donation import Donation
 
 
 @admin.register(Donation)
-class DonationAdmin(admin.ModelAdmin):
+class DonationAdmin(admin.ModelAdmin, ModelAdminMixin):
     search_fields = (
         'title',
         'subtitle',

@@ -3,6 +3,8 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import Group
+
+from apps.common.admin import ModelAdminMixin
 from apps.users.models import User
 
 admin.site.unregister(Group)
@@ -15,7 +17,7 @@ class CreateUserForm(UserCreationForm):
 
 
 @admin.register(User)
-class UserAdmin(BaseUserAdmin):
+class UserAdmin(BaseUserAdmin, ModelAdminMixin):
     list_display = (
         'email',
         'is_active',
@@ -50,7 +52,6 @@ class UserAdmin(BaseUserAdmin):
         }),
     )
     readonly_fields = (
-        'id',
         'last_login',
         'date_joined',
     )
