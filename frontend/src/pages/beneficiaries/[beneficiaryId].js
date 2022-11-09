@@ -6,10 +6,10 @@ import env from "config/env";
 import { ProfileDetails } from "components";
 import { LayoutDefault } from "layouts";
 
-import caregiversService from "../api/caregiversService";
-import { caregiverEditList } from "components/user/hooks/caregiverEditList";
+import beneficiariesService from "../api/beneficiariesService";
+import { beneficiaryEditList } from "components/user/hooks/beneficiaryEditList";
 
-function CaregiverProfile(props) {
+function BeneficiaryProfile(props) {
   const {
     pathname,
     pageSize,
@@ -29,29 +29,29 @@ function CaregiverProfile(props) {
     ...env?.BASE_SEO,
   };
 
-  const [isLoadingCaregiver, setIsLoadingCaregiver] = useState(true);
-  const [caregiver, setCaregiver] = useState();
+  const [isLoadingBeneficiary, setIsLoadingBeneficiary] = useState(true);
+  const [beneficiary, setBeneficiary] = useState();
 
-  async function getCaregiver() {
-    await caregiversService.getCaregiverById(props.params.caregiverId).then((response) => {
-      setCaregiver(response.data);
-      setIsLoadingCaregiver(false);
+  async function getBeneficiary() {
+    await beneficiariesService.getBeneficiaryById(props.params.beneficiaryId).then((response) => {
+      setBeneficiary(response.data);
+      setIsLoadingBeneficiary(false);
     });
   }
 
   useEffect(() => {
-    if (isLoadingCaregiver) {
-      getCaregiver();
+    if (isLoadingBeneficiary) {
+      getBeneficiary();
     }
-  }, [isLoadingCaregiver]);
+  }, [isLoadingBeneficiary]);
 
-  if (isLoadingCaregiver) return null;
+  if (isLoadingBeneficiary) return null;
 
   return (
     <>
       <NextSeo {...SEOS} />
       <LayoutDefault pathname={pathname}>
-        <ProfileDetails profile={caregiver} editList={caregiverEditList} />
+        <ProfileDetails profile={beneficiary} editList={beneficiaryEditList} />
       </LayoutDefault>
     </>
   );
@@ -66,4 +66,4 @@ export async function getServerSideProps(ctx) {
   };
 }
 
-export default CaregiverProfile;
+export default BeneficiaryProfile;

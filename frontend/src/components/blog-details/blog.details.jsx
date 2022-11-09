@@ -1,6 +1,7 @@
+import { useState, useEffect } from "react";
+
 import { BlogSections, AboutAuthor, PageHeader } from "shared-components";
 import BlogsService from "pages/api/blogsService";
-import { useState, useEffect } from "react";
 
 export const BlogDetails = ({ blogId }) => {
   const [isLoadingBlog, setIsLoadingBlog] = useState(true);

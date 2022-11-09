@@ -1,10 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { caregiverEditList } from "./hooks/caregiverEditList";
 
 import styles from "./profile.details.module.scss";
 
-export const ProfileDetails = ({ profile }) => {
+export const ProfileDetails = ({ profile, editList }) => {
   return (
     <div className={styles.userDetailsWrapper}>
       <div className={styles.userDetailsSection}>
@@ -31,7 +30,7 @@ export const ProfileDetails = ({ profile }) => {
             <p className={styles.p1}>{profile.description}</p>
           </div>
           <div className={styles.userDetails}>
-            {caregiverEditList.map((item, index) => {
+            {editList.map((item, index) => {
               return (
                 <div key={index} className={styles.elementInfo}>
                   <h5 className={styles.h5}>{item.title}</h5>
