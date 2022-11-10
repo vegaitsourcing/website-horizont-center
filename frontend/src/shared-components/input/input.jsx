@@ -13,14 +13,32 @@ export const Input = ({
 	placeholder,
 	inputValue,
 	valueChangedHandler,
+	options,
 	className,
 	isValidInput = true,
 	withSearchIcon = false,
 }) => {
 
-	if (type === "dropdown") return <Select {...props} />;
+	if (type === "dropdown") return (
+		<Select
+			id={id}
+			name={name}
+			placeholder={placeholder}
+			options={options}
+			inputValue={inputValue}
+			valueChangedHandler={valueChangedHandler}
+			className={className}
+			isValidInput={isValidInput}
+		/>
+	);
 
-	if (type === "datepicker") return <SelectDate {...props} />;
+	if (type === "datepicker") return (
+		<SelectDate
+			inputValue={inputValue}
+			valueChangedHandler={valueChangedHandler}
+			isValidInput={isValidInput}
+		/>
+	);
 
 	return (
 		<div className={[styles.fieldWrapperWide, className].join(" ")}>
