@@ -13,3 +13,4 @@ export * from "./donation-info/donation.info";
 export * from "./sections/";
 export * from "./select-date/select.date";
 export * from "./spinner/spinner";
+export * from "./image-tag/image.tag";

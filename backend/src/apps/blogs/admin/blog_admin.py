@@ -3,10 +3,11 @@ from django.utils.translation import gettext_lazy as _
 from apps.blogs.admin.blog_author_admin_inline import BlogAuthorAdminInline
 from apps.blogs.admin.blog_section_admin_inline import BlogSectionAdminInline
 from apps.blogs.models.blog import Blog
+from apps.common.admin import ModelAdminMixin
 
 
 @admin.register(Blog)
-class BlogAdmin(admin.ModelAdmin):
+class BlogAdmin(admin.ModelAdmin, ModelAdminMixin):
     search_fields = (
         'title',
         'description',

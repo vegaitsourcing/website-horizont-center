@@ -1,0 +1,12 @@
+@import "src/styles/main";
+
+.imageTag {
+	position: absolute;
+	background-color: $blue-color;
+	color: white;
+	border-radius: 5px;
+	padding: 6px 25px;
+	top: 24px;
+	right: 24px;
+	font-weight: 700;
+}

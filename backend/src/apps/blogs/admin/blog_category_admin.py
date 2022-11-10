@@ -3,10 +3,11 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
 
 from apps.blogs.models.blog_category import BlogCategory
+from apps.common.admin import ModelAdminMixin
 
 
 @admin.register(BlogCategory)
-class BlogCategoryAdmin(admin.ModelAdmin):
+class BlogCategoryAdmin(admin.ModelAdmin, ModelAdminMixin):
     search_fields = (
         'name',
         'color',

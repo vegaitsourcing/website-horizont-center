@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { LayoutDefault } from "layouts";
 import { BlogSections, AboutAuthor, PageHeader, Spinner } from "shared-components";
@@ -9,18 +9,18 @@ export const BlogDetails = ({ blogId }) => {
   const [isLoadingBlog, setIsLoadingBlog] = useState(true);
   const [blog, setBlog] = useState(null);
 
-  async function getBlog() {
-    await BlogsService.getBlogById(blogId).then((response) => {
-      setBlog(response.data);
-      setIsLoadingBlog(false);
-    });
-  }
-
   useEffect(() => {
+    async function getBlog() {
+      await BlogsService.getBlogById(blogId).then((response) => {
+        setBlog(response.data);
+        setIsLoadingBlog(false);
+      });
+    }
+
     if (isLoadingBlog) {
       getBlog();
     }
-  }, [isLoadingBlog]);
+  }, [blogId, isLoadingBlog]);
 
   if (isLoadingBlog) {
     return (
@@ -34,7 +34,7 @@ export const BlogDetails = ({ blogId }) => {
     <>
       <PageHeader isNarrow title={blog.title} image={blog.image} />
       <BlogSections sections={blog.sections} />
-      {blog.author ? <AboutAuthor author={blog.author} /> : null}
+      {blog.author && <AboutAuthor author={blog.author} />}
     </>
   );
 };

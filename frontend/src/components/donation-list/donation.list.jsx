@@ -13,7 +13,7 @@ function prepareDonation(donation) {
 				color: donation.financial_info ? "#0075FF" : "#F87024",
 			}),
 		],
-		primaryTag: {
+		imageTag: {
 			name: donation.is_active ? "U TOKU" : "ZAVRŠENO",
 			style: {
 				color: donation.is_active ? "#FFFFFF" : "#0075FF",
@@ -34,7 +34,7 @@ export const DonationList = ({ donations }) => {
 						key={donation.id}
 						resourceURL={donation.resourceURL}
 						image={donation.image}
-						primaryTag={donation.primaryTag}
+						imageTag={donation.imageTag}
 						secondaryTags={donation.secondaryTags}
 						title={donation.title}
 						teaserText={donation.description}

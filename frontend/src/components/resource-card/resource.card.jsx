@@ -1,18 +1,18 @@
 import styles from "./resource.card.module.scss";
 import Link from "next/link";
-import { LongButton } from "../../shared-components";
+import { ImageTag, LongButton } from "../../shared-components";
 
 /**
  * @param resourceURL: local path string to the specific resource details page
  * @param image: sting (URL)
- * @param primaryTag: object with "name" (string) and "style" (object) properties
+ * @param imageTag: object with "name" (string) and "style" (object) properties
  * @param secondaryTags: array with objects with "name" (string) and "style" (object)
  * @param title: string
  * @param teaserText: string
  * @param date: string
  * @returns {JSX.Element}
  */
-export const ResourceCard = ({ resourceURL, image, primaryTag, secondaryTags = [], title, teaserText, date }) => {
+export const ResourceCard = ({ resourceURL, image, imageTag, secondaryTags = [], title, teaserText, date }) => {
 
 	function SecondaryTags() {
 		return (
@@ -24,17 +24,9 @@ export const ResourceCard = ({ resourceURL, image, primaryTag, secondaryTags = [
 		);
 	}
 
-	function PrimaryTag() {
-		return (
-			<span className={styles.imageTag} style={primaryTag.style}>
-				{primaryTag.name}
-			</span>
-		);
-	}
-
 	return (
 		<div className={styles.card} key={resourceURL}>
-			{primaryTag && <PrimaryTag/>}
+			{imageTag && <ImageTag tag={imageTag}/>}
 			<img src={image} alt="blog image" className={styles.image}/>
 			<div className={styles.description}>
 				<div className={styles.info}>
