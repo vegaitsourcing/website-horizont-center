@@ -1,50 +1,27 @@
 /* env */
 import { ENV } from "./src/config/env";
 
-/* env vars */
-const {
-	BASE_URL,
-	NAME,
-	TITLE,
-	SLOGAN,
-	DESCRIPTION,
-	AUTHOR,
-	STATIC_DIR,
-	IMAGE,
-	IMAGE_SHARE,
-	FACEBOOK_URL,
-	TWITTER_URL,
-	INSTAGRAM_URL,
-	LINKEDIN_URL,
-	PHONE,
-	ADDRESS,
-	COUNTRY,
-	REGION,
-	POSTAL_CODE,
-	LOCALE,
-} = ENV;
-
 // Default Next-Seo meta tags
-export default {
+const DEFAULT_SEO = {
 	// Default meta tags
 	metas: {
-		titleTemplate: `%s | ${NAME}`,
-		title: TITLE,
-		description: DESCRIPTION,
-		canonical: BASE_URL,
+		titleTemplate: `%s | ${ENV.NAME}`,
+		title: ENV.TITLE,
+		description: ENV.DESCRIPTION,
+		canonical: ENV.BASE_URL,
 		openGraph: {
 			images: [
 				{
-					url: `${BASE_URL}${STATIC_DIR}${IMAGE_SHARE}`,
+					url: `${ENV.BASE_URL}${ENV.STATIC_DIR}${ENV.IMAGE_SHARE}`,
 					width: 800,
 					height: 800,
-					alt: TITLE,
+					alt: ENV.TITLE,
 				},
 			],
 		},
 		twitter: {
 			handle: "@handle",
-			site: AUTHOR,
+			site: ENV.TITLE,
 			cardType: "summary_large_image",
 		},
 		additionalMetaTags: [
@@ -54,7 +31,7 @@ export default {
 			},
 			{
 				name: "theme-color",
-				content: "#ffc107",
+				content: "#EEF4FF",
 			},
 			{
 				name: "google-site-verification",
@@ -66,49 +43,36 @@ export default {
 	microdatas: {
 		LocalBusinessJsonLd: {
 			type: "Organization",
-			id: `${BASE_URL}/#organization`,
-			name: NAME,
-			description: DESCRIPTION,
-			url: BASE_URL,
-			telephone: PHONE,
+			id: `${ENV.BASE_URL}/#organization`,
+			name: ENV.NAME,
+			description: ENV.DESCRIPTION,
+			url: ENV.BASE_URL,
+			telephone: ENV.PHONE,
 			address: [
 				{
-					streetAddress: ADDRESS,
-					addressLocality: COUNTRY,
-					addressRegion: REGION,
-					postalCode: POSTAL_CODE,
-					addressCountry: LOCALE.replace("en-", ""),
+					streetAddress: ENV.ADDRESS,
+					addressLocality: ENV.COUNTRY,
+					addressRegion: ENV.REGION,
+					postalCode: ENV.POSTAL_CODE,
+					addressCountry: ENV.LOCALE,
 				},
 			],
 			logo: {
 				type: "ImageObject",
-				id: `${BASE_URL}/#logo`,
-				inLanguage: LOCALE,
-				url: `${BASE_URL}${IMAGE}`,
+				id: `${ENV.BASE_URL}/#logo`,
+				inLanguage: ENV.LOCALE,
+				url: `${ENV.BASE_URL}${ENV.LOGO}`,
 				width: 112,
 				height: 112,
-				caption: NAME,
+				caption: ENV.NAME,
 			},
 			image: {
-				id: `${BASE_URL}#logo`,
+				id: `${ENV.BASE_URL}#logo`,
 			},
-			sameAs: [FACEBOOK_URL, TWITTER_URL, INSTAGRAM_URL, LINKEDIN_URL],
-			address: {
-				type: "PostalAddress",
-				streetAddress: ADDRESS,
-				addressLocality: COUNTRY,
-				postalCode: POSTAL_CODE,
-				addressCountry: COUNTRY,
-			},
-			telephone: PHONE,
-			slogan: SLOGAN,
-			description: DESCRIPTION,
+			sameAs: [ENV.FACEBOOK_URL, ENV.TWITTER_URL, ENV.INSTAGRAM_URL, ENV.LINKEDIN_URL],
+			slogan: ENV.SLOGAN,
 		},
-		// SocialProfileJsonLd: {
-		//   type: 'Person',
-		//   name: AUTHOR,
-		//   url: BASE_URL,
-		//   sameAs: [FACEBOOK_URL, TWITTER_URL, INSTAGRAM_URL, LINKEDIN_URL],
-		// },
 	},
 };
+
+export default DEFAULT_SEO;
