@@ -17,8 +17,8 @@ export const DonationInfo = ({ title, categories, text, donationInfos }) => {
         <div className={styles.donationInfo}>
           <h3 className={styles.h4}>Informacije za uplatu</h3>
           <ul className={styles.infoList}>
-            {donationInfos.map((info) => (
-              <li>
+            {donationInfos.map((info, index) => (
+              <li key={index}>
                 <span>{info.title}:</span> <span className={styles.infoValue}>{info.value}</span>
               </li>
             ))}
