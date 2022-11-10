@@ -1,0 +1,84 @@
+version: '3.7'
+
+services:
+
+  django:
+    container_name: caregivers-django
+    build:
+      context: ./backend/
+    environment:
+      - APP_ENV=development
+      - DB_NAME=caregivers
+      - DB_USERNAME=caregivers
+      - DB_PASSWORD=caregivers
+      - DB_HOSTNAME=postgres
+      - DJANGO_SUPERUSER_EMAIL=admin@example.com
+      - DJANGO_SUPERUSER_PASSWORD=admin
+      - EMAIL_HOST_USER=example@example.com
+      - EMAIL_HOST_PASSWORD=xxxxxxxxxxxxxxxx
+      - CORS_ALLOWED_ORIGIN=http://localhost:3000
+      - ALLOWED_HOST=localhost
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    volumes:
+      - ./backend/scripts:/app/scripts/
+      - ./backend/requirements:/app/requirements
+      - ./backend/src:/app/src/
+
+  postgres:
+    container_name: caregivers-postgres
+    image: postgres:14
+    environment:
+      - POSTGRES_PASSWORD=caregivers
+      - POSTGRES_USER=caregivers
+      - POSTGRES_DB=caregivers
+    volumes:
+      - caregivers-postgres-data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: caregivers-pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@example.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgres
+    volumes:
+      - caregivers-pgadmin-data:/var/lib/pgadmin
+
+  nextjs:
+    container_name: caregivers-nextjs
+    ports:
+      - "80:3000"
+    build:
+      context: ./frontend
+    environment:
+      - BASE_URL=http://localhost:3000
+      - STATIC_DIR=/
+      - API_URL=http://localhost:8000/api/v1
+      - NAME=Negovatelji
+      - TITLE=Negovatelji.com
+      - DESCRIPTION=Negovatelji sajt opis sajta
+      - SLOGAN=Negovatelji slogan koji ce da ima
+      - ADDRESS=Negovatelji adresa
+      - REGION=Negovatelji region
+      - PHONE=+199999999
+      - IMAGE=xconnect.jpg
+      - AUTHOR=@thestartup
+      - FACEBOOK_URL=https://negovatelji.com
+      - TWITTER_URL=https://negovatelji.com
+      - INSTAGRAM_URL=https://negovatelji.com
+      - LINKEDIN_URL=https://negovatelji.com
+      - COUNTRY=RS
+      - POSTAL_CODE=21000
+      - LOCALE=sr_Latn_RS
+      - AUTH_STORAGE_KEY=g-profile
+    command: npm run build && npm run start
+
+volumes:
+  caregivers-postgres-data:
+  caregivers-pgadmin-data:
