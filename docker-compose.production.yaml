@@ -16,7 +16,7 @@ services:
       - DJANGO_SUPERUSER_PASSWORD=admin
       - EMAIL_HOST_USER=example@example.com
       - EMAIL_HOST_PASSWORD=xxxxxxxxxxxxxxxx
-      - CORS_ALLOWED_ORIGIN=http://localhost:3000
+      - CORS_ALLOWED_ORIGIN=http://localhost
       - ALLOWED_HOST=localhost
     ports:
       - "8000:8000"
@@ -77,7 +77,7 @@ services:
       - POSTAL_CODE=21000
       - LOCALE=sr_Latn_RS
       - AUTH_STORAGE_KEY=g-profile
-    command: npm run build && npm run start
+    command: sh -c 'npm run build && npm run start'
 
 volumes:
   caregivers-postgres-data:
