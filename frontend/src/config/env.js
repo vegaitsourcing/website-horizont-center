@@ -2,12 +2,10 @@
 import getConfig from "next/config";
 
 // Only holds serverRuntimeConfig and publicRuntimeConfig
-const { serverRuntimeConfig, publicRuntimeConfig } = getConfig();
+const { publicRuntimeConfig } = getConfig();
 
 // Passed the ENV variables as constants
 export const ENV = {
-	/* server */
-	JWT_TOKEN: serverRuntimeConfig.jwtToken,
 	/* server and client */
 	BASE_URL: publicRuntimeConfig.baseUrl,
 	BASE_API_URL: publicRuntimeConfig.baseApiUrl,
@@ -20,7 +18,7 @@ export const ENV = {
 	DESCRIPTION: publicRuntimeConfig.description,
 	AUTHOR: publicRuntimeConfig.author,
 	STATIC_DIR: publicRuntimeConfig.staticFolder,
-	IMAGE: publicRuntimeConfig.image,
+	LOGO: publicRuntimeConfig.image,
 	IMAGE_SHARE: publicRuntimeConfig.imageShare,
 	FACEBOOK_URL: publicRuntimeConfig.facebookUrl,
 	TWITTER_URL: publicRuntimeConfig.twitterUrl,
@@ -29,6 +27,7 @@ export const ENV = {
 	PHONE: publicRuntimeConfig.phone,
 	ADDRESS: publicRuntimeConfig.address,
 	COUNTRY: publicRuntimeConfig.country,
+	REGION: publicRuntimeConfig.region,
 	POSTAL_CODE: publicRuntimeConfig.postalCode,
 	LOCALE: publicRuntimeConfig.locale,
 };

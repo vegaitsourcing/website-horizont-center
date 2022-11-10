@@ -1,5 +1,4 @@
 import { ENV } from "./config/env";
-import { BASE_SEO } from "./config/baseSEO";
 import { navigationItems } from "./config/navigationItems";
 
 export function hex2rgba(hex, alpha = 1) {
@@ -25,16 +24,16 @@ export function prepareSEO(pathname) {
 	];
 	const navigationItem = pages.find(page => page.pathname === pathname.slice(1));
 	return {
+		...ENV.BASE_SEO,
 		title: navigationItem?.name,
 		canonical: `${ENV.BASE_URL}${pathname}`,
-		...BASE_SEO,
 	};
 }
 
 export function prepareSingleResourceSEO(resourceID, title) {
 	return {
+		...ENV.BASE_SEO,
 		title: title,
 		canonical: `${ENV.BASE_URL}${resourceID}`,
-		...BASE_SEO,
 	};
 }
