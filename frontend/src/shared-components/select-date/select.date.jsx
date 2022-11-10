@@ -4,8 +4,7 @@ import moment from "moment";
 
 import styles from "./select.date.module.scss";
 
-export const SelectDate = (props) => {
-  const { inputValue, valueChangedHandler, isValidInput = true } = props;
+export const SelectDate = ({ inputValue, valueChangedHandler, isValidInput = true }) => {
   const [datePickerValue, setDatePickerValue] = useState(inputValue);
 
   useEffect(() => {
