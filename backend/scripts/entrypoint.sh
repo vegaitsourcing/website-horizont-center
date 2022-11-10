@@ -19,17 +19,17 @@ wait_for_postgres() {
 initialize_django_project() {
   if [ "$APP_ENV" = 'development' ]; then
     printc "Starting project in $APP_ENV mode \n\n" "info"
-    python3 manage.py migrate
-    python3 manage.py create_superuser --noinput
-    python3 manage.py compilemessages
-    python3 manage.py runserver 0.0.0.0:8000
+    python3 /app/src/manage.py migrate
+    python3 /app/src/manage.py create_superuser --noinput
+    python3 /app/src/manage.py compilemessages
+    python3 /app/src/manage.py runserver 0.0.0.0:8000
 
   elif [ "$APP_ENV" = 'production' ]; then
     printc "Starting project in $APP_ENV mode \n\n" "info"
-    python3 manage.py migrate
-    python3 manage.py create_superuser --noinput
-    python3 manage.py compilemessages
-    python3 manage.py runserver 0.0.0.0:8000
+    python3 /app/src/manage.py migrate
+    python3 /app/src/manage.py create_superuser --noinput
+    python3 /app/src/manage.py compilemessages
+    python3 /app/src/manage.py runserver 0.0.0.0:8000
 
   else
     printc "[ERROR]: Unknown environment: '$APP_ENV'." "danger"
