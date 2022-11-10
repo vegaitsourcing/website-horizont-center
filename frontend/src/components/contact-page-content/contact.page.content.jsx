@@ -1,8 +1,8 @@
 import React from "react";
 import { CenteredSection, PageHeader, SectionWithImage, StepsSection } from "shared-components";
-import styles from "./contact.module.scss";
+import styles from "./contact.page.content.module.scss";
 
-export const Contact = () => {
+export const ContactPageContent = () => {
 	return (
 		<div className={styles.contactPageContent}>
 			<PageHeader

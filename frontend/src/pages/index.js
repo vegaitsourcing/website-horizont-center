@@ -1,45 +1,25 @@
 import { NextSeo } from "next-seo";
-
-import { ENV } from "config/env";
-
 import { LayoutDefault } from "layouts";
 import { About } from "components";
-
-const { BASE_URL = "", BASE_SEO = "", STATIC_DIR = "", AUTHOR } = ENV;
+import { prepareSEO } from "../utils";
 
 const Home = (props) => {
-  const {
-    pathname,
-    data: { title, metaDescription },
-  } = props;
+	const { pathname } = props;
+	const SEO = prepareSEO(pathname);
 
-  const SEOS = {
-    title: title,
-    description: metaDescription,
-    canonical: `${BASE_URL}${pathname}`,
-    openGraph: [
-      {
-        url: BASE_URL,
-        images: { url: `${BASE_URL}${STATIC_DIR}logo-share.jpg` },
-        site_name: AUTHOR,
-      },
-    ],
-    ...BASE_SEO,
-  };
-
-  return (
-    <>
-      <NextSeo {...SEOS} />
-      <LayoutDefault pathname={pathname}>
-        <About />
-      </LayoutDefault>
-    </>
-  );
+	return (
+		<>
+			<NextSeo {...SEO} />
+			<LayoutDefault pathname={pathname}>
+				<About/>
+			</LayoutDefault>
+		</>
+	);
 };
 
 export async function getServerSideProps(ctx) {
-  const { resolvedUrl } = ctx;
-  return { props: { data: {}, pathname: resolvedUrl } };
+	const { resolvedUrl } = ctx;
+	return { props: { data: {}, pathname: resolvedUrl } };
 }
 
 export default Home;
