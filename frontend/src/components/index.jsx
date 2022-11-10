@@ -5,7 +5,6 @@ export * from "./about/about";
 export * from "./blog-list/blog.list";
 export * from "./registration-form/registration.form";
 export * from "./login-form/login.form";
-export * from "./blog-details/blog.details";
 export * from "./payment-slip/payment.slip";
 export * from "./blog-filters/blog.filters";
 export * from "./donation-filters/donation.filters";
