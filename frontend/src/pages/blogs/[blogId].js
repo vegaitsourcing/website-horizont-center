@@ -1,17 +1,19 @@
-import { BlogDetails } from "components";
 import { NextSeo } from "next-seo";
 import { LayoutDefault } from "layouts";
 import { prepareSingleResourceSEO } from "../../utils";
+import BlogsService from "../api/blogsService";
+import { AboutAuthor, BlogSections, PageHeader } from "../../shared-components";
 
-const SingleBlogDetails = ({ params }) => {
-	const { blogId } = params;
-	const SEO = prepareSingleResourceSEO(blogId, `Blog ${blogId}`);
+const SingleBlogDetails = ({ blog }) => {
+	const SEO = prepareSingleResourceSEO(blog.id, blog.title);
 
 	return (
 		<>
 			<NextSeo {...SEO} />
 			<LayoutDefault>
-				<BlogDetails blogId={blogId}/>
+				<PageHeader isNarrow title={blog.title} image={blog.image}/>
+				<BlogSections sections={blog.sections}/>
+				{blog.author && <AboutAuthor author={blog.author}/>}
 			</LayoutDefault>
 		</>
 	);
@@ -19,9 +21,10 @@ const SingleBlogDetails = ({ params }) => {
 
 export async function getServerSideProps(ctx) {
 	const { params } = ctx;
+	const response = await BlogsService.getBlogById(params.blogId);
 	return {
 		props: {
-			params: params,
+			blog: response.data,
 		},
 	};
 }
