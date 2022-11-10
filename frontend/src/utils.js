@@ -1,5 +1,6 @@
 import { ENV } from "./config/env";
 import { navigationItems } from "./config/navigationItems";
+import { BASE_SEO } from "./config/baseSEO";
 
 export function hex2rgba(hex, alpha = 1) {
 	const [r, g, b] = hex.match(/\w\w/g).map(x => parseInt(x, 16));
@@ -16,18 +17,19 @@ export function createResourceCardSecondaryTag({ name, color }) {
 	};
 }
 
-export function prepareSEOS(pathname) {
+export function prepareSEO(pathname) {
 	const navigationItem = navigationItems.filter(item => item.pathname === pathname);
 	return {
 		title: navigationItem.name,
 		canonical: `${ENV.BASE_URL}${pathname}`,
-		openGraph: [
-			{
-				url: ENV.BASE_URL,
-				images: { url: `${ENV.BASE_URL}${ENV.STATIC_DIR}logo.png` },
-				site_name: ENV.AUTHOR,
-			},
-		],
-		...ENV.BASE_SEO,
+		...BASE_SEO,
+	};
+}
+
+export function prepareSingleResourceSEO(resourceID, title) {
+	return {
+		title: title,
+		canonical: `${ENV.BASE_URL}${resourceID}`,
+		...BASE_SEO,
 	};
 }

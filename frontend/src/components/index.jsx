@@ -1,4 +1,4 @@
-export * from "./contact/contact";
+export * from "./contact-page-content/contact.page.content";
 export * from "./header/header";
 export * from "./footer/footer";
 export * from "./about/about";
