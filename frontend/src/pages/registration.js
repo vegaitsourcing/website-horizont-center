@@ -1,10 +1,9 @@
-import { LayoutDefault } from "layouts";
-
 import { NextSeo } from "next-seo";
 
-import { RegistrationForm } from "components";
-
 import { ENV } from "config/env";
+
+import { LayoutDefault } from "layouts";
+import { RegistrationForm } from "components";
 
 const { BASE_URL = "", BASE_API_URL = "", STATIC_DIR = "", AUTHOR } = ENV;
 

@@ -3,8 +3,9 @@ import { useState, useEffect } from "react";
 
 import env from "config/env";
 
-import { ProfileDetails } from "components";
 import { LayoutDefault } from "layouts";
+import { ProfileDetails } from "components";
+import { Spinner } from "shared-components";
 
 import beneficiariesService from "../api/beneficiariesService";
 import { beneficiaryEditList } from "components/user/hooks/beneficiaryEditList";
@@ -45,7 +46,13 @@ function BeneficiaryProfile(props) {
     }
   }, [isLoadingBeneficiary]);
 
-  if (isLoadingBeneficiary) return null;
+  if (isLoadingBeneficiary) {
+    return (
+      <LayoutDefault>
+        <Spinner />
+      </LayoutDefault>
+    );
+  }
 
   return (
     <>
