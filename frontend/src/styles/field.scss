@@ -2,8 +2,11 @@
 
 .fieldWrapper {
 	position: relative;
+	height: 48px;
+	width: 300px;
+	display: flex;
 
-	@include respond-to(laptop) {
+	@include respond-to(tablet) {
 		width: 100%;
 	}
 
@@ -12,21 +15,16 @@
 		-moz-appearance: none;
 		appearance: none;
 		padding: 0 24px;
+		width: 100%;
 		font-size: 16px;
-		width: 300px;
-		height: 48px;
 		background: #FFFFFF;
 		border: 1px solid #D0D5DD;
 		border-radius: 10px;
 
-		@include respond-to(laptop) {
-			width: 100%;
-		}
+	}
 
-		&.select {
-			cursor: pointer;
-			width: 350px;
-		}
+	select.field {
+		cursor: pointer;
 	}
 
 	.icon {
@@ -34,7 +32,7 @@
 		width: 16px;
 		height: 16px;
 		top: 14px;
-		right: 14px;
+		right: 20px;
 	}
 
 	&.hasError {
@@ -45,5 +43,14 @@
 			fill: $error-color;
 			transition: fill 100ms ease;
 		}
+	}
+}
+
+.fieldWrapperWide {
+	@extend .fieldWrapper;
+	width: 500px;
+
+	@include respond-to(tablet) {
+		width: 100%;
 	}
 }

@@ -1,44 +1,25 @@
 import { NextSeo } from "next-seo";
-
-import { ENV } from "config/env";
-
 import { LayoutDefault } from "layouts";
 import { RegistrationForm } from "components";
-
-const { BASE_URL = "", BASE_API_URL = "", STATIC_DIR = "", AUTHOR } = ENV;
+import { prepareSEO } from "../utils";
 
 function Registration(props) {
-  const {
-    pathname,
-    data: { title, metaTitle, description, metaDescription, header, slug, block_top = {} },
-  } = props;
+	const { pathname } = props;
+	const SEO = prepareSEO(pathname);
 
-  const SEOS = {
-    title,
-    //description: description.replace(/(<([^>]+)>)/gi, ""),
-    canonical: `${BASE_URL}${pathname}`,
-    openGraph: [
-      {
-        url: BASE_URL,
-        images: { url: `${BASE_URL}${STATIC_DIR}logo-share.jpg` },
-        site_name: AUTHOR,
-      },
-    ],
-  };
-
-  return (
-    <>
-      <NextSeo {...SEOS} />
-      <LayoutDefault>
-        <RegistrationForm />
-      </LayoutDefault>
-    </>
-  );
+	return (
+		<>
+			<NextSeo {...SEO} />
+			<LayoutDefault>
+				<RegistrationForm/>
+			</LayoutDefault>
+		</>
+	);
 }
 
 export async function getServerSideProps(ctx) {
-  const { resolvedUrl } = ctx;
-  return { props: { data: {}, pathname: resolvedUrl } };
+	const { resolvedUrl } = ctx;
+	return { props: { data: {}, pathname: resolvedUrl } };
 }
 
 export default Registration;
