@@ -60,6 +60,8 @@ services:
       - BASE_URL=http://localhost:3000
       - STATIC_DIR=/
       - API_URL=http://localhost:8000/api/v1
+    volumes:
+      - ./frontend:/usr/app/
     command: sh -c 'npm run dev'
 
 volumes:

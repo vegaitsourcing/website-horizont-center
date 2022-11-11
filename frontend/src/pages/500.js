@@ -1,12 +1,12 @@
 import ErrorPage from "next/error";
 import { LayoutDefault } from "layouts";
 
-const Code404Page = () => {
+const Code500Page = () => {
 	return (
 		<LayoutDefault>
-			<ErrorPage statusCode={404} withDarkMode={false}/>
+			<ErrorPage statusCode={500} withDarkMode={false}/>
 		</LayoutDefault>
 	);
 };
 
-export default Code404Page;
+export default Code500Page;

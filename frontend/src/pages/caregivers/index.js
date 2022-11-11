@@ -2,7 +2,7 @@ import { NextSeo } from "next-seo";
 import { LayoutDefault } from "layouts";
 import { useCallback, useEffect, useState } from "react";
 import { Pagination, ProfileFilters, Spinner } from "shared-components";
-import CaregiversService from "../api/caregiversService";
+import { CaregiversService } from "../api/caregiversService";
 import { CaregiverList } from "../../components";
 import { prepareSEO } from "../../utils";
 
@@ -74,7 +74,6 @@ function Caregivers(props) {
 
 export async function getServerSideProps(ctx) {
 	const { resolvedUrl } = ctx;
-
 	return {
 		props: {
 			pathname: resolvedUrl,

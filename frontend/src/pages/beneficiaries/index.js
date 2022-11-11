@@ -2,7 +2,7 @@ import { NextSeo } from "next-seo";
 import { useCallback, useEffect, useState } from "react";
 import { LayoutDefault } from "layouts";
 import { Pagination, ProfileFilters, Spinner } from "shared-components";
-import BeneficiariesService from "../api/beneficiariesService";
+import { BeneficiariesService } from "../api/beneficiariesService";
 import { BeneficiaryList } from "components";
 import { prepareSEO } from "../../utils";
 
