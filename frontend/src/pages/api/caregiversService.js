@@ -3,7 +3,7 @@ import { ProfileService } from "./profileService";
 
 const BASE_RESOURCE_NAME = "caregivers";
 
-const caregiversService = {
+export const CaregiversService = {
   getCaregivers: (pageSize, pageNumber, contains, gender, city) => {
     return ProfileService.getProfiles(BASE_RESOURCE_NAME, pageSize, pageNumber, contains, gender, city);
   },
@@ -11,5 +11,3 @@ const caregiversService = {
     return API.getResourceById(BASE_RESOURCE_NAME, caregiverId);
   },
 };
-
-export default caregiversService;

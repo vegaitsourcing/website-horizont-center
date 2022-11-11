@@ -1,76 +1,33 @@
 import { NextSeo } from "next-seo";
-import { useState, useEffect } from "react";
-
-import env from "config/env";
-
 import { LayoutDefault } from "layouts";
 import { ProfileDetails } from "components";
-import { Spinner } from "shared-components";
-
-import beneficiariesService from "../api/beneficiariesService";
+import { BeneficiariesService } from "../api/beneficiariesService";
 import { beneficiaryEditList } from "components/user/hooks/beneficiaryEditList";
+import { prepareSingleResourceSEO } from "../../utils";
 
-function BeneficiaryProfile(props) {
-  const {
-    pathname,
-    pageSize,
-    // data: { title, items, pagination, metaDescription },
-  } = props;
-  const SEOS = {
-    // title,
-    // description: metaDescription,
-    canonical: `${env?.BASE_URL}${pathname}`,
-    openGraph: [
-      {
-        url: env?.BASE_URL,
-        images: { url: `${env?.BASE_URL}${env?.STATIC_DIR}logo-share.jpg` },
-        site_name: env?.AUTHOR,
-      },
-    ],
-    ...env?.BASE_SEO,
-  };
+function BeneficiaryProfile({ pathname, beneficiaryProfile }) {
+	const seoTitle = `${beneficiaryProfile.user.first_name} ${beneficiaryProfile.user.last_name}`;
+	const SEO = prepareSingleResourceSEO(beneficiaryProfile.id, seoTitle);
 
-  const [isLoadingBeneficiary, setIsLoadingBeneficiary] = useState(true);
-  const [beneficiary, setBeneficiary] = useState();
-
-  async function getBeneficiary() {
-    await beneficiariesService.getBeneficiaryById(props.params.beneficiaryId).then((response) => {
-      setBeneficiary(response.data);
-      setIsLoadingBeneficiary(false);
-    });
-  }
-
-  useEffect(() => {
-    if (isLoadingBeneficiary) {
-      getBeneficiary();
-    }
-  }, [isLoadingBeneficiary]);
-
-  if (isLoadingBeneficiary) {
-    return (
-      <LayoutDefault>
-        <Spinner />
-      </LayoutDefault>
-    );
-  }
-
-  return (
-    <>
-      <NextSeo {...SEOS} />
-      <LayoutDefault pathname={pathname}>
-        <ProfileDetails profile={beneficiary} editList={beneficiaryEditList} />
-      </LayoutDefault>
-    </>
-  );
+	return (
+		<>
+			<NextSeo {...SEO} />
+			<LayoutDefault pathname={pathname}>
+				<ProfileDetails profile={beneficiaryProfile} editList={beneficiaryEditList}/>
+			</LayoutDefault>
+		</>
+	);
 }
 
 export async function getServerSideProps(ctx) {
-  const { params } = ctx;
-  return {
-    props: {
-      params: params,
-    },
-  };
+	const { params, resolvedUrl } = ctx;
+	const response = await BeneficiariesService.getBeneficiaryById(params.beneficiaryId);
+	return {
+		props: {
+			pathname: resolvedUrl,
+			beneficiaryProfile: response.data
+		},
+	};
 }
 
 export default BeneficiaryProfile;

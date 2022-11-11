@@ -10,4 +10,4 @@ RUN npm install
 
 EXPOSE 3000
 
-CMD "npm" "run" "dev"
+CMD ["/bin/sh", "-c", "npm run build; npm run start"]
