@@ -6,8 +6,8 @@ import { AboutAuthor, BlogSections, PageHeader } from "../../shared-components";
 import { useEffect, useState } from "react";
 import { useSingleResource } from "../../hooks";
 
-const SingleBlogDetails = ({ blogId }) => {
-	const [blog, errorPage] = useSingleResource(blogId, BlogsService.getBlogById);
+const SingleBlogDetails = ({ pathname, blogId }) => {
+	const [blog, errorPage] = useSingleResource(() => BlogsService.getBlogById(blogId));
 	const [SEO, setSEO] = useState({});
 
 	useEffect(() => {
@@ -17,7 +17,7 @@ const SingleBlogDetails = ({ blogId }) => {
 	return (
 		<>
 			<NextSeo {...SEO} />
-			<LayoutDefault>
+			<LayoutDefault pathname={pathname}>
 				{errorPage || blog && (
 					<>
 						<PageHeader isNarrow title={blog.title} image={blog.image}/>
@@ -31,10 +31,11 @@ const SingleBlogDetails = ({ blogId }) => {
 };
 
 export async function getServerSideProps(ctx) {
-	const { params } = ctx;
+	const { params, resolvedUrl } = ctx;
 	return {
 		props: {
 			blogId: params.blogId,
+			pathname: resolvedUrl,
 		},
 	};
 }

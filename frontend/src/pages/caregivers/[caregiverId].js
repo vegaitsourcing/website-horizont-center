@@ -4,16 +4,27 @@ import { LayoutDefault } from "layouts";
 import { CaregiversService } from "../api/caregiversService";
 import { caregiverEditList } from "components/user/hooks/caregiverEditList";
 import { prepareSingleResourceSEO } from "../../utils";
+import { useSingleResource } from "../../hooks";
+import { useEffect, useState } from "react";
 
-function CaregiverProfile({ pathname, caregiverProfile }) {
-	const seoTitle = `${caregiverProfile.user.first_name} ${caregiverProfile.user.last_name}`;
-	const SEO = prepareSingleResourceSEO(caregiverProfile.id, seoTitle);
+function CaregiverProfile({ pathname, caregiverProfileId }) {
+	const [caregiverProfile, errorPage] = useSingleResource(
+		() => CaregiversService.getCaregiverById(caregiverProfileId),
+	);
+	const [SEO, setSEO] = useState({});
+
+	useEffect(() => {
+		if (caregiverProfile) {
+			const seoTitle = `${caregiverProfile.user.first_name} ${caregiverProfile.user.last_name}`;
+			setSEO(prepareSingleResourceSEO(caregiverProfile.id, seoTitle));
+		}
+	}, [caregiverProfile]);
 
 	return (
 		<>
 			<NextSeo {...SEO} />
 			<LayoutDefault pathname={pathname}>
-				<ProfileDetails profile={caregiverProfile} editList={caregiverEditList}/>
+				{errorPage || caregiverProfile && <ProfileDetails profile={caregiverProfile} editList={caregiverEditList}/>}
 			</LayoutDefault>
 		</>
 	);
@@ -21,10 +32,9 @@ function CaregiverProfile({ pathname, caregiverProfile }) {
 
 export async function getServerSideProps(ctx) {
 	const { params, resolvedUrl } = ctx;
-	const response = await CaregiversService.getCaregiverById(params.caregiverId);
 	return {
 		props: {
-			caregiverProfile: response.data,
+			caregiverProfileId: params.caregiverId,
 			pathname: resolvedUrl,
 		},
 	};
