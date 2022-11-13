@@ -3,17 +3,40 @@ import { LayoutDefault } from "layouts";
 import { prepareSingleResourceSEO } from "../../utils";
 import BlogsService from "../api/blogsService";
 import { AboutAuthor, BlogSections, PageHeader } from "../../shared-components";
+import { useEffect, useState } from "react";
+import ErrorPage from "next/error";
+import { useSingleResource } from "../../hooks";
 
-const SingleBlogDetails = ({ blog }) => {
-	const SEO = prepareSingleResourceSEO(blog.id, blog.title);
+const SingleBlogDetails = ({ blogId }) => {
+	const [blog, statusCode] = useSingleResource(blogId, BlogsService.getBlogById);
+	const [SEO, setSEO] = useState({});
+
+	useEffect(() => {
+		if (blog) setSEO(prepareSingleResourceSEO(blog.id, blog.title));
+	}, [statusCode, blog]);
+
+	function PageBody() {
+		if (!statusCode) return null;
+
+		if (blog) {
+			return (
+				<>
+					<PageHeader isNarrow title={blog.title} image={blog.image}/>
+					<BlogSections sections={blog.sections}/>
+					{blog.author && <AboutAuthor author={blog.author}/>}
+				</>
+			);
+		}
+
+		const errorCodes = [401, 404, 500];
+		if (errorCodes.includes(statusCode)) return <ErrorPage statusCode={statusCode} withDarkMode={false}/>;
+	}
 
 	return (
 		<>
 			<NextSeo {...SEO} />
 			<LayoutDefault>
-				<PageHeader isNarrow title={blog.title} image={blog.image}/>
-				<BlogSections sections={blog.sections}/>
-				{blog.author && <AboutAuthor author={blog.author}/>}
+				<PageBody/>
 			</LayoutDefault>
 		</>
 	);
@@ -21,10 +44,9 @@ const SingleBlogDetails = ({ blog }) => {
 
 export async function getServerSideProps(ctx) {
 	const { params } = ctx;
-	const response = await BlogsService.getBlogById(params.blogId);
 	return {
 		props: {
-			blog: response.data,
+			blogId: params.blogId,
 		},
 	};
 }
