@@ -81,6 +81,9 @@
 	.linkItem {
 		color: $white-color;
 		font-weight: 600;
+		margin: 0;
+		cursor: pointer;
+		text-decoration: underline;
 	}
 
 	.socialMediaButtons {

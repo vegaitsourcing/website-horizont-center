@@ -1,8 +1,8 @@
 import React from "react";
-
 import Image from "next/image";
-
 import styles from "./footer.module.scss";
+import Link from "next/link";
+import { navigationItems } from "../../config/navigationItems";
 
 export const Footer = ({ isHidden }) => {
 	return (
@@ -29,14 +29,11 @@ export const Footer = ({ isHidden }) => {
 					</div>
 				</div>
 				<div className={styles.rightSide}>
-					<a className={styles.linkItem} href="#">Lorem, ipsum.</a>
-					<a className={styles.linkItem} href="#">Lorem, ipsum.</a>
-					<a className={styles.linkItem} href="#">Lorem, ipsum.</a>
-					<a className={styles.linkItem} href="#">Lorem, ipsum.</a>
-					<a className={styles.linkItem} href="#">Lorem, ipsum.</a>
-					<a className={styles.linkItem} href="#">Lorem, ipsum.</a>
-					<a className={styles.linkItem} href="#">Lorem, ipsum.</a>
-					<a className={styles.linkItem} href="#">Lorem, ipsum.</a>
+					{navigationItems.map(item => (
+						<Link key={item.pathname} href={`/${item.pathname}`}>
+							<p className={styles.linkItem}>{item.name}</p>
+						</Link>
+					))}
 				</div>
 			</section>
 			<section className={styles.copyrightsSection}>
