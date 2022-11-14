@@ -18,39 +18,15 @@
 
 .pageHeaderWithImage {
 	@extend .pageHeader;
-	margin-bottom: 380px;
-
-	@include respond-to(desktop) {
-		margin-bottom: 320px;
-	}
-	@include respond-to(laptop) {
-		margin-bottom: 250px;
-	}
 
 	.imageWrapper {
 		position: relative;
 		width: 100%;
-		height: 250px;
-
-		@include respond-to(desktop) {
-			height: 180px;
-		}
-		@include respond-to(laptop) {
-			height: 150px;
-		}
-		@include respond-to(mobile) {
-			height: 100px;
-		}
 	}
 
+	.imageWrapper,
 	.image {
 		height: 700px;
-		object-fit: cover;
-		position: absolute;
-		border-radius: 30px;
-		width: 100%;
-		right: 0;
-
 		@include respond-to(desktop) {
 			height: 600px;
 		}
@@ -63,6 +39,15 @@
 		@include respond-to(mobile) {
 			height: 300px;
 		}
+	}
+
+	.image {
+		object-fit: cover;
+		position: absolute;
+		border-radius: 30px;
+		width: 100%;
+		right: 0;
+
 	}
 }
 

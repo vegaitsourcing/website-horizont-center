@@ -2,10 +2,9 @@ import React from "react";
 import styles from "./page.header.module.scss";
 import { ImageTag } from "../image-tag/image.tag";
 
-export function PageHeader({ title, text, image, imageTag, withBackground = true, isNarrow = false }) {
+export function PageHeader({ title, text, image, imageTag, isNarrow = false }) {
 	const classNames = [
 		image ? styles.pageHeaderWithImage : styles.pageHeader,
-		withBackground ? styles.lightBlueBackground : null,
 		isNarrow ? styles.narrowPageHeader : null
 	].filter(className => !!className);
 	return (
