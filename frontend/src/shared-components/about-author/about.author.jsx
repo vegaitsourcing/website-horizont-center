@@ -20,7 +20,7 @@ const socialLinkMappings = [
 	},
 ];
 
-export const AboutAuthor = ({ author }) => {
+export const AboutAuthor = ({ author, title = "O autoru" }) => {
 	const socialLinks = socialLinkMappings.map(mapping => {
 		if (author[mapping.fieldName]) {
 			return { ...mapping, socialMediaURL: author[mapping.fieldName], imgAlt: mapping.fieldName };
@@ -35,7 +35,7 @@ export const AboutAuthor = ({ author }) => {
 					<h3 className={styles.authorName}>{author.name || author.first_name + " " + author.last_name}</h3>
 				</div>
 				<div className={styles.rightSide}>
-					<h4 className={styles.h4}>O autoru</h4>
+					<h4 className={styles.h4}>{title}</h4>
 					<p className={styles.authorInfo}>{author.description}</p>
 					<div className={styles.socialMediaLinks}>
 						{socialLinks.map((link, index) => (

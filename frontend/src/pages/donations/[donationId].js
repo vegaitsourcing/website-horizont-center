@@ -32,7 +32,7 @@ const SingleDonation = ({ pathname, donationId }) => {
 					<>
 						<PageHeader isNarrow title={donation.title} image={donation.image} imageTag={imageTag}/>
 						<DonationDetails donation={donation}/>
-						{donation.company && <AboutAuthor author={donation.company}/>}
+						{donation.company && <AboutAuthor author={donation.company} title="O kompaniji"/>}
 					</>
 				)}
 			</LayoutDefault>
