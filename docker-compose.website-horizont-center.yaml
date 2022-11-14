@@ -18,6 +18,7 @@ services:
       - EMAIL_HOST_PASSWORD=#{EMAIL_HOST_PASSWORD}#
       - CORS_ALLOWED_ORIGIN=https://horizont.codeforacause.rs
       - ALLOWED_HOST=api.horizont.codeforacause.rs
+      - CSRF_TRUSTED_ORIGIN=https://api.horizont.codeforacause.rs
     volumes:
       - ".:/var/lib/horizont-data:rw"
     ports:
