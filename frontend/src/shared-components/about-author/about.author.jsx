@@ -31,8 +31,8 @@ export const AboutAuthor = ({ author }) => {
 		<section className={styles.aboutAuthorSection}>
 			<div className={styles.aboutAuthorWrapper}>
 				<div className={styles.leftSide}>
-					<img className={styles.authorImage} src={author.image} alt="author"/>
-					<h3 className={styles.authorName}>{author.first_name + " " + author.last_name}</h3>
+					{author.image && <img className={styles.authorImage} src={author.image} alt="author"/>}
+					<h3 className={styles.authorName}>{author.name || author.first_name + " " + author.last_name}</h3>
 				</div>
 				<div className={styles.rightSide}>
 					<h4 className={styles.h4}>O autoru</h4>

@@ -6,7 +6,7 @@ import { AboutAuthor, BlogSections, PageHeader } from "../../shared-components";
 import { useEffect, useState } from "react";
 import { useSingleResource } from "../../hooks";
 
-const SingleBlogDetails = ({ pathname, blogId }) => {
+const SingleBlog = ({ pathname, blogId }) => {
 	const [blog, errorPage] = useSingleResource(() => BlogsService.getBlogById(blogId));
 	const [SEO, setSEO] = useState({});
 
@@ -40,4 +40,4 @@ export async function getServerSideProps(ctx) {
 	};
 }
 
-export default SingleBlogDetails;
+export default SingleBlog;

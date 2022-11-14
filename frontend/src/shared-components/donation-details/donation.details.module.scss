@@ -1,0 +1,73 @@
+@import '../../styles/main.scss';
+
+.donationDetails {
+	font-family: "Open Sans", sans-serif;
+	display: flex;
+	justify-content: space-between;
+
+	@include respond-to(laptop) {
+		flex-direction: column;
+	}
+
+	.leftSide {
+		width: 65%;
+	}
+
+	.rightSide {
+		width: 30%;
+	}
+
+	.leftSide,
+	.rightSide {
+		@include respond-to(laptop) {
+			width: 100%;
+		}
+	}
+
+	.leftSideOnly {
+		width: 100%;
+	}
+
+	.leftSideTitle,
+	.paymentSlipTitle {
+		font-weight: 600;
+		font-size: 24px;
+		margin-bottom: 40px;
+	}
+
+	.donationTypeTag {
+		background-color: #BFDDFF;
+		color: #0075FF;
+		width: fit-content;
+		padding: 5px 12px;
+		border-radius: 10px;
+	}
+
+	.paymentSlipItem {
+		margin: 8px 0;
+	}
+
+	.paymentSlipItemLabel {
+		font-weight: 600;
+		margin-right: 5px;
+	}
+
+	.paymentSlipItemValue {
+		font-weight: 300;
+	}
+}
+
+.donationDetails,
+.h2 {
+	padding-left: 15%;
+	padding-right: 15%;
+
+	@include respond-to(desktop) {
+		padding-left: 10%;
+		padding-right: 10%;
+	}
+	@include respond-to(tablet) {
+		padding-left: 5%;
+		padding-right: 5%;
+	}
+}
