@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.translation import gettext_lazy as _
 
 from apps.common.admin import ModelAdminMixin
 from apps.donations.admin.donation_company_admin_inline import DonationCompanyAdminInline
@@ -18,6 +19,7 @@ class DonationAdmin(admin.ModelAdmin, ModelAdminMixin):
     list_display = (
         'title',
         'is_active',
+        'is_financial',
         'created',
     )
     inlines = [
@@ -28,3 +30,9 @@ class DonationAdmin(admin.ModelAdmin, ModelAdminMixin):
         'is_active',
         'title'
     )
+
+    def is_financial(self, obj: Donation = None) -> bool:
+        return bool(obj.financial_info)
+
+    is_financial.boolean = True
+    is_financial.short_description = _('financila')

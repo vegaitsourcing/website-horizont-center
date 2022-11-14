@@ -9,9 +9,19 @@ import { useEffect, useState } from "react";
 const SingleDonation = ({ pathname, donationId }) => {
 	const [donation, errorPage] = useSingleResource(() => DonationsService.getDonationById(donationId));
 	const [SEO, setSEO] = useState({});
+	const [imageTag, setImageTag] = useState({});
 
 	useEffect(() => {
-		if (donation) setSEO(prepareSingleResourceSEO(donation.id, donation.title));
+		if (donation) {
+			setSEO(prepareSingleResourceSEO(donation.id, donation.title));
+			setImageTag({
+				name: donation.is_active ? "U TOKU" : "ZAVRŠENO",
+				style: {
+					color: donation.is_active ? "#FFFFFF" : "#0075FF",
+					backgroundColor: donation.is_active ? "#0075FF" : "#FFFFFF",
+				},
+			});
+		}
 	}, [donation]);
 
 	return (
@@ -20,7 +30,7 @@ const SingleDonation = ({ pathname, donationId }) => {
 			<LayoutDefault pathname={pathname}>
 				{errorPage || donation && (
 					<>
-						<PageHeader isNarrow title={donation.title} image={donation.image}/>
+						<PageHeader isNarrow title={donation.title} image={donation.image} imageTag={imageTag}/>
 						<DonationDetails donation={donation}/>
 						{donation.company && <AboutAuthor author={donation.company}/>}
 					</>
