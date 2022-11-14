@@ -17,7 +17,7 @@ services:
       - EMAIL_HOST_USER=#{EMAIL_HOST_USER}#
       - EMAIL_HOST_PASSWORD=#{EMAIL_HOST_PASSWORD}#
       - CORS_ALLOWED_ORIGIN=https://horizont.codeforacause.rs
-      - ALLOWED_HOST=horizont.codeforacause.rs
+      - ALLOWED_HOST=api.horizont.codeforacause.rs
     volumes:
       - ".:/var/lib/horizont-data:rw"
     ports:
@@ -44,5 +44,5 @@ services:
       - "48500:3000"
     environment:
       - BASE_URL=https://horizont.codeforacause.rs
-      - API_URL=http://django/api/v1
+      - API_URL=https://api.horizont.codeforacause.rs/api/v1
       - STATIC_DIR=/
