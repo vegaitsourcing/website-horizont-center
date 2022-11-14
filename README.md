@@ -28,7 +28,7 @@ Open http://localhost:3000 and http://localhost:8000/ with your browser to see t
 
 Run the command below to load (all) test data (fixtures):
 
-    docker exec -it caregivers-django sh -c 'python manage.py load_data'
+    docker exec -it caregivers-django sh -c 'python /app/src/manage.py load_data'
 
 **NOTE**: this will add a superuser as well with these credentials:
 
@@ -47,7 +47,7 @@ Use the above credentials to log in to Django Admin.
 
 If you want to create another superuser, run this command:
 
-- `docker exec -it caregivers-django sh -c 'python manage.py create_superuser'`
+- `docker exec -it caregivers-django sh -c 'python /app/src/manage.py create_superuser'`
 
 ### pgAdmin (optional)
 

@@ -21,6 +21,7 @@ initialize_django_project() {
     printc "Starting project in $APP_ENV mode \n\n" "info"
     python3 /app/src/manage.py migrate
     python3 /app/src/manage.py create_superuser --noinput
+    python3 /app/src/manage.py load_data
     python3 /app/src/manage.py compilemessages
     python3 /app/src/manage.py runserver 0.0.0.0:8000
 
