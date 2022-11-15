@@ -30,7 +30,6 @@ export const RegistrationForm = () => {
   const handleRegistrationChange = (newData, form, itemType, userForm) => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
     if (form === "formStep1") {
-      console.log("New data:", newData);
       registrationForm.formStep1 = { data: { profileType: newData }, isCompleted: false };
     }
     if (form === "formStep2") {
