@@ -26,7 +26,7 @@ export const RegistrationStepTwo = ({ stepNumber, valueChangedHandler, isFormVal
       <div className={styles.notRobotBox}>
         {/*TODO: <div className={styles.reCaptcha}>not robot</div>*/}
         <div className={styles.notRobotText}>
-          <p className={styles.p1}>
+          <p className={[styles.p1, styles.alignCetner].join(" ")}>
             Slanjem aplikacije prihvatate da budete kontaktirani za razgovor sa sa zainteresovanim osobama za traženje
             pomoći u nezi. Platofrma NEGOVATELJI.RS je namenjena kreiranju zajednice i povezivanju osoba koje pružaju
             pomoć i onih kojima je ta pomoć neophodna i ne preuzima odgovornost za pregovaranje, ugovaranje niti

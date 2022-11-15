@@ -48,13 +48,7 @@ export const Select = ({
           className={[styles.icon, !isValidInput ? styles.inputError : ""].join(" ")}
         />
       </div>
-      {!isValidInput ? (
-        <div>
-          <div className={styles.inputError}>Morate odabrati bar jednu opciju</div>
-        </div>
-      ) : (
-        ""
-      )}
+      {!isValidInput ? <div className={styles.inputError}>Morate odabrati bar jednu opciju</div> : ""}
     </div>
   );
 };

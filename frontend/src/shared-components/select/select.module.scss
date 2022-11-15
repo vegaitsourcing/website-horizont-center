@@ -17,8 +17,13 @@
     }
 }
 
-.selectInput {
+.selectInputWrapper {
     width: 300px;
+    display: inline-block;
+    margin: 0px 24px 24px 0px;
+}
+
+.selectInput {
     text-align: center;
     justify-content: center;
     display: flex;
