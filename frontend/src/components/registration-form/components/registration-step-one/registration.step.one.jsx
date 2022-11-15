@@ -24,7 +24,7 @@ export const RegistrationStepOne = ({ stepNumber, valueChangedHandler, isFormVal
           type="dropdown"
           placeholder="Tip profila*"
           hasError={false}
-          options={["Negovatelj", "Negovani"]}
+          options={{ Negovatelj: "Negovatelj", Negovani: "Negovani" }}
           inputValue={formStep1Data?.data?.profileType}
           valueChangedHandler={(e) => valueChangedHandler(e)}
           isValidInput={isFormValid}

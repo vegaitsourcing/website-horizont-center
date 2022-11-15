@@ -61,13 +61,15 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
                 key={input.id}
                 id={input.id}
                 type={input.type}
-                options={input.options}
+                options={input.name === "city" ? cityOptions : input.options}
                 name={input.name}
                 step={input.step}
                 placeholder={input.placeholder}
                 inputValue={formData?.data?.[userFormType]?.[input.name] ?? ""}
                 valueChangedHandler={(e) => handleValueChange(e, input.name)}
-                isValidInput={formData?.data?.[userFormType]?.[input.name] === "" ? false : true}
+                isValidInput={
+                  formData?.data?.[userFormType]?.[input.name] === "" ? (input.unrequired ? true : false) : true
+                }
               />
             );
           })}

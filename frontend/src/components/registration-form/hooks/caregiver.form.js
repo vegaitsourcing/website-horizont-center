@@ -33,10 +33,9 @@ export const caregiverFormFields = [
     { id: "experience", type: "text", name: "experience", placeholder: "Iskustvo*" },
     {
       id: "weekly_days",
-      type: "dropdown",
+      type: "text",
       name: "weekly_days",
-      placeholder: "Dostupnost broja dana nedeljno*",
-      options: { 1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7" },
+      placeholder: "Dostupnost tokom nedelje*",
     },
     {
       id: "daily_hours",
@@ -44,6 +43,20 @@ export const caregiverFormFields = [
       name: "daily_hours",
       step: ".01",
       placeholder: "Koliko sati dnevno*",
+    },
+    {
+      id: "facebook_url",
+      type: "facebook_url",
+      name: "daily_hours",
+      placeholder: "Link do vašeg facebook profila*",
+      unrequired: true,
+    },
+    {
+      id: "instagram_url",
+      type: "facebook_url",
+      name: "daily_hours",
+      placeholder: "Link do vašeg instagram profila*",
+      unrequired: true,
     },
   ],
 ];

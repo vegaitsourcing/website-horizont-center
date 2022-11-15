@@ -24,6 +24,8 @@ export const getUserData = () => {
     beneficiary_person: formStep2.beneficiary_person,
     helping_period: formStep2.helping_period,
     care_type: formStep2.care_type,
+    facebook_url: formStep2.facebook_url,
+    instagram_url: formStep2.instagram_url,
   };
   return { userType: userType, userData: userData };
 };

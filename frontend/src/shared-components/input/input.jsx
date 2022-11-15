@@ -44,6 +44,7 @@ export const Input = ({
           name={name}
           id={id}
           step={step}
+          min={"0.1"}
           onChange={(event) => valueChangedHandler(event.target.value)}
           placeholder={placeholder}
           className={[styles.field, !isValidInput ? styles.inputError : ""].join(" ")}
