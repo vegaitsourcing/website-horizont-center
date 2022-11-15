@@ -18,7 +18,7 @@ export const getUserData = () => {
     birthdate: formStep2.birthdate,
     work_application: formStep2.work_application,
     experience: formStep2.experience,
-    weekly_days: parseInt(formStep2.weekly_days),
+    weekly_days: formStep2.weekly_days,
     daily_hours: parseFloat(formStep2.daily_hours),
     image: formStep3.image,
     beneficiary_person: formStep2.beneficiary_person,
