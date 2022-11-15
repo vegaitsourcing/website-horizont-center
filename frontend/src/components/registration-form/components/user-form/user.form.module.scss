@@ -24,9 +24,7 @@
 }
 
 .formGrid {
-    display: grid;
-    gap: 24px;
-    grid-template-columns: repeat(4, 1fr)
+    display: block;
 }
 
 .p1 {

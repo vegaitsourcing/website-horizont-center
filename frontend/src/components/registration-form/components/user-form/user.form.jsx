@@ -2,14 +2,24 @@ import { useState, useEffect } from "react";
 
 import { Input } from "shared-components";
 
+import CitiesService from "pages/api/countriesService";
+
 import styles from "./user.form.module.scss";
 
 export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChangedHandler }) => {
   const [formData, setFormData] = useState({});
+  const [cityOptions, setCityOptions] = useState({});
+
+  async function prepareCityOptions() {
+    const serbianCities = await CitiesService.getAllSerbianCities();
+    const serbianCityOptions = serbianCities.reduce((prev, curr) => ({ ...prev, [curr]: curr }), {});
+    setCityOptions(serbianCityOptions);
+  }
 
   useEffect(() => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
     setFormData(registrationForm.formStep2);
+    prepareCityOptions();
   }, [stepNumber]);
 
   const handleValueChange = (value, inputName) => {
@@ -29,7 +39,7 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
                 key={input.id}
                 id={input.id}
                 type={input.type}
-                options={input.options}
+                options={input.name === "city" ? cityOptions : input.options}
                 name={input.name}
                 placeholder={input.placeholder}
                 inputValue={formData?.data?.[userFormType]?.[input.name] ?? ""}
@@ -51,13 +61,15 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
                 key={input.id}
                 id={input.id}
                 type={input.type}
-                options={input.options}
+                options={input.name === "city" ? cityOptions : input.options}
                 name={input.name}
                 step={input.step}
                 placeholder={input.placeholder}
                 inputValue={formData?.data?.[userFormType]?.[input.name] ?? ""}
                 valueChangedHandler={(e) => handleValueChange(e, input.name)}
-                isValidInput={formData?.data?.[userFormType]?.[input.name] === "" ? false : true}
+                isValidInput={
+                  formData?.data?.[userFormType]?.[input.name] === "" ? (input.unrequired ? true : false) : true
+                }
               />
             );
           })}

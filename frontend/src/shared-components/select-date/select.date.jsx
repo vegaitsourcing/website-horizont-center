@@ -17,7 +17,7 @@ export const SelectDate = ({ inputValue, valueChangedHandler, isValidInput = tru
   };
 
   return (
-    <div className={[styles.datePicker, !isValidInput ? styles.error : ""].join(" ")}>
+    <div className={[styles.datePicker, styles.inputWrapper, !isValidInput ? styles.error : ""].join(" ")}>
       <DatePicker
         placeholderText={inputValue != "" ? inputValue : "Datum rođenja Dan/Mesec/Godina**"}
         dateFormat="dd/MM/yyyy"

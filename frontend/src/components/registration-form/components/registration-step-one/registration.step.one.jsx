@@ -13,7 +13,7 @@ export const RegistrationStepOne = ({ stepNumber, valueChangedHandler, isFormVal
 
   return (
     <div className={styles.registerAccount}>
-      <p className={styles.p1}>
+      <p className={[styles.p1, styles.alignCenter].join(" ")}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas animi distinctio est sunt. Saepe
         earum id corporis vero voluptatum.
       </p>
@@ -24,7 +24,7 @@ export const RegistrationStepOne = ({ stepNumber, valueChangedHandler, isFormVal
           type="dropdown"
           placeholder="Tip profila*"
           hasError={false}
-          options={["Negovatelj", "Negovani"]}
+          options={{ Negovatelj: "Negovatelj", Negovani: "Negovani" }}
           inputValue={formStep1Data?.data?.profileType}
           valueChangedHandler={(e) => valueChangedHandler(e)}
           isValidInput={isFormValid}

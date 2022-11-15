@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import styles from "./registration.step.three.module.scss";
 
 export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
-  const defaultImg = "../../images/default_profile_image.svg";
+  const defaultImg = "../../images/profile.image.placeholder.svg";
   const [countValue, setCount] = useState(0);
   const [isValidImg, setIsValidImg] = useState(false);
   const [isValidTextArea, setIsValidTextArea] = useState(false);
@@ -65,7 +65,7 @@ export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
           Dodaj fotografiju
         </p>
       </div>
-      <div className={styles.input}>
+      <div className={styles.descriptionInput}>
         <textarea
           id="description"
           name="description"

@@ -9,22 +9,14 @@ export const beneficiaryFormFields = [
   ],
   //Beneficiary fields
   [
-    // TO DO: APi postanski brojevi
     {
       id: "postal_code",
       type: "number",
       name: "postal_code",
       placeholder: "Poštanski broj*",
     },
-    // TO DO: API gradovi
-    {
-      id: "city",
-      type: "text",
-      name: "city",
-      placeholder: "Grad*",
-    },
-    { id: "beneficiary_person", type: "text", name: "beneficiary_person", placeholder: "Kome je potrebna nega*" },
-    //text polje
+    { id: "city", type: "dropdown", name: "city", placeholder: "Mesto stanovanja*", options: {} },
+    { id: "beneficiary_person", type: "text", name: "beneficiary_person", placeholder: "Kome je potrebna nega?*" },
     {
       id: "helping_period",
       type: "text",
@@ -40,10 +32,9 @@ export const beneficiaryFormFields = [
     },
     {
       id: "weekly_days",
-      type: "dropdown",
+      type: "text",
       name: "weekly_days",
-      placeholder: "Dostupnost broja dana nedeljno*",
-      options: { 1: "1", 2: "2", 3: "3", 4: "4", 5: "5", 6: "6", 7: "7" },
+      placeholder: "Dostupnost tokom nedelje*",
     },
     {
       id: "daily_hours",
