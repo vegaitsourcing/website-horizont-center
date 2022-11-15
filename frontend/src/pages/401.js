@@ -1,10 +1,10 @@
-import ErrorPage from "next/error";
 import { LayoutDefault } from "layouts";
+import { ErrorPageContent } from "../shared-components";
 
 const Code401Page = () => {
 	return (
 		<LayoutDefault>
-			<ErrorPage statusCode={401} withDarkMode={false}/>
+			<ErrorPageContent statusCode={401}/>
 		</LayoutDefault>
 	);
 };

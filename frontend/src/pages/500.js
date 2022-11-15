@@ -1,10 +1,10 @@
-import ErrorPage from "next/error";
 import { LayoutDefault } from "layouts";
+import { ErrorPageContent } from "../shared-components";
 
 const Code500Page = () => {
 	return (
 		<LayoutDefault>
-			<ErrorPage statusCode={500} withDarkMode={false}/>
+			<ErrorPageContent statusCode={500}/>
 		</LayoutDefault>
 	);
 };

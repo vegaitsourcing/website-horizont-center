@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ErrorPage from "next/error";
+import { ErrorPageContent } from "../shared-components";
 
 export function useSingleResource(fetchResource) {
 	const [resource, setResource] = useState(null);
@@ -14,7 +14,7 @@ export function useSingleResource(fetchResource) {
 			} catch (error) {
 				const errorCodes = [401, 404, 500];
 				if (errorCodes.includes(error.response.status)) {
-					setErrorPage(<ErrorPage statusCode={error.response.status} withDarkMode={false}/>);
+					setErrorPage(<ErrorPageContent statusCode={error.response.status}/>);
 				}
 			}
 			setIsFetching(false);
