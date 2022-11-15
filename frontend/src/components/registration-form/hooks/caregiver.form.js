@@ -7,14 +7,12 @@ export const caregiverFormFields = [
     { id: "phone_number", type: "text", name: "phone_number", placeholder: "Unesite Vaš broj telefona*" },
     { id: "password", type: "password", name: "password", placeholder: "Unesite Vašu lozinku*" },
     {
-      // TO DO: APi postanski brojevi
       id: "postal_code",
       type: "number",
       name: "postal_code",
       placeholder: "Poštanski broj*",
     },
-    // TO DO: API gradovi
-    { id: "city", type: "text", name: "city", placeholder: "Mesto stanovanja*" },
+    { id: "city", type: "dropdown", name: "city", placeholder: "Mesto stanovanja*", options: {} },
     { id: "birthdate", type: "datepicker", name: "birthdate", placeholder: "Dan / Mesec / Godina rodjenja*" },
     {
       id: "gender",
@@ -33,7 +31,6 @@ export const caregiverFormFields = [
       placeholder: "Profesija*",
     },
     { id: "experience", type: "text", name: "experience", placeholder: "Iskustvo*" },
-    //input text polje
     {
       id: "weekly_days",
       type: "dropdown",

@@ -9,22 +9,14 @@ export const beneficiaryFormFields = [
   ],
   //Beneficiary fields
   [
-    // TO DO: APi postanski brojevi
     {
       id: "postal_code",
       type: "number",
       name: "postal_code",
       placeholder: "Poštanski broj*",
     },
-    // TO DO: API gradovi
-    {
-      id: "city",
-      type: "text",
-      name: "city",
-      placeholder: "Grad*",
-    },
+    { id: "city", type: "dropdown", name: "city", placeholder: "Mesto stanovanja*", options: {} },
     { id: "beneficiary_person", type: "text", name: "beneficiary_person", placeholder: "Kome je potrebna nega*" },
-    //text polje
     {
       id: "helping_period",
       type: "text",
