@@ -39,7 +39,9 @@ export const ResourceCard = ({ resourceURL, image, imageTag, secondaryTags = [],
 				</div>
 				<div className={styles.buttonRow}>
 					<Link href={resourceURL} passHref>
-						<LongButton value="Saznaj više" type="filled"/>
+						<div>
+							<LongButton value="Saznaj više" type="filled"/>
+						</div>
 					</Link>
 				</div>
 			</div>

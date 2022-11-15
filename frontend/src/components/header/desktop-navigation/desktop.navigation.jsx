@@ -20,11 +20,15 @@ function AuthenticatedMenu({ onLogout, avatarURL }) {
 function AnonymousMenu() {
 	return (
 		<div className={styles.anonymousMenu}>
-			<Link href="/login" passHref>
-				<LongButton value="Prijava" type="border"/>
+			<Link href="/login">
+				<div>
+					<LongButton value="Prijava" type="border"/>
+				</div>
 			</Link>
-			<Link href="/registration" passHref>
-				<LongButton value="Registracija" type="filled"/>
+			<Link href="/registration">
+				<div>
+					<LongButton value="Registracija" type="filled"/>
+				</div>
 			</Link>
 		</div>
 	);

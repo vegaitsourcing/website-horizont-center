@@ -18,7 +18,9 @@ export function CenteredSection({
 			<p className={styles.description}>{paragraph}</p>
 			<div className={styles.buttonWrapper}>
 				<Link href={buttonHref}>
-					<LongButton value={buttonLabel}/>
+					<div>
+						<LongButton value={buttonLabel}/>
+					</div>
 				</Link>
 			</div>
 		</section>
