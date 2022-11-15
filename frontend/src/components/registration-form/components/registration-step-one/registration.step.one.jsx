@@ -13,7 +13,7 @@ export const RegistrationStepOne = ({ stepNumber, valueChangedHandler, isFormVal
 
   return (
     <div className={styles.registerAccount}>
-      <p className={styles.p1}>
+      <p className={[styles.p1, styles.alignCenter].join(" ")}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis voluptas animi distinctio est sunt. Saepe
         earum id corporis vero voluptatum.
       </p>

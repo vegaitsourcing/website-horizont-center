@@ -3,6 +3,7 @@
 
 
 .selectError {
+    height: 48px;
     border: 2px solid $error-color !important;
     color: $error-color;
 
@@ -16,7 +17,15 @@
     }
 }
 
+.selectInput {
+    width: 300px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+}
+
 .inputError {
+    display: inline-block;
     color: $error-color;
     font-size: medium;
     margin: 1% 2%;
