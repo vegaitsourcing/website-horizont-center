@@ -15,7 +15,7 @@ class Blog(BaseModel):
     )
     image = models.ImageField(
         verbose_name=_('cover image'),
-        upload_to=_('images/blogs'),
+        upload_to='images/blogs',
         null=True,
     )
     description = models.TextField(

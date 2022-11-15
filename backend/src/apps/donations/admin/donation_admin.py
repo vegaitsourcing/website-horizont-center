@@ -35,4 +35,4 @@ class DonationAdmin(admin.ModelAdmin, ModelAdminMixin):
         return bool(obj.financial_info)
 
     is_financial.boolean = True
-    is_financial.short_description = _('financila')
+    is_financial.short_description = _('financial?')

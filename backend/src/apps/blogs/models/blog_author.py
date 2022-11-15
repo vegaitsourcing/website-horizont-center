@@ -25,7 +25,7 @@ class BlogAuthor(BaseModel):
     )
     image = models.ImageField(
         verbose_name=_('image'),
-        upload_to=_('images/blogAuthors'),
+        upload_to='images/blogs/authors',
     )
     facebook_url = models.URLField(
         verbose_name=_('facebook URL'),
