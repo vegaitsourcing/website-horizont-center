@@ -51,7 +51,7 @@
             object-fit: cover;
             object-position: top;
    
-            .editIcon {
+            .editImgIcon {
                 height: 25px;
                 color: white;
                 margin-top: 50px;
@@ -133,9 +133,23 @@
 
 .roundedImage:hover {
     cursor: pointer;
-    opacity: 0.2;
+
+    &.editEnabled {
+        opacity: 0.2;
+    }
 }
 
 .roundedImage:hover + .editImageOverlay {
     display: block;
+}
+
+.editIcon {
+    height: 18px;
+    margin-left: 10px;
+}
+
+.editCityInput {
+    width: 200px;
+    margin-left: 20px;
+    color: $subtext-color;
 }

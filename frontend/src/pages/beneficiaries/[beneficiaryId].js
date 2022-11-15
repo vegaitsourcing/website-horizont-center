@@ -1,43 +1,60 @@
 import { NextSeo } from "next-seo";
 import { LayoutDefault } from "layouts";
 import { ProfileDetails } from "components";
+import { Spinner } from "shared-components";
 import { BeneficiariesService } from "../api/beneficiariesService";
+import AuthService from "../api/authService";
 import { prepareSingleResourceSEO } from "../../utils";
 import { useSingleResource } from "../../hooks";
 import { useEffect, useState } from "react";
 import { caregiverEditList } from "../../components/user/hooks/caregiverEditList";
 
 function BeneficiaryProfile({ pathname, beneficiaryProfileId }) {
-	const [beneficiaryProfile, errorPage] = useSingleResource(
-		() => BeneficiariesService.getBeneficiaryById(beneficiaryProfileId),
-	);
-	const [SEO, setSEO] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const [authUser, setAuthUser] = useState({});
+  const [beneficiaryProfile, errorPage] = useSingleResource(() =>
+    BeneficiariesService.getBeneficiaryById(beneficiaryProfileId)
+  );
+  const [SEO, setSEO] = useState({});
 
-	useEffect(() => {
-		if (beneficiaryProfile) {
-			const seoTitle = `${beneficiaryProfile.user.first_name} ${beneficiaryProfile.user.last_name}`;
-			setSEO(prepareSingleResourceSEO(beneficiaryProfile.id, seoTitle));
-		}
-	}, [beneficiaryProfile]);
+  useEffect(() => {
+    if (beneficiaryProfile) {
+      setAuthUser(AuthService.getUser());
+      const seoTitle = `${beneficiaryProfile.user.first_name} ${beneficiaryProfile.user.last_name}`;
+      setSEO(prepareSingleResourceSEO(beneficiaryProfile.id, seoTitle));
+      setIsLoading(false);
+    }
+  }, [beneficiaryProfile]);
 
-	return (
-		<>
-			<NextSeo {...SEO} />
-			<LayoutDefault pathname={pathname}>
-				{errorPage || beneficiaryProfile && <ProfileDetails profile={beneficiaryProfile} editList={caregiverEditList}/>}
-			</LayoutDefault>
-		</>
-	);
+  if (isLoading) {
+    return (
+      <LayoutDefault>
+        <Spinner />
+      </LayoutDefault>
+    );
+  }
+
+  return (
+    <>
+      <NextSeo {...SEO} />
+      <LayoutDefault pathname={pathname}>
+        {errorPage ||
+          (beneficiaryProfile && (
+            <ProfileDetails profile={beneficiaryProfile} editList={caregiverEditList} authUser={authUser} />
+          ))}
+      </LayoutDefault>
+    </>
+  );
 }
 
 export async function getServerSideProps(ctx) {
-	const { params, resolvedUrl } = ctx;
-	return {
-		props: {
-			beneficiaryProfileId: params.beneficiaryId,
-			pathname: resolvedUrl,
-		},
-	};
+  const { params, resolvedUrl } = ctx;
+  return {
+    props: {
+      beneficiaryProfileId: params.beneficiaryId,
+      pathname: resolvedUrl,
+    },
+  };
 }
 
 export default BeneficiaryProfile;
