@@ -38,6 +38,26 @@
             object-fit: cover;
             object-position: top;
         }
+
+        .editImageOverlay {
+            display: none;
+            margin: auto;
+            margin-bottom: 15.5px;
+            margin-top: -144px;
+            width: 128px;
+            height: 128px;
+            background-color: rgb(#00000066, 0.4);
+            border-radius: 100%;
+            object-fit: cover;
+            object-position: top;
+   
+            .editIcon {
+                height: 25px;
+                color: white;
+                margin-top: 50px;
+            }
+        }
+
         .profileName {
             font-family: 'Open Sans';
             font-style: normal;
@@ -109,4 +129,13 @@
 
 .socialMediaLink {
     margin-right: 36px;
+}
+
+.roundedImage:hover {
+    cursor: pointer;
+    opacity: 0.2;
+}
+
+.roundedImage:hover + .editImageOverlay {
+    display: block;
 }

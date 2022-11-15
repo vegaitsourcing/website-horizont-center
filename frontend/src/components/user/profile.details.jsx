@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./profile.details.module.scss";
 
@@ -13,6 +14,9 @@ export const ProfileDetails = ({ profile, editList }) => {
             src={profile.image ?? "/images/profile.image.placeholder.svg"}
             alt="profile image"
           />
+          <div className={styles.editImageOverlay}>
+            <FontAwesomeIcon icon={faPenToSquare} className={styles.editIcon} />
+          </div>
           <div className={styles.profileName}>{`${profile.user.first_name} ${profile.user.last_name}`}</div>
           <div className={`${styles.profileLocation} ${styles.p2}`}>
             <FontAwesomeIcon icon={faLocationDot} className={styles.icon} />
