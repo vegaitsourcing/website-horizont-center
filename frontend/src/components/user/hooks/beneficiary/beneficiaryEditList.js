@@ -1,4 +1,4 @@
-export const caregiverEditList = [
+export const beneficiaryEditList = [
   {
     title: "BROJ TELEFONA",
     fieldName: "phone_number",
@@ -6,7 +6,7 @@ export const caregiverEditList = [
   },
   {
     title: "BROJ TELEFONA 2",
-    fieldName: "phone_number",
+    fieldName: "second_phone_number",
     type: "text",
   },
   {
@@ -15,18 +15,22 @@ export const caregiverEditList = [
     type: "text",
   },
   {
-    title: "DRUŠTVENE MREŽE",
-    fieldName: "facebook_url",
-    fieldName2: "instagram_url",
+    title: "KOME JE POTREBNA NEGA?",
+    fieldName: "beneficiary_person",
     type: "text",
   },
   {
-    title: "ISKUSTVO",
-    fieldName: "experience",
+    title: "VRSTA POMOĆI",
+    fieldName: "care_type",
     type: "text",
   },
   {
-    title: "DOSTUPNOST",
+    title: "PERIOD PRUŽANJA POMOĆI",
+    fieldName: "helping_period",
+    type: "text",
+  },
+  {
+    title: "BROJ DANA NEDELJNO",
     fieldName: "weekly_days",
     type: "text",
   },

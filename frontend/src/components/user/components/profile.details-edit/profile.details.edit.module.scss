@@ -111,13 +111,13 @@
     }
 
     .userDetails {
-        margin-top: 64px;
         display: block;
 
         .elementInfo {
             vertical-align: top;
-            width: 50%;
+            width: 300px;
             display: inline-block;
+            margin-right: 100px;
             margin-bottom: 20px;
         }
     }
@@ -152,4 +152,8 @@
     width: 200px;
     margin-left: 20px;
     color: $subtext-color;
+}
+
+.fullWidth {
+    display: block !important;
 }

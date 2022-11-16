@@ -4,7 +4,6 @@ import { Spinner } from "shared-components";
 import { LayoutDefault } from "layouts";
 import { CaregiversService } from "../api/caregiversService";
 import AuthService from "../api/authService";
-import { caregiverEditList } from "components/user/hooks/caregiverEditList";
 import { prepareSingleResourceSEO } from "../../utils";
 import { useSingleResource } from "../../hooks";
 import { useEffect, useState } from "react";
@@ -38,7 +37,7 @@ function CaregiverProfile({ pathname, caregiverProfileId }) {
       <LayoutDefault pathname={pathname}>
         {errorPage ||
           (caregiverProfile && (
-            <ProfileDetails profile={caregiverProfile} editList={caregiverEditList} authUser={authUser} />
+            <ProfileDetails profile={caregiverProfile} userType={"caregiver"} authUser={authUser} />
           ))}
       </LayoutDefault>
     </>

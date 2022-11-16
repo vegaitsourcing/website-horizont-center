@@ -5,9 +5,8 @@ import { Spinner } from "shared-components";
 import { BeneficiariesService } from "../api/beneficiariesService";
 import AuthService from "../api/authService";
 import { prepareSingleResourceSEO } from "../../utils";
-import { useSingleResource } from "../../hooks";
+import { useSingleResource } from "hooks";
 import { useEffect, useState } from "react";
-import { caregiverEditList } from "../../components/user/hooks/caregiverEditList";
 
 function BeneficiaryProfile({ pathname, beneficiaryProfileId }) {
   const [isLoading, setIsLoading] = useState(true);
@@ -40,7 +39,7 @@ function BeneficiaryProfile({ pathname, beneficiaryProfileId }) {
       <LayoutDefault pathname={pathname}>
         {errorPage ||
           (beneficiaryProfile && (
-            <ProfileDetails profile={beneficiaryProfile} editList={caregiverEditList} authUser={authUser} />
+            <ProfileDetails profile={beneficiaryProfile} userType={"beneficiary"} authUser={authUser} />
           ))}
       </LayoutDefault>
     </>
