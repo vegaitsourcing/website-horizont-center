@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
-import { Input } from "shared-components";
+import { Input, TextArea } from "shared-components";
 import CitiesService from "pages/api/countriesService";
 
 import styles from "./profile.details.edit.module.scss";
@@ -31,16 +31,7 @@ export const ProfileDetailsEdit = ({ profile, editList, authUser }) => {
     if (item.title === "OPSTE INFORMACIJE") {
       return (
         <div>
-          <div>OPSTE INFORMACIJE</div>
-          <Input
-            id={item.fieldName}
-            type={item.type}
-            name={item.fieldName}
-            placeholder={item.placeholder}
-            inputValue={profile[item.fieldName]}
-            valueChangedHandler={(e) => handleValueChange(e)}
-            isValidInput={true}
-          />
+          <TextArea defaultValue={profile.description} valueChangedHandler={(e) => handleValueChange(e)} />
         </div>
       );
     }
@@ -105,7 +96,7 @@ export const ProfileDetailsEdit = ({ profile, editList, authUser }) => {
           <div className={styles.userDetails}>
             {editList.map((item, index) => {
               return (
-                <div key={index} className={[styles.elementInfo, item.styleClass ? styles.fullWidth : null].join(" ")}>
+                <div key={index} className={[styles.elementInfo, styles[item.styleClass]].join(" ")}>
                   <h5 className={styles.h5}>
                     {item.title}
                     <FontAwesomeIcon icon={faPenToSquare} className={styles.editIcon} />

@@ -1,0 +1,102 @@
+@import 'styles/main.scss';
+
+.imageUpload {
+    text-align: left;
+    padding-block: 64px;
+    padding: 30px;
+
+    .imageField {
+        display: inline-block;
+        text-align: center;
+        vertical-align: top;
+        margin-right: 25px;
+        margin-bottom: 25px;
+        padding: 36px 64px;
+        max-width: 276px;
+        border: 1px solid #D0D5DD;
+        filter: drop-shadow(0px 0px 24px rgba(0, 0, 0, 0.05));
+        border-radius: 16px;
+
+        &.error {
+            border: 2px solid $error-color;
+        }
+
+        .image {
+            width: 128px;
+            height: 128px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .text {
+            cursor: pointer;
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 25px;
+            text-decoration-line: underline;
+            color: $blue-color;
+            flex: none;
+            order: 1;
+            flex-grow: 0;
+
+            &.error {
+                color: $error-color;
+            }
+        }
+    }
+}
+
+.descriptionInput {
+    display: inline-block;
+    width: 75%;
+
+    @include respond-to(laptop) {
+		width: 100%;
+	}
+
+    .textarea {
+        height: 100%;
+        width: calc(100% - 68px);
+        resize: none;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 12px 34px;
+        height: 239px;
+        background: #FFFFFF;
+        border: 1px solid #D0D5DD;
+        border-radius: 16px;
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 150%;
+        color: $input-text-color;
+
+        &.error {
+            border: 2px solid $error-color;
+            outline: none;
+
+            &.error::placeholder {
+                color: $error-color;
+            }
+        }
+    }
+
+    .charCount {
+        text-align: right;
+        margin: 0;
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 150%;
+        color: $blue-color;
+
+        &.error {
+            color: $error-color;
+        }
+    }
+}

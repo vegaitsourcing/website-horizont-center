@@ -15,3 +15,4 @@ export * from "./select-date/select.date";
 export * from "./spinner/spinner";
 export * from "./image-tag/image.tag";
 export * from "./error-page-content/error.page.content";
+export * from "./text-area/text.area";

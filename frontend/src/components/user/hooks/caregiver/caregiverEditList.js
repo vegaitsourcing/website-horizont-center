@@ -20,7 +20,7 @@ export const caregiverEditList = [
     fieldname: "description",
     type: "textArea",
     width: "full",
-    styleClass: "fullWidth",
+    styleClass: "textArea",
   },
   {
     title: "BROJ TELEFONA",
