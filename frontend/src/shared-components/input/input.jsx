@@ -16,6 +16,7 @@ export const Input = ({
   options,
   className,
   isValidInput = true,
+  errorMessage,
   withSearchIcon = false,
 }) => {
   if (type === "dropdown")
@@ -51,7 +52,7 @@ export const Input = ({
         />
         {withSearchIcon && <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.icon} />}
       </div>
-      {!isValidInput ? <div className={styles.textError}>Morate popuniti polje</div> : ""}
+      {!isValidInput ? <div className={styles.textError}>{errorMessage}</div> : ""}
     </div>
   );
 };

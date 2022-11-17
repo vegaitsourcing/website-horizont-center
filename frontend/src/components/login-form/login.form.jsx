@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import styles from "./login.form.module.scss";
 import { Input, LongButton } from "shared-components";
@@ -7,17 +7,45 @@ import AuthService from "../../pages/api/authService";
 
 export const LoginForm = () => {
   const router = useRouter();
+
+  const [emailValid, setEmailValid] = useState(true);
+  const [passwordValid, setPasswordValid] = useState(true);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
+  const validateEmail = () => {
+    let result = RegExp("^(.+)@(.+)$").test(formData.email);
+
+    console.log("email", result);
+    if (result) setEmailValid(true);
+    else setEmailValid(false);
+
+    return result;
+  };
+
+  const validatePassword = () => {
+    let result = formData.password != "" ? true : false;
+    console.log("pass", result);
+
+    if (result) setPasswordValid(true);
+    else setPasswordValid(false);
+
+    return result;
+  };
+
   async function submit() {
     try {
-      await AuthService.login(formData.email, formData.password);
-      await router.push("/");
+      if (validateEmail() & validatePassword()) {
+        console.log("started ogin");
+        await AuthService.login(formData.email, formData.password);
+        await router.push("/");
+      }
     } catch (error) {
       console.log("Handle form validation errors:", error.response.data); // TODO
+      alert(error.response.data.errors.non_field_errors);
     }
   }
 
@@ -40,6 +68,8 @@ export const LoginForm = () => {
           id="email"
           type="email"
           placeholder="Unesite Vašu E-mail adresu"
+          isValidInput={emailValid}
+          errorMessage="Unesite ispravnu email adresu"
           valueChangedHandler={(value) => updateFormData({ email: value })}
         />
         <Input
@@ -47,6 +77,7 @@ export const LoginForm = () => {
           id="password"
           type="password"
           placeholder="Unesite Vašu lozinku"
+          isValidInput={passwordValid}
           valueChangedHandler={(value) => updateFormData({ password: value })}
         />
       </div>
