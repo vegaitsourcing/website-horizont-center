@@ -52,7 +52,7 @@ export const Input = ({
         />
         {withSearchIcon && <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.icon} />}
       </div>
-      {!isValidInput ? <div className={styles.textError}>{errorMessage}</div> : ""}
+      {!isValidInput && errorMessage ? <div className={styles.textError}>{errorMessage}</div> : ""}
     </div>
   );
 };

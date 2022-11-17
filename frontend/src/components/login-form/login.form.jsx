@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useEffect } from "react";
+import React, { useCallback, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "./login.form.module.scss";
 import { Input, LongButton } from "shared-components";
@@ -8,44 +8,36 @@ import AuthService from "../../pages/api/authService";
 export const LoginForm = () => {
   const router = useRouter();
 
-  const [emailValid, setEmailValid] = useState(true);
-  const [passwordValid, setPasswordValid] = useState(true);
+  const [responseError, setResponseError] = useState(null);
 
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: { value: "", isValid: true },
+    password: { value: "", isValid: true },
   });
 
-  const validateEmail = () => {
-    let result = RegExp("^(.+)@(.+)$").test(formData.email);
+  const validateFormData = () => {
+    let isEmailValid = RegExp("^(.+)@(.+)$").test(formData.email.value);
+    let isPasswordValid = formData.password.value ? true : false;
 
-    console.log("email", result);
-    if (result) setEmailValid(true);
-    else setEmailValid(false);
+    console.log("isEmailValid", isEmailValid);
+    console.log("isPasswordValid", isPasswordValid);
 
-    return result;
-  };
-
-  const validatePassword = () => {
-    let result = formData.password != "" ? true : false;
-    console.log("pass", result);
-
-    if (result) setPasswordValid(true);
-    else setPasswordValid(false);
-
-    return result;
+    setFormData({
+      email: { value: formData.email.value, isValid: isEmailValid },
+      password: { value: formData.password.value, isValid: isPasswordValid },
+    });
   };
 
   async function submit() {
     try {
-      if (validateEmail() & validatePassword()) {
-        console.log("started ogin");
-        await AuthService.login(formData.email, formData.password);
+      validateFormData();
+
+      if (formData.email.isValid && formData.password.isValid) {
+        await AuthService.login(formData.email.value, formData.password.value);
         await router.push("/");
       }
     } catch (error) {
-      console.log("Handle form validation errors:", error.response.data); // TODO
-      alert(error.response.data.errors.non_field_errors);
+      setResponseError(error.response.data.errors.non_field_errors);
     }
   }
 
@@ -68,18 +60,22 @@ export const LoginForm = () => {
           id="email"
           type="email"
           placeholder="Unesite Vašu E-mail adresu"
-          isValidInput={emailValid}
+          isValidInput={formData.email.isValid}
           errorMessage="Unesite ispravnu email adresu"
-          valueChangedHandler={(value) => updateFormData({ email: value })}
+          valueChangedHandler={(value) => updateFormData({ email: { value: value, isValid: formData.email.isValid } })}
         />
         <Input
           className={styles.fieldWrapper}
           id="password"
           type="password"
           placeholder="Unesite Vašu lozinku"
-          isValidInput={passwordValid}
-          valueChangedHandler={(value) => updateFormData({ password: value })}
+          isValidInput={formData.password.isValid}
+          errorMessage="Lozinka ne sme biti prazna"
+          valueChangedHandler={(value) =>
+            updateFormData({ password: { value: value, isValid: formData.password.isValid } })
+          }
         />
+        <div className={`${styles.errorText} ${styles.p1}`}>{responseError}.</div>
       </div>
       <div className={styles.loginFormButtons}>
         <div className={styles.registrationLinkWrapper}>

@@ -16,6 +16,8 @@
 }
 
 .textError {
+    font-family: $font-family-text; 
+    font-size: 14px !important;
     color: $error-color;
     font-size: medium;
     margin: 1% 2%;
