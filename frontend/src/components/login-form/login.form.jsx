@@ -19,9 +19,6 @@ export const LoginForm = () => {
     let isEmailValid = RegExp("^(.+)@(.+)$").test(formData.email.value);
     let isPasswordValid = formData.password.value ? true : false;
 
-    console.log("isEmailValid", isEmailValid);
-    console.log("isPasswordValid", isPasswordValid);
-
     setFormData({
       email: { value: formData.email.value, isValid: isEmailValid },
       password: { value: formData.password.value, isValid: isPasswordValid },
