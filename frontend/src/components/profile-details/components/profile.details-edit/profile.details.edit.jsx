@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
-import { Input, TextArea } from "shared-components";
+import { Input, TextArea, LongButton } from "shared-components";
 import CitiesService from "pages/api/countriesService";
+import caregiversService from "pages/api/caregiversService";
+import beneficiariesService from "pages/api/beneficiariesService";
 
 import styles from "./profile.details.edit.module.scss";
 
-export const ProfileDetailsEdit = ({ profile, editList, authUser }) => {
+export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
   const [cityOptions, setCityOptions] = useState({});
 
   async function prepareCityOptions() {
@@ -21,9 +23,21 @@ export const ProfileDetailsEdit = ({ profile, editList, authUser }) => {
     console.log("New value:", value);
   };
 
+  async function editProfile() {
+    const editedData = [];
+    if (userType === "caregiver") {
+      await caregiversService.patch(profile.id, editedData).then(() => {
+        router.go();
+      });
+    }
+    await beneficiariesService.patch(profile.id, editedData).then(() => {
+      router.go();
+    });
+  }
+
   useEffect(() => {
     prepareCityOptions();
-  }, [profile, authUser]);
+  }, [profile, userType]);
 
   console.log("Profile:", profile);
 
@@ -84,7 +98,7 @@ export const ProfileDetailsEdit = ({ profile, editList, authUser }) => {
               className={styles.editCityInput}
               id={"city"}
               type={"dropdown"}
-              name={"first_name"}
+              name={"city"}
               options={cityOptions}
               inputValue={profile.city}
               valueChangedHandler={(e) => handleValueChange(e)}
@@ -106,6 +120,7 @@ export const ProfileDetailsEdit = ({ profile, editList, authUser }) => {
               );
             })}
           </div>
+          <LongButton value="Sačuvaj izmene" type="filled" />
         </div>
       </div>
     </div>

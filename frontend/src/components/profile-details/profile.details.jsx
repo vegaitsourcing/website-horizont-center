@@ -23,11 +23,13 @@ export const ProfileDetails = ({ profile, userType, authUser }) => {
         <ProfileDetailsEdit
           editList={userType === "caregiver" ? caregiverEditList : beneficiaryEditList}
           profile={profile}
+          userType={userType}
         />
       ) : (
         <ProfileDetailsInfo
           infoList={userType === "caregiver" ? caregiverInfoList : beneficiaryInfoList}
           profile={profile}
+          userType={userType}
         />
       )}
     </div>

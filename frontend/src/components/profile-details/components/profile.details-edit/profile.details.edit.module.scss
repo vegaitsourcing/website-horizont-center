@@ -19,6 +19,8 @@
     .imageSection {
         display: inline-block;
         align-items: center;
+        margin-bottom: 35px;
+        margin-left: 35px;
         height: 270px;
         width: 240px;
         text-align: center;     
@@ -125,15 +127,15 @@
             vertical-align: top;
             width: 300px;
             display: inline-block;
-            margin-right: 140px;
+            margin-right: 78px;
             margin-bottom: 20px;
 
             &.textArea {
-                width: auto;
+                width: 100%;
                 display: block;
 
                 @include respond-to(tablet) {
-                    width: max-content;
+                    width: 300px;
                 }
             }
         }
