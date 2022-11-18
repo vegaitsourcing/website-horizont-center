@@ -36,6 +36,7 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
           {formInputFields[0].map((input) => {
             return (
               <Input
+                className={styles.inputField}
                 key={input.id}
                 id={input.id}
                 type={input.type}
@@ -58,6 +59,7 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
           {formInputFields[1].map((input) => {
             return (
               <Input
+                className={styles.inputField}
                 key={input.id}
                 id={input.id}
                 type={input.type}
