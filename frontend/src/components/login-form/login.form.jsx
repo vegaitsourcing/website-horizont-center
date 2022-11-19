@@ -57,7 +57,7 @@ export const LoginForm = () => {
             REGISTRUJTE SE
           </Link>
         </div>
-        <LongButton onClick={submit} value="Login" type="button" />
+        <LongButton className={styles.loginButton} onClick={submit} value="Login" type="button" />
       </div>
     </div>
   );

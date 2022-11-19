@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import moment from "moment";
-
-import styles from "./select.date.module.scss";
+import styles from "./fields.module.scss";
 
 export const SelectDate = ({ inputValue, valueChangedHandler, isValidInput = true }) => {
   const [datePickerValue, setDatePickerValue] = useState(inputValue);
@@ -19,7 +18,7 @@ export const SelectDate = ({ inputValue, valueChangedHandler, isValidInput = tru
   return (
     <div className={[styles.datePicker, styles.inputWrapper, !isValidInput ? styles.error : ""].join(" ")}>
       <DatePicker
-        placeholderText={inputValue != "" ? inputValue : "Datum rođenja Dan/Mesec/Godina**"}
+        placeholderText={inputValue !== "" ? inputValue : "Datum rođenja Dan/Mesec/Godina**"}
         dateFormat="dd/MM/yyyy"
         id="start-date"
         autoComplete="off"
