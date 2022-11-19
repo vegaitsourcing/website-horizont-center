@@ -70,34 +70,3 @@
 		color: red;
 	}
 }
-
-.datePicker {
-	&.error {
-		input {
-			height: 44px !important;
-			border: 2px solid $error-color;
-		}
-
-		input::placeholder {
-			color: $error-color;
-		}
-
-		input:focus {
-			border: 2px solid $error-color;
-			outline: none;
-		}
-	}
-}
-
-.textError {
-	color: $error-color;
-	font-size: medium;
-	margin: 1% 2%;
-}
-
-.inputWrapper {
-	width: 300px;
-	display: inline-block;
-	vertical-align: top;
-	margin: 0 24px 24px 0;
-}

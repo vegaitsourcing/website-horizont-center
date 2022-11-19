@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import styles from "./registration.step.three.module.scss";
 
 export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
@@ -36,14 +35,14 @@ export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
   };
 
   const openFileExplorer = () => {
-    var fileupload = document.getElementById("image");
+    const fileupload = document.getElementById("image");
     fileupload.click();
   };
 
   const count = () => {
-    var field = document.getElementById("description");
+    const field = document.getElementById("description");
     setCount(field.value.length);
-    setIsValidTextArea(field.value.length >= 100 ? true : false);
+    setIsValidTextArea(field.value.length >= 100);
     valueChangedHandler(field.value, "description");
   };
 

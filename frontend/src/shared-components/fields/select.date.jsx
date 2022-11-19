@@ -3,29 +3,35 @@ import DatePicker from "react-datepicker";
 import moment from "moment";
 import styles from "./fields.module.scss";
 
-export const SelectDate = ({ inputValue, valueChangedHandler, isValidInput = true }) => {
-  const [datePickerValue, setDatePickerValue] = useState(inputValue);
+export const SelectDate = ({ inputValue, valueChangedHandler, className = "", errorMessage = "" }) => {
+	const [datePickerValue, setDatePickerValue] = useState(inputValue);
 
-  useEffect(() => {
-    setDatePickerValue(inputValue);
-  }, [inputValue]);
+	useEffect(() => {
+		setDatePickerValue(inputValue);
+	}, [inputValue]);
 
-  const handleDatePickerChange = (event) => {
-    valueChangedHandler(moment(event).format("YYYY-MM-DD"));
-    setDatePickerValue(moment(event).format("YYYY-MM-DD"));
-  };
+	const handleDatePickerChange = (event) => {
+		valueChangedHandler(moment(event).format("YYYY-MM-DD"));
+		setDatePickerValue(moment(event).format("YYYY-MM-DD"));
+	};
 
-  return (
-    <div className={[styles.datePicker, styles.inputWrapper, !isValidInput ? styles.error : ""].join(" ")}>
-      <DatePicker
-        placeholderText={inputValue !== "" ? inputValue : "Datum rođenja Dan/Mesec/Godina**"}
-        dateFormat="dd/MM/yyyy"
-        id="start-date"
-        autoComplete="off"
-        selected={Date.parse(datePickerValue) ?? new Date()}
-        onChange={(event) => handleDatePickerChange(event)}
-      />
-      {!isValidInput ? <div className={styles.textError}>Morate odabrati datum</div> : ""}
-    </div>
-  );
+	const wrapperClassNames = [
+		styles.fieldWrapper,
+		className,
+		errorMessage ? styles.fieldWrapperWithError : "",
+	].join(" ");
+
+	return (
+		<div className={wrapperClassNames}>
+			<DatePicker
+				placeholderText={inputValue !== "" ? inputValue : "Datum rođenja Dan/Mesec/Godina**"}
+				dateFormat="dd/MM/yyyy"
+				id="start-date"
+				autoComplete="off"
+				selected={Date.parse(datePickerValue) ?? new Date()}
+				onChange={(event) => handleDatePickerChange(event)}
+			/>
+			{errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+		</div>
+	);
 };

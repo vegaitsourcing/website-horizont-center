@@ -1,15 +1,21 @@
-@import "styles/main.scss";
+@import "./../../../../styles/main";
 
 .registerAccount {
-    padding: 30px;
+	padding: 30px;
 
-    .profileOption {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+	.profileOption {
+		width: 300px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		@include respond-to(mobile) {
+			width: 100%;
+		}
+	}
 }
 
 .alignCenter {
-    text-align: center;
+	text-align: center;
 }
