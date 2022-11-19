@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 import { Input, TextArea, LongButton } from "shared-components";
 import CitiesService from "pages/api/countriesService";
-import caregiversService from "pages/api/caregiversService";
-import beneficiariesService from "pages/api/beneficiariesService";
+import { CaregiversService } from "pages/api/caregiversService";
+import { BeneficiariesService } from "pages/api/beneficiariesService";
 
 import styles from "./profile.details.edit.module.scss";
 
 export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
+  const router = useRouter();
   const [cityOptions, setCityOptions] = useState({});
+  const [editedData, setEditedData] = useState({});
 
   async function prepareCityOptions() {
     const serbianCities = await CitiesService.getAllSerbianCities();
@@ -19,19 +22,18 @@ export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
     setCityOptions(serbianCityOptions);
   }
 
-  const handleValueChange = (value) => {
-    console.log("New value:", value);
+  const handleValueChange = (value, field) => {
+    setEditedData({ ...editedData, [field]: value });
   };
 
   async function editProfile() {
-    const editedData = [];
     if (userType === "caregiver") {
-      await caregiversService.patch(profile.id, editedData).then(() => {
-        router.go();
+      await CaregiversService.editCaregiverById(profile.id, editedData).then(() => {
+        router.reload();
       });
     }
-    await beneficiariesService.patch(profile.id, editedData).then(() => {
-      router.go();
+    await BeneficiariesService.editBeneficiaryById(profile.id, editedData).then(() => {
+      router.reload();
     });
   }
 
@@ -45,7 +47,10 @@ export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
     if (item.title === "OPSTE INFORMACIJE") {
       return (
         <div>
-          <TextArea defaultValue={profile.description} valueChangedHandler={(e) => handleValueChange(e)} />
+          <TextArea
+            defaultValue={profile.description}
+            valueChangedHandler={(e) => handleValueChange(e, "description")}
+          />
         </div>
       );
     }
@@ -59,7 +64,7 @@ export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
               name={element.fieldName}
               placeholder={element.placeholder}
               inputValue={profile[element.fieldName]}
-              valueChangedHandler={(e) => handleValueChange(e)}
+              valueChangedHandler={(e) => handleValueChange(e, element.fieldName)}
               isValidInput={true}
             />
           </div>
@@ -71,9 +76,9 @@ export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
         <Input
           id={item.fieldName}
           type={item.type}
-          name={"work_application"}
+          name={item.fieldName}
           inputValue={profile.user[item.fieldName] ?? profile[item.fieldName]}
-          valueChangedHandler={(e) => handleValueChange(e)}
+          valueChangedHandler={(e) => handleValueChange(e, item.fieldName)}
           isValidInput={true}
         />
       </div>
@@ -101,7 +106,7 @@ export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
               name={"city"}
               options={cityOptions}
               inputValue={profile.city}
-              valueChangedHandler={(e) => handleValueChange(e)}
+              valueChangedHandler={(e) => handleValueChange(e, "city")}
               isValidInput={true}
             />
           </div>
@@ -120,7 +125,7 @@ export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
               );
             })}
           </div>
-          <LongButton value="Sačuvaj izmene" type="filled" />
+          <LongButton value="Sačuvaj izmene" type="filled" onClick={editProfile} />
         </div>
       </div>
     </div>

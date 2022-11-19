@@ -20,7 +20,9 @@ const API = {
   post: (url, data, config) => {
     return api.post(url, data, config);
   },
-  patch: (url, data, config) => {
+  patch: (url, data) => {
+    const config = {};
+    config.headers = AuthService.getAuthorizationHeaders();
     return api.patch(url, data, config);
   },
 };

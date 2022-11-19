@@ -29,7 +29,7 @@ export const caregiverEditList = [
   },
   {
     title: "BROJ TELEFONA 2",
-    fieldName: "phone_number",
+    fieldName: "second_phone_number",
     type: "text",
   },
   {
