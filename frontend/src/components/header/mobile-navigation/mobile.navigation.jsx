@@ -40,7 +40,7 @@ function MobileMenu({ onItemClick, onLogout, isAuthenticated }) {
 		if (isAuthenticated) {
 			menuItemsJSX.push(
 				<div key={menuItems.length} className={styles.tabItem} onClick={logout}>
-					<span className={styles.tabLabel}>Logout</span>
+					<span className={styles.tabLabel}>Odjava</span>
 				</div>
 			);
 		}

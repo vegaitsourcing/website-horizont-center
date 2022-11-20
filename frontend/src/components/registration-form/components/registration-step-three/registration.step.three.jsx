@@ -6,7 +6,7 @@ export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
   const [countValue, setCount] = useState(0);
   const [isValidImg, setIsValidImg] = useState(false);
   const [isValidTextArea, setIsValidTextArea] = useState(false);
-  const [formStep3Data, setFormStep3Data] = useState();
+  const [formStep3Data, setFormStep3Data] = useState({});
 
   useEffect(() => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
@@ -51,6 +51,7 @@ export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
       <div className={[styles.imageField, !isValidImg ? styles.error : ""].join(" ")}>
         <img
           src={formStep3Data?.data?.image !== "" ? formStep3Data?.data?.image : defaultImg}
+					alt="profile image"
           className={styles.image}
         />
         <input

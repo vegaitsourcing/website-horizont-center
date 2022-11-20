@@ -12,7 +12,8 @@ class RegisterCaregiverAPIView(APIView):
     def post(request, **kwargs) -> JsonResponse:
         serializer = CaregiverProfileSerializer(data=request.data, request=request)
         if serializer.is_valid():
-            user = create_caregiver_user(serializer=serializer)
+            password = request.data.get("user").pop("password", "")
+            user = create_caregiver_user(serializer=serializer, password=password)
             IdentityVerificationEmailThread(request=request, email=user.email).start()
             return JsonResponse(data={'message': 'success'})
         return JsonResponse(data={'errors': serializer.errors}, status=BAD_REQUEST)
