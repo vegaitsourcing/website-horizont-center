@@ -1,5 +1,3 @@
-export * from "./input/input";
-export * from "./select/select";
 export * from "./long-button/long.button";
 export * from "./short-button/short.button";
 export * from "./pagination/pagination";
@@ -11,7 +9,7 @@ export * from "./about-author/about.author";
 export * from "./container/container";
 export * from "./donation-details/donation.details";
 export * from "./sections/";
-export * from "./select-date/select.date";
+export * from "./fields";
 export * from "./spinner/spinner";
 export * from "./image-tag/image.tag";
 export * from "./error-page-content/error.page.content";

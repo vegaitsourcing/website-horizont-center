@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { Input, Select } from "../../shared-components";
 import styles from "./profile.filters.module.scss";
 import CitiesService from "../../pages/api/countriesService";
+import { Input, Select } from "../fields";
 
 export function ProfileFilters({ onChange }) {
   const [cityOptions, setCityOptions] = useState({});
@@ -21,7 +21,6 @@ export function ProfileFilters({ onChange }) {
       <div className={styles.leftSide}>
         <Input
           withSearchIcon
-          className={styles.leftFilterField}
           id="profileContains"
           name="profileContains"
           placeholder="Pretraži..."

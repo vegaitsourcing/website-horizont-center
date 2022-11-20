@@ -3,16 +3,18 @@ from apps.users.models import User, CaregiverProfile, BeneficiaryProfile
 from apps.users.serializers import BeneficiaryProfileSerializer, CaregiverProfileSerializer
 
 
-def create_caregiver_user(serializer: CaregiverProfileSerializer) -> User:
+def create_caregiver_user(serializer: CaregiverProfileSerializer, password: str) -> User:
     user_kwargs = serializer.validated_data.pop('user')
+    user_kwargs['password'] = password
     user = User.objects.create_user(**user_kwargs)
     CaregiverProfile.objects.create(user=user, **serializer.validated_data)
 
     return user
 
 
-def create_beneficiary_user(serializer: BeneficiaryProfileSerializer) -> User:
+def create_beneficiary_user(serializer: BeneficiaryProfileSerializer, password: str) -> User:
     user_kwargs = serializer.validated_data.pop('user')
+    user_kwargs['password'] = password
     user = User.objects.create_user(**user_kwargs)
     BeneficiaryProfile.objects.create(user=user, **serializer.validated_data)
 

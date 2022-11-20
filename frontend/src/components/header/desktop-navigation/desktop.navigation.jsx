@@ -11,7 +11,7 @@ function AuthenticatedMenu({ onLogout, avatarURL }) {
 		<div className={styles.authenticatedMenu}>
 			<img className={styles.avatar} src={avatarURL || "/images/avatar.svg"} alt="avatar"/>
 			<div className={styles.logoutButton} onClick={onLogout}>
-				<span className={styles.tabLabel}>Logout</span>
+				<span className={styles.tabLabel}>Odjava</span>
 			</div>
 		</div>
 	);

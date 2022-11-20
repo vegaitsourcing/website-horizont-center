@@ -46,17 +46,17 @@ export const caregiverFormFields = [
     },
     {
       id: "facebook_url",
-      type: "facebook_url",
-      name: "daily_hours",
+      type: "text",
+      name: "facebook_url",
       placeholder: "Link do vašeg facebook profila*",
-      unrequired: true,
+      optional: true,
     },
     {
       id: "instagram_url",
-      type: "facebook_url",
-      name: "daily_hours",
+      type: "text",
+      name: "instagram_url",
       placeholder: "Link do vašeg instagram profila*",
-      unrequired: true,
+      optional: true,
     },
   ],
 ];

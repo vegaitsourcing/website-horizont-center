@@ -48,3 +48,17 @@
 		background-blend-mode: multiply, normal;
 	}
 }
+
+.disabledButton {
+	cursor: not-allowed;
+
+	&.border:hover {
+		background: white;
+		color: $blue-color;
+	}
+
+	&.filled:hover {
+		background: $blue-color;
+		color: white;
+	}
+}
