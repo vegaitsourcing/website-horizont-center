@@ -48,7 +48,8 @@
 
 .fieldWrapperWithError {
 
-	.field {
+	.field,
+	input {
 		background-color: #fcf4f4;
 		border: 1px solid red;
 	}

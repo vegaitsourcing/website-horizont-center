@@ -78,10 +78,10 @@ export const RegistrationForm = () => {
 	};
 
 	const switchToStep = (direction) => {
-		if (direction === "back") return stepNumber !== 1 ? setStepNumber(--stepNumber) : 0;
+		if (direction === "back") return stepNumber !== 1 ? setStepNumber(stepNumber - 1) : 0;
 		if (checkForm(stepNumber)) {
 			if (stepNumber === 3 && direction === "next") registerUser();
-			return stepNumber !== 3 ? setStepNumber(++stepNumber) : 0;
+			return stepNumber !== 3 ? setStepNumber(stepNumber + 1) : 0;
 		}
 	};
 
@@ -130,6 +130,7 @@ export const RegistrationForm = () => {
 				</div>
 				<div className={styles.createAccountFooter}>
 					<LongButton
+						isDisabled={stepNumber === 1}
 						value="Prethodni korak"
 						type="button"
 						direction="left"

@@ -31,6 +31,7 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
 				<label>{userFormType === "caregiver" ? "Opšte informacije" : "Vaše informacije"}</label>
 				<div className={styles.formGrid}>
 					{formInputFields[0].map((input) => {
+						const isEmpty = formData?.data?.[userFormType]?.[input.name] === "";
 						return (
 							<Input
 								key={input.id}
@@ -42,7 +43,7 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
 								placeholder={input.placeholder}
 								inputValue={formData?.data?.[userFormType]?.[input.name] ?? ""}
 								valueChangedHandler={(e) => handleValueChange(e, input.name)}
-								isValidInput={formData?.data?.[userFormType]?.[input.name] !== ""}
+								errorMessage={isEmpty && !input.optional ? "Ovo polje je obavezno" : ""}
 							/>
 						);
 					})}
@@ -54,6 +55,7 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
 				</label>
 				<div className={styles.formGrid}>
 					{formInputFields[1].map((input) => {
+						const isEmpty = formData?.data?.[userFormType]?.[input.name] === "";
 						return (
 							<Input
 								key={input.id}
@@ -66,7 +68,7 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
 								placeholder={input.placeholder}
 								inputValue={formData?.data?.[userFormType]?.[input.name] ?? ""}
 								valueChangedHandler={(e) => handleValueChange(e, input.name)}
-								isValidInput={formData?.data?.[userFormType]?.[input.name] === "" ? (!!input.unrequired) : true}
+								errorMessage={isEmpty && !input.optional ? "Ovo polje je obavezno" : ""}
 							/>
 						);
 					})}

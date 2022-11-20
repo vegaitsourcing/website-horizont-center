@@ -31,7 +31,11 @@ export const Input = ({
 			/>
 		);
 
-	if (type === "datepicker") return <SelectDate inputValue={inputValue} valueChangedHandler={valueChangedHandler}/>;
+	if (type === "datepicker") return <SelectDate
+		inputValue={inputValue}
+		valueChangedHandler={valueChangedHandler}
+		errorMessage={errorMessage}
+	/>;
 
 	const wrapperClassNames = [
 		styles.fieldWrapper,
