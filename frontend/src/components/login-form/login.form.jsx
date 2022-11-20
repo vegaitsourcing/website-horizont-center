@@ -72,7 +72,7 @@ export const LoginForm = () => {
             updateFormData({ password: { value: value, isValid: formData.password.isValid } })
           }
         />
-        {responseError ? <div className={`${styles.errorText} ${styles.p1}`}>{responseError}.</div> : null}
+        {responseError && <div className={`${styles.errorText} ${styles.p1}`}>{responseError}.</div>}
       </div>
       <div className={styles.loginFormButtons}>
         <div className={styles.registrationLinkWrapper}>
