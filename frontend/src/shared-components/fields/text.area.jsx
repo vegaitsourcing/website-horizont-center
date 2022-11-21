@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import styles from "./text.area.module.scss";
+import styles from "./fields.module.scss";
 
 export const TextArea = ({ defaultValue, valueChangedHandler }) => {
   const [countValue, setCount] = useState(0);
@@ -24,20 +24,22 @@ export const TextArea = ({ defaultValue, valueChangedHandler }) => {
     valueChangedHandler(field.value, "description");
   };
 
+  const wrapperClassNames = [styles.fieldWrapper, !isValidTextArea ? styles.fieldWrapperWithError : ""].join(" ");
+
   return (
-    <div className={styles.descriptionInput}>
+    <div className={wrapperClassNames}>
       <textarea
         id="description"
         name="description"
         onKeyUp={count}
-        className={[styles.textarea, !isValidTextArea ? styles.error : ""].join(" ")}
+        className={[styles.field, styles.textarea].join(" ")}
         placeholder="Dodante informacije"
         defaultValue={defaultValue}
       ></textarea>
-      <p id="counter" className={[styles.charCount, !isValidTextArea ? styles.error : ""].join(" ")}>
+      <p id="counter" className={styles.charCount}>
         <span>{countValue}/500 karaktera</span>
         <br />
-        {!isValidTextArea ? <span className={styles.textError}>Potrebno je uneti minimum 100 karaktera</span> : ""}
+        {!isValidTextArea && <span className={styles.textError}>Potrebno je uneti minimum 100 karaktera</span>}
       </p>
     </div>
   );

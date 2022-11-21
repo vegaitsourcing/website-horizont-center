@@ -12,7 +12,7 @@ function AuthenticatedMenu({ onLogout, user }) {
       <img className={styles.avatar} src={user.image || "/images/avatar.svg"} alt="avatar" />
       <div className={styles.userMenu}>
         <div className={styles.userMenuOptions}>
-          <Link href={`/caregivers/${user.id}`} passHref>
+          <Link href={`/${user.profile_type}/${user.id}`} passHref>
             <div className={styles.tabLabel}>Izmeni profil</div>
           </Link>
           <div className={styles.tabLabel} onClick={onLogout}>
