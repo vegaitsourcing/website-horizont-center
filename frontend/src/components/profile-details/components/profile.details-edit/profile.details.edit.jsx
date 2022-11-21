@@ -31,7 +31,7 @@ export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
       if (editedData[field] === "") {
         return false;
       }
-      if (field === "description" && (500 <= editedData[field].length || editedData[field].length <= 100)) {
+      if (field === "description" && (editedData[field].length > 500 || editedData[field].length < 100)) {
         return false;
       }
     }

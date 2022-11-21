@@ -12,15 +12,15 @@ export const TextArea = ({ defaultValue, valueChangedHandler }) => {
   }, [defaultValue]);
 
   const validateTextArea = (value) => {
-    if (value >= 100) {
+    if (value >= 100 && value <= 500) {
       setIsValidTextArea(true);
     }
   };
 
   const count = () => {
-    var field = document.getElementById("description");
+    const field = document.getElementById("description");
     setCount(field.value.length);
-    setIsValidTextArea(field.value.length >= 100 ? true : false);
+    setIsValidTextArea(field.value.length <= 100 || field.value.length > 500 ? false : true);
     valueChangedHandler(field.value, "description");
   };
 
@@ -39,7 +39,9 @@ export const TextArea = ({ defaultValue, valueChangedHandler }) => {
       <p id="counter" className={styles.charCount}>
         <span>{countValue}/500 karaktera</span>
         <br />
-        {!isValidTextArea && <span className={styles.textError}>Potrebno je uneti minimum 100 karaktera</span>}
+        {!isValidTextArea && (
+          <span className={styles.textError}>Potrebno je uneti minimum 100, maksimum 500 karaktera</span>
+        )}
       </p>
     </div>
   );
