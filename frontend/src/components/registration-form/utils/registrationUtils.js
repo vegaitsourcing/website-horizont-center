@@ -61,7 +61,11 @@ export const validateRegistrationForm = (stepNumber) => {
     registrationForm.formStep3.isCompleted = false;
     const formStep3data = registrationForm.formStep3.data;
     isFormValid = true;
-    if (formStep3data.description.length < 100 || formStep3data.image === "") {
+    if (
+      formStep3data.description.length < 100 ||
+      formStep3data.description.length > 500 ||
+      formStep3data.image === ""
+    ) {
       isFormValid = false;
     }
     if (isFormValid) {

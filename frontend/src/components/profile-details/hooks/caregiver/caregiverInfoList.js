@@ -1,4 +1,4 @@
-export const caregiverEditList = [
+export const caregiverInfoList = [
   {
     title: "BROJ TELEFONA",
     fieldName: "phone_number",

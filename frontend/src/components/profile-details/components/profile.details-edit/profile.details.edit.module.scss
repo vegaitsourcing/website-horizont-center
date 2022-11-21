@@ -5,20 +5,22 @@
 .userDetailsWrapper {
     align-items: center;
     justify-content: center;
-    margin: 36px 160px;
     display: flex;
 }
 
 .userDetailsSection {
     padding: 36px 36px 64px;
 	border-radius: 16px;
-    display: table;
+    display: block;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     margin: 36px;
     min-height: 325px;
 
     .imageSection {
+        display: inline-block;
         align-items: center;
+        margin-bottom: 35px;
+        margin-left: 35px;
         height: 270px;
         width: 240px;
         text-align: center;     
@@ -38,6 +40,26 @@
             object-fit: cover;
             object-position: top;
         }
+
+        .editImageOverlay {
+            display: none;
+            margin: auto;
+            margin-bottom: 15.5px;
+            margin-top: -144px;
+            width: 128px;
+            height: 128px;
+            background-color: rgb(#00000066, 0.4);
+            border-radius: 100%;
+            object-fit: cover;
+            object-position: top;
+   
+            .editImgIcon {
+                height: 25px;
+                color: white;
+                margin-top: 50px;
+            }
+        }
+
         .profileName {
             font-family: 'Open Sans';
             font-style: normal;
@@ -48,6 +70,7 @@
             margin-bottom: 8px;
         }
         .profileLocation {
+            padding: 0px 21px;
             color:$blue-color;
 
             .city {
@@ -67,11 +90,23 @@
 }
 
 .descriptionSection {
+    display: inline-block;
     vertical-align: top;
-    display: table-cell;
-    width: 100%;
+    width: 800px;
     height: 100%;
-    padding: 0px 36px;
+    margin-left: 36px;
+
+    @include respond-to(1416px) {
+        margin-top: 24px;
+    }
+
+    @include respond-to(laptop) {
+        width: 600px;
+    }
+
+    @include respond-to(tablet) {
+        width: 340px;
+    }
 
     .createdDate {
         margin-bottom: 12px;
@@ -91,13 +126,12 @@
     }
 
     .userDetails {
-        margin-top: 64px;
         display: block;
 
         .elementInfo {
-            vertical-align: top;
-            width: 50%;
             display: inline-block;
+            width: 350px;
+            margin-right: 24px;
             margin-bottom: 20px;
         }
     }
@@ -109,4 +143,36 @@
 
 .socialMediaLink {
     margin-right: 36px;
+}
+
+.roundedImage:hover {
+    cursor: pointer;
+
+    &.editEnabled {
+        opacity: 0.2;
+    }
+}
+
+.roundedImage:hover + .editImageOverlay {
+    display: block;
+}
+
+.editIcon {
+    height: 18px;
+    margin-left: 10px;
+}
+
+.editCityInput {
+    width: 200px;
+    margin-left: 20px;
+    color: $subtext-color;
+}
+
+.fullWidth {
+    display: block !important;
+}
+
+.textArea {
+    display: block !important;
+    width: 100% !important;
 }

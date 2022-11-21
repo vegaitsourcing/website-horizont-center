@@ -7,7 +7,7 @@ export * from "./registration-form/registration.form";
 export * from "./login-form/login.form";
 export * from "./payment-slip/payment.slip";
 export * from "./resource-filters";
-export * from "./user/profile.details";
+export * from "./profile-details/profile.details";
 export * from "./donation-list/donation.list";
 export * from "./resource-card/resource.card";
 export * from "./profile-list";

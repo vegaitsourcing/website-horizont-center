@@ -26,6 +26,13 @@
 		background: #FFFFFF;
 		border: 1px solid #D0D5DD;
 		border-radius: 10px;
+
+		&.textarea {
+			width: calc(100% - 68px);
+			padding: 12px 24px;
+			height: 248px;
+			@include text;
+		}
 	}
 
 	input.field {
@@ -44,12 +51,19 @@
 		right: 20px;
 	}
 
+	.charCount {
+		text-align: right;
+		margin: 0px 20px 0px 0px;
+		font-size: 16px;
+		@include text;
+		color: $blue-color;
+	}
 }
 
 .fieldWrapperWithError {
 
 	.field,
-	input {
+	input, .textarea {
 		background-color: #fcf4f4;
 		border: 1px solid red;
 	}
@@ -68,6 +82,10 @@
 
 	.errorMessage {
 		margin: 0;
+		color: red;
+	}
+
+	.charCount {
 		color: red;
 	}
 }

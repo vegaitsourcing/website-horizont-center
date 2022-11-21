@@ -1,4 +1,4 @@
-export const beneficiaryEditList = [
+export const beneficiaryInfoList = [
   {
     title: "BROJ TELEFONA",
     fieldName: "phone_number",
