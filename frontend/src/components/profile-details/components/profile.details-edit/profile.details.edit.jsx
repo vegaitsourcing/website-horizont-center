@@ -70,7 +70,6 @@ export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
   }, [profile, userType]);
 
   const renderInput = (item) => {
-    console.log(item);
     if (item.fieldName === "description") {
       return (
         <div>

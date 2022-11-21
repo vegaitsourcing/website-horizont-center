@@ -14,11 +14,8 @@ export const ProfileDetails = ({ profile, userType, authUser }) => {
     }
   }, [profile, authUser]);
 
-  console.log("EDIT enabled:", editEnabled);
-
   return (
     <div className={styles.profileDetailsWrapper}>
-      {console.log("caregiverEditList", caregiverEditList)}
       {editEnabled ? (
         <ProfileDetailsEdit
           editList={userType === "caregiver" ? caregiverEditList : beneficiaryEditList}

@@ -6,8 +6,6 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import styles from "./profile.details.info.module.scss";
 
 export const ProfileDetailsInfo = ({ profile, infoList }) => {
-  console.log("profile", profile);
-
   return (
     <div className={styles.userDetailsWrapper}>
       <div className={styles.userDetailsSection}>
