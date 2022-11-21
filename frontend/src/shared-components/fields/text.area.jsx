@@ -33,7 +33,7 @@ export const TextArea = ({ defaultValue, valueChangedHandler }) => {
         name="description"
         onKeyUp={count}
         className={[styles.field, styles.textarea].join(" ")}
-        placeholder="Dodante informacije"
+        placeholder="Dodatne informacije"
         defaultValue={defaultValue}
       ></textarea>
       <p id="counter" className={styles.charCount}>

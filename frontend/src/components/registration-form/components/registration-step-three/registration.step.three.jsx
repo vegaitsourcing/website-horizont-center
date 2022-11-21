@@ -53,10 +53,7 @@ export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
           Dodaj fotografiju
         </p>
       </div>
-      <TextArea
-        defaultValue={formStep3Data?.data?.description ?? ""}
-        valueChangedHandler={(e) => valueChangedHandler(e, "description")}
-      />
+      <TextArea defaultValue={formStep3Data?.data?.description ?? ""} valueChangedHandler={valueChangedHandler} />
     </div>
   );
 };
