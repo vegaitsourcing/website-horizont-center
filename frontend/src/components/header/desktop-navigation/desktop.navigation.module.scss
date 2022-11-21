@@ -52,13 +52,13 @@
 		padding: 20px 5px;
 	}
 
-	.logoutButton {
+	.userMenu {
 		border: 2px solid $blue-color;
 		position: absolute;
 		right: 0;
 		top: 110px;
-		width: 125px;
-		background-color: white;
+		width: 130px;
+		background-color: $light-blue-color;
 		display: flex;
 		cursor: pointer;
 		justify-content: center;
@@ -71,9 +71,27 @@
 		border-radius: 16px;
 	}
 
-	.authenticatedMenu:hover .logoutButton {
-		height: 50px;
+	.authenticatedMenu:hover .userMenu {
+		height: 100px;
 		visibility: visible;
 	}
 
+	.userMenuOptions {
+		padding: 10px;
+		margin-top: 25px;
+		height: 100%;
+		display: block;
+		text-align: center;
+
+		.tabLabel {
+			height: 40px;
+			display: inline-block;
+			background: $light-blue-color;
+			width: 100%;
+		}
+
+		.tabLabel:hover {
+			opacity: 0.4;
+		}
+	}
 }
