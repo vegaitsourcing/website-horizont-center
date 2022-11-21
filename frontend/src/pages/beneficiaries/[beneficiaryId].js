@@ -33,6 +33,8 @@ function BeneficiaryProfile({ pathname, beneficiaryProfileId }) {
     );
   }
 
+  console.log("Auth user", authUser);
+
   return (
     <>
       <NextSeo {...SEO} />

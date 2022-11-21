@@ -1,12 +1,24 @@
 export const beneficiaryEditList = [
   {
-    title: "BROJ TELEFONA",
-    fieldName: "phone_number",
+    title: "IME",
+    fieldName: "first_name",
     type: "text",
   },
   {
-    title: "BROJ TELEFONA 2",
-    fieldName: "second_phone_number",
+    title: "PREZIME",
+    fieldName: "last_name",
+    type: "text",
+  },
+  {
+    title: "OPSTE INFORMACIJE",
+    fieldname: "description",
+    type: "textArea",
+    width: "full",
+    styleClass: "textArea",
+  },
+  {
+    title: "BROJ TELEFONA",
+    fieldName: "phone_number",
     type: "text",
   },
   {

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import styles from "./registration.step.three.module.scss";
 
 export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
@@ -7,7 +6,7 @@ export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
   const [countValue, setCount] = useState(0);
   const [isValidImg, setIsValidImg] = useState(false);
   const [isValidTextArea, setIsValidTextArea] = useState(false);
-  const [formStep3Data, setFormStep3Data] = useState();
+  const [formStep3Data, setFormStep3Data] = useState({});
 
   useEffect(() => {
     const registrationForm = JSON.parse(localStorage.getItem("registrationForm"));
@@ -36,14 +35,14 @@ export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
   };
 
   const openFileExplorer = () => {
-    var fileupload = document.getElementById("image");
+    const fileupload = document.getElementById("image");
     fileupload.click();
   };
 
   const count = () => {
-    var field = document.getElementById("description");
+    const field = document.getElementById("description");
     setCount(field.value.length);
-    setIsValidTextArea(field.value.length >= 100 ? true : false);
+    setIsValidTextArea(field.value.length >= 100);
     valueChangedHandler(field.value, "description");
   };
 
@@ -52,6 +51,7 @@ export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
       <div className={[styles.imageField, !isValidImg ? styles.error : ""].join(" ")}>
         <img
           src={formStep3Data?.data?.image !== "" ? formStep3Data?.data?.image : defaultImg}
+					alt="profile image"
           className={styles.image}
         />
         <input

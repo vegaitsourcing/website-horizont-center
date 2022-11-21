@@ -6,7 +6,7 @@ import { beneficiaryInfoList, beneficiaryEditList, caregiverInfoList, caregiverE
 import styles from "./profile.details.module.scss";
 
 export const ProfileDetails = ({ profile, userType, authUser }) => {
-  const [editEnabled, setEditEnabled] = useState(true);
+  const [editEnabled, setEditEnabled] = useState(false);
 
   useEffect(() => {
     if (profile.id === authUser.id) {

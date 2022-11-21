@@ -1,40 +1,42 @@
 import API from "./baseApi";
 
 const AuthService = {
-  login: async (email, password) => {
-    const response = await API.post("login/", {
-      email: email,
-      password: password,
-    });
-    const userDataString = JSON.stringify({
-      token: response.data.token,
-      id: response.data.id,
-      firstName: response.data.first_name,
-      lastName: response.data.last_name,
-    });
-    localStorage.setItem("user", userDataString);
-  },
+	login: async (email, password) => {
+		const response = await API.post("login/", {
+			email: email,
+			password: password,
+		});
+		const userDataString = JSON.stringify({
+			token: response.data.token,
+			id: response.data.id,
+			firstName: response.data.first_name,
+			lastName: response.data.last_name,
+		});
+		localStorage.setItem("user", userDataString);
+	},
 
-  isAuthenticated: () => {
-    return !!AuthService.getUser();
-  },
+	isAuthenticated: () => {
+		return !!AuthService.getUser();
+	},
 
-  getUser: () => {
-    return JSON.parse(localStorage.getItem("user"));
-  },
+	getUser: () => {
+		return JSON.parse(localStorage.getItem("user"));
+	},
 
-  getAuthorizationHeaders: () => {
-    const userJSON = localStorage.getItem("user");
-    const user = userJSON ? JSON.parse(userJSON) : null;
-    return user ? { Authorization: `Bearer ${user?.token}` } : {};
-  },
+	getAuthorizationHeaders: () => {
+		const userJSON = localStorage.getItem("user");
+		const user = userJSON ? JSON.parse(userJSON) : null;
+		return user ? { Authorization: `Bearer ${user?.token}` } : {};
+	},
 
-  logout: async () => {
-    await API.post("logout/", null, { headers: AuthService.getAuthorizationHeaders() });
-    localStorage.removeItem("user");
-  },
-  register: (userData, type) => {
-    return API.post(`register-${type}/`, userData);
-  },
+	logout: async () => {
+		try {
+			await API.post("logout/", null, { headers: AuthService.getAuthorizationHeaders() });
+		} catch (e) {}
+		localStorage.removeItem("user");
+	},
+	register: (userData, type) => {
+		return API.post(`register-${type}/`, userData);
+	},
 };
 export default AuthService;

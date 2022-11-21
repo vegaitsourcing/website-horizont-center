@@ -12,7 +12,8 @@ class RegisterBeneficiaryAPIView(APIView):
     def post(request, **kwargs) -> JsonResponse:
         serializer = BeneficiaryProfileSerializer(data=request.data, request=request)
         if serializer.is_valid():
-            user = create_beneficiary_user(serializer)
+            password = request.data.get("user").pop("password", "")
+            user = create_beneficiary_user(serializer=serializer, password=password)
             IdentityVerificationEmailThread(request=request, email=user.email).start()
             return JsonResponse(data={'message': 'success'})
         return JsonResponse(data={'errors': serializer.errors}, status=BAD_REQUEST)

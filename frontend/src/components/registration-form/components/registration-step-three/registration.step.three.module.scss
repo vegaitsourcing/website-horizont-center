@@ -1,102 +1,115 @@
-@import 'styles/main.scss';
+@import './../../../../styles/main';
 
 .imageUpload {
-    text-align: left;
-    padding-block: 64px;
-    padding: 30px;
+	padding-block: 64px;
+	padding: 30px;
+	display: flex;
 
-    .imageField {
-        display: inline-block;
-        text-align: center;
-        vertical-align: top;
-        margin-right: 25px;
-        margin-bottom: 25px;
-        padding: 36px 64px;
-        max-width: 276px;
-        border: 1px solid #D0D5DD;
-        filter: drop-shadow(0px 0px 24px rgba(0, 0, 0, 0.05));
-        border-radius: 16px;
+	@include respond-to(laptop) {
+		padding: 30px 0;
+	}
+	@include respond-to(tablet) {
+		flex-direction: column;
+		gap: 30px;
+	}
 
-        &.error {
-            border: 2px solid $error-color;
-        }
+	.imageField {
+		display: inline-block;
+		text-align: center;
+		vertical-align: top;
+		margin-right: 25px;
+		padding: 36px 64px;
+		max-width: 276px;
+		height: 200px;
+		border: 1px solid #D0D5DD;
+		filter: drop-shadow(0px 0px 24px rgba(0, 0, 0, 0.05));
+		border-radius: 16px;
 
-        .image {
-            width: 128px;
-            height: 128px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+		@include respond-to(tablet) {
+			margin: 0 auto;
+		}
 
-        .text {
-            cursor: pointer;
-            font-family: 'Open Sans';
-            font-style: normal;
-            font-weight: 600;
-            font-size: 18px;
-            line-height: 25px;
-            text-decoration-line: underline;
-            color: $blue-color;
-            flex: none;
-            order: 1;
-            flex-grow: 0;
+		&.error {
+			border: 2px solid $error-color;
+		}
 
-            &.error {
-                color: $error-color;
-            }
-        }
-    }
+		.image {
+			width: 128px;
+			height: 128px;
+			border-radius: 50%;
+			object-fit: cover;
+		}
+
+		.text {
+			cursor: pointer;
+			font-style: normal;
+			font-weight: 600;
+			font-size: 18px;
+			line-height: 25px;
+			text-decoration-line: underline;
+			color: $blue-color;
+			flex: none;
+			order: 1;
+			flex-grow: 0;
+
+			&.error {
+				color: $error-color;
+			}
+		}
+	}
 }
 
 .descriptionInput {
-    display: inline-block;
-    width: 75%;
+	display: inline-block;
+	width: 75%;
 
-    @include respond-to(laptop) {
+	@include respond-to(tablet) {
 		width: 100%;
 	}
 
-    .textarea {
-        height: 100%;
-        width: calc(100% - 68px);
-        resize: none;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 12px 34px;
-        height: 239px;
-        background: #FFFFFF;
-        border: 1px solid #D0D5DD;
-        border-radius: 16px;
-        font-family: 'Open Sans';
-        font-style: normal;
-        font-weight: 300;
-        font-size: 16px;
-        line-height: 150%;
-        color: $input-text-color;
+	.textarea {
+		font-family: "Open Sans", sans-serif;
+		width: calc(100% - 68px);
+		resize: none;
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 12px 34px;
+		height: 248px;
+		background: #FFFFFF;
+		border: 1px solid #D0D5DD;
+		border-radius: 16px;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 150%;
+		color: $input-text-color;
 
-        &.error {
-            border: 2px solid $error-color;
-            outline: none;
+		@include respond-to(tablet) {
+			height: 300px;
+		}
 
-            &.error::placeholder {
-                color: $error-color;
-            }
-        }
-    }
+		&.error {
+			border: 2px solid $error-color;
+			outline: none;
 
-    .charCount {
-        text-align: right;
-        margin: 0;
-        font-family: 'Open Sans';
-        font-style: normal;
-        font-weight: 300;
-        font-size: 16px;
-        line-height: 150%;
-        color: $blue-color;
+			&.error::placeholder {
+				color: $error-color;
+			}
+		}
+	}
 
-        &.error {
-            color: $error-color;
-        }
-    }
+	.charCount {
+		text-align: right;
+		margin: 0;
+		font-style: normal;
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 150%;
+		color: $blue-color;
+
+		&.error {
+			color: $error-color;
+		}
+	}
 }

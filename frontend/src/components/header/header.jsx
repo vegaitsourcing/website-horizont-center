@@ -14,7 +14,7 @@ export const Header = ({ hasOpenedMobileMenu, onToggleMobileMenu }) => {
 
 	const logout = useCallback(async () => {
 		await AuthService.logout();
-		await router.push("/");
+		router.reload();
 	}, [router]);
 
 	return (

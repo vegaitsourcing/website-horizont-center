@@ -26,7 +26,20 @@ export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
     setEditedData({ ...editedData, [field]: value });
   };
 
+  const validateInputs = () => {
+    for (let field in editedData) {
+      if (editedData[field] === "") {
+        return false;
+      }
+      if (field === "description" && (500 <= editedData[field].length || editedData[field].length <= 100)) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   async function editProfile() {
+    if (validateInputs() == false) return false;
     if (userType === "caregiver") {
       await CaregiversService.editCaregiverById(profile.id, editedData).then(() => {
         router.reload();
@@ -39,9 +52,22 @@ export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
 
   useEffect(() => {
     prepareCityOptions();
+    setEditedData({
+      first_name: profile.user.first_name,
+      last_name: profile.user.last_name,
+      city: profile.city,
+      work_application: profile.work_application,
+      description: profile.description,
+      phone_number: profile.user.phone_number,
+      second_phone_number: profile.user.second_phone_number,
+      email: profile.user.email,
+      facebook_url: profile.facebook_url,
+      instagram_url: profile.instagram_url,
+      experience: profile.experience,
+      weekly_days: profile.weekly_days,
+      daily_hours: profile.daily_hours,
+    });
   }, [profile, userType]);
-
-  console.log("Profile:", profile);
 
   const renderInput = (item) => {
     if (item.title === "OPSTE INFORMACIJE") {
@@ -79,7 +105,7 @@ export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
           name={item.fieldName}
           inputValue={profile.user[item.fieldName] ?? profile[item.fieldName]}
           valueChangedHandler={(e) => handleValueChange(e, item.fieldName)}
-          isValidInput={true}
+          errorMessage={editedData[item.fieldName] === "" ? "Ovo polje je obavezno" : ""}
         />
       </div>
     );
@@ -107,7 +133,6 @@ export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
               options={cityOptions}
               inputValue={profile.city}
               valueChangedHandler={(e) => handleValueChange(e, "city")}
-              isValidInput={true}
             />
           </div>
         </div>

@@ -1,12 +1,17 @@
-@import "main";
+@import "./../../styles/main";
 
 .fieldWrapper {
+	font-family: "Open Sans", sans-serif;
 	position: relative;
-	height: 48px;
-	width: 300px;
-	display: flex;
+	width: 100%;
+	min-height: 70px;
 
 	@include respond-to(tablet) {
+		width: 100%;
+	}
+
+	.fieldInnerWrapper {
+		display: flex;
 		width: 100%;
 	}
 
@@ -15,12 +20,16 @@
 		-moz-appearance: none;
 		appearance: none;
 		padding: 0 24px;
+		height: 48px;
 		width: 100%;
 		font-size: 16px;
 		background: #FFFFFF;
 		border: 1px solid #D0D5DD;
 		border-radius: 10px;
+	}
 
+	input.field {
+		height: 46px;
 	}
 
 	select.field {
@@ -35,22 +44,30 @@
 		right: 20px;
 	}
 
-	&.hasError {
-		border-color: $error-color;
-		color: $error-color;
-
-		+ svg path {
-			fill: $error-color;
-			transition: fill 100ms ease;
-		}
-	}
 }
 
-.fieldWrapperWide {
-	@extend .fieldWrapper;
-	width: 500px;
+.fieldWrapperWithError {
 
-	@include respond-to(tablet) {
-		width: 100%;
+	.field,
+	input {
+		background-color: #fcf4f4;
+		border: 1px solid red;
+	}
+
+	.field::placeholder {
+		color: $error-color;
+	}
+
+	.field:focus {
+		outline: 1.5px solid red;
+	}
+
+	svg path {
+		fill: red;
+	}
+
+	.errorMessage {
+		margin: 0;
+		color: red;
 	}
 }
