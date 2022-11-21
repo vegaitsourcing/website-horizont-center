@@ -70,7 +70,8 @@ export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
   }, [profile, userType]);
 
   const renderInput = (item) => {
-    if (item.title === "OPSTE INFORMACIJE") {
+    console.log(item);
+    if (item.fieldName === "description") {
       return (
         <div>
           <TextArea
@@ -80,7 +81,7 @@ export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
         </div>
       );
     }
-    if (item.title === "DRUŠTVENE MREŽE") {
+    if (item.fieldName === "social_networks") {
       return item.fields.map((element, index) => {
         return (
           <div key={index}>
@@ -103,6 +104,7 @@ export const ProfileDetailsEdit = ({ profile, editList, userType }) => {
           id={item.fieldName}
           type={item.type}
           name={item.fieldName}
+          placeholder={item.placeholder}
           inputValue={profile.user[item.fieldName] ?? profile[item.fieldName]}
           valueChangedHandler={(e) => handleValueChange(e, item.fieldName)}
           errorMessage={editedData[item.fieldName] === "" ? "Ovo polje je obavezno" : ""}

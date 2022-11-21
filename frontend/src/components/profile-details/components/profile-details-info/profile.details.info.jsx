@@ -12,14 +12,14 @@ export const ProfileDetailsInfo = ({ profile, infoList }) => {
     <div className={styles.userDetailsWrapper}>
       <div className={styles.userDetailsSection}>
         <div className={styles.imageSection}>
-          <img
-            className={[styles.roundedImage].join(" ")}
-            src={profile.image ?? "/images/profile.image.placeholder.svg"}
-            alt="profile image"
-          />
-          <div className={styles.profileName}>{`${profile.user.first_name} ${profile.user.last_name}`}</div>
-          <div className={`${styles.profileLocation} ${styles.p2}`}>
-            <div>
+          <div className={styles.imageWrapper}>
+            <img
+              className={styles.roundedImage}
+              src={profile.image ?? "/images/profile.image.placeholder.svg"}
+              alt="profile image"
+            />
+            <div className={styles.profileName}>{`${profile.user.first_name} ${profile.user.last_name}`}</div>
+            <div className={`${styles.profileLocation} ${styles.p2}`}>
               <FontAwesomeIcon icon={faLocationDot} className={styles.icon} />
               <span className={styles.city}>{profile.city}</span>
             </div>

@@ -9,7 +9,7 @@ export const ProfileDetails = ({ profile, userType, authUser }) => {
   const [editEnabled, setEditEnabled] = useState(false);
 
   useEffect(() => {
-    if (profile.id === authUser.id) {
+    if (profile.user.id === authUser.id) {
       setEditEnabled(true);
     }
   }, [profile, authUser]);
