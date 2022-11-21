@@ -14,11 +14,9 @@ class IdentityVerificationEmailThread(EmailThread):
         self.user_email = email
         self.request = request
         html_template = self._create_html_template()
-        plain_message = strip_tags(html_template)
-        subject = _('Verify your email')
         super().__init__(
-            subject=subject,
-            plain_message=plain_message,
+            subject=_('Verify your email'),
+            plain_message=strip_tags(html_template),
             email_from=settings.EMAIL_HOST_USER,
             recipient_list=[email],
             html_message=html_template

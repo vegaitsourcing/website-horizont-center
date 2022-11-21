@@ -2,14 +2,15 @@ import threading
 from threading import Thread
 from abc import ABC
 from typing import List
-from django.core.mail import send_mail as core_send_email
 import logging
+
+from django.core.mail import send_mail
 
 
 class EmailThread(ABC, Thread):
     def __init__(
-            self, subject: str, plain_message: str, email_from: str, recipient_list: List[str],
-            html_message: str = None
+            self, subject: str, plain_message: str, email_from: str,
+            recipient_list: List[str], html_message: str = None
     ) -> None:
         super().__init__()
         self.subject = subject
@@ -21,7 +22,7 @@ class EmailThread(ABC, Thread):
 
     def run(self) -> None:
         try:
-            core_send_email(
+            send_mail(
                 subject=self.subject,
                 message=self.plain_message,
                 from_email=self.email_from,
