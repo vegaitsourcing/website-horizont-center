@@ -5,13 +5,13 @@
 .userDetailsWrapper {
     align-items: center;
     justify-content: center;
-    margin: 36px 160px;
     display: flex;
 }
 
 .userDetailsSection {
     padding: 36px 36px 64px;
 	border-radius: 16px;
+    display: block;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     margin: 36px;
     min-height: 325px;
@@ -90,19 +90,23 @@
 }
 
 .descriptionSection {
-    vertical-align: top;
     display: inline-block;
-    width: 900px;
-    padding: 0px 36px;
+    vertical-align: top;
+    width: 800px;
+    height: 100%;
+    margin-left: 36px;
+
+    @include respond-to(1416px) {
+        margin-top: 24px;
+    }
 
     @include respond-to(laptop) {
-        width: 400px;
-    }
-    
-    @include respond-to(tablet) {
-        width: 280px;
+        width: 600px;
     }
 
+    @include respond-to(tablet) {
+        width: 340px;
+    }
 
     .createdDate {
         margin-bottom: 12px;
@@ -125,20 +129,10 @@
         display: block;
 
         .elementInfo {
-            vertical-align: top;
-            width: 300px;
             display: inline-block;
-            margin-right: 78px;
+            width: 350px;
+            margin-right: 24px;
             margin-bottom: 20px;
-
-            &.textArea {
-                width: 100%;
-                display: block;
-
-                @include respond-to(tablet) {
-                    width: 300px;
-                }
-            }
         }
     }
 }
@@ -176,4 +170,9 @@
 
 .fullWidth {
     display: block !important;
+}
+
+.textArea {
+    display: block !important;
+    width: 100% !important;
 }
