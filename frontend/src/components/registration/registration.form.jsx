@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { ConfirmRegistration } from "./confirm.registration";
 import { RegistrationStepOne, RegistrationStepTwo, RegistrationStepThree } from "./components";
 import { LongButton } from "shared-components";
 import { registrationFormBlank } from "./hooks/registrationFormBlank";
@@ -8,8 +8,8 @@ import authService from "pages/api/authService";
 import styles from "./registration.form.module.scss";
 
 export const RegistrationForm = () => {
-  const router = useRouter();
   const [stepNumber, setStepNumber] = useState(1);
+  const [confirmEmail, setConfirmationEmail] = useState("");
   const [isFormStep1Valid, setIsFormStep1Valid] = useState(false);
   const [isFormStep2Valid, setIsFormStep2Valid] = useState(false);
   const [isFormStep3Valid, setIsFormStep3Valid] = useState(false);
@@ -50,7 +50,8 @@ export const RegistrationForm = () => {
     await authService.register(userData, userType).then((response) => {
       if (response.status === 200) {
         localStorage.setItem("registrationForm", JSON.stringify(registrationFormBlank));
-        router.push({ pathname: "/confirm-registration", query: { email: userData.user.email } });
+        setConfirmationEmail(userData.user.email);
+        setStepNumber(4);
       }
     });
   }
@@ -113,6 +114,10 @@ export const RegistrationForm = () => {
       />
     );
   };
+
+  if (stepNumber === 4) {
+    return <ConfirmRegistration email={confirmEmail} />;
+  }
 
   return (
     <div className={styles.createAccount}>

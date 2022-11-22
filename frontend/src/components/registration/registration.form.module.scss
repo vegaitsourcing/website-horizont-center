@@ -66,7 +66,10 @@
 .createAccountBody {
 	padding-top: 64px;
 	padding-bottom: 24px;
-	text-align: center;
+
+	&.alignCenter {
+		text-align: center;
+	}
 
 	.email {
 		font-weight: 600;
