@@ -48,7 +48,6 @@ export const RegistrationForm = () => {
     const userType = getUserData().userType;
     const userData = getUserData().userData;
     await authService.register(userData, userType).then((response) => {
-      console.log("RESPONSE:", response);
       if (response.status === 200) {
         localStorage.setItem("registrationForm", JSON.stringify(registrationFormBlank));
         router.push({ pathname: "/confirm-registration", query: { email: userData.user.email } });
