@@ -9,7 +9,6 @@ import { useSingleResource } from "hooks";
 import { useEffect, useState } from "react";
 
 function BeneficiaryProfile({ pathname, beneficiaryProfileId }) {
-  const [isLoading, setIsLoading] = useState(true);
   const [authUser, setAuthUser] = useState({});
   const [beneficiaryProfile, errorPage] = useSingleResource(() =>
     BeneficiariesService.getBeneficiaryById(beneficiaryProfileId)
@@ -21,17 +20,8 @@ function BeneficiaryProfile({ pathname, beneficiaryProfileId }) {
       setAuthUser(AuthService.getUser());
       const seoTitle = `${beneficiaryProfile.user.first_name} ${beneficiaryProfile.user.last_name}`;
       setSEO(prepareSingleResourceSEO(beneficiaryProfile.id, seoTitle));
-      setIsLoading(false);
     }
   }, [beneficiaryProfile]);
-
-  if (isLoading) {
-    return (
-      <LayoutDefault>
-        <Spinner />
-      </LayoutDefault>
-    );
-  }
 
   return (
     <>

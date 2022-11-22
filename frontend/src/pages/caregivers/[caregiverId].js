@@ -9,7 +9,6 @@ import { useSingleResource } from "../../hooks";
 import { useEffect, useState } from "react";
 
 function CaregiverProfile({ pathname, caregiverProfileId }) {
-  const [isLoading, setIsLoading] = useState(true);
   const [authUser, setAuthUser] = useState({});
   const [caregiverProfile, errorPage] = useSingleResource(() => CaregiversService.getCaregiverById(caregiverProfileId));
   const [SEO, setSEO] = useState({});
@@ -19,17 +18,8 @@ function CaregiverProfile({ pathname, caregiverProfileId }) {
       setAuthUser(AuthService.getUser());
       const seoTitle = `${caregiverProfile.user.first_name} ${caregiverProfile.user.last_name}`;
       setSEO(prepareSingleResourceSEO(caregiverProfile.id, seoTitle));
-      setIsLoading(false);
     }
   }, [caregiverProfile]);
-
-  if (isLoading) {
-    return (
-      <LayoutDefault>
-        <Spinner />
-      </LayoutDefault>
-    );
-  }
 
   return (
     <>
