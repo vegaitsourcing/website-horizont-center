@@ -121,7 +121,7 @@
 
 .tooltip .tooltiptext {
 	visibility: hidden;
-	width: 200px;
+	width: 150px;
 	border: 1px solid $blue-color;
 	background-color: $light-blue-color;
 	color:$input-text-color;
@@ -129,7 +129,7 @@
 	border-radius: 16px;
 	padding: 5px 0;
 	position: absolute;
-	left: -150px;
+	right: 0px;
 	top: 20px;
 	z-index: 1;
 }

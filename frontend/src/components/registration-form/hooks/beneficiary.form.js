@@ -57,7 +57,7 @@ export const beneficiaryFormFields = [
       name: "helping_period",
       label: "Period pružanja pomoći",
       placeholder: "Period pružanja pomoći*",
-      infoText: "Primeri: ovog meseca, od xx datuma do xx datuma, od sledeće godine pa nadalje...",
+      infoText: "Primeri: ovog meseca, od xx datuma do xx datuma, tokom xx meseca, tokom xx godine...",
     },
     {
       id: "gender",

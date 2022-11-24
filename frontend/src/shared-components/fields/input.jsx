@@ -38,6 +38,7 @@ export const Input = ({
       <SelectDate
         inputValue={inputValue}
         label={label}
+        infoText={infoText}
         valueChangedHandler={valueChangedHandler}
         errorMessage={errorMessage}
       />

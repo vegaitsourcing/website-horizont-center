@@ -40,6 +40,7 @@ export const caregiverFormFields = [
       name: "birthdate",
       label: "Datum rođenja",
       placeholder: "Dan / Mesec / Godina rodjenja*",
+      infoText: "Datum rođenja u formatu: DD/MM/YYYY",
     },
     {
       id: "gender",
@@ -74,6 +75,7 @@ export const caregiverFormFields = [
       step: ".01",
       label: "Koliko sati ste dostupni?",
       placeholder: "Koliko sati dnevno*",
+      infoText: "Koliko sati dnenvno ste dostupni da pružite pomoć (0-24h).\nPrimer: 5h",
     },
     {
       id: "facebook_url",

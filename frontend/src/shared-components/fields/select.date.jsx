@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+
 import moment from "moment";
 import styles from "./fields.module.scss";
 
-export const SelectDate = ({ inputValue, label, valueChangedHandler, className = "", errorMessage = "" }) => {
+export const SelectDate = ({ inputValue, label, infoText, valueChangedHandler, className = "", errorMessage = "" }) => {
   const [datePickerValue, setDatePickerValue] = useState(inputValue);
 
   useEffect(() => {
@@ -21,7 +24,17 @@ export const SelectDate = ({ inputValue, label, valueChangedHandler, className =
 
   return (
     <div className={wrapperClassNames}>
-      {label ? <label className={styles.fieldLabel}>{label}</label> : null}
+      {label ? (
+        <label className={styles.fieldLabel}>
+          {label}
+          {infoText ? (
+            <div className={styles.tooltip}>
+              <FontAwesomeIcon icon={faInfoCircle} className={styles.infoIcon} />
+              <span className={styles.tooltiptext}>{infoText}</span>
+            </div>
+          ) : null}
+        </label>
+      ) : null}
       <DatePicker
         placeholderText={inputValue !== "" ? inputValue : "Datum rođenja Dan/Mesec/Godina**"}
         dateFormat="dd/MM/yyyy"
