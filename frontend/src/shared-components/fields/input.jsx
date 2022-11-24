@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faMagnifyingGlass, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { Select } from "./select";
 import { SelectDate } from "shared-components";
 import styles from "./fields.module.scss";
@@ -17,6 +17,7 @@ export const Input = ({
   className = "",
   errorMessage = "",
   withSearchIcon = false,
+  infoText,
 }) => {
   if (type === "dropdown")
     return (
@@ -48,7 +49,17 @@ export const Input = ({
 
   return (
     <div className={wrapperClassNames}>
-      {label ? <label className={styles.fieldLabel}>{label}</label> : null}
+      {label ? (
+        <label className={styles.fieldLabel}>
+          {label}
+          {infoText ? (
+            <div className={styles.tooltip}>
+              <FontAwesomeIcon icon={faInfoCircle} className={styles.infoIcon} />
+              <span className={styles.tooltiptext}>{infoText}</span>
+            </div>
+          ) : null}
+        </label>
+      ) : null}
       <div className={styles.fieldInnerWrapper}>
         <input
           id={id}
@@ -63,7 +74,7 @@ export const Input = ({
         />
         {withSearchIcon && <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.icon} />}
       </div>
-      {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+      {errorMessage && <pre className={styles.errorMessage}>{errorMessage}</pre>}
     </div>
   );
 };

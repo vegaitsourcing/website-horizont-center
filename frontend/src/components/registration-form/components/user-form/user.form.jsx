@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Input } from "shared-components";
 import CitiesService from "pages/api/countriesService";
+import { isValidInput } from "../../utils/inputValidation";
 import styles from "./user.form.module.scss";
 
 export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChangedHandler }) => {
@@ -31,7 +32,7 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
         <label>{userFormType === "caregiver" ? "Opšte informacije" : "Vaše informacije"}</label>
         <div className={styles.formGrid}>
           {formInputFields[0].map((input) => {
-            const isEmpty = formData?.data?.[userFormType]?.[input.name] === "";
+            const inputValue = formData?.data?.[userFormType]?.[input.name] ?? "";
             return (
               <Input
                 key={input.id}
@@ -42,9 +43,10 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
                 name={input.name}
                 label={input.label}
                 placeholder={input.placeholder}
-                inputValue={formData?.data?.[userFormType]?.[input.name] ?? ""}
+                infoText={input.infoText}
+                inputValue={inputValue}
                 valueChangedHandler={(e) => handleValueChange(e, input.name)}
-                errorMessage={isEmpty && !input.optional ? "Ovo polje je obavezno" : ""}
+                errorMessage={isValidInput(inputValue, input)}
               />
             );
           })}
@@ -56,7 +58,7 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
         </label>
         <div className={styles.formGrid}>
           {formInputFields[1].map((input) => {
-            const isEmpty = formData?.data?.[userFormType]?.[input.name] === "";
+            const inputValue = formData?.data?.[userFormType]?.[input.name] ?? "";
             return (
               <Input
                 key={input.id}
@@ -68,9 +70,10 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
                 step={input.step}
                 label={input.label}
                 placeholder={input.placeholder}
-                inputValue={formData?.data?.[userFormType]?.[input.name] ?? ""}
+                infoText={input.infoText}
+                inputValue={inputValue}
                 valueChangedHandler={(e) => handleValueChange(e, input.name)}
-                errorMessage={isEmpty && !input.optional ? "Ovo polje je obavezno" : ""}
+                errorMessage={isValidInput(inputValue, input)}
               />
             );
           })}

@@ -64,7 +64,7 @@ export const beneficiaryEditList = [
   {
     title: "SATI NEDELJNO",
     fieldName: "daily_hours",
-    type: "text",
+    type: "number",
     placeholder: "Koliko sati dnevno? (0-24h)*",
   },
 ];

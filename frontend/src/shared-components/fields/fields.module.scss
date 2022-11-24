@@ -45,6 +45,14 @@
 		text-transform: unset;
 	}
 
+	.infoIcon {
+		margin-left: 5px;
+		width: 15px;
+		height: 15px;
+		opacity: 0.3;
+		cursor: pointer;
+	}
+
 	input.field {
 		height: 46px;
 	}
@@ -71,7 +79,6 @@
 }
 
 .fieldWrapperWithError {
-
 	.field,
 	input, .textarea {
 		background-color: #fcf4f4;
@@ -91,6 +98,7 @@
 	}
 
 	.errorMessage {
+		font-family: "Open Sans", sans-serif;
 		margin: 0;
 		color: red;
 		margin-bottom: 20px;
@@ -103,4 +111,29 @@
 	.charCount {
 		color: red;
 	}
+}
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 200px;
+	border: 1px solid $blue-color;
+	background-color: $light-blue-color;
+	color:$input-text-color;
+	text-align: center;
+	border-radius: 16px;
+	padding: 5px 0;
+	position: absolute;
+	left: -150px;
+	top: 20px;
+	z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
 }
