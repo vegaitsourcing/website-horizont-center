@@ -46,7 +46,6 @@
 	}
 
 	.infoIcon {
-		margin-left: 5px;
 		width: 15px;
 		height: 15px;
 		opacity: 0.3;
@@ -116,12 +115,12 @@
 .tooltip {
 	position: relative;
 	display: inline-block;
-	border-bottom: 1px dotted black;
+	margin-right: 5px;
 }
 
 .tooltip .tooltiptext {
 	visibility: hidden;
-	width: 150px;
+	width: 200px;
 	border: 1px solid $blue-color;
 	background-color: $light-blue-color;
 	color:$input-text-color;
@@ -129,8 +128,8 @@
 	border-radius: 16px;
 	padding: 5px 0;
 	position: absolute;
-	right: 0px;
-	top: 20px;
+	left: 0px;
+	top: 24px;
 	z-index: 1;
 }
 

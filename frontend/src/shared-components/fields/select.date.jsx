@@ -26,13 +26,13 @@ export const SelectDate = ({ inputValue, label, infoText, valueChangedHandler, c
     <div className={wrapperClassNames}>
       {label ? (
         <label className={styles.fieldLabel}>
-          {label}
           {infoText ? (
             <div className={styles.tooltip}>
               <FontAwesomeIcon icon={faInfoCircle} className={styles.infoIcon} />
               <span className={styles.tooltiptext}>{infoText}</span>
             </div>
           ) : null}
+          {label}
         </label>
       ) : null}
       <DatePicker
