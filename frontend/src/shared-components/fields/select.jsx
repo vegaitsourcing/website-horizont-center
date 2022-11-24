@@ -6,6 +6,7 @@ import styles from "./fields.module.scss";
 export const Select = ({
   id,
   name,
+  label,
   placeholder,
   options,
   valueChangedHandler,
@@ -31,6 +32,7 @@ export const Select = ({
   return (
     <div className={wrapperClassNames}>
       <div className={styles.fieldInnerWrapper}>
+        {label ? <label className={styles.fieldLabel}>{label}</label> : null}
         <select
           onChange={(event) => handleSelectChange(event.target.value)}
           name={name}

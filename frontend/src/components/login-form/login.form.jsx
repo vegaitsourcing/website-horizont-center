@@ -39,6 +39,7 @@ export const LoginForm = () => {
           className={styles.fieldWrapper}
           id="email"
           type="email"
+          label="E-mail adresa"
           placeholder="Unesite Vašu E-mail adresu"
           valueChangedHandler={(value) => updateFormData({ email: value })}
         />
@@ -46,6 +47,7 @@ export const LoginForm = () => {
           className={styles.fieldWrapper}
           id="password"
           type="password"
+          label="Lozinka"
           placeholder="Unesite Vašu lozinku"
           valueChangedHandler={(value) => updateFormData({ password: value })}
         />
