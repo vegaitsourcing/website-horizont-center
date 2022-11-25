@@ -24,7 +24,6 @@ export const beneficiaryFormFields = [
       name: "password",
       label: "Lozinka",
       placeholder: "Unesite Vašu lozinku*",
-      validate: 6,
     },
   ],
   //Beneficiary fields
@@ -73,7 +72,6 @@ export const beneficiaryFormFields = [
       name: "weekly_days",
       label: "Broj dana nedeljno",
       placeholder: "Broj dana nedeljno*",
-      withInfoIcon: true,
     },
     {
       id: "daily_hours",
@@ -81,8 +79,7 @@ export const beneficiaryFormFields = [
       name: "daily_hours",
       label: "Koliko sati dnevno",
       placeholder: "Koliko sati dnevno (0-24h)*",
-      infoText: "Potrebna pomoć na dnevnom nivou u satima (0-24h).\nPrimer: 5h",
-      withInfoIcon: true,
+      infoText: "Potrebna pomoć na dnevnom nivou u satima (0-24h). Primer: 5h",
     },
     {
       id: "care_type",
@@ -90,7 +87,6 @@ export const beneficiaryFormFields = [
       name: "care_type",
       label: "Vrsta pomoći",
       placeholder: "Vrsta pomoći*",
-      withInfoIcon: true,
     },
   ],
 ];
