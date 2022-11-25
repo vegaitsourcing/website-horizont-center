@@ -5,6 +5,7 @@
 	position: relative;
 	width: 100%;
 	min-height: 70px;
+	margin-bottom: 12px;
 
 	@include respond-to(tablet) {
 		width: 100%;
@@ -35,6 +36,22 @@
 		}
 	}
 
+	.fieldLabel {
+		position: absolute;
+		top: -24px;
+		@include text;
+		color: $blue-color;
+		font-weight: 400;
+		text-transform: unset;
+	}
+
+	.infoIcon {
+		width: 15px;
+		height: 15px;
+		opacity: 0.3;
+		cursor: pointer;
+	}
+
 	input.field {
 		height: 46px;
 	}
@@ -61,7 +78,6 @@
 }
 
 .fieldWrapperWithError {
-
 	.field,
 	input, .textarea {
 		background-color: #fcf4f4;
@@ -81,11 +97,42 @@
 	}
 
 	.errorMessage {
+		font-family: "Open Sans", sans-serif;
 		margin: 0;
+		color: red;
+		margin-bottom: 20px;
+	}
+
+	.fieldLabel {
 		color: red;
 	}
 
 	.charCount {
 		color: red;
 	}
+}
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 200px;
+	border: 1px solid $blue-color;
+	background-color: $light-blue-color;
+	color:$input-text-color;
+	text-align: center;
+	border-radius: 10px;
+	padding: 5px 0;
+	position: absolute;
+	left: 0px;
+	top: 24px;
+	z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
 }
