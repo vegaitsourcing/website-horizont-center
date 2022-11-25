@@ -3,7 +3,7 @@ export * from "./header/header";
 export * from "./footer/footer";
 export * from "./about/about";
 export * from "./blog-list/blog.list";
-export * from "./registration-form/registration.form";
+export * from "./registration/registration.form";
 export * from "./login-form/login.form";
 export * from "./payment-slip/payment.slip";
 export * from "./resource-filters";

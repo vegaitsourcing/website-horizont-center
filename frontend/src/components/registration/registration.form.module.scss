@@ -67,6 +67,15 @@
 	padding-top: 64px;
 	padding-bottom: 24px;
 
+	&.alignCenter {
+		text-align: center;
+	}
+
+	.email {
+		font-weight: 600;
+		color: $blue-color;
+	}
+
 	.p1:not(.steps .p1) {
 		max-width: 55%;
 		margin-inline: auto;
