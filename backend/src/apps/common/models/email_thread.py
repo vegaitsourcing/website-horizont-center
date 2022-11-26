@@ -37,6 +37,11 @@ class EmailThread(BaseModel):
         verbose_name=_('template path'),
         max_length=250,
     )
+    group = models.CharField(
+        verbose_name=_('group'),
+        max_length=250,
+        default='general',
+    )
     status = models.CharField(
         verbose_name=_('status'),
         max_length=10,

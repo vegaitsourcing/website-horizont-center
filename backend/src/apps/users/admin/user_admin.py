@@ -48,7 +48,7 @@ class UserAdmin(BaseUserAdmin, ModelAdminMixin):
             'fields': ('is_active', 'is_staff', 'is_superuser', 'user_permissions',),
         }),
         (_('Important dates'), {
-            'fields': ('last_login', 'date_joined', 'requested_password_reset_at',)
+            'fields': ('last_login', 'date_joined',)
         }),
     )
     add_fieldsets = (
@@ -60,5 +60,4 @@ class UserAdmin(BaseUserAdmin, ModelAdminMixin):
     readonly_fields = (
         'last_login',
         'date_joined',
-        'requested_password_reset_at',
     )

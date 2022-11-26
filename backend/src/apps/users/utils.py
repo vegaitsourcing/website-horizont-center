@@ -43,6 +43,7 @@ def send_identity_verification_email(email: str, request: WSGIRequest) -> None:
         recipient_email=email,
         email_context=email_context,
         template_path='emails/identity_verification.html',
+        group='identity_verification'
     )
     email_thread.start()
 
@@ -58,5 +59,6 @@ def send_password_reset_email(email: str) -> None:
         recipient_email=email,
         email_context=email_context,
         template_path='emails/password_reset.html',
+        group='password_reset',
     )
     email_thread.start()

@@ -1,0 +1,65 @@
+- model: common.EmailThread
+  pk: 1
+  fields:
+    subject: Reset your password
+    status: success
+    recipient_email: caregiver@example.com
+    template_path: emails/password_reset.html
+    group: password_reset
+    created: 2022-10-26T00:00:01+00:00
+    modified: 2022-10-26T00:00:01+00:00
+
+- model: common.EmailThread
+  pk: 2
+  fields:
+    subject: Reset your password
+    status: pending
+    recipient_email: caregiver@example.com
+    template_path: emails/password_reset.html
+    group: password_reset
+    created: 2022-10-26T00:00:02+00:00
+    modified: 2022-10-26T00:00:02+00:00
+
+- model: common.EmailThread
+  pk: 3
+  fields:
+    subject: Reset your password
+    status: failure
+    recipient_email: caregiver@example.com
+    template_path: emails/password_reset.html
+    group: password_reset
+    created: 2022-10-26T00:00:03+00:00
+    modified: 2022-10-26T00:00:03+00:00
+
+- model: common.EmailThread
+  pk: 4
+  fields:
+    subject: Verify your email address
+    status: success
+    recipient_email: beneficiary@example.com
+    template_path: emails/identity_verification.html
+    group: identity_verification
+    created: 2022-10-26T00:00:04+00:00
+    modified: 2022-10-26T00:00:04+00:00
+
+- model: common.EmailThread
+  pk: 5
+  fields:
+    subject: Verify your email address
+    status: pending
+    recipient_email: beneficiary@example.com
+    template_path: emails/identity_verification.html
+    group: identity_verification
+    created: 2022-10-26T00:00:05+00:00
+    modified: 2022-10-26T00:00:05+00:00
+
+- model: common.EmailThread
+  pk: 6
+  fields:
+    subject: Verify your email address
+    status: failure
+    recipient_email: beneficiary@example.com
+    template_path: emails/identity_verification.html
+    group: identity_verification
+    created: 2022-10-26T00:00:06+00:00
+    modified: 2022-10-26T00:00:06+00:00

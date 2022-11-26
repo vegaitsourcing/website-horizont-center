@@ -19,6 +19,16 @@ class EmailThreadAdmin(admin.ModelAdmin, ModelAdminMixin):
         'colored_status',
         'recipient_email',
     )
+    fields = (
+        'subject',
+        'status',
+        'recipient_email',
+        'template_path',
+        'group',
+        'email_context',
+        'created',
+        'modified',
+    )
 
     def colored_status(self, obj: EmailThread = None) -> str:
         if not obj:
@@ -38,6 +48,8 @@ class EmailThreadAdmin(admin.ModelAdmin, ModelAdminMixin):
             'text-align: center;'
             'border-radius: 5px;'
             'padding: 1px 3px;'
+            'min-width: 75px;'
+            'width: fit-content;'
         )
 
         return mark_safe(
