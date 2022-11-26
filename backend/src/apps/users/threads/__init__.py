@@ -1,2 +1,0 @@
-from apps.users.threads.identity_verification_email_thread import IdentityVerificationEmailThread
-from apps.users.threads.password_forgotten_email_thread import PasswordForgottenEmailThread
