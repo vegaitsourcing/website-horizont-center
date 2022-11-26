@@ -32,6 +32,8 @@ class LoginSerializer(serializers.Serializer):
         }
         if profile := self.user.get_profile():
             data['image'] = self.request.build_absolute_uri(profile.image.url)
+            data['profile_type'] = profile.__class__.__name__.lower().replace('profile', '')
+            data['profile_id'] = profile.pk
         return data
 
     def update(self, instance, validated_data):
