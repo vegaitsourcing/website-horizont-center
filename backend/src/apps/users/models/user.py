@@ -1,10 +1,14 @@
+from datetime import timedelta, datetime
+
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import AbstractUser, UserManager as BaseUserManager
 from django.contrib.postgres.fields import CIEmailField
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.db import models
+
 from apps.users.models import BeneficiaryProfile, CaregiverProfile
-from apps.common.models import BaseModel
+from apps.common.models import BaseModel, EmailThread
 
 
 class UserManager(BaseUserManager):
@@ -65,6 +69,22 @@ class User(AbstractUser, BaseModel):
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
+
+    @property
+    def can_reset_password(self) -> bool:
+        if last_password_reset_request_datatime := self._get_last_password_reset_request_datatime():
+            twenty_four_hours_age = timezone.now() - timedelta(hours=24)
+            return last_password_reset_request_datatime < twenty_four_hours_age
+
+        return True
+
+    def _get_last_password_reset_request_datatime(self) -> datetime | None:
+        last_password_reset_email_thread = EmailThread.objects.filter(
+            recipient_email=self.email,
+            group='password_reset'
+        ).last()
+        if last_password_reset_email_thread:
+            return last_password_reset_email_thread.created
 
     def get_profile(self) -> BeneficiaryProfile | CaregiverProfile | None:
         if beneficiary_profile := BeneficiaryProfile.objects.filter(user=self).first():

@@ -21,4 +21,5 @@ FIXTURES = (
     'users',
     'blogs',
     'donations',
+    'common',
 )
