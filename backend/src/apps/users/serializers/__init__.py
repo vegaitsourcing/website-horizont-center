@@ -4,3 +4,4 @@ from apps.users.serializers.beneficiary_profile_serializer import BeneficiaryPro
 from apps.users.serializers.caregiver_profile_serializer import CaregiverProfileSerializer
 from apps.users.serializers.login_serializer import LoginSerializer
 from apps.users.serializers.password_forgotten_serializer import PasswordForgottenSerializer
+from apps.users.serializers.password_reset_serializer import PasswordResetSerializer

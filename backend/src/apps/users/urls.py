@@ -20,4 +20,5 @@ api_url_patterns = [
     path('login/', views.LoginAPIView.as_view(), name='login'),
     path('logout/', views.LogoutAPIView.as_view(), name='logout'),
     path('password-forgotten/', views.PasswordForgottenAPIView.as_view(), name='password_forgotten'),
+    path('password-reset/<str:url_hash>/', views.PasswordResetAPIView.as_view(), name='password_reset'),
 ]

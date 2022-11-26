@@ -4,3 +4,4 @@ from apps.users.views.register_beneficiary_api_view import RegisterBeneficiaryAP
 from apps.users.views.register_caregiver_api_view import RegisterCaregiverAPIView
 from apps.users.views.complete_registration_api_view import CompleteRegistrationAPIView
 from apps.users.views.password_forgotten_api_view import PasswordForgottenAPIView
+from apps.users.views.password_reset_api_view import PasswordResetAPIView
