@@ -7,19 +7,9 @@ export const CONTACT_PATHNAME = "contact";
 
 export const navigationItems = [
 	{
-		name: "O nama",
+		name: "Zajednica",
 		pathname: HOME_PATHNAME,
 		active: true,
-	},
-	{
-		name: "Blog",
-		pathname: BLOGS_PATHNAME,
-		active: false,
-	},
-	{
-		name: "Donacije",
-		pathname: DONATIONS_PATHNAME,
-		active: false,
 	},
 	{
 		name: "Negovatelji",
@@ -29,6 +19,16 @@ export const navigationItems = [
 	{
 		name: "Negovani",
 		pathname: BENEFICIARIES_PATHNAME,
+		active: false,
+	},
+	{
+		name: "Podrška",
+		pathname: BLOGS_PATHNAME,
+		active: false,
+	},
+	{
+		name: "Donacije",
+		pathname: DONATIONS_PATHNAME,
 		active: false,
 	},
 	{

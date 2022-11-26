@@ -1,35 +1,32 @@
 @import "src/styles/main";
 
-header {
+.tabItem {
+	padding: 0;
+	font-weight: 500;
+	font-size: 18px;
+	height: 23px;
+	text-align: center;
+	cursor: pointer;
 
-	.tabItem {
-		padding: 0;
-		font-weight: 500;
-		font-size: 18px;
-		height: 23px;
-		text-align: center;
-		cursor: pointer;
-
-		@include respond-to(laptop) {
-			padding: 20px;
-			border-bottom: 1px solid $blue-color;
-			text-align: left;
-		}
+	@include respond-to(laptop) {
+		padding: 20px;
+		border-bottom: 1px solid $blue-color;
+		text-align: left;
 	}
+}
 
-	.tabItem:first-of-type {
-		@include respond-to(laptop) {
-			border-top: 1px solid $blue-color;
-		}
+.tabItem:first-of-type {
+	@include respond-to(laptop) {
+		border-top: 1px solid $blue-color;
 	}
+}
 
-	.tabLabel {
-		font-family: 'Open Sans', sans-serif;
-		font-style: normal;
-		font-weight: 600;
-		font-size: 18px;
-		line-height: 25px;
-		color: $blue-color;
-	}
+.tabLabel {
+	font-family: 'Open Sans', sans-serif;
+	font-style: normal;
+	font-weight: 600;
+	font-size: 18px;
+	line-height: 25px;
+	color: $blue-color;
 }
 

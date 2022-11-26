@@ -11,6 +11,8 @@ const AuthService = {
 			id: response.data.id,
 			firstName: response.data.first_name,
 			lastName: response.data.last_name,
+			profileType: response.data.profile_type,
+			profileID: response.data.profile_id,
 		});
 		localStorage.setItem("user", userDataString);
 	},
