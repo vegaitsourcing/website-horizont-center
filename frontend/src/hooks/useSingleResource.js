@@ -8,13 +8,17 @@ export function useSingleResource(fetchResource) {
 
 	useEffect(() => {
 		async function getResource() {
-			try {
-				const response = await fetchResource();
-				setResource(response.data);
-			} catch (error) {
-				const errorCodes = [401, 404, 500];
-				if (errorCodes.includes(error.response.status)) {
-					setErrorPage(<ErrorPageContent statusCode={error.response.status}/>);
+			if (fetchResource) {
+				try {
+					const response = await fetchResource();
+					setResource(response.data);
+				} catch (error) {
+					const errorCodes = [401, 404, 500];
+					if (errorCodes.includes(error.response?.status)) {
+						setErrorPage(<ErrorPageContent statusCode={error.response.status}/>);
+					} else {
+						setErrorPage(<ErrorPageContent statusCode={500}/>);
+					}
 				}
 			}
 			setIsFetching(false);
