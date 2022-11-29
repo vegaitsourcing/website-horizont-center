@@ -11,7 +11,7 @@ export const ContactPageContent = () => {
 			/>
 			<SectionWithImage
 				imageSrc="/images/static.4.jpg"
-				paragraph={
+				paragraphs={
 					<>
 						<p>Centar HORIZONT 21</p>
 						<p>Novi Sad</p>
