@@ -47,7 +47,7 @@ export const About = () => {
 			<SectionWithImage
 				imageSrc="/images/static.1.jpg"
 				title="Adipiscing platea aliquet"
-				paragraph={
+				paragraphs={
 					`Ornare pulvinar ullamcorper in non elit leo, duis cursus. Adipiscing non faucibus molestie in tincidunt
 					ridiculus senectus. Molestie nunc et sed ut id urna, lectus nullaringilla arcu elit nisi imperdiet integer
 					tortor semper venenatis. Bibendum sagittis pellentesque dignissim nunc.`
@@ -68,7 +68,7 @@ export const About = () => {
 				hasImageFirst
 				imageSrc="/images/static.2.jpg"
 				title="Adipiscing platea aliquet"
-				paragraph={
+				paragraphs={
 					`Ornare pulvinar ullamcorper in non elit leo, duis cursus. Adipiscing non faucibus molestie in tincidunt
 					ridiculus senectus. Molestie nunc et sed ut id urna, lectus nullaringilla arcu elit nisi imperdiet integer
 					tortor semper venenatis. Bibendum sagittis pellentesque dignissim nuncdfadfasf.`
