@@ -7,7 +7,7 @@ export const BeneficiariesService = {
     return ProfileService.getProfiles(BASE_RESOURCE_NAME, pageSize, pageNumber, contains, gender, city);
   },
   getBeneficiaryById: (beneficiaryId) => {
-    return API.getResourceById(BASE_RESOURCE_NAME, beneficiaryId);
+    return API.getProtectedResourceById(BASE_RESOURCE_NAME, beneficiaryId);
   },
   editBeneficiaryById: (beneficiaryId, editedData) => {
     return API.patch(`caregivers/${beneficiaryId}/`, editedData);
