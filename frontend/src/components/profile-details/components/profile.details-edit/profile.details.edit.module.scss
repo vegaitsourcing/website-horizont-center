@@ -1,0 +1,178 @@
+@import "src/styles/variables";
+@import "src/styles/main";
+
+
+.userDetailsWrapper {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.userDetailsSection {
+    padding: 36px 36px 64px;
+	border-radius: 16px;
+    display: block;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin: 36px;
+    min-height: 325px;
+
+    .imageSection {
+        display: inline-block;
+        align-items: center;
+        margin-bottom: 35px;
+        margin-left: 35px;
+        height: 270px;
+        width: 240px;
+        text-align: center;     
+        vertical-align: middle;
+        border: 1.5px solid $input-color;
+        border-radius: 16px;
+
+        .roundedImage {
+            display: block;
+            margin: auto;
+            margin-bottom: 15.5px;
+            margin-top: 32px;
+            width: 128px;
+            height: 128px;
+            background-color: $light-blue-color;
+            border-radius: 100%;
+            object-fit: cover;
+            object-position: top;
+        }
+
+        .editImageOverlay {
+            display: none;
+            margin: auto;
+            margin-bottom: 15.5px;
+            margin-top: -144px;
+            width: 128px;
+            height: 128px;
+            background-color: rgb(#00000066, 0.4);
+            border-radius: 100%;
+            object-fit: cover;
+            object-position: top;
+   
+            .editImgIcon {
+                height: 25px;
+                color: white;
+                margin-top: 50px;
+            }
+        }
+
+        .profileName {
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 150%;
+            color: $blue-color;
+            margin-bottom: 8px;
+        }
+        .profileLocation {
+            padding: 0px 21px;
+            color:$blue-color;
+
+            .city {
+                display: inline-block;
+                color: $subtext-color;
+            }
+
+            .icon {
+                display: inline-block;
+                width: 16px;
+                height: 20px;
+                margin-right: 10px;
+                margin-bottom: -3px;
+            }
+        }
+    }
+}
+
+.descriptionSection {
+    display: inline-block;
+    vertical-align: top;
+    width: 800px;
+    height: 100%;
+    margin-left: 36px;
+
+    @include respond-to(1416px) {
+        margin-top: 24px;
+    }
+
+    @include respond-to(laptop) {
+        width: 600px;
+    }
+
+    @include respond-to(tablet) {
+        width: 340px;
+    }
+
+    .createdDate {
+        margin-bottom: 12px;
+    }
+    .title {
+        margin-bottom: 8px;
+    }
+
+    .workApplication {
+        font-family: 'Open Sans';
+        font-style: normal;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 25px;
+        color: #414141;
+        margin-bottom: 36px;
+    }
+
+    .userDetails {
+        display: block;
+
+        .elementInfo {
+            display: inline-block;
+            width: 350px;
+            margin-right: 24px;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.h5 {
+    margin: 0px 0px 12px 0px;
+}
+
+.socialMediaLink {
+    margin-right: 36px;
+}
+
+.roundedImage:hover {
+    cursor: pointer;
+
+    &.editEnabled {
+        opacity: 0.2;
+    }
+}
+
+.roundedImage:hover + .editImageOverlay {
+    display: block;
+}
+
+.editIcon {
+    height: 18px;
+    margin-left: 10px;
+}
+
+.editCityInput {
+    width: 200px;
+    margin-left: 20px;
+    color: $subtext-color;
+}
+
+.fullWidth {
+    display: block !important;
+}
+
+.textArea {
+    display: block !important;
+    width: 100% !important;
+}

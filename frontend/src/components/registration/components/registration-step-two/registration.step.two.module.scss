@@ -1,0 +1,42 @@
+@import "./../../../../styles/main";
+
+.registerAccount {
+	text-align: left;
+	padding-top: 65px;
+
+	label {
+		@extend .p2;
+		display: inline-block;
+		text-transform: uppercase;
+		color: $blue-color;
+		font-weight: 700;
+		margin-bottom: 40px;
+	}
+}
+
+.formBottom {
+	margin-top: 36px;
+}
+
+.formGrid {
+	display: grid;
+	gap: 24px;
+	grid-template-columns: repeat(4, 1fr)
+}
+
+.p1 {
+	color: $subtext-color;
+	font-weight: 300;
+	margin: 0;
+}
+
+.notRobotBox {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 36px;
+	gap: 36px;
+}
+
+.alignCenter {
+	text-align: center;
+}

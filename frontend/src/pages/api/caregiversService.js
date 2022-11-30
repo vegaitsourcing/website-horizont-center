@@ -10,4 +10,7 @@ export const CaregiversService = {
   getCaregiverById: (caregiverId) => {
     return API.getResourceById(BASE_RESOURCE_NAME, caregiverId);
   },
+  editCaregiverById: (caregiverId, editedData) => {
+    return API.patch(`caregivers/${caregiverId}/`, editedData);
+  },
 };

@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-15 12:09+0100\n"
+"POT-Creation-Date: 2022-11-26 15:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -59,11 +59,11 @@ msgstr "Autor Bloga"
 msgid "Blog Authors"
 msgstr "Autori Blogova"
 
-#: src/apps/blogs/models/blog_author.py:13 src/apps/users/models/user.py:43
+#: src/apps/blogs/models/blog_author.py:13 src/apps/users/models/user.py:47
 msgid "first name"
 msgstr "ime"
 
-#: src/apps/blogs/models/blog_author.py:17 src/apps/users/models/user.py:49
+#: src/apps/blogs/models/blog_author.py:17 src/apps/users/models/user.py:53
 msgid "last name"
 msgstr "prezime"
 
@@ -76,25 +76,25 @@ msgstr "slika"
 #: src/apps/donations/models/donation_company.py:30
 #: src/apps/users/models/caregiver_profile.py:34
 msgid "facebook URL"
-msgstr ""
+msgstr "facebook URL"
 
 #: src/apps/blogs/models/blog_author.py:36
 #: src/apps/donations/models/donation_company.py:35
 #: src/apps/users/models/caregiver_profile.py:39
 msgid "instagram URL"
-msgstr ""
+msgstr "instagram URL"
 
 #: src/apps/blogs/models/blog_author.py:41
 #: src/apps/donations/models/donation_company.py:40
 #: src/apps/users/models/caregiver_profile.py:44
 msgid "linkedin URL"
-msgstr ""
+msgstr "linkedin URL"
 
 #: src/apps/blogs/models/blog_author.py:46
 #: src/apps/donations/models/donation_company.py:45
 #: src/apps/users/models/caregiver_profile.py:49
 msgid "twitter URL"
-msgstr ""
+msgstr "twitter URL"
 
 #: src/apps/blogs/models/blog_author.py:52
 #: src/apps/blogs/models/blog_section.py:40
@@ -145,9 +145,62 @@ msgstr "link media"
 msgid "media type"
 msgstr "tip media"
 
+#: src/apps/common/admin/email_thread_admin.py:59
+#: src/apps/common/models/email_thread.py:46
+msgid "status"
+msgstr "status"
+
 #: src/apps/common/apps.py:8
 msgid "Common"
 msgstr "zajedničko"
+
+#: src/apps/common/models/email_thread.py:14
+msgid "Email Thread"
+msgstr "email akcija"
+
+#: src/apps/common/models/email_thread.py:15
+msgid "Email Threads"
+msgstr "email akcije"
+
+#: src/apps/common/models/email_thread.py:20
+msgid "waiting to send email"
+msgstr "email još nije poslat"
+
+#: src/apps/common/models/email_thread.py:21
+msgid "successfully sent email"
+msgstr "email je uspešno poslat"
+
+#: src/apps/common/models/email_thread.py:22
+msgid "failed to send email"
+msgstr "email nije uspešno poslat"
+
+#: src/apps/common/models/email_thread.py:25
+msgid "subject"
+msgstr "naslov"
+
+#: src/apps/common/models/email_thread.py:29
+msgid "recipient email"
+msgstr "email primaoca"
+
+#: src/apps/common/models/email_thread.py:33
+msgid "email context"
+msgstr "email kontekst"
+
+#: src/apps/common/models/email_thread.py:37
+msgid "template path"
+msgstr "putanja do email fajl"
+
+#: src/apps/common/models/email_thread.py:41
+msgid "group"
+msgstr "grupa"
+
+#: src/apps/common/models/email_thread.py:51
+msgid ""
+"Note that the email can successfully be sent even if the recipient email "
+"address does not exist"
+msgstr ""
+"Email može da bude poslat, čak iako  email adresa ne postoji. "
+"U tom slučaju će email biti uspešnog statusa iako ga niko nije primio."
 
 #: src/apps/common/viewsets.py:37
 #: src/apps/users/viewsets/abstract_profile_viewset.py:26
@@ -234,19 +287,24 @@ msgstr "za"
 msgid "user"
 msgstr "korisnik"
 
-#: src/apps/users/admin/user_admin.py:42
+#: src/apps/users/admin/beneficiary_profile_admin.py:29
+#: src/apps/users/admin/caregiver_profile_admin.py:29
+msgid "user email"
+msgstr "korisnikov email"
+
+#: src/apps/users/admin/user_admin.py:44
 msgid "Personal info"
 msgstr "Lični podaci"
 
-#: src/apps/users/admin/user_admin.py:43
+#: src/apps/users/admin/user_admin.py:47
 msgid "Permissions"
 msgstr "Permisije"
 
-#: src/apps/users/admin/user_admin.py:46
+#: src/apps/users/admin/user_admin.py:50
 msgid "Important dates"
 msgstr "Važni datumi"
 
-#: src/apps/users/apps.py:8 src/apps/users/models/user.py:30
+#: src/apps/users/apps.py:8 src/apps/users/models/user.py:34
 msgid "Users"
 msgstr "Korisnici"
 
@@ -324,19 +382,19 @@ msgstr "prijava za rad"
 msgid "experience"
 msgstr "iskustvo"
 
-#: src/apps/users/models/user.py:29
+#: src/apps/users/models/user.py:33
 msgid "User"
 msgstr "Korisnik"
 
-#: src/apps/users/models/user.py:35
+#: src/apps/users/models/user.py:39
 msgid "email"
 msgstr "email"
 
-#: src/apps/users/models/user.py:53
+#: src/apps/users/models/user.py:57
 msgid "phone number"
 msgstr "broj telefona"
 
-#: src/apps/users/models/user.py:60
+#: src/apps/users/models/user.py:64
 msgid "second phone number"
 msgstr "broj telefona 2"
 
@@ -344,9 +402,30 @@ msgstr "broj telefona 2"
 msgid "Invalid credentials"
 msgstr "Pogrešni kredencijali"
 
-#: src/apps/users/threads.py:18
-msgid "Verify your email"
-msgstr "Potvrdite svoj email"
+#: src/apps/users/serializers/password_forgotten_serializer.py:20
+msgid "Invalid email address"
+msgstr "Netačna email adresa"
+
+#: src/apps/users/serializers/password_forgotten_serializer.py:23
+msgid ""
+"Password reset email has been sent already. Try requesting it again tomorrow."
+msgstr "Email za resetovanje lozinke je već polat. Pokušajte ponovo sutra."
+
+#: src/apps/users/serializers/password_reset_serializer.py:21
+msgid "Unable to retrieve an email address from the URL hash"
+msgstr "Neuspešna identifikacija email adrese iz URL hash-a"
+
+#: src/apps/users/serializers/password_reset_serializer.py:25
+msgid "User does not exist"
+msgstr "Korisnik ne postoji"
+
+#: src/apps/users/utils.py:42
+msgid "Verify your email address"
+msgstr "Potvrdite vašu email adresu"
+
+#: src/apps/users/utils.py:58
+msgid "Reset your password"
+msgstr "Resetujte vašu lozinku"
 
 #: src/caregivers/settings/common.py:172
 msgid "Serbian (latin)"

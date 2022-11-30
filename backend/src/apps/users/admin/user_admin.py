@@ -38,12 +38,18 @@ class UserAdmin(BaseUserAdmin, ModelAdminMixin):
 
     add_form = CreateUserForm
     fieldsets = (
-        (None, {'fields': ('id', 'email', 'password')}),
-        (_('Personal info'), {'fields': ('first_name', 'last_name',)}),
+        (None, {
+            'fields': ('id', 'email', 'password')
+        }),
+        (_('Personal info'), {
+            'fields': ('first_name', 'last_name',)
+        }),
         (_('Permissions'), {
             'fields': ('is_active', 'is_staff', 'is_superuser', 'user_permissions',),
         }),
-        (_('Important dates'), {'fields': ('last_login', 'date_joined',)}),
+        (_('Important dates'), {
+            'fields': ('last_login', 'date_joined',)
+        }),
     )
     add_fieldsets = (
         (None, {

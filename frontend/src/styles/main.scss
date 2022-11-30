@@ -112,22 +112,6 @@
 	font-size: 16px;
 }
 
-.react-datepicker__input-container {
-    input {
-        cursor: pointer;
-        -webkit-appearance: none;
-		-moz-appearance: none;
-		appearance: none;
-		padding: 0 24px;
-		font-size: 16px;
-		width: 250px !important;
-		height: 48px;
-		background: #FFFFFF;
-		border: 1px solid #D0D5DD;
-		border-radius: 10px;
-    }
-}
-
 .hidden {
 	display: none !important;
 }
@@ -135,3 +119,26 @@
 .lightBlueBackground {
 	background-color: $light-blue-color;
 }
+
+.react-datepicker-wrapper {
+
+	.react-datepicker__input-container {
+		display: flex;
+	}
+
+	input {
+		font-family: "Open Sans", sans-serif;
+		cursor: pointer;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		padding: 0 24px;
+		font-size: 16px;
+		width: 100%;
+		height: 48px;
+		background: #FFFFFF;
+		border-radius: 10px;
+		border: 1px solid #D0D5DD;
+	}
+}
+

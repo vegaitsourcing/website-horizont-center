@@ -56,18 +56,18 @@ export const LoginForm = () => {
           className={styles.fieldWrapper}
           id="email"
           type="email"
+          label="E-mail adresa"
           placeholder="Unesite Vašu E-mail adresu"
-          isValidInput={formData.email.isValid}
-          errorMessage="Unesite ispravnu email adresu"
+          errorMessage={!formData.email.isValid ? "Unesite ispravnu email adresu" : null}
           valueChangedHandler={(value) => updateFormData({ email: { value: value, isValid: formData.email.isValid } })}
         />
         <Input
           className={styles.fieldWrapper}
           id="password"
           type="password"
+          label="Lozinka"
           placeholder="Unesite Vašu lozinku"
-          isValidInput={formData.password.isValid}
-          errorMessage="Lozinka ne sme biti prazna"
+          errorMessage={!formData.password.isValid ? "Lozinka ne sme biti prazna" : null}
           valueChangedHandler={(value) =>
             updateFormData({ password: { value: value, isValid: formData.password.isValid } })
           }
@@ -81,7 +81,7 @@ export const LoginForm = () => {
             REGISTRUJTE SE
           </Link>
         </div>
-        <LongButton onClick={submit} value="Login" type="button" />
+        <LongButton className={styles.loginButton} onClick={submit} value="Login" type="button" />
       </div>
     </div>
   );

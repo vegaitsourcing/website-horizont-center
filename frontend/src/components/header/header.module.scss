@@ -1,12 +1,14 @@
 @import "src/styles/main";
 
 header {
+
 	.tabItem {
 		padding: 0;
 		font-weight: 500;
 		font-size: 18px;
 		height: 23px;
 		text-align: center;
+		cursor: pointer;
 
 		@include respond-to(laptop) {
 			padding: 20px;
@@ -22,7 +24,6 @@ header {
 	}
 
 	.tabLabel {
-		cursor: pointer;
 		font-family: 'Open Sans', sans-serif;
 		font-style: normal;
 		font-weight: 600;

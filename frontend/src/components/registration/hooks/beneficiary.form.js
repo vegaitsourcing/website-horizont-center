@@ -1,0 +1,92 @@
+export const beneficiaryFormFields = [
+  //General information
+  [
+    { id: "first_name", type: "text", name: "first_name", label: "Ime", placeholder: "Unesite Vaše ime*" },
+    { id: "last_name", type: "text", name: "last_name", label: "Prezime", placeholder: "Unesite Vaše prezime*" },
+    { id: "email", type: "email", name: "email", label: "E-mail", placeholder: "Unesite Vaš E-mail*" },
+    {
+      id: "phone_number",
+      type: "text",
+      name: "phone_number",
+      label: "Broj telefona",
+      placeholder: "Unesite Vaš primarni broj telefona*",
+    },
+    {
+      id: "second_phone_number",
+      type: "text",
+      name: "second_phone_number",
+      label: "Broj telefona 2",
+      placeholder: "Unesite Vaš rezervni broj telefona",
+    },
+    {
+      id: "password",
+      type: "password",
+      name: "password",
+      label: "Lozinka",
+      placeholder: "Unesite Vašu lozinku*",
+    },
+  ],
+  //Beneficiary fields
+  [
+    {
+      id: "postal_code",
+      type: "number",
+      name: "postal_code",
+      label: "Poštanski broj",
+      placeholder: "Poštanski broj*",
+    },
+    {
+      id: "city",
+      type: "dropdown",
+      name: "city",
+      label: "Mesto stanovanja",
+      placeholder: "Mesto stanovanja*",
+      options: {},
+    },
+    {
+      id: "beneficiary_person",
+      type: "text",
+      name: "beneficiary_person",
+      label: "Kome je potrebna nega?",
+      placeholder: "Kome je potrebna nega?*",
+    },
+    {
+      id: "helping_period",
+      type: "text",
+      name: "helping_period",
+      label: "Period pružanja pomoći",
+      placeholder: "Period pružanja pomoći*",
+      infoText: "Primeri: ovog meseca, od xx datuma do xx datuma, tokom xx meseca, tokom xx godine...",
+    },
+    {
+      id: "gender",
+      type: "dropdown",
+      name: "gender",
+      label: "Pol",
+      placeholder: "Pol*",
+      options: { male: "muški", female: "ženski" },
+    },
+    {
+      id: "weekly_days",
+      type: "text",
+      name: "weekly_days",
+      label: "Broj dana nedeljno",
+      placeholder: "Broj dana nedeljno*",
+    },
+    {
+      id: "daily_hours",
+      type: "number",
+      name: "daily_hours",
+      label: "Koliko sati dnevno",
+      placeholder: "Koliko sati dnevno (0-24h)*",
+      infoText: "Potrebna pomoć na dnevnom nivou u satima (0-24h). Primer: 5h",
+    },
+    {
+      id: "care_type",
+      type: "text",
+      name: "care_type",
+      label: "Vrsta pomoći",
+      placeholder: "Vrsta pomoći*",
+    },
+  ],
+];
