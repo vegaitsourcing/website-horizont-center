@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "shared-components";
-import CitiesService from "pages/api/countriesService";
+import { CitiesService } from "pages/api/countriesService";
 import { isValidInput } from "../../utils/inputValidation";
 import styles from "./user.form.module.scss";
 
@@ -35,7 +35,6 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
             const inputValue = formData?.data?.[userFormType]?.[input.name] ?? "";
             return (
               <Input
-                className={styles.inputField}
                 key={input.id}
                 className={styles.fieldWrapper}
                 id={input.id}
@@ -62,7 +61,6 @@ export const UserForm = ({ stepNumber, formInputFields, userFormType, valueChang
             const inputValue = formData?.data?.[userFormType]?.[input.name] ?? "";
             return (
               <Input
-                className={styles.inputField}
                 key={input.id}
                 className={styles.fieldWrapper}
                 id={input.id}

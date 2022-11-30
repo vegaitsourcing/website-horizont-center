@@ -4,6 +4,12 @@
 	display: none;
 	justify-content: space-between;
 	align-items: center;
+	background-color: white;
+	height: $laptop-header-height;
+	left: 0;
+	right: 0;
+	position: fixed;
+	z-index: 99;
 
 	@include respond-to(laptop) {
 		display: flex;

@@ -1,34 +1,24 @@
-import { useEffect, useState } from "react";
-
-import { ProfileDetailsInfo, ProfileDetailsEdit } from "./components";
-import { beneficiaryInfoList, beneficiaryEditList, caregiverInfoList, caregiverEditList } from "./hooks";
-
+import { ProfileDetailsEdit, ProfileDetailsInfo } from "./components";
+import { beneficiaryEditList, beneficiaryInfoList, caregiverEditList, caregiverInfoList } from "./hooks";
 import styles from "./profile.details.module.scss";
 
-export const ProfileDetails = ({ profile, userType, authUser }) => {
-  const [editEnabled, setEditEnabled] = useState(false);
+export const ProfileDetails = ({ profile, profileType, canEdit = false }) => {
 
-  useEffect(() => {
-    if (profile.user.id === authUser.id) {
-      setEditEnabled(true);
-    }
-  }, [profile, authUser]);
-
-  return (
-    <div className={styles.profileDetailsWrapper}>
-      {editEnabled ? (
-        <ProfileDetailsEdit
-          editList={userType === "caregiver" ? caregiverEditList : beneficiaryEditList}
-          profile={profile}
-          userType={userType}
-        />
-      ) : (
-        <ProfileDetailsInfo
-          infoList={userType === "caregiver" ? caregiverInfoList : beneficiaryInfoList}
-          profile={profile}
-          userType={userType}
-        />
-      )}
-    </div>
-  );
+	return (
+		<div className={styles.profileDetailsWrapper}>
+			{canEdit ? (
+				<ProfileDetailsEdit
+					editList={profileType === "caregiver" ? caregiverEditList : beneficiaryEditList}
+					profile={profile}
+					profileType={profileType}
+				/>
+			) : (
+				<ProfileDetailsInfo
+					infoList={profileType === "caregiver" ? caregiverInfoList : beneficiaryInfoList}
+					profile={profile}
+					profileType={profileType}
+				/>
+			)}
+		</div>
+	);
 };

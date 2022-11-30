@@ -2,7 +2,7 @@ import axios from "axios";
 
 const BASE_URL = "https://countriesnow.space/api/v0.1/countries";
 
-const CitiesService = {
+export const CitiesService = {
 	getAllSerbianCities: async () => {
 		let serbianCitiesString = localStorage.getItem("serbianCities");
 		const isFirstOfTheMonth = new Date().getDate() === 1;
@@ -12,5 +12,3 @@ const CitiesService = {
 		return localStorage.getItem("serbianCities").split(",");
 	},
 };
-
-export default CitiesService;

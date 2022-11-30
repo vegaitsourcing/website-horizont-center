@@ -6,11 +6,18 @@ import AuthService from "../../pages/api/authService";
 
 export const Header = ({ hasOpenedMobileMenu, onToggleMobileMenu }) => {
 	const router = useRouter();
-	const [isAuthenticated, setIsAuthenticated] = useState(false);
+	const [isLoadingUser, setIsLoadingUser] = useState(true);
+	const [user, setUser] = useState({});
 
 	useEffect(() => {
-		setIsAuthenticated(AuthService.isAuthenticated());
-	}, []);
+		if (isLoadingUser) {
+			setUser(AuthService.getUser());
+			setIsLoadingUser(false);
+		}
+	}, [isLoadingUser]);
+
+	useEffect(() => {
+	}, [isLoadingUser]);
 
 	const logout = useCallback(async () => {
 		await AuthService.logout();
@@ -19,12 +26,16 @@ export const Header = ({ hasOpenedMobileMenu, onToggleMobileMenu }) => {
 
 	return (
 		<header>
-			<DesktopNavigation onLogout={logout} isAuthenticated={isAuthenticated}/>
+			<DesktopNavigation
+				onLogout={logout}
+				isLoadingUser={isLoadingUser}
+				user={user}
+			/>
 			<MobileNavigation
 				isOpened={hasOpenedMobileMenu}
 				onToggle={onToggleMobileMenu}
 				onLogout={logout}
-				isAuthenticated={isAuthenticated}
+				user={user}
 			/>
 		</header>
 	);

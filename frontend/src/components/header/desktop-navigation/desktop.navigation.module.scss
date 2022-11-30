@@ -1,6 +1,11 @@
 @import "./../header.module";
 
 .desktopNavigation {
+	left: 0;
+	right: 0;
+	position: fixed;
+	z-index: 99;
+
 	@include respond-to(laptop) {
 		display: none;
 	}
@@ -9,7 +14,7 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: 10px 5%;
-	height: 115px;
+	height: $desktop-header-height;
 	background: $light-blue-color;
 
 	.avatar {
@@ -63,8 +68,8 @@
 		cursor: pointer;
 		justify-content: center;
 		align-items: center;
-		height: 0;
 		overflow: hidden;
+		height: 0;
 		visibility: hidden;
 		transition-property: height, visibility;
 		transition-duration: 0.4s;
@@ -72,22 +77,23 @@
 	}
 
 	.authenticatedMenu:hover .userMenu {
-		height: 100px;
+		height: 86px;
 		visibility: visible;
 	}
 
 	.userMenuOptions {
-		padding: 10px;
-		margin-top: 25px;
 		height: 100%;
 		display: block;
 		text-align: center;
 
 		.tabLabel {
-			height: 40px;
-			display: inline-block;
+			display: flex;
+			justify-content: center;
+			align-content: center;
+			height: fit-content;
 			background: $light-blue-color;
 			width: 100%;
+			margin: 12px 0;
 		}
 
 		.tabLabel:hover {
