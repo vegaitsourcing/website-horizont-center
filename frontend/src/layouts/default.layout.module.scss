@@ -1,5 +1,12 @@
 @import "src/styles/main";
 
+$total-desktop-header-height: calc($desktop-header-height + ($desktop-header-vertical-padding * 2));
+
 .main {
 	min-height: 60%;
+	margin-top: $total-desktop-header-height;
+
+	@include respond-to(laptop) {
+		margin-top: $laptop-header-height;
+	}
 }

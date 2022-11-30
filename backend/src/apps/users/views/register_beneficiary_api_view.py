@@ -2,8 +2,7 @@ from http.client import BAD_REQUEST
 from django.http import JsonResponse
 from rest_framework.views import APIView
 from apps.users.serializers import BeneficiaryProfileSerializer
-from apps.users.threads import IdentityVerificationEmailThread
-from apps.users.utils import create_beneficiary_user
+from apps.users.utils import create_beneficiary_user, send_identity_verification_email
 
 
 class RegisterBeneficiaryAPIView(APIView):
@@ -14,6 +13,6 @@ class RegisterBeneficiaryAPIView(APIView):
         if serializer.is_valid():
             password = request.data.get("user").pop("password", "")
             user = create_beneficiary_user(serializer=serializer, password=password)
-            IdentityVerificationEmailThread(request=request, email=user.email).start()
+            send_identity_verification_email(email=user.email, request=request)
             return JsonResponse(data={'message': 'success'})
         return JsonResponse(data={'errors': serializer.errors}, status=BAD_REQUEST)
