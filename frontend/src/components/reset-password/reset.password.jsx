@@ -1,11 +1,13 @@
 import React, { useCallback, useState } from "react";
 import { useRouter } from "next/router";
-import styles from "./login.form.module.scss";
+
 import { Input, LongButton } from "shared-components";
 import Link from "next/link";
 import AuthService from "../../pages/api/authService";
 
-export const LoginForm = () => {
+import styles from "./reset.password.module.scss";
+
+export const ResetPassword = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
     email: "",
@@ -32,38 +34,41 @@ export const LoginForm = () => {
   return (
     <div className={styles.loginForm}>
       <div className={styles.loginFormHeader}>
-        <h4 className={styles.h4}>Prijavite se</h4>
+        <h4 className={styles.h4}>Resetuj lozinku</h4>
       </div>
       <div className={styles.loginFormInputs}>
         <Input
           className={styles.fieldWrapper}
           id="email"
           type="email"
-          label="E-mail adresa"
+          label="E mail adresa"
           placeholder="Unesite Vašu E-mail adresu"
+          valueChangedHandler={(value) => updateFormData({ email: value })}
+        />
+        <Input
+          className={styles.fieldWrapper}
+          id="email"
+          type="email"
+          label="Nova lozinka"
+          placeholder="Unesite Vašu novu lozinku"
           valueChangedHandler={(value) => updateFormData({ email: value })}
         />
         <Input
           className={styles.fieldWrapper}
           id="password"
           type="password"
-          label="Lozinka"
-          placeholder="Unesite Vašu lozinku"
+          label="Potvrdi novu lozinku"
+          placeholder="Potvrdite Vašu novu lozinku"
           valueChangedHandler={(value) => updateFormData({ password: value })}
         />
       </div>
       <div className={styles.loginFormButtons}>
         <div className={styles.registrationLinkWrapper}>
-          <p className={styles.registrationQuestion}>nemate nalog?</p>
-          <Link href="/registration" className={styles.registrationLink}>
-            REGISTRUJTE SE
-          </Link>
-          <p className={styles.registrationQuestion}>Zavoravljena lozinka?</p>
-          <Link href="/reset-password" className={styles.registrationLink}>
-            RESETUJ LOZINKU
+          <Link href="/login" className={styles.registrationLink}>
+            Nazad na Prijavu
           </Link>
         </div>
-        <LongButton className={styles.loginButton} onClick={submit} value="Login" type="button" />
+        <LongButton className={styles.loginButton} onClick={submit} value="Potvrdi lozinku" type="button" />
       </div>
     </div>
   );
