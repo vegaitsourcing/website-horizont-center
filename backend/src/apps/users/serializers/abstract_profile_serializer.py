@@ -13,6 +13,7 @@ class AbstractProfileSerializer(ModelSerializer):
         model = AbstractProfile
         fields = (
             'id',
+            'type',
             'image',
             'gender',
             'postal_code',

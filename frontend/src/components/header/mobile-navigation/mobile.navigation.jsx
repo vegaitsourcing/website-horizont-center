@@ -39,7 +39,7 @@ function MobileMenu ({ onItemClick, onLogout, user }) {
 
 		if (user) {
 			menuItemsJSX.push(
-				<Link href={`/${user.profileType}/${user.profileID}`} passHref>
+				<Link href="/profile" passHref>
 					<div key={menuItems.length} className={styles.tabItem}>
 						<span className={styles.tabLabel}>Izmeni profil</span>
 					</div>
