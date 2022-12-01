@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { PDFDocument } from "pdf-lib";
 
 import styles from "./payment.slip.module.scss";
@@ -31,7 +31,7 @@ export const PaymentSlip = ({ linkText, info }) => {
   }
 
   const modifyPdf = async () => {
-    const existingPdfBytes = await fetch("/Obrazac_br._1.pdf").then((res) => res.arrayBuffer());
+    const existingPdfBytes = await fetch("/documents/paymentSlip.pdf").then((res) => res.arrayBuffer());
     const pdfDoc = await PDFDocument.load(existingPdfBytes);
 
     addDataToPdf(pdfDoc);

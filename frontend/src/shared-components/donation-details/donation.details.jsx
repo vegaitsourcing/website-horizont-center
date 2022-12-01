@@ -1,3 +1,4 @@
+import { PaymentSlip } from "components";
 import React from "react";
 import styles from "./donation.details.module.scss";
 
@@ -35,10 +36,10 @@ export const DonationDetails = ({ donation }) => {
           <h3 className={styles.leftSideTitle}>Opšte informacije</h3>
           <div className={styles.donationTypeTag}>{donation.financial_info ? "Finansijska pomoć" : "Robna pomoć"}</div>
           <p className={styles.p1}>{donation.description}</p>
+          {shouldShowFinancialInfo && <PaymentSlip linkText={"Izgled uplatnice"} info={donation.financial_info} />}
         </div>
         {shouldShowFinancialInfo && <FinancialInfo financialInfo={donation.financial_info} />}
       </div>
-      {/*	TODO: ADD Payment Slip LINK */}
     </>
   );
 };
