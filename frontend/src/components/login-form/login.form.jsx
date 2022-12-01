@@ -7,17 +7,33 @@ import AuthService from "../../pages/api/authService";
 
 export const LoginForm = () => {
   const router = useRouter();
+
+  const [responseError, setResponseError] = useState(null);
+
   const [formData, setFormData] = useState({
-    email: "",
-    password: "",
+    email: { value: "", isValid: true },
+    password: { value: "", isValid: true },
   });
+
+  const validateFormData = () => {
+    let isEmailValid = RegExp("^(.+)@(.+)$").test(formData.email.value);
+
+    setFormData({
+      email: { value: formData.email.value, isValid: isEmailValid },
+      password: { value: formData.password.value, isValid: !!formData.password.value },
+    });
+  };
 
   async function submit() {
     try {
-      await AuthService.login(formData.email, formData.password);
-      await router.push("/");
+      validateFormData();
+
+      if (formData.email.isValid && formData.password.isValid) {
+        await AuthService.login(formData.email.value, formData.password.value);
+        await router.push("/");
+      }
     } catch (error) {
-      console.log("Handle form validation errors:", error.response.data); // TODO
+      setResponseError(error.response.data.errors.non_field_errors);
     }
   }
 
@@ -41,7 +57,8 @@ export const LoginForm = () => {
           type="email"
           label="E-mail adresa"
           placeholder="Unesite Vašu E-mail adresu"
-          valueChangedHandler={(value) => updateFormData({ email: value })}
+          errorMessage={!formData.email.isValid ? "Unesite ispravnu email adresu" : null}
+          valueChangedHandler={(value) => updateFormData({ email: { value: value, isValid: formData.email.isValid } })}
         />
         <Input
           className={styles.fieldWrapper}
@@ -49,8 +66,12 @@ export const LoginForm = () => {
           type="password"
           label="Lozinka"
           placeholder="Unesite Vašu lozinku"
-          valueChangedHandler={(value) => updateFormData({ password: value })}
+          errorMessage={!formData.password.isValid ? "Lozinka ne sme biti prazna" : null}
+          valueChangedHandler={(value) =>
+            updateFormData({ password: { value: value, isValid: formData.password.isValid } })
+          }
         />
+        {responseError && <div className={`${styles.errorText} ${styles.p1}`}>{responseError}.</div>}
       </div>
       <div className={styles.loginFormButtons}>
         <div className={styles.registrationLinkWrapper}>
