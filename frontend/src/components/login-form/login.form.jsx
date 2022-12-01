@@ -17,11 +17,10 @@ export const LoginForm = () => {
 
   const validateFormData = () => {
     let isEmailValid = RegExp("^(.+)@(.+)$").test(formData.email.value);
-    let isPasswordValid = formData.password.value ? true : false;
 
     setFormData({
       email: { value: formData.email.value, isValid: isEmailValid },
-      password: { value: formData.password.value, isValid: isPasswordValid },
+      password: { value: formData.password.value, isValid: !!formData.password.value },
     });
   };
 
