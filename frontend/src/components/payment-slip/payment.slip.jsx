@@ -4,30 +4,27 @@ import { PDFDocument } from "pdf-lib";
 import styles from "./payment.slip.module.scss";
 
 export const PaymentSlip = ({ linkText, info }) => {
-  let modelValue = info.payment_model;
-  let pozivNaBrojValue = info.payment_reference_number;
-
-  if (modelValue == null) modelValue = "";
-  if (pozivNaBrojValue == null) pozivNaBrojValue = "";
+  const paymentModel = info.payment_model || "";
+  const paymentReferenceNumber = info.payment_reference_number || "";
 
   function addDataToPdf(pdf) {
     const form = pdf.getForm();
 
-    const svrhaUplate = form.getTextField("topmostSubform[0].Page1[0].Z3[1]");
-    const primalac = form.getTextField("topmostSubform[0].Page1[0].Z3[2]");
-    const sifraPlacanja = form.getTextField("topmostSubform[0].Page1[0].Z3[3]");
-    const iznos = form.getTextField("topmostSubform[0].Page1[0].Z3[5]");
-    const racunaPrimaoca = form.getTextField("topmostSubform[0].Page1[0].Z3[6]");
-    const model = form.getTextField("topmostSubform[0].Page1[0].Z3[7]");
-    const pozivNaBroj = form.getTextField("topmostSubform[0].Page1[0].Z3[10]");
+    const paymentPurposeField = form.getTextField("topmostSubform[0].Page1[0].Z3[1]");
+    const paymentRecieverField = form.getTextField("topmostSubform[0].Page1[0].Z3[2]");
+    const paymentCodeField = form.getTextField("topmostSubform[0].Page1[0].Z3[3]");
+    const paymentAmountField = form.getTextField("topmostSubform[0].Page1[0].Z3[5]");
+    const paymentBankAccountField = form.getTextField("topmostSubform[0].Page1[0].Z3[6]");
+    const paymentModelField = form.getTextField("topmostSubform[0].Page1[0].Z3[7]");
+    const paymentReferenceNumberField = form.getTextField("topmostSubform[0].Page1[0].Z3[10]");
 
-    svrhaUplate.setText(info.payment_purpose.toString());
-    primalac.setText(info.payment_receiver.toString());
-    sifraPlacanja.setText(info.payment_code.toString());
-    iznos.setText("= ");
-    racunaPrimaoca.setText(info.payment_bank_account.toString());
-    model.setText(modelValue.toString());
-    pozivNaBroj.setText(pozivNaBrojValue.toString());
+    paymentPurposeField.setText(info.payment_purpose.toString());
+    paymentRecieverField.setText(info.payment_receiver.toString());
+    paymentCodeField.setText(info.payment_code.toString());
+    paymentAmountField.setText("= ");
+    paymentBankAccountField.setText(info.payment_bank_account.toString());
+    paymentModelField.setText(paymentModel.toString());
+    paymentReferenceNumberField.setText(paymentReferenceNumber.toString());
   }
 
   const modifyPdf = async () => {
