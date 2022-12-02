@@ -2,12 +2,12 @@ import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { LayoutDefault } from "layouts";
-import { ResetPassword } from "components";
+import { PasswordReset } from "components";
 import { Spinner } from "shared-components";
-import AuthService from "./api/authService";
-import { prepareSEO } from "../utils";
+import AuthService from "../api/authService";
+import { prepareSEO } from "../../utils";
 
-function Login(props) {
+function PasswordResetPage(props) {
   const { pathname } = props;
   const SEO = prepareSEO(pathname);
 
@@ -37,7 +37,7 @@ function Login(props) {
     <>
       <NextSeo {...SEO} />
       <LayoutDefault>
-        <ResetPassword />
+        <PasswordReset />
       </LayoutDefault>
     </>
   );
@@ -48,4 +48,4 @@ export async function getServerSideProps(ctx) {
   return { props: { data: {}, pathname: resolvedUrl } };
 }
 
-export default Login;
+export default PasswordResetPage;

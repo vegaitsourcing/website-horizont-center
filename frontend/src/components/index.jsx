@@ -11,4 +11,4 @@ export * from "./profile-details/profile.details";
 export * from "./donation-list/donation.list";
 export * from "./resource-card/resource.card";
 export * from "./profile-list";
-export * from "./reset-password/reset.password";
+export * from "./password-reset/password.reset";

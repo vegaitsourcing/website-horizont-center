@@ -59,7 +59,7 @@ export const LoginForm = () => {
             REGISTRUJTE SE
           </Link>
           <p className={styles.registrationQuestion}>Zavoravljena lozinka?</p>
-          <Link href="/reset-password" className={styles.registrationLink}>
+          <Link href="/password-reset" className={styles.registrationLink}>
             RESETUJ LOZINKU
           </Link>
         </div>

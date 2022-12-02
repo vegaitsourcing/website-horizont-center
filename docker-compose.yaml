@@ -14,8 +14,8 @@ services:
       - DB_HOSTNAME=postgres
       - DJANGO_SUPERUSER_EMAIL=admin@example.com
       - DJANGO_SUPERUSER_PASSWORD=admin
-      - EMAIL_HOST_USER=example@example.com
-      - EMAIL_HOST_PASSWORD=xxxxxxxxxxxxxxxx
+      - EMAIL_HOST_USER=n.porobic@vegait.rs
+      - EMAIL_HOST_PASSWORD=fyglusbuteohgxwz
       - CORS_ALLOWED_ORIGIN=http://localhost:3000
       - ALLOWED_HOST=localhost
     ports:
