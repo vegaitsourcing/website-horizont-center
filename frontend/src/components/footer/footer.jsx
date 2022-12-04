@@ -21,7 +21,7 @@ export const Footer = ({ isHidden }) => {
               <Image src="/images/facebookIconWhite.svg" width="16.11" height="30" alt="link to our facebook" />
             </a>
             <a href="https://www.youtube.com/channel/UCS5gh6FEudKxWeUPIzL_Kog" target="_blank">
-              <Image src="/images/youtubeWhite.svg" width="30" height="30" alt="link to our youtube" />
+              <Image src="/images/youtubeIconWhite.svg" width="30" height="30" alt="link to our youtube" />
             </a>
             <a href="https://instagram.com/negovatelji?igshid=MWI4MTIyMDE=" target="_blank">
               <Image src="/images/instagramIconWhite.svg" width="25" height="30" alt="link to our instagram" />
