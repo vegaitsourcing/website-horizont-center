@@ -1,6 +1,6 @@
 import axios from "axios";
 import { ENV } from "config/env";
-import AuthService from "./authService";
+import { AuthService } from "./authService";
 
 const api = axios.create({
 	baseURL: ENV.BASE_API_URL,

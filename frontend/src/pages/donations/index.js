@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { LayoutDefault } from "layouts";
 import { DonationFilters, DonationList } from "components";
 import { PageHeader, Pagination, Spinner } from "shared-components";
-import DonationsService from "../api/donationsService";
+import { DonationsService } from "../api/donationsService";
 import { prepareSEO } from "../../utils";
 
 const ITEMS_PER_PAGE = 3;

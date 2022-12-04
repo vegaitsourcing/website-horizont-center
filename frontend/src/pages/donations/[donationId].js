@@ -2,7 +2,7 @@ import { NextSeo } from "next-seo";
 import { LayoutDefault } from "layouts";
 import { AboutAuthor, DonationDetails, PageHeader } from "../../shared-components";
 import { useSingleResource } from "../../hooks";
-import DonationsService from "../api/donationsService";
+import { DonationsService } from "../api/donationsService";
 import { prepareSingleResourceSEO } from "../../utils";
 import { useEffect, useState } from "react";
 

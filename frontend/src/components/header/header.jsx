@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { DesktopNavigation } from "./desktop-navigation/desktop.navigation";
 import { MobileNavigation } from "./mobile-navigation/mobile.navigation";
-import AuthService from "../../pages/api/authService";
+import { AuthService } from "../../pages/api/authService";
 
 export const Header = ({ hasOpenedMobileMenu, onToggleMobileMenu }) => {
 	const router = useRouter();

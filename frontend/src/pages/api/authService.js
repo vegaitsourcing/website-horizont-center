@@ -43,4 +43,3 @@ const AuthService = {
     return API.post(`/password-reset/${hash}/`, { password: password });
   },
 };
-export default AuthService;

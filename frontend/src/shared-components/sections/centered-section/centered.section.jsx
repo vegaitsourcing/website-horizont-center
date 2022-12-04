@@ -15,7 +15,7 @@ export function CenteredSection ({
 	return (
 		<section className={sectionClasses}>
 			<h3 className={styles.h2}>{title}</h3>
-			<p className={styles.description}>{paragraph}</p>
+			<div className={styles.description}>{paragraph}</div>
 			{buttonHref && (
 				<div className={styles.buttonWrapper}>
 					<Link href={buttonHref}>

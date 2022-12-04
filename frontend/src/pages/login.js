@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { LayoutDefault } from "layouts";
 import { LoginForm } from "components";
 import { Spinner } from "shared-components";
-import AuthService from "./api/authService";
+import { AuthService } from "./api/authService";
 import { prepareSEO } from "../utils";
 
 function Login(props) {

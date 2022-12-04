@@ -5,7 +5,7 @@ export function SectionWithImage ({ imageSrc, title, paragraphs, paragraphItems,
 	function TextSide ({ className }) {
 		return (
 			<div className={className}>
-				{title && <h2 className={styles.h2}>{title}</h2>}
+				{title && <h2 className={styles.title}>{title}</h2>}
 				<div className={styles.p1}>{paragraphs}</div>
 				{paragraphItems && (
 					<ul className={styles.paragraphItems}>

@@ -1,7 +1,7 @@
 import { NextSeo } from "next-seo";
 import { LayoutDefault } from "layouts";
 import { prepareSingleResourceSEO } from "../../utils";
-import BlogsService from "../api/blogsService";
+import { BlogsService } from "../api/blogsService";
 import { AboutAuthor, BlogSections, PageHeader } from "../../shared-components";
 import { useEffect, useState } from "react";
 import { useSingleResource } from "../../hooks";

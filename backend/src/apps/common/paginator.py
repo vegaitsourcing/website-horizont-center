@@ -21,7 +21,7 @@ class Paginator:
 
     @property
     def total_pages(self) -> int:
-        return math.ceil(self.queryset.count() / self.items_per_page)
+        return math.ceil(self.total_items / self.items_per_page) if self.items_per_page else self.total_items
 
     @property
     def total_items(self) -> int:

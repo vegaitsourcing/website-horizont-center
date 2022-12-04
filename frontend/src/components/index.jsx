@@ -12,3 +12,5 @@ export * from "./donation-list/donation.list";
 export * from "./resource-card/resource.card";
 export * from "./profile-list";
 export * from "./password-reset/password.reset";
+export * from "./image-links-section/image.links.section";
+export * from "./counters-section/counters.section";
