@@ -1,3 +1,4 @@
 from apps.common.serializers.simple_serializers import SimpleSerializer
 from apps.common.serializers.list_model_serializer import ListModelSerializer
 from apps.common.serializers.model_serializer import ModelSerializer
+from apps.common.serializers.organizatoin_partner_serializer import OrganizationPartnerSerializer

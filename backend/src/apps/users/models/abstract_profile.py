@@ -14,7 +14,7 @@ class AbstractProfile(BaseModel):
         FEMALE = 'female', _('Female')
 
     image = models.ImageField(
-        upload_to='images/users',
+        upload_to='images/users/profile',
         null=True,
         blank=True,
         verbose_name=_('profile image'),

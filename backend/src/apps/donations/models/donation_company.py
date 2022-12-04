@@ -15,7 +15,7 @@ class DonationCompany(BaseModel):
         max_length=250
     )
     image = models.ImageField(
-        upload_to='images/donations/companies',
+        upload_to='images/donations/donation_company',
         null=True,
         blank=True,
         verbose_name=_('company image'),

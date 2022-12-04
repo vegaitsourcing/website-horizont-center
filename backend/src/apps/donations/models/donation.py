@@ -20,7 +20,7 @@ class Donation(BaseModel):
     )
     image = models.ImageField(
         verbose_name=_('cover image'),
-        upload_to='images/donations',
+        upload_to='images/donations/donation',
         null=True,
     )
     description = models.TextField(

@@ -4,7 +4,6 @@ import { ProfileService } from "./profileService";
 const BASE_RESOURCE_NAME = "beneficiaries";
 
 export const BeneficiariesService = {
-	// TODO: put all filters in an object
 	getBeneficiaries: (pageSize, pageNumber, contains, gender, city) => {
 		return ProfileService.getProfiles(BASE_RESOURCE_NAME, pageSize, pageNumber, contains, gender, city);
 	},
@@ -14,7 +13,7 @@ export const BeneficiariesService = {
 	editBeneficiaryById: (beneficiaryId, editedData) => {
 		return API.patch(`caregivers/${beneficiaryId}/`, editedData);
 	},
-	getBeneficiaryCount: () => {
-		return ProfileService.getProfileCount(BASE_RESOURCE_NAME);
+	getActiveBeneficiaryCount: () => {
+		return ProfileService.getActiveProfileCount(BASE_RESOURCE_NAME);
 	},
 };

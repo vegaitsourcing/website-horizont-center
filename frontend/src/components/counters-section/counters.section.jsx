@@ -5,25 +5,29 @@ import { DonationsService } from "../../pages/api/donationsService";
 import { useEffect, useState } from "react";
 
 export function CountersSection () {
+	const [isLoading, setIsLoading] = useState(true);
 	const [counters, setCounters] = useState({
-		beneficiaries: { label: "Članovi zajednice", number: 0 },
+		members: { label: "Članovi zajednice", number: 0 },
 		caregivers: { label: "Broj registrovanih negovatelja", number: 0 },
 		donations: { label: "Zahtevi za donacije", number: 0 },
 	});
 
 	useEffect(() => {
-		Promise.all([
-			BeneficiariesService.getBeneficiaryCount(),
-			CaregiversService.getCaregiverCount(),
-			DonationsService.getActiveDonationCount(),
-		]).then(counts => {
-			setCounters({
-				beneficiaries: { ...counters.beneficiaries, number: counts[0] },
-				caregivers: { ...counters.caregivers, number: counts[1] },
-				donations: { ...counters.donations, number: counts[2] },
+		if (isLoading) {
+			Promise.all([
+				BeneficiariesService.getActiveBeneficiaryCount(),
+				CaregiversService.getActiveCaregiverCount(),
+				DonationsService.getActiveDonationCount(),
+			]).then(([beneficiaryCount, caregiverCount, donationCount]) => {
+				setCounters({
+					members: { ...counters.members, number: beneficiaryCount + caregiverCount },
+					caregivers: { ...counters.caregivers, number: caregiverCount },
+					donations: { ...counters.donations, number: donationCount },
+				});
+				setIsLoading(false);
 			});
-		});
-	}, [counters]);
+		}
+	}, [isLoading, counters]);
 
 	return (
 		<div className={styles.counterList}>
