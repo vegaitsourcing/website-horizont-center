@@ -20,6 +20,7 @@ class CreateUserForm(UserCreationForm):
 class UserAdmin(BaseUserAdmin, ModelAdminMixin):
     list_display = (
         'email',
+        'profile_type',
         'is_active',
         'is_staff',
         'is_superuser',
@@ -28,7 +29,6 @@ class UserAdmin(BaseUserAdmin, ModelAdminMixin):
         'phone_number',
         'second_phone_number'
     )
-
     search_fields = (
         'first_name',
         'last_name',
@@ -61,3 +61,8 @@ class UserAdmin(BaseUserAdmin, ModelAdminMixin):
         'last_login',
         'date_joined',
     )
+
+    def profile_type(self, obj: User) -> str:
+        return obj.get_profile_type() or '-' if obj else '-'
+
+    profile_type.short_description = _('profile type')
