@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import styles from "./footer.module.scss";
 import Link from "next/link";
-import { navigationItems } from "../../config/navigationItems";
+import { footerNavItems } from "../../config/navigationItems";
 
 export const Footer = ({ isHidden }) => {
   return (
@@ -29,17 +29,11 @@ export const Footer = ({ isHidden }) => {
           </div>
         </div>
         <div className={styles.rightSide}>
-          {navigationItems.map((item) => (
+          {footerNavItems.map((item) => (
             <Link key={item.pathname} href={`/${item.pathname}`}>
               <p className={styles.linkItem}>{item.name}</p>
             </Link>
           ))}
-          <Link key={"PrivacyPolicy"} href={"/documents/privacyPolicy.pdf"}>
-            <p className={styles.linkItem}>Politika privatnosti</p>
-          </Link>
-          <Link key={"TermsAndConditions"} href={"/documents/termsAndConditions.pdf"}>
-            <p className={styles.linkItem}>Uslovi korišćena sajta</p>
-          </Link>
         </div>
       </section>
       <section className={styles.copyrightsSection}>
