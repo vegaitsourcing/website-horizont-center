@@ -39,5 +39,8 @@ const AuthService = {
   forgotPassword: (email) => {
     return API.post("/password-forgotten/", { email: email });
   },
+  resetPassword: (hash, password) => {
+    return API.post(`/password-reset/${hash}/`, { password: password });
+  },
 };
 export default AuthService;

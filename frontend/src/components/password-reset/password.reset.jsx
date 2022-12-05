@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import { Input, LongButton } from "shared-components";
@@ -9,12 +9,20 @@ import styles from "./password.reset.module.scss";
 
 export const PasswordReset = ({ hash }) => {
   const router = useRouter();
-  const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [showResetSucces, setShowResetSuccess] = useState(false);
+  const [passwordErrors, setPasswordErrors] = useState("");
+  const [passwordConfirmErrors, setPasswordConfirmErrors] = useState("");
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    passwordConfirm: "",
   });
+
+  useEffect(() => {
+    validatePassword("password");
+    validatePassword("passwordConfirm");
+  }, [formData]);
 
   async function submit() {
     try {
@@ -25,6 +33,14 @@ export const PasswordReset = ({ hash }) => {
     }
   }
 
+  async function resetPassword() {
+    await AuthService.resetPassword(hash, formData.password).then((response) => {
+      if (response.status === 200) {
+        setShowResetSuccess(true);
+      }
+    });
+  }
+
   async function forgotPassword() {
     await AuthService.forgotPassword(formData.email).then((response) => {
       if (response.status === 200) {
@@ -33,13 +49,36 @@ export const PasswordReset = ({ hash }) => {
     });
   }
 
-  const updateFormData = useCallback(
-    (newFormData) => {
-      const updatedFormData = { ...formData, ...newFormData };
-      setFormData(updatedFormData);
-    },
-    [formData]
-  );
+  const validatePassword = (type) => {
+    let password = "";
+    let passwordConfirm = "";
+
+    console.log("password", formData.password);
+    console.log("confirmPassword", formData.passwordConfirm);
+
+    if (type === "password") {
+      if (formData.password.length < 8) {
+        password = "Lozinka mora imati najmanje 6 karaktera";
+      }
+    }
+    if (type === "passwordConfirm") {
+      if (formData.passwordConfirm.length < 8) {
+        passwordConfirm = "Lozinka mora imati najmanje 6 karaktera";
+      }
+    }
+    if (formData.password !== formData.passwordConfirm) {
+      password = password + "\nLozinke moraju biti jednake";
+      passwordConfirm = passwordConfirm + "\nLozinke moraju biti jednake";
+    }
+    console.log(password);
+    console.log(passwordConfirm);
+    if (type === "password") return setPasswordErrors(password);
+    return setPasswordConfirmErrors(passwordConfirm);
+  };
+
+  const updateFormData = (newFormData, type) => {
+    setFormData({ ...formData, [type]: newFormData });
+  };
 
   return (
     <div className={styles.loginForm}>
@@ -56,22 +95,32 @@ export const PasswordReset = ({ hash }) => {
         </div>
       ) : hash ? (
         <div className={styles.loginFormInputs}>
-          <Input
-            className={styles.fieldWrapper}
-            id="email"
-            type="email"
-            label="Nova lozinka"
-            placeholder="Unesite Vašu novu lozinku"
-            valueChangedHandler={(value) => updateFormData({ email: value })}
-          />
-          <Input
-            className={styles.fieldWrapper}
-            id="password"
-            type="password"
-            label="Potvrdi novu lozinku"
-            placeholder="Potvrdite Vašu novu lozinku"
-            valueChangedHandler={(value) => updateFormData({ password: value })}
-          />
+          {showResetSucces ? (
+            <div className={styles.confirmEmail}>
+              <p>Lozinka je uspešno izmenjena! Možete se prijaviti sa novom lozinkom.</p>
+            </div>
+          ) : (
+            <div>
+              <Input
+                className={styles.fieldWrapper}
+                id="password"
+                type="password"
+                label="Nova lozinka"
+                placeholder="Unesite Vašu novu lozinku"
+                valueChangedHandler={(value) => updateFormData(value, "password")}
+                errorMessage={passwordErrors}
+              />
+              <Input
+                className={styles.fieldWrapper}
+                id="passwordConfirm"
+                type="password"
+                label="Potvrdi novu lozinku"
+                placeholder="Potvrdite Vašu novu lozinku"
+                valueChangedHandler={(value) => updateFormData(value, "passwordConfirm")}
+                errorMessage={passwordConfirmErrors}
+              />
+            </div>
+          )}
         </div>
       ) : (
         <div className={styles.loginFormInputs}>
@@ -93,9 +142,10 @@ export const PasswordReset = ({ hash }) => {
         </div>
         <LongButton
           className={styles.loginButton}
-          onClick={forgotPassword}
-          value={showPassword ? "Potvrdi lozinku" : "Posalji zahtev"}
+          onClick={hash ? resetPassword : forgotPassword}
+          value={hash ? "Resetuj lozinku" : "Pošalji zahtev"}
           type="button"
+          isDisabled={passwordErrors.length > 0 || passwordConfirmErrors.length > 0}
         />
       </div>
     </div>
