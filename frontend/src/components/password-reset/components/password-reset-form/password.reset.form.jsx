@@ -28,7 +28,7 @@ export const PasswordResetForm = ({ hash }) => {
         }
       });
     } catch (error) {
-      setPasswordErrors(error.response.data.errors?.non_field_errors?.join("\n"));
+      setPasswordErrors(error.response?.data?.errors?.non_field_errors?.join("\n"));
     }
   }
 

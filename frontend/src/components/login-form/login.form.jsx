@@ -1,49 +1,35 @@
-import React, { useCallback, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import styles from "./login.form.module.scss";
 import { Input, LongButton } from "shared-components";
 import Link from "next/link";
 import AuthService from "../../pages/api/authService";
+import { isValidInput } from "./loginFormValidation";
 
 export const LoginForm = () => {
   const router = useRouter();
-
   const [responseError, setResponseError] = useState(null);
-
   const [formData, setFormData] = useState({
-    email: { value: "", isValid: true },
-    password: { value: "", isValid: true },
+    email: "",
+    password: "",
   });
 
-  const validateFormData = () => {
-    let isEmailValid = RegExp("^(.+)@(.+)$").test(formData.email.value);
+  useEffect(() => {
+    setResponseError("");
+  }, [formData]);
 
-    setFormData({
-      email: { value: formData.email.value, isValid: isEmailValid },
-      password: { value: formData.password.value, isValid: !!formData.password.value },
-    });
-  };
-
-  async function submit() {
+  async function login() {
     try {
-      validateFormData();
-
-      if (formData.email.isValid && formData.password.isValid) {
-        await AuthService.login(formData.email.value, formData.password.value);
-        await router.push("/");
-      }
+      await AuthService.login(formData.email, formData.password);
+      await router.push("/");
     } catch (error) {
-      setResponseError(error.response.data.errors.non_field_errors);
+      setResponseError(error.response?.data?.errors?.non_field_errors);
     }
   }
 
-  const updateFormData = useCallback(
-    (newFormData) => {
-      const updatedFormData = { ...formData, ...newFormData };
-      setFormData(updatedFormData);
-    },
-    [formData]
-  );
+  const updateFormData = (newFormData, type) => {
+    setFormData({ ...formData, [type]: newFormData });
+  };
 
   return (
     <div className={styles.loginForm}>
@@ -51,26 +37,26 @@ export const LoginForm = () => {
         <h4 className={styles.h4}>Prijavite se</h4>
       </div>
       <div className={styles.loginFormInputs}>
-        <Input
-          className={styles.fieldWrapper}
-          id="email"
-          type="email"
-          label="E-mail adresa"
-          placeholder="Unesite Vašu E-mail adresu"
-          errorMessage={!formData.email.isValid ? "Unesite ispravnu email adresu" : null}
-          valueChangedHandler={(value) => updateFormData({ email: { value: value, isValid: formData.email.isValid } })}
-        />
-        <Input
-          className={styles.fieldWrapper}
-          id="password"
-          type="password"
-          label="Lozinka"
-          placeholder="Unesite Vašu lozinku"
-          errorMessage={!formData.password.isValid ? "Lozinka ne sme biti prazna" : null}
-          valueChangedHandler={(value) =>
-            updateFormData({ password: { value: value, isValid: formData.password.isValid } })
-          }
-        />
+        <div className={styles.formGrid}>
+          <Input
+            className={styles.fieldWrapper}
+            id="email"
+            type="email"
+            label="E-mail adresa"
+            placeholder="Unesite Vašu E-mail adresu"
+            valueChangedHandler={(value) => updateFormData(value, "email")}
+            errorMessage={isValidInput(formData.email, "email")}
+          />
+          <Input
+            className={styles.fieldWrapper}
+            id="password"
+            type="password"
+            label="Lozinka"
+            placeholder="Unesite Vašu lozinku"
+            valueChangedHandler={(value) => updateFormData(value, "password")}
+            errorMessage={isValidInput(formData.password, "password")}
+          />
+        </div>
         {responseError && <div className={`${styles.errorText} ${styles.p1}`}>{responseError}.</div>}
       </div>
       <div className={styles.loginFormButtons}>
@@ -84,7 +70,15 @@ export const LoginForm = () => {
             RESETUJ LOZINKU
           </Link>
         </div>
-        <LongButton className={styles.loginButton} onClick={submit} value="Login" type="button" />
+        <LongButton
+          className={styles.loginButton}
+          onClick={login}
+          value="Login"
+          type="button"
+          isDisabled={
+            isValidInput(formData.email, "email").length > 0 || isValidInput(formData.password, "password").length > 0
+          }
+        />
       </div>
     </div>
   );
