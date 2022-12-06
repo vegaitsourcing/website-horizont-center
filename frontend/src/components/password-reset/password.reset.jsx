@@ -9,7 +9,7 @@ export const PasswordReset = ({ hash }) => {
       <div className={styles.loginFormHeader}>
         <h4 className={styles.h4}>{hash ? "Resetuj lozinku" : "Zaboravljena lozinka"}</h4>
       </div>
-      {hash ? <PasswordResetForm /> : <PasswordForgotForm />}
+      {hash ? <PasswordResetForm hash={hash} /> : <PasswordForgotForm />}
     </div>
   );
 };

@@ -6,8 +6,20 @@ export const isValidInput = (inputValue, inputType) => {
   }
 
   if (inputType === "password") {
-    if (inputValue.length < 6) {
-      error = error + "Lozinka mora imati minimum 8 karaktera";
+    if (inputValue.password.length < 8) {
+      error = error + "Lozinka mora imati minimum 8 karaktera\n";
+    }
+    if (inputValue.password !== inputValue.passwordConfirm) {
+      error = error + "Lozinke moraju biti jednake\n";
+    }
+  }
+
+  if (inputType === "passwordConfirm") {
+    if (inputValue.password.length < 8) {
+      error = error + "Lozinka mora imati minimum 8 karaktera\n";
+    }
+    if (inputValue.password !== inputValue.passwordConfirm) {
+      error = error + "Lozinke moraju biti jednake\n";
     }
   }
 

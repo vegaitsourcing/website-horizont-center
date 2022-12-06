@@ -1,90 +1,83 @@
-import React, { useCallback, useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import Link from "next/link";
+import React, { useEffect, useState } from "react";
 
 import { Input, LongButton } from "shared-components";
-import Link from "next/link";
+
 import AuthService from "pages/api/authService";
+import { isValidInput } from "../../utils/formValidation";
 
 import styles from "./password.reset.form.module.scss";
 
-export const PasswordResetForm = () => {
-  const [passwordResetSucces, setPasswordResetSuccess] = useState(false);
+export const PasswordResetForm = ({ hash }) => {
   const [passwordErrors, setPasswordErrors] = useState("");
-  const [passwordConfirmErrors, setPasswordConfirmErrors] = useState("");
+  const [passwordResetSucces, setPasswordResetSuccess] = useState(false);
   const [formData, setFormData] = useState({
     password: "",
     passwordConfirm: "",
   });
 
   useEffect(() => {
-    validatePassword();
-    validatePasswordConfirmation();
+    setPasswordErrors("");
   }, [formData]);
 
   async function resetPassword() {
-    await AuthService.resetPassword(hash, formData.password).then((response) => {
-      if (response.status === 200) {
-        setPasswordResetSuccess(true);
-      }
-    });
+    try {
+      await AuthService.resetPassword(hash, formData.password).then((response) => {
+        if (response.status === 200) {
+          setPasswordResetSuccess(true);
+        }
+      });
+    } catch (error) {
+      setPasswordErrors(error.response.data.errors?.non_field_errors?.join("\n"));
+    }
   }
 
   const updateFormData = (newFormData, type) => {
-    console.log({ ...formData, [type]: newFormData });
     setFormData({ ...formData, [type]: newFormData });
   };
 
-  const validatePassword = (type) => {
-    let password = "";
-    if (formData.password.length < 8) {
-      password = "Lozinka mora imati najmanje 6 karaktera";
-    }
-    if (formData.password !== formData.passwordConfirm) {
-      password = password + "\nLozinke moraju biti jednake";
-    }
-    setPasswordErrors(password);
-  };
-
-  const validatePasswordConfirmation = () => {
-    let passwordConfirm = "";
-    if (formData.passwordConfirm.length < 8) {
-      passwordConfirm = "Lozinka mora imati najmanje 6 karaktera";
-    }
-    if (formData.password !== formData.passwordConfirm) {
-      passwordConfirm = passwordConfirm + "\nLozinke moraju biti jednake";
-    }
-    setPasswordConfirmErrors(passwordConfirm);
-  };
-
   return (
-    <div className={styles.passwordResetForm}>
+    <>
       {passwordResetSucces ? (
-        <div className={styles.loginFormInputs}>
-          <p>Lozinka je uspešno izmenjena! Pokušajte da se prijavite s sa novom lozinkom.</p>
+        <div className={styles.passwordResetForm}>
+          <div className={styles.formInputs}>
+            <p className={styles.p1}>
+              Lozinka je uspešno izmenjena! Sada možete da se prijavljujete sa novom lozinkom.
+            </p>
+          </div>
+          <div className={styles.formButtons}></div>
         </div>
       ) : (
-        <div>
-          <div className={styles.loginFormInputs}>
-            <Input
-              className={styles.fieldWrapper}
-              id="password"
-              type="password"
-              label="Nova lozinka"
-              placeholder="Unesite Vašu novu lozinku"
-              valueChangedHandler={(value) => updateFormData(value, "password")}
-              errorMessage={passwordErrors}
-            />
-            <Input
-              className={styles.fieldWrapper}
-              id="passwordConfirm"
-              type="password"
-              label="Potvrdi novu lozinku"
-              placeholder="Potvrdite Vašu novu lozinku"
-              valueChangedHandler={(value) => updateFormData(value, "passwordConfirm")}
-              errorMessage={passwordConfirmErrors}
-            />
+        <div className={styles.passwordResetForm}>
+          <div className={styles.formInputs}>
+            <div className={styles.formGrid}>
+              <Input
+                className={styles.fieldWrapper}
+                id="password"
+                type="password"
+                label="Nova lozinka"
+                placeholder="Unesite Vašu novu lozinku"
+                valueChangedHandler={(value) => updateFormData(value, "password")}
+                errorMessage={isValidInput(formData, "password")}
+              />
+              <Input
+                className={styles.fieldWrapper}
+                id="passwordConfirm"
+                type="password"
+                label="Potvrdi novu lozinku"
+                placeholder="Potvrdite Vašu novu lozinku"
+                valueChangedHandler={(value) => updateFormData(value, "passwordConfirm")}
+                errorMessage={isValidInput(formData, "passwordConfirm")}
+              />
+            </div>
+            {passwordErrors.length > 0 ? (
+              <p className={[styles.p1, styles.error].join(" ")}>
+                {passwordErrors}. Molimo Vas da pokušate ponovo da kliknete na e-mail za reset lozinke. Ukoliko dobijate
+                istu grešku pošaljite ponovo zahtev za promenu lozinke.
+              </p>
+            ) : null}
           </div>
-          <div className={styles.loginFormButtons}>
+          <div className={styles.formButtons}>
             <div className={styles.registrationLinkWrapper}>
               <Link href="/login" className={styles.registrationLink}>
                 Nazad na Prijavu
@@ -95,11 +88,13 @@ export const PasswordResetForm = () => {
               onClick={resetPassword}
               value={"Resetuj lozinku"}
               type="button"
-              isDisabled={passwordErrors.length > 0 || passwordConfirmErrors.length > 0}
+              isDisabled={
+                isValidInput(formData, "password").length > 0 || isValidInput(formData, "passwordConfirm").length > 0
+              }
             />
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 };
