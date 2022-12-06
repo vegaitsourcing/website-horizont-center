@@ -2,9 +2,11 @@ import { NextSeo } from "next-seo";
 import { PasswordReset } from "components";
 import { LayoutDefault } from "layouts";
 import { prepareSEO } from "../../utils";
+import { useRouter } from "next/router";
 
 function PasswordResetWithHash(props) {
   const { pathname } = props;
+  const router = useRouter();
   const SEO = prepareSEO(pathname);
 
   return (
