@@ -32,53 +32,55 @@ export const LoginForm = () => {
   };
 
   return (
-    <div className={styles.loginForm}>
-      <div className={styles.loginFormHeader}>
-        <h4 className={styles.h4}>Prijavite se</h4>
-      </div>
-      <div className={styles.loginFormInputs}>
-        <div className={styles.formGrid}>
-          <Input
-            className={styles.fieldWrapper}
-            id="email"
-            type="email"
-            label="E-mail adresa"
-            placeholder="Unesite Vašu E-mail adresu"
-            valueChangedHandler={(value) => updateFormData(value, "email")}
-            errorMessage={isValidInput(formData.email, "email")}
-          />
-          <Input
-            className={styles.fieldWrapper}
-            id="password"
-            type="password"
-            label="Lozinka"
-            placeholder="Unesite Vašu lozinku"
-            valueChangedHandler={(value) => updateFormData(value, "password")}
-            errorMessage={isValidInput(formData.password, "password")}
+    <div className={styles.loginFormWrapper}>
+      <div className={styles.loginForm}>
+        <div className={styles.loginFormHeader}>
+          <h4 className={styles.h4}>Prijavite se</h4>
+        </div>
+        <div className={styles.loginFormInputs}>
+          <div className={styles.formGrid}>
+            <Input
+              className={styles.fieldWrapper}
+              id="email"
+              type="email"
+              label="E-mail adresa"
+              placeholder="Unesite Vašu E-mail adresu"
+              valueChangedHandler={(value) => updateFormData(value, "email")}
+              errorMessage={isValidInput(formData.email, "email")}
+            />
+            <Input
+              className={styles.fieldWrapper}
+              id="password"
+              type="password"
+              label="Lozinka"
+              placeholder="Unesite Vašu lozinku"
+              valueChangedHandler={(value) => updateFormData(value, "password")}
+              errorMessage={isValidInput(formData.password, "password")}
+            />
+          </div>
+          {responseError && <div className={`${styles.errorText} ${styles.p1}`}>{responseError}.</div>}
+        </div>
+        <div className={styles.loginFormButtons}>
+          <div className={styles.registrationLinkWrapper}>
+            <p className={styles.registrationQuestion}>nemate nalog?</p>
+            <Link href="/registration" className={styles.registrationLink}>
+              REGISTRUJTE SE
+            </Link>
+            <p className={styles.registrationQuestion}>Zavoravljena lozinka?</p>
+            <Link href="/password-reset" className={styles.registrationLink}>
+              RESETUJ LOZINKU
+            </Link>
+          </div>
+          <LongButton
+            className={styles.loginButton}
+            onClick={login}
+            value="Login"
+            type="button"
+            isDisabled={
+              isValidInput(formData.email, "email").length > 0 || isValidInput(formData.password, "password").length > 0
+            }
           />
         </div>
-        {responseError && <div className={`${styles.errorText} ${styles.p1}`}>{responseError}.</div>}
-      </div>
-      <div className={styles.loginFormButtons}>
-        <div className={styles.registrationLinkWrapper}>
-          <p className={styles.registrationQuestion}>nemate nalog?</p>
-          <Link href="/registration" className={styles.registrationLink}>
-            REGISTRUJTE SE
-          </Link>
-          <p className={styles.registrationQuestion}>Zavoravljena lozinka?</p>
-          <Link href="/password-reset" className={styles.registrationLink}>
-            RESETUJ LOZINKU
-          </Link>
-        </div>
-        <LongButton
-          className={styles.loginButton}
-          onClick={login}
-          value="Login"
-          type="button"
-          isDisabled={
-            isValidInput(formData.email, "email").length > 0 || isValidInput(formData.password, "password").length > 0
-          }
-        />
       </div>
     </div>
   );
