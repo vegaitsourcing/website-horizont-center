@@ -10,7 +10,7 @@ import styles from "./password.reset.form.module.scss";
 
 export const PasswordResetForm = ({ hash }) => {
   const [passwordErrors, setPasswordErrors] = useState("");
-  const [passwordResetSucces, setPasswordResetSuccess] = useState(false);
+  const [isSuccessfulReset, setIsSuccessfulReset] = useState(false);
   const [formData, setFormData] = useState({
     password: "",
     passwordConfirm: "",
@@ -24,7 +24,7 @@ export const PasswordResetForm = ({ hash }) => {
     try {
       await AuthService.resetPassword(hash, formData.password).then((response) => {
         if (response.status === 200) {
-          setPasswordResetSuccess(true);
+          setIsSuccessfulReset(true);
         }
       });
     } catch (error) {
@@ -38,7 +38,7 @@ export const PasswordResetForm = ({ hash }) => {
 
   return (
     <>
-      {passwordResetSucces ? (
+      {isSuccessfulReset ? (
         <div className={styles.passwordResetForm}>
           <div className={styles.formInputs}>
             <p className={styles.p1}>

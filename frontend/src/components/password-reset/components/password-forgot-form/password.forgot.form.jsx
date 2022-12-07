@@ -9,7 +9,7 @@ import styles from "./password.forgot.form.module.scss";
 
 export const PasswordForgotForm = () => {
   const [emailErrors, setEmailErrors] = useState("");
-  const [passwordForgotSuccess, setPasswordForgotSucces] = useState(false);
+  const [hasSuccessfulPasswordForgot, setHasSuccessfulPasswordForgot] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
   });
@@ -22,7 +22,7 @@ export const PasswordForgotForm = () => {
     try {
       await AuthService.forgotPassword(formData.email).then((response) => {
         if (response.status === 200) {
-          return setPasswordForgotSucces(true);
+          return setHasSuccessfulPasswordForgot(true);
         }
       });
     } catch (error) {
@@ -33,7 +33,7 @@ export const PasswordForgotForm = () => {
 
   return (
     <>
-      {passwordForgotSuccess ? (
+      {hasSuccessfulPasswordForgot ? (
         <div className={styles.passwordForgotForm}>
           <div className={styles.formInputs}>
             <p className={styles.p1}>
