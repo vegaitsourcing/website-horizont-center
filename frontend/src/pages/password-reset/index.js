@@ -1,9 +1,9 @@
 import { NextSeo } from "next-seo";
 import { LayoutDefault } from "layouts";
-import { RegistrationForm } from "components";
-import { prepareSEO } from "../utils";
+import { PasswordReset } from "components";
+import { prepareSEO } from "../../utils";
 
-function Registration(props) {
+function PasswordResetPage(props) {
   const { pathname } = props;
   const SEO = prepareSEO(pathname);
 
@@ -11,7 +11,7 @@ function Registration(props) {
     <>
       <NextSeo {...SEO} />
       <LayoutDefault>
-        <RegistrationForm />
+        <PasswordReset />
       </LayoutDefault>
     </>
   );
@@ -22,4 +22,4 @@ export async function getServerSideProps(ctx) {
   return { props: { data: {}, pathname: resolvedUrl } };
 }
 
-export default Registration;
+export default PasswordResetPage;

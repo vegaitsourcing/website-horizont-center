@@ -1,17 +1,19 @@
 import { NextSeo } from "next-seo";
+import { PasswordReset } from "components";
 import { LayoutDefault } from "layouts";
-import { RegistrationForm } from "components";
-import { prepareSEO } from "../utils";
+import { prepareSEO } from "../../utils";
+import { useRouter } from "next/router";
 
-function Registration(props) {
+function PasswordResetWithHash(props) {
   const { pathname } = props;
+  const router = useRouter();
   const SEO = prepareSEO(pathname);
 
   return (
     <>
       <NextSeo {...SEO} />
       <LayoutDefault>
-        <RegistrationForm />
+        <PasswordReset hash={router.query.hash} />
       </LayoutDefault>
     </>
   );
@@ -22,4 +24,4 @@ export async function getServerSideProps(ctx) {
   return { props: { data: {}, pathname: resolvedUrl } };
 }
 
-export default Registration;
+export default PasswordResetWithHash;
