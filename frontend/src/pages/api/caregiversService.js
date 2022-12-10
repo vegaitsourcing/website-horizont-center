@@ -12,4 +12,7 @@ export const CaregiversService = {
 	editCaregiverById: (caregiverId, editedData) => {
 		return API.patch(`caregivers/${caregiverId}/`, editedData);
 	},
+	getActiveCaregiverCount: () => {
+		return ProfileService.getActiveProfileCount(BASE_RESOURCE_NAME);
+	},
 };

@@ -63,3 +63,75 @@
     group: identity_verification
     created: 2022-10-26T00:00:06+00:00
     modified: 2022-10-26T00:00:06+00:00
+
+- model: common.OrganizationPartner
+  pk: 1
+  fields:
+    name: Django
+    image: fixtures/django_logo.png
+    url: https://www.djangoproject.com/
+    created: 2022-12-04T00:00:01+00:00
+    modified: 2022-12-04T00:00:01+00:00
+
+- model: common.OrganizationPartner
+  pk: 2
+  fields:
+    name: Google
+    image: fixtures/google_logo.png
+    url: https://www.google.com/
+    created: 2022-12-04T00:00:02+00:00
+    modified: 2022-12-04T00:00:02+00:00
+
+- model: common.OrganizationPartner
+  pk: 3
+  fields:
+    name: Next JS
+    image: fixtures/nextjs_logo.png
+    url: https://nextjs.org/
+    created: 2022-12-04T00:00:03+00:00
+    modified: 2022-12-04T00:00:03+00:00
+
+- model: common.OrganizationPartner
+  pk: 4
+  fields:
+    name: Python
+    image: fixtures/python_logo.png
+    url: https://www.python.org/
+    created: 2022-12-04T00:00:04+00:00
+    modified: 2022-12-04T00:00:04+00:00
+
+- model: common.OrganizationPartner
+  pk: 5
+  fields:
+    name: React JS
+    image: fixtures/reactjs_logo.png
+    url: https://reactjs.org/
+    created: 2022-12-04T00:00:05+00:00
+    modified: 2022-12-04T00:00:05+00:00
+
+- model: common.OrganizationPartner
+  pk: 6
+  fields:
+    name: Space X
+    image: fixtures/space_x_logo.png
+    url: https://www.spacex.com/
+    created: 2022-12-04T00:00:06+00:00
+    modified: 2022-12-04T00:00:06+00:00
+
+- model: common.OrganizationPartner
+  pk: 7
+  fields:
+    name: Twitter
+    image: fixtures/twitter_logo.png
+    url: https://twitter.com/
+    created: 2022-12-04T00:00:07+00:00
+    modified: 2022-12-04T00:00:07+00:00
+
+- model: common.OrganizationPartner
+  pk: 8
+  fields:
+    name: Vega IT
+    image: fixtures/vega_it_logo.png
+    url: https://www.vegait.rs/
+    created: 2022-12-04T00:00:08+00:00
+    modified: 2022-12-04T00:00:08+00:00

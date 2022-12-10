@@ -2,7 +2,7 @@ import { NextSeo } from "next-seo";
 import { ProfileDetails } from "components";
 import { LayoutDefault } from "layouts";
 import { useEffect, useState } from "react";
-import AuthService from "./api/authService";
+import { AuthService } from "./api/authService";
 import { CaregiversService } from "./api/caregiversService";
 import { BeneficiariesService } from "./api/beneficiariesService";
 import { useSingleResource } from "../hooks";

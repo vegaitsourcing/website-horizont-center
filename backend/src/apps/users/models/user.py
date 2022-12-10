@@ -90,3 +90,7 @@ class User(AbstractUser, BaseModel):
         if beneficiary_profile := BeneficiaryProfile.objects.filter(user=self).first():
             return beneficiary_profile
         return CaregiverProfile.objects.filter(user=self).first()
+
+    def get_profile_type(self) -> str | None:
+        if profile := self.get_profile():
+            return profile.__class__.__name__.lower().replace('profile', '')

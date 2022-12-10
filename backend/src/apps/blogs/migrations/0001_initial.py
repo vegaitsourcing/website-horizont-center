@@ -22,7 +22,7 @@ class Migration(migrations.Migration):
                 ('created', django_extensions.db.fields.CreationDateTimeField(auto_now_add=True, verbose_name='created')),
                 ('modified', django_extensions.db.fields.ModificationDateTimeField(auto_now=True, verbose_name='modified')),
                 ('title', models.CharField(max_length=100, verbose_name='title')),
-                ('image', models.ImageField(blank=True, null=True, upload_to='images/blogs', verbose_name='image')),
+                ('image', models.ImageField(blank=True, null=True, upload_to='images/blogs/blog', verbose_name='image')),
             ],
             options={
                 'verbose_name': 'Blog',
@@ -70,7 +70,7 @@ class Migration(migrations.Migration):
                 ('last_name', models.CharField(max_length=20, verbose_name='last name')),
                 ('description', models.TextField(validators=[django.core.validators.MinLengthValidator(limit_value=100)], verbose_name='description')),
                 ('facebook_url', models.URLField(verbose_name='facebook url')),
-                ('image', models.ImageField(upload_to='images/blogAuthors', verbose_name='image')),
+                ('image', models.ImageField(upload_to='images/blogs/blog_author', verbose_name='image')),
                 ('instagram_url', models.URLField(verbose_name='instagram url')),
                 ('blog', models.OneToOneField(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='author', to='blogs.blog', verbose_name='blog')),
             ],

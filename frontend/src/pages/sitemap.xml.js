@@ -1,6 +1,6 @@
 import { ENV } from "../config/env";
-import BlogsService from "./api/blogsService";
-import DonationsService from "./api/donationsService";
+import { BlogsService } from "./api/blogsService";
+import { DonationsService } from "./api/donationsService";
 import { navigationItems } from "../config/navigationItems";
 
 export async function getServerSideProps({ res }) {

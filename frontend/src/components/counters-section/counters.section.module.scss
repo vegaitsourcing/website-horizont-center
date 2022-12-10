@@ -1,0 +1,37 @@
+@import "../../styles/main.scss";
+
+.counterList {
+	font-family: "Open Sans", sans-serif;
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	background-color: $light-blue-color;
+	padding: 70px 0;
+
+	@include respond-to(tablet) {
+		flex-direction: column;
+	}
+
+	.counter {
+		width: 250px;
+
+		@include respond-to(tablet) {
+			width: 100%;
+			padding: 10px 0;
+		}
+	}
+
+	.number {
+		font-size: 64px;
+		font-weight: 700;
+		text-align: center;
+		color: $blue-color;
+	}
+
+	.label {
+		text-align: center;
+		font-size: 18px;
+		font-weight: 300;
+	}
+
+}

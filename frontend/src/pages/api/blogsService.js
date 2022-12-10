@@ -2,7 +2,7 @@ import API from "./baseApi";
 
 const BASE_RESOURCE_NAME = "blogs";
 
-const BlogsService = {
+export const BlogsService = {
   getBlogs: (pageSize, pageNumber, contains, category) => {
     let queryParams = `ipp=${pageSize}&page=${pageNumber}`;
     if (contains) queryParams += `&contains=${contains}`;
@@ -18,4 +18,3 @@ const BlogsService = {
     return API.getAllResources("blog-categories");
   },
 };
-export default BlogsService;

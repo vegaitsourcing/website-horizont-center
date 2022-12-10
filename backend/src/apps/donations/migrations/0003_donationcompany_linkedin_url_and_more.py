@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='donation',
             name='image',
-            field=models.ImageField(null=True, upload_to='images/donations', verbose_name='cover image'),
+            field=models.ImageField(null=True, upload_to='images/donations/donation', verbose_name='cover image'),
         ),
         migrations.AlterField(
             model_name='donationcompany',

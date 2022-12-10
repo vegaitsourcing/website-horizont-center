@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Input, Select } from "../../shared-components";
 import styles from "./filters.module.scss";
-import BlogsService from "../../pages/api/blogsService";
+import { BlogsService } from "../../pages/api/blogsService";
 
 export function BlogFilters ({ onChange }) {
 	const [categoryOptions, setCategoryOptions] = useState(null);

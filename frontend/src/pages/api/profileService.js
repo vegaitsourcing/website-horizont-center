@@ -8,4 +8,9 @@ export const ProfileService = {
 		if (city) queryParams += `&city=${city}`;
 		return API.getAllResources(resource, queryParams);
 	},
+	getActiveProfileCount: async (resource) => {
+		let queryParams = `ipp=${0}&page=${1}&is_active=true`;
+		const response = await API.getAllResources(resource, queryParams);
+		return response.data.pagination.total_items;
+	},
 };

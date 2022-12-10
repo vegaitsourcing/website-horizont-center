@@ -1,9 +1,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-
 import { Input, LongButton } from "shared-components";
-
-import AuthService from "pages/api/authService";
+import { AuthService } from "pages/api/authService";
 import { isValidInput } from "../../utils/formValidation";
 
 import styles from "./password.reset.form.module.scss";

@@ -1,5 +1,4 @@
 from django.contrib import admin
-from django.utils.translation import gettext_lazy as _
 from apps.users.admin import AbstractProfileAdmin
 from apps.users.models.caregiver_profile import CaregiverProfile
 
@@ -15,6 +14,7 @@ class CaregiverProfileAdmin(AbstractProfileAdmin):
     )
     list_display = (
         'user',
+        'has_active_user',
         'user_email',
         'birthdate',
         'city',
@@ -22,8 +22,3 @@ class CaregiverProfileAdmin(AbstractProfileAdmin):
         'daily_hours',
         'work_application',
     )
-
-    def user_email(self, obj: CaregiverProfile) -> str:
-        return obj.user.email if obj else '-'
-
-    user_email.short_description = _('user email')

@@ -1,6 +1,6 @@
 import API from "./baseApi";
 
-const AuthService = {
+export const AuthService = {
   login: async (email, password) => {
     const response = await API.post("login/", {
       email: email,
@@ -43,4 +43,3 @@ const AuthService = {
     return API.post(`/password-reset/${hash}/`, { password: password });
   },
 };
-export default AuthService;

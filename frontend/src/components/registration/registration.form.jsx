@@ -4,7 +4,7 @@ import { RegistrationStepOne, RegistrationStepTwo, RegistrationStepThree } from 
 import { LongButton } from "shared-components";
 import { registrationFormBlank } from "./hooks/registrationFormBlank";
 import { getUserData, validateRegistrationForm } from "./utils/registrationUtils";
-import authService from "pages/api/authService";
+import { AuthService } from "pages/api/authService";
 import styles from "./registration.form.module.scss";
 
 export const RegistrationForm = () => {
@@ -47,7 +47,7 @@ export const RegistrationForm = () => {
   async function registerUser() {
     const userType = getUserData().userType;
     const userData = getUserData().userData;
-    await authService.register(userData, userType).then((response) => {
+    await AuthService.register(userData, userType).then((response) => {
       if (response.status === 200) {
         localStorage.setItem("registrationForm", JSON.stringify(registrationFormBlank));
         setConfirmationEmail(userData.user.email);

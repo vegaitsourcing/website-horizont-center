@@ -1,10 +1,8 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-
 import { Input, LongButton } from "shared-components";
 import { isValidInput } from "../../utils/formValidation";
-import AuthService from "pages/api/authService";
-
+import { AuthService } from "pages/api/authService";
 import styles from "./password.forgot.form.module.scss";
 
 export const PasswordForgotForm = () => {

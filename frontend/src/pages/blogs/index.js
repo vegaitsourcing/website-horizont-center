@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { LayoutDefault } from "layouts";
 import { PageHeader, Pagination, Spinner } from "shared-components";
 import { BlogFilters, BlogList } from "components";
-import BlogsService from "../api/blogsService";
+import { BlogsService } from "../api/blogsService";
 import { prepareSEO } from "../../utils";
 
 const ITEMS_PER_PAGE = 3;
