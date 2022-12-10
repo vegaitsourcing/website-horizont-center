@@ -3,6 +3,7 @@ import styles from "./about.module.scss";
 import { CenteredSection, PageHeader, SectionWithImage } from "../../shared-components";
 import { ImageLinksSection } from "../image-links-section/image.links.section";
 import { CountersSection } from "../counters-section/counters.section";
+import { OrganizationPartnersSection } from "../organization-partners-section/organization.partners.section";
 
 export const About = () => {
 
@@ -92,9 +93,7 @@ export const About = () => {
 				}
 			/>
 			<CountersSection/>
-
-			{/*	TODO: ADD 7th SECTION (partners) */}
-
+			<OrganizationPartnersSection/>
 		</div>
 	);
 };

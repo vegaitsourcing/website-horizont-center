@@ -14,3 +14,4 @@ export * from "./profile-list";
 export * from "./password-reset/password.reset";
 export * from "./image-links-section/image.links.section";
 export * from "./counters-section/counters.section";
+export * from "./organization-partners-section/organization.partners.section";

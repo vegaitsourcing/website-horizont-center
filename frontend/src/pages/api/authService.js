@@ -1,6 +1,6 @@
 import API from "./baseApi";
 
-const AuthService = {
+export const AuthService = {
   login: async (email, password) => {
     const response = await API.post("login/", {
       email: email,

@@ -3,7 +3,6 @@ import API from "./baseApi";
 const BASE_RESOURCE_NAME = "donations";
 
 export const DonationsService = {
-	// TODO: put all filters in an object
 	getDonations: (pageSize, pageNumber, contains, isActive) => {
 		let queryParams = `ipp=${pageSize}&page=${pageNumber}`;
 		if (contains) queryParams += `&contains=${contains}`;

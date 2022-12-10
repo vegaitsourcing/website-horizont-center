@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import styles from "./login.form.module.scss";
 import { Input, LongButton } from "shared-components";
 import Link from "next/link";
-import AuthService from "../../pages/api/authService";
+import { AuthService } from "../../pages/api/authService";
 import { isValidInput } from "./loginFormValidation";
 
 export const LoginForm = () => {
