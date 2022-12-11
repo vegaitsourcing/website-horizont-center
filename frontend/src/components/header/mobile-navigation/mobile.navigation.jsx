@@ -3,7 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import styles from "./mobile.navigation.module.scss";
-import { navigationItems } from "../../../config/navigationItems";
+import {
+	mainNavItems,
+	LOGIN_NAV_ITEM,
+	REGISTRATION_NAV_ITEM,
+	PROFILE_NAV_ITEM,
+} from "../../../config/navigation";
 import { LogoButton } from "../logo-button/logo.button";
 
 function MobileMenu ({ onItemClick, onLogout, user }) {
@@ -13,40 +18,32 @@ function MobileMenu ({ onItemClick, onLogout, user }) {
 	}, [onItemClick, onLogout]);
 
 	function MenuItems () {
-		let menuItems = [...navigationItems];
+		let menuItems = [...mainNavItems];
 		if (!user) {
 			menuItems = menuItems.concat([
-				{
-					name: "Login",
-					pathname: "/login",
-					active: false,
-				},
-				{
-					name: "Register",
-					pathname: "/registration",
-					active: false,
-				},
+				LOGIN_NAV_ITEM,
+				REGISTRATION_NAV_ITEM,
 			]);
 		}
 
-		const menuItemsJSX = menuItems.map((tab, index) => (
-			<Link key={index} href={`/${tab.pathname}`} passHref>
+		const menuItemsJSX = menuItems.map(navItem => (
+			<Link key={navItem.pathname} href={`/${navItem.pathname}`} passHref>
 				<div className={styles.tabItem} onClick={onItemClick}>
-					<span className={styles.tabLabel}>{tab.name}</span>
+					<span className={styles.tabLabel}>{navItem.name}</span>
 				</div>
 			</Link>
 		));
 
 		if (user) {
 			menuItemsJSX.push(
-				<Link href="/profile" passHref>
-					<div key={menuItems.length} className={styles.tabItem}>
-						<span className={styles.tabLabel}>Izmeni profil</span>
+				<Link key={PROFILE_NAV_ITEM.pathname} href={`/${PROFILE_NAV_ITEM.pathname}`} passHref>
+					<div className={styles.tabItem}>
+						<span className={styles.tabLabel}>{PROFILE_NAV_ITEM.name}</span>
 					</div>
 				</Link>,
 			);
 			menuItemsJSX.push(
-				<div key={menuItems.length} className={styles.tabItem} onClick={logout}>
+				<div key="logout" className={styles.tabItem} onClick={logout}>
 					<span className={styles.tabLabel}>Odjavi se</span>
 				</div>,
 			);

@@ -49,7 +49,7 @@ msgstr "Opis"
 
 #: src/apps/blogs/models/blog.py:29
 msgid "categories"
-msgstr "negovatelji"
+msgstr "kategorije"
 
 #: src/apps/blogs/models/blog_author.py:9
 msgid "Blog Author"

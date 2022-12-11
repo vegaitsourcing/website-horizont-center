@@ -1,5 +1,5 @@
 import { ENV } from "./config/env";
-import { navigationItems } from "./config/navigationItems";
+import { mainNavItems } from "./config/navigation";
 
 export function hex2rgba(hex, alpha = 1) {
 	const [r, g, b] = hex.match(/\w\w/g).map(x => parseInt(x, 16));
@@ -18,7 +18,7 @@ export function createResourceCardSecondaryTag({ name, color }) {
 
 export function prepareSEO(pathname) {
 	const pages = [
-		...navigationItems,
+		...mainNavItems,
 		{ pathname: "login", name: "Login" },
 		{ pathname: "registration", name: "Registracija" },
 	];

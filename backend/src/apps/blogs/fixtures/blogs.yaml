@@ -34,6 +34,7 @@
       - 1
       - 2
     image: fixtures/img_1.jpg
+    is_published: true
     created: 2022-10-14T00:00:01+00:00
     modified: 2022-10-14T00:00:01+00:00
 
@@ -83,6 +84,7 @@
       - 3
     image: fixtures/img_2.jpg
     title: Osobe koje traže negu u Srbiji
+    is_published: true
     created: 2022-10-14T00:00:02+00:00
     modified: 2022-10-14T00:00:02+00:00
 
@@ -105,6 +107,7 @@
       - 1
     image: fixtures/img_3.jpg
     title: Negovatelji u Beogradu
+    is_published: true
     created: 2022-10-14T00:00:03+00:00
     modified: 2022-10-14T00:00:03+00:00
 
@@ -139,6 +142,7 @@
       - 2
     image: fixtures/img_4.jpg
     title: Negovatelji u Novom Sadu
+    is_published: true
     created: 2022-10-14T00:00:04+00:00
     modified: 2022-10-14T00:00:04+00:00
 
@@ -172,6 +176,7 @@
       - 2
     image: fixtures/img_1.jpg
     title: Negovatelji u Nišu
+    is_published: true
     created: 2022-10-14T00:00:05+00:00
     modified: 2022-10-14T00:00:05+00:00
 

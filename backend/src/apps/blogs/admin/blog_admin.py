@@ -14,9 +14,13 @@ class BlogAdmin(admin.ModelAdmin, ModelAdminMixin):
         'author__first_name',
         'author__last_name',
     )
+    list_filter = (
+        'is_published',
+    )
     list_display = (
         'title',
         'author_name',
+        'is_published',
     )
     inlines = [
         BlogAuthorAdminInline,

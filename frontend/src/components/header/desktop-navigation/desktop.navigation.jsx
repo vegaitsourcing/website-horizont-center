@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./desktop.navigation.module.scss";
 import { LongButton } from "shared-components/long-button/long.button";
 import { LogoButton } from "../logo-button/logo.button";
-import { navigationItems } from "../../../config/navigationItems";
+import { mainNavItems, LOGIN_NAV_ITEM, REGISTRATION_NAV_ITEM, PROFILE_NAV_ITEM } from "../../../config/navigation";
 
 function AuthenticatedMenu ({ onLogout, user }) {
 	return (
@@ -10,8 +10,8 @@ function AuthenticatedMenu ({ onLogout, user }) {
 			<img className={styles.avatar} src={user.image || "/images/avatar.svg"} alt="avatar"/>
 			<div className={styles.userMenu}>
 				<div className={styles.userMenuOptions}>
-					<Link href="/profile" passHref>
-						<div className={styles.tabLabel}>Izmeni profil</div>
+					<Link href={`/${PROFILE_NAV_ITEM.pathname}`} passHref>
+						<div className={styles.tabLabel}>{PROFILE_NAV_ITEM.name}</div>
 					</Link>
 					<div className={styles.tabLabel} onClick={onLogout}>
 						Odjavi se
@@ -23,18 +23,20 @@ function AuthenticatedMenu ({ onLogout, user }) {
 }
 
 function AnonymousMenu () {
+	const navItems = [
+		{ ...LOGIN_NAV_ITEM, buttonType: "border" },
+		{ ...REGISTRATION_NAV_ITEM, buttonType: "filled" },
+	];
+
 	return (
 		<div className={styles.anonymousMenu}>
-			<Link href="/login">
-				<div>
-					<LongButton value="Prijava" type="border"/>
-				</div>
-			</Link>
-			<Link href="/registration">
-				<div>
-					<LongButton value="Registracija" type="filled"/>
-				</div>
-			</Link>
+			{navItems.map(navItem => (
+				<Link key={navItem.pathname} href={`/${navItem.pathname}`}>
+					<div>
+						<LongButton value={navItem.name} type={navItem.buttonType}/>
+					</div>
+				</Link>
+			))}
 		</div>
 	);
 }
@@ -42,7 +44,7 @@ function AnonymousMenu () {
 function MainMenu () {
 	return (
 		<div className={styles.middleMenu}>
-			{navigationItems.map((tab, index) => (
+			{mainNavItems.map((tab, index) => (
 				<div key={index} className={styles.tabItem}>
 					<Link href={`/${tab.pathname}`} passHref>
 						<span className={styles.tabLabel}>{tab.name}</span>
