@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-11-26 15:37+0100\n"
+"POT-Creation-Date: 2022-12-11 19:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,7 +13,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: src/apps/blogs/admin/blog_admin.py:32
+#: src/apps/blogs/admin/blog_admin.py:36
 msgid "author"
 msgstr "autor"
 
@@ -43,13 +43,17 @@ msgstr "Slika"
 #: src/apps/blogs/models/blog_section.py:21
 #: src/apps/donations/models/donation.py:30
 #: src/apps/donations/models/donation_company.py:27
-#: src/apps/users/models/abstract_profile.py:37
+#: src/apps/users/models/abstract_profile.py:38
 msgid "description"
 msgstr "Opis"
 
 #: src/apps/blogs/models/blog.py:29
 msgid "categories"
 msgstr "kategorije"
+
+#: src/apps/blogs/models/blog.py:33
+msgid "is published"
+msgstr "objavljeno"
 
 #: src/apps/blogs/models/blog_author.py:9
 msgid "Blog Author"
@@ -150,6 +154,10 @@ msgstr "tip media"
 msgid "status"
 msgstr "status"
 
+#: src/apps/common/admin/organization_partner_admin.py:21
+msgid "link"
+msgstr "link"
+
 #: src/apps/common/apps.py:8
 msgid "Common"
 msgstr "zajedničko"
@@ -199,10 +207,31 @@ msgid ""
 "Note that the email can successfully be sent even if the recipient email "
 "address does not exist"
 msgstr ""
-"Email može da bude poslat, čak iako  email adresa ne postoji. "
-"U tom slučaju će email biti uspešnog statusa iako ga niko nije primio."
+"Email može da bude poslat, čak iako  email adresa ne postoji. U tom slučaju "
+"će email biti uspešnog statusa iako ga niko nije primio."
 
-#: src/apps/common/viewsets.py:37
+#: src/apps/common/models/organization_partner.py:8
+msgid "Organization Partner"
+msgstr "Organizacioni Partner"
+
+#: src/apps/common/models/organization_partner.py:9
+msgid "Organization Partners"
+msgstr "Organizacioni Partneri"
+
+#: src/apps/common/models/organization_partner.py:12
+#: src/apps/donations/models/donation_company.py:14
+msgid "name"
+msgstr "Ime kompanije"
+
+#: src/apps/common/models/organization_partner.py:16
+msgid "logo image"
+msgstr "logo slika"
+
+#: src/apps/common/models/organization_partner.py:20
+msgid "URL"
+msgstr "URL"
+
+#: src/apps/common/viewsets/viewset.py:37
 #: src/apps/users/viewsets/abstract_profile_viewset.py:26
 msgid "Not fount"
 msgstr "Nije pronađeno"
@@ -224,6 +253,7 @@ msgid "subtitle"
 msgstr "Podnaslov"
 
 #: src/apps/donations/models/donation.py:33
+#: src/apps/users/admin/abstract_profile_admin.py:23
 msgid "is active"
 msgstr "Aktivna"
 
@@ -234,10 +264,6 @@ msgstr "Kompanija"
 #: src/apps/donations/models/donation_company.py:11
 msgid "Companies"
 msgstr "Kompanije"
-
-#: src/apps/donations/models/donation_company.py:14
-msgid "name"
-msgstr "Ime kompanije"
 
 #: src/apps/donations/models/donation_company.py:21
 msgid "company image"
@@ -278,17 +304,16 @@ msgid "payment reference number"
 msgstr "poziv na broj"
 
 #: src/apps/donations/models/financial_info.py:46
-#: src/apps/users/models/abstract_profile.py:46
+#: src/apps/users/models/abstract_profile.py:51
 msgid "for"
 msgstr "za"
 
 #: src/apps/users/admin/abstract_profile_admin.py:13
-#: src/apps/users/models/abstract_profile.py:41
+#: src/apps/users/models/abstract_profile.py:42
 msgid "user"
 msgstr "korisnik"
 
-#: src/apps/users/admin/beneficiary_profile_admin.py:29
-#: src/apps/users/admin/caregiver_profile_admin.py:29
+#: src/apps/users/admin/abstract_profile_admin.py:18
 msgid "user email"
 msgstr "korisnikov email"
 
@@ -304,31 +329,35 @@ msgstr "Permisije"
 msgid "Important dates"
 msgstr "Važni datumi"
 
+#: src/apps/users/admin/user_admin.py:68
+msgid "profile type"
+msgstr "tip profila"
+
 #: src/apps/users/apps.py:8 src/apps/users/models/user.py:34
 msgid "Users"
 msgstr "Korisnici"
 
-#: src/apps/users/models/abstract_profile.py:12
+#: src/apps/users/models/abstract_profile.py:13
 msgid "Male"
 msgstr "Muško"
 
-#: src/apps/users/models/abstract_profile.py:13
+#: src/apps/users/models/abstract_profile.py:14
 msgid "Female"
 msgstr "Žensko"
 
-#: src/apps/users/models/abstract_profile.py:19
+#: src/apps/users/models/abstract_profile.py:20
 msgid "profile image"
 msgstr "profilna slika"
 
-#: src/apps/users/models/abstract_profile.py:24
+#: src/apps/users/models/abstract_profile.py:25
 msgid "gender"
 msgstr "Pol"
 
-#: src/apps/users/models/abstract_profile.py:27
+#: src/apps/users/models/abstract_profile.py:28
 msgid "postal code"
 msgstr "poštanski broj"
 
-#: src/apps/users/models/abstract_profile.py:31
+#: src/apps/users/models/abstract_profile.py:32
 msgid "city"
 msgstr "grad"
 
