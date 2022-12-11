@@ -36,7 +36,7 @@ export const ProfileDetailsEdit = ({ profile, editList, profileType }) => {
 	};
 
 	async function editProfile() {
-		if (validateInputs() == false) return false;
+		if (!validateInputs()) return false;
 		if (profileType === "caregiver") {
 			await CaregiversService.editCaregiverById(profile.id, editedData).then(() => {
 				router.reload();

@@ -1,5 +1,4 @@
 export const isValidInput = (inputValue, inputType) => {
-  console.log(inputValue);
   let error = "";
 
   if (inputValue === "") {

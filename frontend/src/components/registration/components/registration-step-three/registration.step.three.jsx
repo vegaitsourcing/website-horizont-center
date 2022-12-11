@@ -38,7 +38,7 @@ export const RegistrationStepThree = ({ stepNumber, valueChangedHandler }) => {
     <div className={styles.imageUpload}>
       <div className={[styles.imageField, !isValidImg ? styles.error : ""].join(" ")}>
         <img
-          src={formStep3Data?.data?.image !== "" ? formStep3Data?.data?.image : defaultImg}
+          src={formStep3Data?.data?.image || defaultImg}
           alt="profile image"
           className={styles.image}
         />

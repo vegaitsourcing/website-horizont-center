@@ -1,8 +1,5 @@
-import { useEffect, useState } from "react";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-
 import styles from "./profile.details.info.module.scss";
 
 export const ProfileDetailsInfo = ({ profile, infoList }) => {
