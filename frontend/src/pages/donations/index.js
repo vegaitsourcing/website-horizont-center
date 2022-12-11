@@ -61,10 +61,6 @@ function Donations(props) {
 				<PageHeader
 					withBackground
 					title={"Prikupljenje donacija"}
-					text={
-						"Felis lectus tortor massa a eget viverra integer faucibus adipiscing. " +
-						"Faucibus nunc, auctor arcu magna cursus "
-					}
 				/>
 				<DonationFilters onChange={updateFilters}/>
 				<DonationList donations={donations}/>

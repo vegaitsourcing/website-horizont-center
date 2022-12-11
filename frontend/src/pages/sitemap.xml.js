@@ -1,7 +1,7 @@
 import { ENV } from "../config/env";
 import { BlogsService } from "./api/blogsService";
 import { DonationsService } from "./api/donationsService";
-import { navigationItems } from "../config/navigationItems";
+import { mainNavItems } from "../config/navigation";
 
 export async function getServerSideProps({ res }) {
 	const blogIDs = await getBlogIds(10);
@@ -20,7 +20,7 @@ export async function getServerSideProps({ res }) {
 
 async function getBlogIds() {
 	try {
-		const response = await BlogsService.getBlogs(10, 1);
+		const response = await BlogsService.getPublishedBlogs(10, 1);
 		return response.data.items.map(blog => blog.id);
 	} catch (error) {
 		return [];
@@ -51,7 +51,7 @@ function generateSiteMap(blogIDs, donationIDs) {
 }
 
 function generateMainPagesSiteMapRows() {
-	return navigationItems.map(item => {
+	return mainNavItems.map(item => {
 		return `
 			<url>
        	<loc>${ENV.BASE_URL}/${item.pathname}</loc>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import styles from "./registration.step.one.module.scss";
-import { Input, Select } from "shared-components";
+import { Select } from "shared-components";
 
 export const RegistrationStepOne = ({ stepNumber, valueChangedHandler, isFormValid }) => {
 	const [formStep1Data, setFormStep1Data] = useState();

@@ -29,6 +29,10 @@ class Blog(BaseModel):
         verbose_name=_('categories'),
         related_name='blogs',
     )
+    is_published = models.BooleanField(
+        verbose_name=_('is published'),
+        default=False,
+    )
 
     def __str__(self):
         return self.title

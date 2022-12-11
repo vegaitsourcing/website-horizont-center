@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import styles from "./footer.module.scss";
 import Link from "next/link";
-import { footerNavItems } from "../../config/navigationItems";
+import { footerNavItems } from "../../config/navigation";
 
 export const Footer = ({ isHidden }) => {
   return (
@@ -17,13 +17,13 @@ export const Footer = ({ isHidden }) => {
             platforme NEGOVATELJI.RS kreirane uz podršku podršku VEGAT IT kompanije i projekta Code For Couse.
           </p>
           <div className={styles.socialMediaButtons}>
-            <a href="https://www.facebook.com/groups/270285275225942/" target="_blank">
+            <a href="https://www.facebook.com/groups/270285275225942/" target="_blank" rel="noreferrer">
               <Image src="/images/facebookIconWhite.svg" width="16.11" height="30" alt="link to our facebook" />
             </a>
-            <a href="https://www.youtube.com/channel/UCS5gh6FEudKxWeUPIzL_Kog" target="_blank">
+            <a href="https://www.youtube.com/channel/UCS5gh6FEudKxWeUPIzL_Kog" target="_blank" rel="noreferrer">
               <Image src="/images/youtubeIconWhite.svg" width="30" height="30" alt="link to our youtube" />
             </a>
-            <a href="https://instagram.com/negovatelji?igshid=MWI4MTIyMDE=" target="_blank">
+            <a href="https://instagram.com/negovatelji?igshid=MWI4MTIyMDE=" target="_blank" rel="noreferrer">
               <Image src="/images/instagramIconWhite.svg" width="25" height="30" alt="link to our instagram" />
             </a>
           </div>

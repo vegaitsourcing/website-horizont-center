@@ -23,7 +23,7 @@ function Blogs(props) {
 
 	useEffect(() => {
 		async function fetchBlogs() {
-			const response = await BlogsService.getBlogs(
+			const response = await BlogsService.getPublishedBlogs(
 				ITEMS_PER_PAGE,
 				activePageNumber,
 				filters.contains,
@@ -61,10 +61,6 @@ function Blogs(props) {
 				<PageHeader
 					withBackground
 					title={"Podrška"}
-					text={
-						"Felis lectus tortor massa a eget viverra integer faucibus adipiscing. " +
-						"Faucibus nunc, auctor arcu magna cursus "
-					}
 				/>
 				<BlogFilters onChange={updateFilters}/>
 				<BlogList blogs={blogs}/>

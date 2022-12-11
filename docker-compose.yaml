@@ -15,7 +15,7 @@ services:
       - DJANGO_SUPERUSER_EMAIL=admin@example.com
       - DJANGO_SUPERUSER_PASSWORD=admin
       - EMAIL_HOST_USER=example@example.com
-      - EMAIL_HOST_PASSWORD=xxxxxxxxxxxxxxxx
+      - EMAIL_HOST_PASSWORD=XXXXXXXXXX
       - CORS_ALLOWED_ORIGIN=http://localhost:3000
       - ALLOWED_HOST=localhost
     ports:
