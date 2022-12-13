@@ -6,7 +6,7 @@ from apps.common.serializers import ModelSerializer
 
 
 class AbstractProfileSerializer(ModelSerializer):
-    image = Base64ImageField()
+    image = Base64ImageField(required=False)
     user = UserSerializer()
 
     class Meta:

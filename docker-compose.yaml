@@ -62,7 +62,7 @@ services:
       - API_URL=http://localhost:8000/api/v1
     volumes:
       - ./frontend:/usr/app/
-    command: sh -c 'npm run dev'
+    command: sh -c 'npm install && npm run dev'
 
 volumes:
   caregivers-postgres-data:
