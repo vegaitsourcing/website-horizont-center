@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-12-11 19:03+0100\n"
+"POT-Creation-Date: 2022-12-24 18:14+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -63,11 +63,11 @@ msgstr "Autor Bloga"
 msgid "Blog Authors"
 msgstr "Autori Blogova"
 
-#: src/apps/blogs/models/blog_author.py:13 src/apps/users/models/user.py:47
+#: src/apps/blogs/models/blog_author.py:13 src/apps/users/models/user.py:48
 msgid "first name"
 msgstr "ime"
 
-#: src/apps/blogs/models/blog_author.py:17 src/apps/users/models/user.py:53
+#: src/apps/blogs/models/blog_author.py:17 src/apps/users/models/user.py:54
 msgid "last name"
 msgstr "prezime"
 
@@ -161,6 +161,14 @@ msgstr "link"
 #: src/apps/common/apps.py:8
 msgid "Common"
 msgstr "zajedničko"
+
+#: src/apps/common/fields.py:6
+msgid "Please upload a valid image."
+msgstr "Molimo vas da dodate validnu sliku."
+
+#: src/apps/common/fields.py:7
+msgid "The type of the image couldn't be determined."
+msgstr "Tip slike ne može da se utvrdi."
 
 #: src/apps/common/models/email_thread.py:14
 msgid "Email Thread"
@@ -333,7 +341,7 @@ msgstr "Važni datumi"
 msgid "profile type"
 msgstr "tip profila"
 
-#: src/apps/users/apps.py:8 src/apps/users/models/user.py:34
+#: src/apps/users/apps.py:8 src/apps/users/models/user.py:35
 msgid "Users"
 msgstr "Korisnici"
 
@@ -411,19 +419,23 @@ msgstr "prijava za rad"
 msgid "experience"
 msgstr "iskustvo"
 
-#: src/apps/users/models/user.py:33
+#: src/apps/users/models/user.py:34
 msgid "User"
 msgstr "Korisnik"
 
-#: src/apps/users/models/user.py:39
+#: src/apps/users/models/user.py:40
 msgid "email"
 msgstr "email"
 
-#: src/apps/users/models/user.py:57
+#: src/apps/users/models/user.py:58
 msgid "phone number"
 msgstr "broj telefona"
 
-#: src/apps/users/models/user.py:64
+#: src/apps/users/models/user.py:61 src/apps/users/models/user.py:70
+msgid "Enter a valid phone number."
+msgstr "Unesite ispravan broj telefona."
+
+#: src/apps/users/models/user.py:68
 msgid "second phone number"
 msgstr "broj telefona 2"
 

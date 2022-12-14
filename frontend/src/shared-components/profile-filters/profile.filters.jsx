@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import styles from "./profile.filters.module.scss";
-import { CitiesService } from "../../pages/api/countriesService";
 import { Input, Select } from "../fields";
+import { getSerbianCitySelectOptions } from "../../utils";
 
 export function ProfileFilters({ onChange }) {
 	const [cityOptions, setCityOptions] = useState({});
 
 	useEffect(() => {
 		async function prepareCityOptions() {
-			const serbianCities = await CitiesService.getAllSerbianCities();
-			const serbianCityOptions = serbianCities.reduce((prev, curr) => ({ ...prev, [curr]: curr }), {});
+			const serbianCityOptions = await getSerbianCitySelectOptions();
 			setCityOptions(serbianCityOptions);
 		}
 
@@ -24,7 +23,7 @@ export function ProfileFilters({ onChange }) {
 					id="profileContains"
 					name="profileContains"
 					placeholder="Pretraži..."
-					valueChangedHandler={(value) => onChange({ contains: value })}
+					onChange={(value) => onChange({ contains: value })}
 				/>
 			</div>
 			<div className={styles.rightSide}>
@@ -34,7 +33,7 @@ export function ProfileFilters({ onChange }) {
 					name="profileGender"
 					options={{ male: "Muško", female: "Žensko" }}
 					placeholder="Pol..."
-					valueChangedHandler={(value) => onChange({ gender: value })}
+					onChange={(value) => onChange({ gender: value })}
 				/>
 				<Select
 					className={styles.rightFilterField}
@@ -42,7 +41,7 @@ export function ProfileFilters({ onChange }) {
 					name="profileCity"
 					options={cityOptions}
 					placeholder="Mesto..."
-					valueChangedHandler={(value) => onChange({ city: value })}
+					onChange={(value) => onChange({ city: value })}
 				/>
 			</div>
 		</div>

@@ -1,0 +1,45 @@
+@import "./../../../styles/main";
+
+.fieldLabel {
+	color: $blue-color;
+	font-weight: 400;
+	text-transform: unset;
+	height: 24px;
+	font-size: 16px;
+}
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 200px;
+	border: 1px solid $blue-color;
+	background-color: $light-blue-color;
+	color: $input-text-color;
+	text-align: center;
+	border-radius: 10px;
+	padding: 5px 0;
+	position: absolute;
+	left: 0;
+	top: 24px;
+	z-index: 1;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
+
+.requiredSymbol {
+	color: red;
+}
+
+.infoIcon {
+	width: 15px;
+	height: 15px;
+	opacity: 0.3;
+	cursor: pointer;
+}

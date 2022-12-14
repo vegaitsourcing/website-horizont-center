@@ -10,7 +10,7 @@ export function DonationFilters({ onChange }) {
         id="donationContains"
         name="donationContains"
         placeholder="Pretraži..."
-        valueChangedHandler={(value) => onChange({ contains: value })}
+        onChange={(value) => onChange({ contains: value })}
       />
       <Select
 				className={styles.rightField}
@@ -18,7 +18,7 @@ export function DonationFilters({ onChange }) {
         name="donationStatus"
         options={{ true: "u toku", false: "završeno" }}
         placeholder="Status..."
-        valueChangedHandler={(value) => onChange({ isActive: value })}
+        onChange={(value) => onChange({ isActive: value })}
       />
     </div>
   );

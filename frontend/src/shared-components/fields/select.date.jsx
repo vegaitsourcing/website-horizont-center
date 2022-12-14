@@ -1,49 +1,57 @@
-import { useEffect, useState } from "react";
-import DatePicker from "react-datepicker";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-
+import React, { useCallback, useEffect } from "react";
 import moment from "moment";
+import DatePicker from "react-datepicker";
 import styles from "./fields.module.scss";
+import { useFormField } from "../../hooks";
+import { ErrorMessages } from "./error.messages/error.messages";
+import { FieldLabel } from "./field.label/field.label";
+import { FIELD_WITH_ERRORS_CLASS_NAME } from "./index";
 
-export const SelectDate = ({ inputValue, label, infoText, valueChangedHandler, className = "", errorMessage = "" }) => {
-  const [datePickerValue, setDatePickerValue] = useState(inputValue);
+export const SelectDate = ({
+	inputValue,
+	label,
+	infoText,
+	onChange,
+	className = "",
+	shouldValidate = true,
+	required = true,
+	validators = [],
+	extraErrorMessages = [],
+}) => {
+	const [fieldValue, fieldErrorMessages, updateFieldValue] = useFormField(
+		inputValue,
+		shouldValidate,
+		validators,
+		extraErrorMessages
+	);
 
-  useEffect(() => {
-    setDatePickerValue(inputValue);
-  }, [inputValue]);
+	useEffect(() => {
+		if (shouldValidate && extraErrorMessages.length) updateFieldValue(fieldValue);
+	}, [fieldValue, updateFieldValue, shouldValidate, extraErrorMessages]);
 
-  const handleDatePickerChange = (event) => {
-    valueChangedHandler(moment(event).format("YYYY-MM-DD"));
-    setDatePickerValue(moment(event).format("YYYY-MM-DD"));
-  };
+	const updateValue = useCallback((event) => {
+		onChange(moment(event).format("YYYY-MM-DD"));
+		updateFieldValue(moment(event).format("YYYY-MM-DD"));
+	}, [onChange, updateFieldValue]);
 
-  const wrapperClassNames = [styles.fieldWrapper, className, errorMessage ? styles.fieldWrapperWithError : ""].join(
-    " "
-  );
+	const wrapperClassNames = [
+		styles.fieldWrapper,
+		className,
+		fieldErrorMessages.length ? `${styles.fieldWrapperWithError} ${FIELD_WITH_ERRORS_CLASS_NAME}` : "",
+	].join(" ");
 
-  return (
-    <div className={wrapperClassNames}>
-      {label ? (
-        <label className={styles.fieldLabel}>
-          {infoText ? (
-            <div className={styles.tooltip}>
-              <FontAwesomeIcon icon={faInfoCircle} className={styles.infoIcon} />
-              <span className={styles.tooltiptext}>{infoText}</span>
-            </div>
-          ) : null}
-          {label}
-        </label>
-      ) : null}
-      <DatePicker
-        placeholderText={inputValue !== "" ? inputValue : "Datum rođenja Dan/Mesec/Godina**"}
-        dateFormat="dd/MM/yyyy"
-        id="start-date"
-        autoComplete="off"
-        selected={Date.parse(datePickerValue) ?? new Date()}
-        onChange={(event) => handleDatePickerChange(event)}
-      />
-      {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
-    </div>
-  );
+	return (
+		<div className={wrapperClassNames}>
+			{label && <FieldLabel label={label} required={required} infoText={infoText}/>}
+			<DatePicker
+				placeholderText={inputValue !== "" ? inputValue : "Datum rođenja Dan/Mesec/Godina**"}
+				dateFormat="dd/MM/yyyy"
+				id="start-date"
+				autoComplete="off"
+				selected={Date.parse(fieldValue) ?? new Date()}
+				onChange={(event) => updateValue(event)}
+			/>
+			<ErrorMessages errorMessages={fieldErrorMessages}/>
+		</div>
+	);
 };

@@ -45,7 +45,7 @@ export const LoginForm = () => {
               type="email"
               label="E-mail adresa"
               placeholder="Unesite Vašu E-mail adresu"
-              valueChangedHandler={(value) => updateFormData(value, "email")}
+              onChange={(value) => updateFormData(value, "email")}
               errorMessage={isValidInput(formData.email, "email")}
             />
             <Input
@@ -54,7 +54,7 @@ export const LoginForm = () => {
               type="password"
               label="Lozinka"
               placeholder="Unesite Vašu lozinku"
-              valueChangedHandler={(value) => updateFormData(value, "password")}
+              onChange={(value) => updateFormData(value, "password")}
               errorMessage={isValidInput(formData.password, "password")}
             />
           </div>

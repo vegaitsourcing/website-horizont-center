@@ -1,0 +1,52 @@
+@import "./../fields.module";
+
+.imageField {
+	display: flex;
+	flex-direction: column;
+	width: 220px;
+	height: fit-content;
+	min-width: 220px;
+	border-radius: 8px;
+	padding: 20px;
+	max-height: fit-content;
+	border: 1px solid #D0D5DD;
+
+	@include respond-to(mobile) {
+		width: 100%;
+		padding: 20px 0;
+	}
+}
+
+.imageFieldInnerContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.uploadedImage {
+	border-radius: 50%;
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	margin: 0 auto;
+}
+
+.button {
+	display: flex;
+	justify-content: center;
+	padding: 10px;
+}
+
+.button label {
+	text-align: center;
+	font-size: 18px;
+	font-weight: 600;
+	cursor: pointer;
+	color: #0075FF;
+	margin: 0;
+}
+
+.imageFieldWithErrors,
+.imageFieldWithErrors .uploadedImage {
+	outline: 1px solid #fa6969;
+}

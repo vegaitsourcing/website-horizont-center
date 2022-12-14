@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Input, LongButton, TextArea } from "shared-components";
+import { Input, LongButton, Select, TextArea } from "shared-components";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { CitiesService } from "pages/api/countriesService";
 import { CaregiversService } from "pages/api/caregiversService";
@@ -86,7 +86,7 @@ export const ProfileDetailsEdit = ({ profile, editList, profileType }) => {
         <div>
           <TextArea
             defaultValue={profile.description}
-            valueChangedHandler={(e) => handleValueChange(e, "description")}
+            onChange={(e) => handleValueChange(e, "description")}
           />
         </div>
       );
@@ -101,7 +101,7 @@ export const ProfileDetailsEdit = ({ profile, editList, profileType }) => {
               name={element.fieldName}
               placeholder={element.placeholder}
               inputValue={profile[element.fieldName]}
-              valueChangedHandler={(e) => handleValueChange(e, element.fieldName)}
+              onChange={(e) => handleValueChange(e, element.fieldName)}
               isValidInput={true}
             />
           </div>
@@ -116,7 +116,7 @@ export const ProfileDetailsEdit = ({ profile, editList, profileType }) => {
           name={item.fieldName}
           placeholder={item.placeholder}
           inputValue={profile.user[item.fieldName] ?? profile[item.fieldName]}
-          valueChangedHandler={(e) => handleValueChange(e, item.fieldName, item.user)}
+          onChange={(e) => handleValueChange(e, item.fieldName, item.user)}
           errorMessage={displayErrorMessage(item)}
         />
       </div>
@@ -146,14 +146,14 @@ export const ProfileDetailsEdit = ({ profile, editList, profileType }) => {
           />
           <div className={styles.profileName}>{`${profile.user.first_name} ${profile.user.last_name}`}</div>
           <div className={`${styles.profileLocation} ${styles.p2}`}>
-            <Input
+            <Select
               className={styles.editCityInput}
               id={"city"}
               type={"dropdown"}
               name={"city"}
               options={cityOptions}
               inputValue={profile.city}
-              valueChangedHandler={(e) => handleValueChange(e, "city")}
+              onChange={(e) => handleValueChange(e, "city")}
             />
           </div>
         </div>

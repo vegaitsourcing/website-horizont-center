@@ -22,6 +22,9 @@
 		flex-direction: column;
 		width: 100%;
 	}
+	@include respond-to(mobile) {
+		padding: 0;
+	}
 
 	.imageSection {
 		display: inline-block;
@@ -31,11 +34,12 @@
 		@include respond-to(mobile) {
 			display: flex;
 			justify-content: center;
-			width: 100%;
+			width: 90%;
+			margin: auto;
 		}
 
 		.imageWrapper {
-			height: 270px;
+			height: fit-content;
 			width: 240px;
 			border: 1.5px solid $input-color;
 			border-radius: 16px;
@@ -44,6 +48,9 @@
 			@include respond-to(desktop) {
 				margin-right: 0;
 				margin-bottom: 20px;
+			}
+			@include respond-to(mobile) {
+				width: 100%;
 			}
 
 			.roundedImage {
@@ -81,11 +88,13 @@
 				font-size: 18px;
 				line-height: 150%;
 				color: $blue-color;
-				margin-bottom: 8px;
+				width: 90%;
+				margin: 0 auto 8px auto;
 			}
 
 			.profileLocation {
 				color: $blue-color;
+				margin: 10px auto 15px auto;
 
 				.city {
 					display: inline-block;
@@ -108,6 +117,12 @@
 	display: inline-block;
 	vertical-align: top;
 	height: 100%;
+
+	@include respond-to(mobile) {
+		width: 90%;
+		margin: auto;
+		overflow: hidden;
+	}
 
 	.createdDate {
 		margin-bottom: 12px;

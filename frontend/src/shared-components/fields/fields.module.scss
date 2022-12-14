@@ -12,6 +12,7 @@
 	}
 
 	.fieldInnerWrapper {
+		position: relative;
 		display: flex;
 		width: 100%;
 	}
@@ -29,27 +30,12 @@
 		border-radius: 10px;
 
 		&.textarea {
-			width: calc(100% - 68px);
+			width: calc(100% - 50px);
+			max-width: calc(100% - 50px);
 			padding: 12px 24px;
 			height: 248px;
 			@include text;
 		}
-	}
-
-	.fieldLabel {
-		position: absolute;
-		top: -24px;
-		@include text;
-		color: $blue-color;
-		font-weight: 400;
-		text-transform: unset;
-	}
-
-	.infoIcon {
-		width: 15px;
-		height: 15px;
-		opacity: 0.3;
-		cursor: pointer;
 	}
 
 	input.field {
@@ -70,7 +56,7 @@
 
 	.charCount {
 		text-align: right;
-		margin: 0px 20px 0px 0px;
+		margin: 0;
 		font-size: 16px;
 		@include text;
 		color: $blue-color;
@@ -96,11 +82,8 @@
 		fill: red;
 	}
 
-	.errorMessage {
-		font-family: "Open Sans", sans-serif;
-		margin: 0;
-		color: red;
-		margin-bottom: 20px;
+	.errorMessageRightAligned {
+		text-align: right;
 	}
 
 	.fieldLabel {
@@ -112,27 +95,3 @@
 	}
 }
 
-.tooltip {
-	position: relative;
-	display: inline-block;
-	margin-right: 5px;
-}
-
-.tooltip .tooltiptext {
-	visibility: hidden;
-	width: 200px;
-	border: 1px solid $blue-color;
-	background-color: $light-blue-color;
-	color:$input-text-color;
-	text-align: center;
-	border-radius: 10px;
-	padding: 5px 0;
-	position: absolute;
-	left: 0px;
-	top: 24px;
-	z-index: 1;
-}
-
-.tooltip:hover .tooltiptext {
-	visibility: visible;
-}

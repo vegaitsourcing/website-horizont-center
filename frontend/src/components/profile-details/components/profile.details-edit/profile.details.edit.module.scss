@@ -29,7 +29,7 @@
 	.imageSection {
 		display: inline-block;
 		align-items: center;
-		height: 270px;
+		height: fit-content;
 		min-width: fit-content;
 		text-align: center;
 		vertical-align: middle;
@@ -39,6 +39,9 @@
 
 		@include respond-to(tablet) {
 			margin: auto;
+		}
+		@include respond-to(mobile) {
+			width: 90%;
 		}
 
 		.roundedImage {
@@ -80,8 +83,9 @@
 			font-weight: 600;
 			font-size: 18px;
 			line-height: 150%;
+			width: 90%;
+			margin: 0 auto 10px auto;
 			color: $blue-color;
-			margin-bottom: 8px;
 		}
 
 		.profileLocation {
@@ -185,8 +189,8 @@
 }
 
 .editCityInput {
-	width: 200px;
-	margin-left: 20px;
+	width: 100%;
+	margin: auto;
 	color: $subtext-color;
 }
 

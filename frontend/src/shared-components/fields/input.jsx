@@ -1,81 +1,69 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import { Select } from "./select";
-import { SelectDate } from "shared-components";
+import React, { useCallback, useEffect } from "react";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import styles from "./fields.module.scss";
+import { useFormField } from "../../hooks";
+import { ErrorMessages } from "./error.messages/error.messages";
+import { FieldLabel } from "./field.label/field.label";
+import { FIELD_WITH_ERRORS_CLASS_NAME } from "./index";
 
 export const Input = ({
-  id,
-  name,
-  type,
-  step,
-  label,
-  placeholder,
-  inputValue,
-  valueChangedHandler,
-  options,
-  className = "",
-  errorMessage = "",
-  withSearchIcon = false,
-  infoText,
+	id,
+	name,
+	type,
+	step,
+	label,
+	placeholder,
+	inputValue,
+	onChange,
+	className = "",
+	infoText = "",
+	required = true,
+	withSearchIcon = false,
+	shouldValidate = false,
+	validators = [],
+	extraErrorMessages = [],
 }) => {
-  if (type === "dropdown")
-    return (
-      <Select
-        id={id}
-        name={name}
-        label={label}
-        placeholder={placeholder}
-        options={options}
-        inputValue={inputValue}
-        valueChangedHandler={valueChangedHandler}
-        errorMessage={errorMessage}
-      />
-    );
+	const [fieldValue, fieldErrorMessages, updateFieldValue] = useFormField(
+		inputValue,
+		shouldValidate,
+		validators,
+		extraErrorMessages,
+	);
 
-  if (type === "datepicker")
-    return (
-      <SelectDate
-        inputValue={inputValue}
-        label={label}
-        infoText={infoText}
-        valueChangedHandler={valueChangedHandler}
-        errorMessage={errorMessage}
-      />
-    );
+	useEffect(() => {
+		if (shouldValidate && extraErrorMessages.length) updateFieldValue(fieldValue);
+	}, [fieldValue, updateFieldValue, shouldValidate, extraErrorMessages]);
 
-  const wrapperClassNames = [styles.fieldWrapper, className, errorMessage ? styles.fieldWrapperWithError : ""].join(
-    " "
-  );
+	const updateValue = useCallback((value) => {
+		updateFieldValue(value);
+		onChange(value);
+	}, [updateFieldValue, onChange]);
 
-  return (
-    <div className={wrapperClassNames}>
-      {label ? (
-        <label className={styles.fieldLabel}>
-          {infoText ? (
-            <div className={styles.tooltip}>
-              <FontAwesomeIcon icon={faInfoCircle} className={styles.infoIcon} />
-              <span className={styles.tooltiptext}>{infoText}</span>
-            </div>
-          ) : null}
-          {label}
-        </label>
-      ) : null}
-      <div className={styles.fieldInnerWrapper}>
-        <input
-          id={id}
-          defaultValue={inputValue ?? ""}
-          type={type}
-          name={name}
-          step={step}
-          min={"1"}
-          onChange={(event) => valueChangedHandler(event.target.value)}
-          placeholder={placeholder}
-          className={styles.field}
-        />
-        {withSearchIcon && <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.icon} />}
-      </div>
-      {errorMessage && <pre className={styles.errorMessage}>{errorMessage}</pre>}
-    </div>
-  );
+	const wrapperClassNames = [
+		styles.fieldWrapper,
+		className,
+		fieldErrorMessages.length ? `${styles.fieldWrapperWithError} ${FIELD_WITH_ERRORS_CLASS_NAME}` : "",
+	].join(" ");
+
+	return (
+		<div className={wrapperClassNames}>
+			{label && <FieldLabel label={label} required={required} infoText={infoText}/>}
+			<div className={styles.fieldInnerWrapper}>
+				<input
+					id={id}
+					defaultValue={fieldValue || ""}
+					type={type}
+					name={name}
+					step={step}
+					min={"1"}
+					onChange={(event) => updateValue(event.target.value)}
+					placeholder={placeholder}
+					className={styles.field}
+				/>
+				{withSearchIcon && <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.icon}/>}
+			</div>
+			<ErrorMessages errorMessages={fieldErrorMessages}/>
+		</div>
+	);
 };

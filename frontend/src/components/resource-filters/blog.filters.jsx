@@ -28,7 +28,7 @@ export function BlogFilters ({ onChange }) {
 				id="blogContains"
 				name="blogContains"
 				placeholder="Pretraži..."
-				valueChangedHandler={(value) => onChange({ contains: value })}
+				onChange={(value) => onChange({ contains: value })}
 			/>
 			<Select
 				cla
@@ -37,7 +37,7 @@ export function BlogFilters ({ onChange }) {
 				name="blogCategory"
 				options={categoryOptions || {}}
 				placeholder="Kategorija..."
-				valueChangedHandler={(value) => onChange({ category: value })}
+				onChange={(value) => onChange({ category: value })}
 			/>
 		</div>
 	);

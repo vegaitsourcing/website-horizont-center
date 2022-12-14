@@ -52,7 +52,7 @@ export const PasswordForgotForm = () => {
                 type="email"
                 label="E mail adresa"
                 placeholder="Unesite Vašu E-mail adresu"
-                valueChangedHandler={(value) => setFormData({ email: value })}
+                onChange={(value) => setFormData({ email: value })}
                 errorMessage={isValidInput(formData.email, "email")}
               />
             </div>
