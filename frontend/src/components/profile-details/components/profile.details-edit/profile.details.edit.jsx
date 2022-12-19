@@ -39,7 +39,6 @@ export const ProfileDetailsEdit = ({ profile, editList, profileType }) => {
 
   const handleValueChange = (value, field, user) => {
     const updatedValue = user ? { user: { [field]: value } } : { [field]: value };
-    console.log(updatedValue);
     setEditedData({ ...editedData, ...updatedValue });
   };
 
@@ -64,6 +63,7 @@ export const ProfileDetailsEdit = ({ profile, editList, profileType }) => {
   };
 
   const displayErrorMessage = (item) => {
+    if (item.fieldName === "second_phone_number") return "";
     const validateItem = editedData.user?.[item.fieldName] ?? editedData[item.fieldName];
     return validateItem === "" ? "Ovo polje je obavezno" : "";
   };
@@ -74,7 +74,7 @@ export const ProfileDetailsEdit = ({ profile, editList, profileType }) => {
       if (editedData[field] === "") return false;
       if (field === "description" && (editedData[field].length > 500 || editedData[field].length < 100)) return false;
       for (let item in user) {
-        if (user[item] === "") return false;
+        if (item !== "second_phone_number" && user[item] === "") return false;
       }
     }
     return true;
