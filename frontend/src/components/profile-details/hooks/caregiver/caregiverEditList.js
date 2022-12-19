@@ -4,12 +4,14 @@ export const caregiverEditList = [
     fieldName: "first_name",
     type: "text",
     placeholder: "Vaše ime*",
+    user: true,
   },
   {
     title: "PREZIME",
     fieldName: "last_name",
     type: "text",
     placeholder: "Vaše prezime*",
+    user: true,
   },
   {
     title: "PROFESIJA",
@@ -31,18 +33,21 @@ export const caregiverEditList = [
     fieldName: "phone_number",
     type: "text",
     placeholder: "Vaš primarni broj telefona",
+    user: true,
   },
   {
     title: "BROJ TELEFONA 2",
     fieldName: "second_phone_number",
     type: "text",
     placeholder: "Vaš rezervni broj telefona",
+    user: true,
   },
   {
     title: "EMAIL",
     fieldName: "email",
     type: "text",
     placeholder: "Vaša e-mail adresa",
+    user: true,
   },
   {
     title: "DRUŠTVENE MREŽE",

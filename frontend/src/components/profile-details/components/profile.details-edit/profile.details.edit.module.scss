@@ -195,10 +195,13 @@
 
 .textArea {
 	display: block !important;
-	width: 100% !important;
+	width: 94% !important;
+
+	@include respond-to(tablet) {
+		width: 100% !important;
+	}
 
 	textarea {
 		width: 90% !important;
-		padding: 5% !important;
 	}
 }

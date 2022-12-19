@@ -19,8 +19,28 @@ export const ProfileDetailsEdit = ({ profile, editList, profileType }) => {
     setCityOptions(serbianCityOptions);
   }
 
-  const handleValueChange = (value, field) => {
-    setEditedData({ ...editedData, [field]: value });
+  async function editProfile() {
+    if (!validateInputs()) return false;
+    if (profileType === "caregiver") {
+      await CaregiversService.editCaregiverById(profile.id, editedData).then(() => {
+        updateAuthUserImage();
+        router.reload();
+      });
+    }
+    await BeneficiariesService.editBeneficiaryById(profile.id, editedData).then(() => {
+      updateAuthUserImage();
+      router.reload();
+    });
+  }
+
+  useEffect(() => {
+    prepareCityOptions();
+  }, [profile, profileType]);
+
+  const handleValueChange = (value, field, user) => {
+    const updatedValue = user ? { user: { [field]: value } } : { [field]: value };
+    console.log(updatedValue);
+    setEditedData({ ...editedData, ...updatedValue });
   };
 
   const imageChangeHandler = (event) => {
@@ -36,48 +56,29 @@ export const ProfileDetailsEdit = ({ profile, editList, profileType }) => {
     fileupload.click();
   };
 
+  const updateAuthUserImage = () => {
+    if (editedData.image) {
+      const user = JSON.parse(localStorage.getItem("user"));
+      localStorage.setItem("user", JSON.stringify({ ...user, image: editedData.image }));
+    }
+  };
+
+  const displayErrorMessage = (item) => {
+    const validateItem = editedData.user?.[item.fieldName] ?? editedData[item.fieldName];
+    return validateItem === "" ? "Ovo polje je obavezno" : "";
+  };
+
   const validateInputs = () => {
     for (let field in editedData) {
-      if (editedData[field] === "") {
-        return false;
-      }
-      if (field === "description" && (editedData[field].length > 500 || editedData[field].length < 100)) {
-        return false;
+      const user = editedData.user ?? {};
+      if (editedData[field] === "") return false;
+      if (field === "description" && (editedData[field].length > 500 || editedData[field].length < 100)) return false;
+      for (let item in user) {
+        if (user[item] === "") return false;
       }
     }
     return true;
   };
-
-  async function editProfile() {
-    if (!validateInputs()) return false;
-    if (profileType === "caregiver") {
-      await CaregiversService.editCaregiverById(profile.id, editedData).then(() => {
-        router.reload();
-      });
-    }
-    await BeneficiariesService.editBeneficiaryById(profile.id, editedData).then(() => {
-      router.reload();
-    });
-  }
-
-  useEffect(() => {
-    prepareCityOptions();
-    setEditedData({
-      first_name: profile.user.first_name,
-      last_name: profile.user.last_name,
-      city: profile.city,
-      work_application: profile.work_application,
-      description: profile.description,
-      phone_number: profile.user.phone_number,
-      second_phone_number: profile.user.second_phone_number,
-      email: profile.user.email,
-      facebook_url: profile.facebook_url,
-      instagram_url: profile.instagram_url,
-      experience: profile.experience,
-      weekly_days: profile.weekly_days,
-      daily_hours: profile.daily_hours,
-    });
-  }, [profile, profileType]);
 
   const renderInput = (item) => {
     if (item.fieldName === "description") {
@@ -115,8 +116,8 @@ export const ProfileDetailsEdit = ({ profile, editList, profileType }) => {
           name={item.fieldName}
           placeholder={item.placeholder}
           inputValue={profile.user[item.fieldName] ?? profile[item.fieldName]}
-          valueChangedHandler={(e) => handleValueChange(e, item.fieldName)}
-          errorMessage={editedData[item.fieldName] === "" ? "Ovo polje je obavezno" : ""}
+          valueChangedHandler={(e) => handleValueChange(e, item.fieldName, item.user)}
+          errorMessage={displayErrorMessage(item)}
         />
       </div>
     );
