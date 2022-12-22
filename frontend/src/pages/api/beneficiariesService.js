@@ -11,7 +11,7 @@ export const BeneficiariesService = {
     return API.getProtectedResourceById(BASE_RESOURCE_NAME, beneficiaryId);
   },
   editBeneficiaryById: (beneficiaryId, editedData) => {
-    return API.patch(`beneficiaries/${beneficiaryId}/`, editedData);
+    return API.patch(`${BASE_RESOURCE_NAME}/${beneficiaryId}/`, editedData);
   },
   getActiveBeneficiaryCount: () => {
     return ProfileService.getActiveProfileCount(BASE_RESOURCE_NAME);
