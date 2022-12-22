@@ -52,6 +52,11 @@
 			object-position: top;
 		}
 
+		.imageUpload {
+			border: 1px solid red;
+			background: transparent;
+		}
+
 		.editImageOverlay {
 			display: none;
 			margin: -144px auto 15.5px;
@@ -147,6 +152,7 @@
 		}
 
 		.elementInfo {
+			vertical-align: top;
 			display: inline-block;
 			width: 350px;
 			margin-right: 24px;
@@ -190,10 +196,13 @@
 
 .textArea {
 	display: block !important;
-	width: 100% !important;
+	width: 94% !important;
+
+	@include respond-to(tablet) {
+		width: 100% !important;
+	}
 
 	textarea {
 		width: 90% !important;
-		padding: 5% !important;
 	}
 }
