@@ -1,0 +1,35 @@
+@import "./../../../../styles/main";
+
+.title {
+	font-size: 16px;
+	font-weight: 700;
+	color: #0075FF;
+}
+
+.fieldsetGrid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 16px;
+	margin-bottom: 20px;
+
+	@include respond-to(1600px) {
+		grid-template-columns: repeat(3, 1fr);
+	}
+	@include respond-to(laptop) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+	@include respond-to(mobile) {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
+.fieldsetRow {
+	display: flex;
+	gap: 16px;
+
+	@include respond-to(laptop) {
+		flex-direction: column;
+		align-items: center;
+	}
+}

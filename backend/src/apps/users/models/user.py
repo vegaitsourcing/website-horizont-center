@@ -3,6 +3,7 @@ from datetime import timedelta, datetime
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import AbstractUser, UserManager as BaseUserManager
 from django.contrib.postgres.fields import CIEmailField
+from django.core.validators import RegexValidator
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.db import models
@@ -56,12 +57,18 @@ class User(AbstractUser, BaseModel):
     phone_number = models.CharField(
         verbose_name=_('phone number'),
         max_length=250,
+        validators=[
+            RegexValidator(regex='^[0-9+\(\)#\.\s\/ext-]+$', message=_('Enter a valid phone number.')),
+        ]
     )
     second_phone_number = models.CharField(
         null=True,
         blank=True,
         max_length=250,
         verbose_name=_('second phone number'),
+        validators=[
+            RegexValidator(regex='^[0-9+\(\)#\.\s\/ext-]+$', message=_('Enter a valid phone number.')),
+        ]
     )
 
     USERNAME_FIELD = 'email'

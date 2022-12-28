@@ -1,5 +1,6 @@
 import { ENV } from "./config/env";
 import { mainNavItems } from "./config/navigation";
+import { CitiesService } from "./pages/api/countriesService";
 
 export function hex2rgba(hex, alpha = 1) {
 	const [r, g, b] = hex.match(/\w\w/g).map(x => parseInt(x, 16));
@@ -36,4 +37,9 @@ export function prepareSingleResourceSEO(resourceID, title) {
 		title: title,
 		canonical: `${ENV.BASE_URL}${resourceID}`,
 	};
+}
+
+export async function getSerbianCitySelectOptions() {
+	const serbianCities = await CitiesService.getAllSerbianCities();
+	return serbianCities.reduce((prev, curr) => ({ ...prev, [curr]: curr }), {});
 }

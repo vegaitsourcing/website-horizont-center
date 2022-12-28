@@ -1,48 +1,59 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useCallback, useEffect } from "react";
 import styles from "./fields.module.scss";
+import { ErrorMessages } from "./error.messages/error.messages";
+import { useFormField } from "../../hooks";
+import { FieldLabel } from "./field.label/field.label";
+import { FIELD_WITH_ERRORS_CLASS_NAME } from "./index";
 
-export const TextArea = ({ defaultValue, valueChangedHandler }) => {
-  const [countValue, setCount] = useState(0);
-  const [isValidTextArea, setIsValidTextArea] = useState(false);
+export const TextArea = ({
+	id,
+	onChange,
+	label,
+	infoText,
+	placeholder = "",
+	defaultValue = "",
+	shouldValidate = false,
+	required = false,
+	validators = [],
+	extraErrorMessages = [],
+}) => {
+	const [fieldValue, fieldErrorMessages, updateFieldValue] = useFormField(
+		defaultValue,
+		shouldValidate,
+		validators,
+		extraErrorMessages
+	);
 
-  useEffect(() => {
-    setCount(defaultValue.length);
-    validateTextArea(defaultValue.length);
-  }, [defaultValue]);
+	useEffect(() => {
+		if (shouldValidate && extraErrorMessages.length) updateFieldValue(fieldValue);
+	}, [fieldValue, updateFieldValue, shouldValidate, extraErrorMessages]);
 
-  const validateTextArea = (value) => {
-    if (value >= 100 && value <= 500) {
-      setIsValidTextArea(true);
-    }
-  };
+	const updateValue = useCallback((value) => {
+		onChange(value);
+		updateFieldValue(value);
+	}, [onChange, updateFieldValue]);
 
-  const count = () => {
-    const field = document.getElementById("description");
-    setCount(field.value.length);
-    setIsValidTextArea(field.value.length <= 100 || field.value.length > 500 ? false : true);
-    valueChangedHandler(field.value, "description");
-  };
+	const wrapperClassNames = [
+		styles.fieldWrapper,
+		fieldErrorMessages.length ? `${styles.fieldWrapperWithError} ${FIELD_WITH_ERRORS_CLASS_NAME}` : "",
+	].join(" ");
 
-  const wrapperClassNames = [styles.fieldWrapper, !isValidTextArea ? styles.fieldWrapperWithError : ""].join(" ");
-
-  return (
-    <div className={wrapperClassNames}>
-      <textarea
-        id="description"
-        name="description"
-        onKeyUp={count}
-        className={[styles.field, styles.textarea].join(" ")}
-        placeholder="Dodatne informacije"
-        defaultValue={defaultValue}
-      ></textarea>
-      <p id="counter" className={styles.charCount}>
-        <span>{countValue}/500 karaktera</span>
-        <br />
-        {!isValidTextArea && (
-          <span className={styles.textError}>Potrebno je uneti minimum 100, maksimum 500 karaktera</span>
-        )}
-      </p>
-    </div>
-  );
+	return (
+		<div className={wrapperClassNames}>
+			{label && <FieldLabel label={label} required={required} infoText={infoText}/>}
+			<textarea
+				id={id}
+				name={id}
+				onKeyUp={event => updateValue(event.target.value)}
+				className={[styles.field, styles.textarea].join(" ")}
+				placeholder={placeholder}
+				defaultValue={defaultValue}
+			></textarea>
+			<p id="counter" className={styles.charCount}>
+				<span>{fieldValue.length}/500 karaktera</span>
+				<br/>
+			</p>
+			<ErrorMessages errorMessages={fieldErrorMessages} errorClassName={styles.errorMessageRightAligned}/>
+		</div>
+	);
 };

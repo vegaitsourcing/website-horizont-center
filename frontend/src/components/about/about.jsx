@@ -16,7 +16,6 @@ export const About = () => {
 			<SectionWithImage
 				hasImageFirst
 				imageSrc="/images/static.7.jpg"
-				title="Adipiscing platea aliquet"
 				paragraphs={
 					<>
 						<p>Zajednica brižnih</p>

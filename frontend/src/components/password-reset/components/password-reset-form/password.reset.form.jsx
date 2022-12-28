@@ -55,7 +55,7 @@ export const PasswordResetForm = ({ hash }) => {
                 type="password"
                 label="Nova lozinka"
                 placeholder="Unesite Vašu novu lozinku"
-                valueChangedHandler={(value) => updateFormData(value, "password")}
+                onChange={(value) => updateFormData(value, "password")}
                 errorMessage={isValidInput(formData, "password")}
               />
               <Input
@@ -64,7 +64,7 @@ export const PasswordResetForm = ({ hash }) => {
                 type="password"
                 label="Potvrdi novu lozinku"
                 placeholder="Potvrdite Vašu novu lozinku"
-                valueChangedHandler={(value) => updateFormData(value, "passwordConfirm")}
+                onChange={(value) => updateFormData(value, "passwordConfirm")}
                 errorMessage={isValidInput(formData, "passwordConfirm")}
               />
             </div>
