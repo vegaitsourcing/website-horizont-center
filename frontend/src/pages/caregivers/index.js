@@ -6,7 +6,7 @@ import { CaregiversService } from "../api/caregiversService";
 import { CaregiverList } from "../../components";
 import { prepareSEO } from "../../utils";
 
-const ITEMS_PER_PAGE = 3;
+const ITEMS_PER_PAGE = 6;
 
 function Caregivers(props) {
 	const { pathname } = props;

@@ -6,7 +6,7 @@ export const commonProfileFieldset = {
 		profile_type: {
 			...defaultField,
 			type: "dropdown",
-			label: "Tip profile",
+			label: "Tip profila",
 			placeholder: "Izaberite tip profila",
 			options: { caregiver: "Negovatelj", beneficiary: "Negovan" }
 		},

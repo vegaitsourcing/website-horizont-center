@@ -6,7 +6,7 @@ import { PageHeader, Pagination, Spinner } from "shared-components";
 import { DonationsService } from "../api/donationsService";
 import { prepareSEO } from "../../utils";
 
-const ITEMS_PER_PAGE = 3;
+const ITEMS_PER_PAGE = 6;
 
 function Donations(props) {
 	const { pathname } = props;
