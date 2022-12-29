@@ -6,7 +6,7 @@ import { BeneficiariesService } from "../api/beneficiariesService";
 import { BeneficiaryList } from "components";
 import { prepareSEO } from "../../utils";
 
-const ITEMS_PER_PAGE = 3;
+const ITEMS_PER_PAGE = 6;
 
 function Beneficiaries(props) {
 	const { pathname } = props;

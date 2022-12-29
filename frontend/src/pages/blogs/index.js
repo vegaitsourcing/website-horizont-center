@@ -6,7 +6,7 @@ import { BlogFilters, BlogList } from "components";
 import { BlogsService } from "../api/blogsService";
 import { prepareSEO } from "../../utils";
 
-const ITEMS_PER_PAGE = 3;
+const ITEMS_PER_PAGE = 6;
 
 function Blogs(props) {
 	const { pathname } = props;
